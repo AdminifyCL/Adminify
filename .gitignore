@@ -1,0 +1,11 @@
+# Dependencias.
+node_modules/
+
+# Compilaciones.
+dist/
+*/dist/
+target/
+WixTools
+
+# Editor de codigo.
+.vscode/
