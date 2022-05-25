@@ -2,10 +2,7 @@
 import { createContext } from "react";
 
 // Estado inicial.
-const initialState = {
-  name: "index",
-  path: "/",
-};
+const initialState = { page: { pageName: "index", url: "/" } };
 
 // Definición del contexto.
 const NavbarContext = createContext(initialState);
