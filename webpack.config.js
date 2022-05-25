@@ -110,4 +110,9 @@ module.exports = {
     // CSS plugin
     new miniCSSExtractPlugin(),
   ],
+
+  // Servidor.
+  devServer: {
+    port: 3000,
+  },
 };
