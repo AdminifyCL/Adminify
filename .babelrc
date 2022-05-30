@@ -1,17 +1,14 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "presets": ["next/babel"],
   "plugins": [
     [
       "module-resolver",
       {
         "root": ["./src"],
         "alias": {
-          "!test": "./src/__test__/",
-          "!assets": "./src/assets/",
-          "!components": "./src/components/",
-          "!contexts": "./src/contexts/",
-          "!redux": "./src/redux/",
-          "!styles": "./src/styles/"
+          "~": "./src/",
+          "~components": "./src/components/",
+          "~pages": "./src/pages/"
         }
       }
     ]
