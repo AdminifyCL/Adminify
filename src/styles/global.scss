@@ -1,11 +1,13 @@
 // Dependencias.
-@use "./variables" as vars;
-@use "./fonts" as fonts;
+@use "variables" as var;
+@use "fonts" as font;
+@use "colors" as color;
 
-// Global.
+// Configuraciones globales.
 * {
   margin: 0px;
   padding: 0px;
-  color: vars.$primary-color;
+
   font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }

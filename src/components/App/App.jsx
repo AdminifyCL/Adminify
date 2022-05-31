@@ -1,39 +1,19 @@
 // Dependencias.
-import React, { Component } from "react";
+import React from "react";
 
 // Importación de componentes.
-import DevNavbar from "!components/DevNavbar/DevNavbar.jsx";
+import Router from "~routes/Router";
 
-// Importación de contextos.
-import { NavbarContext } from "!contexts/navbar.ctx.js";
+const App = () => {
+  return (
+    <div>
+      {/* Eje visual */}
+      <h1>My App</h1>
 
-// Importación de estilos.
-import "./style.scss";
+      {/* Router de la aplicación */}
+      <Router />
+    </div>
+  );
+};
 
-// Definición del componente: <DevNavbar />.
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { page: {} };
-  }
-
-  componentDidMount() {
-    // Estado inicial.
-    this.setState({ page: { pageName: "index", url: "/" } });
-  }
-
-  render() {
-    return (
-      <div>
-        <NavbarContext.Provider value={this.state.page}>
-          <DevNavbar />
-        </NavbarContext.Provider>
-
-        <h1>Hola</h1>
-      </div>
-    );
-  }
-}
-
-// Exportación del componente: <DevNavbar />.
 export default App;

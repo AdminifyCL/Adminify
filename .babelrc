@@ -6,12 +6,17 @@
       {
         "root": ["./src"],
         "alias": {
-          "!test": "./src/__test__/",
-          "!assets": "./src/assets/",
-          "!components": "./src/components/",
-          "!contexts": "./src/contexts/",
-          "!redux": "./src/redux/",
-          "!styles": "./src/styles/"
+          "~": "./src/",
+          "~test": "./src/__test__/",
+          "~actions": "./src/actions/",
+          "~assets": "./src/assets/",
+          "~components": "./src/components/",
+          "~contexts": "./src/contexts/",
+          "~pages": "./src/pages/",
+          "~reducers": "./src/reducers/",
+          "~redux": "./src/redux/",
+          "~routes": "./src/routes/",
+          "~styles": "./src/styles/"
         }
       }
     ]

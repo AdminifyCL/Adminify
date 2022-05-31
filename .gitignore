@@ -6,6 +6,8 @@ dist/
 */dist/
 target/
 WixTools
+.next/
+.next/*
 
 # Editor de codigo.
 .vscode/
