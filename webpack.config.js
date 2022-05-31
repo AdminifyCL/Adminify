@@ -20,6 +20,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
+    clean: true,
   },
 
   // Configuración de optimización.
@@ -113,6 +114,33 @@ module.exports = {
 
   // Servidor.
   devServer: {
-    port: 3000,
+    // Puerto.
+    port: 8080,
+
+    // Directorio de estaticos.
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+
+    compress: true,
+    bonjour: true,
+
+    // Información del navegador para el cliente.
+    client: {
+      logging: "info",
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+
+      // Mostrar progreso de compilación.
+      progress: true,
+
+      // Reconeccion automática.
+      reconnect: true,
+    },
+
+    // Recarga rapida.
+    hot: true,
   },
 };
