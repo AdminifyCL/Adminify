@@ -12,8 +12,10 @@
           "~assets": "./src/assets/",
           "~components": "./src/components/",
           "~contexts": "./src/contexts/",
+          "~pages": "./src/pages/",
           "~reducers": "./src/reducers/",
           "~redux": "./src/redux/",
+          "~routes": "./src/routes/",
           "~styles": "./src/styles/"
         }
       }

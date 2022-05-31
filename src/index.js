@@ -1,11 +1,12 @@
 // Dependencias.
-import React from "react";
+import * as React from "react";
 import { createRoot } from "react-dom/client";
+import { HashRouter } from "react-router-dom";
+
+// Importación del store.
 
 // Importación de componentes.
-const App = () => {
-  return <h1>Hola mundo</h1>;
-};
+import App from "~components/App/App.jsx";
 
 // Importación de estilos.
 import "~styles/global.scss";
@@ -16,6 +17,8 @@ const root = createRoot(contenedor);
 
 root.render(
   <React.StrictMode>
-    <App />
+    <HashRouter>
+      <App />
+    </HashRouter>
   </React.StrictMode>
 );

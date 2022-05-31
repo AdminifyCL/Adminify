@@ -117,11 +117,6 @@ module.exports = {
     // Puerto.
     port: 8080,
 
-    // Directorio de estaticos.
-    static: {
-      directory: path.join(__dirname, "public"),
-    },
-
     compress: true,
     bonjour: true,
 
