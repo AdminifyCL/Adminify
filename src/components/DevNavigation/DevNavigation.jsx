@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // Importación de estilos.
@@ -11,6 +11,18 @@ import "./DevNavigation.scss";
 const DevNavigation = (props) => {
   // Estado.
   const [pageActive, setPageActive] = useState("index");
+
+  // Efectos.
+  useEffect(() => {
+    let pageName = document.location.hash.replace("#", "").replace("/", "");
+
+    // Definición de la ruta activa.
+    if (pageName === "") {
+      setPageActive("index");
+    } else {
+      setPageActive(pageName);
+    }
+  }, [pageActive]);
 
   // Metodo.
   function handleActivePage(pageName) {

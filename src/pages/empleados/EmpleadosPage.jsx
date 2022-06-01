@@ -1,12 +1,17 @@
 // Dependencias.
 import React from "react";
 
+// Importación de estilos.
+import "./EmpleadosPage.scss";
+
 // Definición de la pagina: Index.
 const EmpleadosPage = () => {
   return (
-    <div>
-      <h1>Empleados - Page</h1>
-    </div>
+    <section className="empleados_container">
+      <div className="title">
+        <h1>Empleados - Page</h1>
+      </div>
+    </section>
   );
 };
 

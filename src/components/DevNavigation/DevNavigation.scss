@@ -15,6 +15,7 @@
 
   .header_title {
     font-size: var.$font-md;
+    font-weight: var.$font-wb;
     color: color.$white-color;
 
     justify-self: flex-start;
@@ -43,7 +44,7 @@
     flex-direction: row;
     gap: 2rem;
 
-    align-items: baseline;
+    align-items: center;
     align-content: center;
   }
 

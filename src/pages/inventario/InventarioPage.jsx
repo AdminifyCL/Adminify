@@ -1,12 +1,17 @@
 // Dependencias.
 import React from "react";
 
+// Importación de estilos.
+import "./InventarioPage.scss";
+
 // Definición de la pagina: Index.
 const InventarioPage = () => {
   return (
-    <div>
-      <h1>Inventario - Page</h1>
-    </div>
+    <section className="inventario_container">
+      <div className="title">
+        <h1>Inventario - Page</h1>
+      </div>
+    </section>
   );
 };
 

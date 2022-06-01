@@ -7,10 +7,9 @@ import CajaPage from "~pages/caja/CajaPage.jsx";
 // Definición del contenedor.
 const CajaContainer = (props) => {
   return (
-    <div>
-      <h1>Caja - Container</h1>
+    <>
       <CajaPage />
-    </div>
+    </>
   );
 };
 

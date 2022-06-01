@@ -7,10 +7,9 @@ import VentasPage from "~pages/ventas/VentasPage.jsx";
 // Definición del contenedor.
 const VentasContainer = (props) => {
   return (
-    <div>
-      <h1>Ventas - container</h1>
+    <>
       <VentasPage />
-    </div>
+    </>
   );
 };
 
