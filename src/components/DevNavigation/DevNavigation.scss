@@ -52,7 +52,9 @@
     font-size: var.$font-sm;
     color: color.$white-color;
     text-decoration: none;
+    user-select: none;
   }
+
   .item_active {
     background-color: color.$primary_dark-color;
 
