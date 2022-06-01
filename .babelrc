@@ -12,6 +12,7 @@
           "~assets": "./src/assets/",
           "~components": "./src/components/",
           "~contexts": "./src/contexts/",
+          "~containers": "./src/containers/",
           "~pages": "./src/pages/",
           "~reducers": "./src/reducers/",
           "~redux": "./src/redux/",

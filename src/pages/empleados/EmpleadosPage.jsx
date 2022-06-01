@@ -5,7 +5,7 @@ import React from "react";
 const EmpleadosPage = () => {
   return (
     <div>
-      <h1>Empleados Page</h1>
+      <h1>Empleados - Page</h1>
     </div>
   );
 };

@@ -2,13 +2,13 @@
 import React from "react";
 
 // Definición de la pagina: Index.
-const IndexPage = () => {
+const CajaPage = () => {
   return (
     <div>
-      <h1>Index - Page</h1>
+      <h1>Caja - Page</h1>
     </div>
   );
 };
 
 // Exportación de la pagina: Index.
-export default IndexPage;
+export default CajaPage;
