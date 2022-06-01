@@ -5,7 +5,7 @@ import React from "react";
 const InventarioPage = () => {
   return (
     <div>
-      <h1>Inventario Page</h1>
+      <h1>Inventario - Page</h1>
     </div>
   );
 };

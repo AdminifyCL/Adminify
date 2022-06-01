@@ -1,0 +1,27 @@
+// Dependencias.
+@use "../../styles/colors" as color;
+
+// Definición de estilos.
+.container {
+  background-color: color.$primary-color;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  border-radius: 40px;
+
+  border: none;
+
+  h1 {
+    color: color.$white-color;
+
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+.container:hover {
+  background-color: color.$primary_dark-color;
+}

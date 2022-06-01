@@ -117,9 +117,6 @@ module.exports = {
     // Puerto.
     port: 8080,
 
-    compress: true,
-    bonjour: true,
-
     // Información del navegador para el cliente.
     client: {
       logging: "info",

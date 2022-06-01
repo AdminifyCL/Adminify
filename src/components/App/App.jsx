@@ -2,18 +2,21 @@
 import React from "react";
 
 // Importación de componentes.
+import DevNavigation from "~components/DevNavigation/DevNavigation.jsx";
 import Router from "~routes/Router";
 
+// Definición del componente: <App />.
 const App = () => {
   return (
-    <div>
-      {/* Eje visual */}
-      <h1>My App</h1>
+    <>
+      {/* Navigation */}
+      <DevNavigation />
 
       {/* Router de la aplicación */}
       <Router />
-    </div>
+    </>
   );
 };
 
+// Exportación del componente: <App />.
 export default App;
