@@ -1,6 +1,8 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { setActualPage } from "~actions/actionPages.js";
 
 // Importación de estilos.
 import "./DevNavigation.scss";
@@ -9,9 +11,10 @@ import "./DevNavigation.scss";
 
 // Definición del componente: <Header />.
 const DevNavigation = (props) => {
-  // Estado.
+  // Estado y props.
   const [pageActive, setPageActive] = useState("index");
-  const { info } = props;
+  const { appInfo, setActualPage, siteInfo } = props;
+  const { actualPage } = siteInfo;
 
   // Efectos.
   useEffect(() => {
@@ -19,9 +22,13 @@ const DevNavigation = (props) => {
 
     // Definición de la ruta activa.
     if (pageName === "") {
+      // Cambiar el estado y la store.
       setPageActive("index");
+      setActualPage({ pageName: "index" });
     } else {
+      // Cambiar el estado y la store.
       setPageActive(pageName);
+      setActualPage({ pageName });
     }
   }, [pageActive]);
 
@@ -39,7 +46,7 @@ const DevNavigation = (props) => {
       <div className="container_items">
         {/* <domain>/#/ */}
         <Link
-          className={pageActive === "index" ? "item item_active" : "item"}
+          className={actualPage === "index" ? "item item_active" : "item"}
           to="/"
           onClick={() => handleActivePage("index")}
         >
@@ -48,7 +55,7 @@ const DevNavigation = (props) => {
 
         {/* <domain>/#/login */}
         <Link
-          className={pageActive === "login" ? "item item_active" : "item"}
+          className={actualPage === "login" ? "item item_active" : "item"}
           to="login"
           onClick={() => handleActivePage("login")}
         >
@@ -57,7 +64,7 @@ const DevNavigation = (props) => {
 
         {/* <domain>/#/caja */}
         <Link
-          className={pageActive === "caja" ? "item item_active" : "item"}
+          className={actualPage === "caja" ? "item item_active" : "item"}
           to="caja"
           onClick={() => handleActivePage("caja")}
         >
@@ -66,7 +73,7 @@ const DevNavigation = (props) => {
 
         {/* <domain>/#/inventario */}
         <Link
-          className={pageActive === "inventario" ? "item item_active" : "item"}
+          className={actualPage === "inventario" ? "item item_active" : "item"}
           to="inventario"
           onClick={() => handleActivePage("inventario")}
         >
@@ -75,7 +82,7 @@ const DevNavigation = (props) => {
 
         {/* <domain>/#/ventas */}
         <Link
-          className={pageActive === "ventas" ? "item item_active" : "item"}
+          className={actualPage === "ventas" ? "item item_active" : "item"}
           to="ventas"
           onClick={() => handleActivePage("ventas")}
         >
@@ -84,7 +91,7 @@ const DevNavigation = (props) => {
 
         {/* <domain>/#/empleados */}
         <Link
-          className={pageActive === "empleados" ? "item item_active" : "item"}
+          className={actualPage === "empleados" ? "item item_active" : "item"}
           to="empleados"
           onClick={() => handleActivePage("empleados")}
         >
@@ -92,10 +99,25 @@ const DevNavigation = (props) => {
         </Link>
       </div>
 
-      <h2 className="version_badge">v{info?.appVersion || "?.?.?"}</h2>
+      <h2 className="version_badge">v{appInfo?.appVersion || "😵"}</h2>
     </header>
   );
 };
 
+// PropTypes.
+
+// Consultas a la store de redux.
+const mapStateToProps = (state) => {
+  return {
+    siteInfo: state.site || "",
+    appInfo: state.appInfo || {},
+  };
+};
+
+const mapDispatchToProps = {
+  // Actions.
+  setActualPage,
+};
+
 // Exportación del componente: <Header />.
-export default DevNavigation;
+export default connect(mapStateToProps, mapDispatchToProps)(DevNavigation);

@@ -8,14 +8,13 @@ import Router from "~routes/Router";
 
 // Definición del componente: <App />.
 const App = (props) => {
-  // Estado.
-  const { appInfo } = props;
-  const { appMode } = appInfo;
+  // Estado y props.
+  const { appMode } = props;
 
   // Metodos.
   function handleAppMode() {
     if (appMode === "DEV") {
-      return <DevNavigation info={appInfo} />;
+      return <DevNavigation />;
     } else {
       return null;
     }
@@ -33,12 +32,14 @@ const App = (props) => {
   );
 };
 
+// PropTypes.
+
 // Consulta al store.
 const mapStateToProps = (state) => {
   return {
-    appInfo: state.appInfo,
+    appMode: state.appInfo.appMode || "DEV",
   };
 };
 
 // Exportación del componente: <App />.
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, null)(App);
