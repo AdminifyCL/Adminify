@@ -8,7 +8,7 @@ import "./IndexPage.scss";
 import Button from "~components/Button/Button.jsx";
 
 // Definición de la pagina: Index.
-const IndexPage = () => {
+const IndexPage = (props) => {
   return (
     <section className="index_container">
       <div className="title">

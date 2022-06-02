@@ -2,8 +2,8 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-
-// Importación del store.
+import { Provider } from "react-redux";
+import payAdminStore from "~redux/store.js";
 
 // Importación de componentes.
 import App from "~components/App/App.jsx";
@@ -17,8 +17,13 @@ const root = createRoot(contenedor);
 
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    {/* REDUX - provider */}
+    <Provider store={payAdminStore}>
+      {/* React ROUTER - HASH */}
+      <HashRouter>
+        {/* My little app uwu */}
+        <App />
+      </HashRouter>
+    </Provider>
   </React.StrictMode>
 );

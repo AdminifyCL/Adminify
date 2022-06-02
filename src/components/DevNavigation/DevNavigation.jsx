@@ -11,6 +11,7 @@ import "./DevNavigation.scss";
 const DevNavigation = (props) => {
   // Estado.
   const [pageActive, setPageActive] = useState("index");
+  const { info } = props;
 
   // Efectos.
   useEffect(() => {
@@ -91,7 +92,7 @@ const DevNavigation = (props) => {
         </Link>
       </div>
 
-      <h2 className="version_badge">vPre-Alpha</h2>
+      <h2 className="version_badge">v{info?.appVersion || "?.?.?"}</h2>
     </header>
   );
 };
