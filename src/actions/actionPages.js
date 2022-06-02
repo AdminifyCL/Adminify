@@ -1,12 +1,21 @@
+// Dependencias.
+import { actionsPageType } from "~types/actionPageTypes.js";
+
 // Definición de los actions de la pagina.
 const setActualPage = (payload) => {
-  console.log("[ACTION][setActualPage]");
-  const { pageName } = payload;
-
+  // Dispatch.
   return {
-    type: "SET_ACTUAL_PAGE",
-    pageName,
+    type: actionsPageType.setActualPage,
+    data: payload,
   };
 };
 
-export { setActualPage };
+const resetActualPage = (payload) => {
+  // Dispatch.
+  return {
+    type: actionsPageType.resetActualPage,
+    data: payload,
+  };
+};
+
+export { setActualPage, resetActualPage };

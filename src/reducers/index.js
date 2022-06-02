@@ -1,22 +1,17 @@
 // Dependencias.
-import initialState from "~redux/initialState.js";
+import { combineReducers } from "redux";
+import { appReducer } from "./appReducer.js";
+import { companyReducer } from "./companyReducer.js";
+import { pageReducer } from "./pagesReducer.js";
+import { userReducer } from "./userReducer.js";
 
 // Definición de los reducers.
-const Reducers = (state = initialState, action) => {
-  console.log("[REDUCER][GLOBAL]");
-
-  // Manejando los actions.
-  switch (action.type) {
-    case "SET_ACTUAL_PAGE":
-      return {
-        ...state,
-        site: { ...state.site, actualPage: action.pageName },
-      };
-
-    default:
-      return state;
-  }
-};
+const Reducers = combineReducers({
+  page: pageReducer,
+  app: appReducer,
+  company: companyReducer,
+  user: userReducer,
+});
 
 // Exportación de los reducers.
 export default Reducers;

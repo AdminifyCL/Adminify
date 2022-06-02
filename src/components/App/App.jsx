@@ -37,7 +37,7 @@ const App = (props) => {
 // Consulta al store.
 const mapStateToProps = (state) => {
   return {
-    appMode: state.appInfo.appMode || "DEV",
+    appMode: state.app.appMode || "DEV",
   };
 };
 

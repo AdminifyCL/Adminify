@@ -1,7 +1,7 @@
 // Definición del estado inicial.
 const initialState = {
   // Información de la aplicación.
-  appInfo: {
+  app: {
     appName: "payAdmin",
     appVersion: "Alpha",
     author: "payAdmin",
@@ -9,7 +9,9 @@ const initialState = {
   },
 
   // Información del usuario activo.
-  user: {},
+  user: {
+    isLogged: false,
+  },
 
   // Información de la empresa.
   company: {
@@ -20,9 +22,10 @@ const initialState = {
   },
 
   // Información del sitio.
-  site: {
+  page: {
     actualPage: "index",
     theme: "",
+    isLoading: false,
   },
 };
 

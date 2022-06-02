@@ -17,7 +17,8 @@
           "~reducers": "./src/reducers/",
           "~redux": "./src/redux/",
           "~routes": "./src/routes/",
-          "~styles": "./src/styles/"
+          "~styles": "./src/styles/",
+          "~types": "./src/types/"
         }
       }
     ]

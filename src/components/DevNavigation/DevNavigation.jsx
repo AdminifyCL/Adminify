@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import { setActualPage } from "~actions/actionPages.js";
 
 // Importación de estilos.
@@ -105,12 +106,17 @@ const DevNavigation = (props) => {
 };
 
 // PropTypes.
+DevNavigation.propTypes = {
+  appInfo: PropTypes.object.isRequired,
+  setActualPage: PropTypes.func.isRequired,
+  siteInfo: PropTypes.object.isRequired,
+};
 
 // Consultas a la store de redux.
 const mapStateToProps = (state) => {
   return {
-    siteInfo: state.site || "",
-    appInfo: state.appInfo || {},
+    siteInfo: state.page || "",
+    appInfo: state.app || {},
   };
 };
 
