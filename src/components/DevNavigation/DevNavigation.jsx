@@ -18,6 +18,7 @@ const DevNavigation = (props) => {
   const { actualPage } = siteInfo;
 
   // Efectos.
+  // TODO: Recordatorio, esta wea esta funcionando parcialmente.
   useEffect(() => {
     let pageName = document.location.hash.replace("#", "").replace("/", "");
 

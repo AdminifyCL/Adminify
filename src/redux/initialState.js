@@ -18,7 +18,7 @@ const initialState = {
     name: "payAdmin",
     logo: "",
     slogan: "Una solución moderna a problemas anticuados",
-    employees: ["Javier Almarza", "Gonzalo Cañas", "Vicente Salas", "Nicolás Cruz"],
+    employees: ["Javier Almarza", "Gonzalo Cañas", "Nicolás Cruz", "Vicente Salas"],
   },
 
   // Información del sitio.

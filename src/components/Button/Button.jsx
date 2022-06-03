@@ -1,5 +1,6 @@
 // Dependencias.
-import React from "react";
+import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
 // Importación de estilos.
 import "./Button.scss";
@@ -8,19 +9,33 @@ import "./Button.scss";
 
 // Definición del componente: <Button />.
 const Button = (props) => {
-  const { btnText } = props;
+  // Estado y props.
+
+  // Efectos.
+  useEffect(() => {}, []);
 
   // Metodos.
-  function handleClick() {
-    alert("Hola");
+  function handleTheme() {
+    const { theme } = props;
+
+    // Cambiando el tema del botón
+    switch (theme) {
+      case "light":
+        return "btn-container bg-light bg-pill";
+      default:
+        return "btn-container bg-default bg-pill";
+    }
   }
 
+  const { btnText } = props;
   // Renderizado.
-  return (
-    <button className="container" onClick={() => handleClick()}>
-      <h1>{btnText}</h1>
-    </button>
-  );
+  return <button className={handleTheme()}>{btnText}</button>;
+};
+
+// Prop types.
+Button.propTypes = {
+  theme: PropTypes.string,
+  btnText: PropTypes.string,
 };
 
 // Exportación del componente: <Button />.
