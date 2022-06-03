@@ -82,7 +82,7 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            outputPath: "assets/",
+            outputPath: "assets/images/",
           },
         },
       },
@@ -92,14 +92,14 @@ module.exports = {
   // Configuración de plugins.
   plugins: [
     // Copy Webpack Plugin
-    new copyWebpackPlugin({
-      patterns: [
-        {
-          from: "./src/assets/images",
-          to: "assets",
-        },
-      ],
-    }),
+    // new copyWebpackPlugin({
+    //   patterns: [
+    //     {
+    //       from: "./src/assets/images",
+    //       to: "assets/images",
+    //     },
+    //   ],
+    // }),
 
     // HTML plugin
     new htmlWebpackPlugin({

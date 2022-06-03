@@ -8,6 +8,7 @@ React (frontend)
 - react-dom
 - react-redux
 - react-router-dom
+- react-icons
 - redux
 
 ## Desarrollo
@@ -47,6 +48,7 @@ Plugins
 DevTools
 
 - redux-devtools
+- prop-types
 
 Pre-procesadores
 

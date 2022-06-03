@@ -7,10 +7,13 @@ import IndexPage from "~pages/index/IndexPage.jsx";
 
 // Definición del contenedor.
 const IndexContainer = (props) => {
+  // Estado y props.
+  const { appInfo } = props;
+
   // Retorno del componente visual.
   return (
     <>
-      <IndexPage />
+      <IndexPage info={appInfo} />
     </>
   );
 };
@@ -18,7 +21,9 @@ const IndexContainer = (props) => {
 // Redux
 const mapStateToProps = (state) => {
   //? Desde aquí se llaman a los parametros que necesitemos desde el store.
-  return {};
+  return {
+    appInfo: state.app || {},
+  };
 };
 
 // Exportación del contenedor.
