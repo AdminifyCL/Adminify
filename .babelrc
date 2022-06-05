@@ -19,6 +19,7 @@
           "~redux": "./src/redux/",
           "~routes": "./src/routes/",
           "~styles": "./src/styles/",
+          "~themes": "./src/themes/",
           "~types": "./src/types/"
         }
       }

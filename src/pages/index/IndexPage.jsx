@@ -3,12 +3,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FaConciergeBell } from "react-icons/fa";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import CardVersionList from "~components/CardVersionList/CardVersionList.jsx";
 
 // Importación de estilos.
 import "./IndexPage.scss";
-
-// Importación de componentes.
-import { Link } from "react-router-dom";
 
 // Definición de la pagina: Index.
 const IndexPage = (props) => {
@@ -41,14 +40,19 @@ const IndexPage = (props) => {
         </section>
 
         {/* Contenido de cartas */}
-        <section className="container-cardlist"></section>
+        <section className="container-cardlist">
+          {/* Lista de versiones. */}
+          <CardVersionList />
+        </section>
       </section>
 
       {/* Contenido Derecha: Botón de entrada. */}
       <section className="container-boton">
         <div className="container-boton_btn">
           <Link to="login">
-            <Button variant="contained">Iniciar sesión</Button>
+            <Button variant="contained" color="secondary">
+              Iniciar sesión
+            </Button>
           </Link>
         </div>
       </section>

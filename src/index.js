@@ -3,6 +3,7 @@ import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material";
 import payAdminStore from "~redux/store.js";
 
 // Importación de componentes.
@@ -10,6 +11,7 @@ import App from "~components/App/App.jsx";
 
 // Importación de estilos.
 import "~styles/global.scss";
+import payAdminTheme from "~themes/payAdminTheme.js";
 
 // Renderizado.
 const contenedor = document.getElementById("app");
@@ -22,7 +24,9 @@ root.render(
       {/* React ROUTER - HASH */}
       <HashRouter>
         {/* My little app uwu */}
-        <App />
+        <ThemeProvider theme={payAdminTheme}>
+          <App />
+        </ThemeProvider>
       </HashRouter>
     </Provider>
   </React.StrictMode>
