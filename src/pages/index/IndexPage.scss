@@ -108,6 +108,16 @@
   }
 }
 
+.container-cardlist {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: flex-start;
+
+  margin-top: 1rem;
+}
+
 // -- Columna: botón.
 .container-boton {
   width: 30%;

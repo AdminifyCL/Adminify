@@ -18,6 +18,15 @@ const payAdminTheme = createTheme({
     },
   },
 
+  // Definición de los componentes.
+  components: {
+    MuiButton: {
+      root: {
+        fontSize: "1rem",
+      },
+    },
+  },
+
   // Definición de colores.
   colors: {
     primaryColor: "#226f54",

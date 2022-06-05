@@ -11,7 +11,7 @@ import App from "~components/App/App.jsx";
 
 // Importación de estilos.
 import "~styles/global.scss";
-import payAdminTheme from "~themes/payAdminTheme.js";
+import payAdminTheme from "~themes/PayAdminTheme.js";
 
 // Renderizado.
 const contenedor = document.getElementById("app");
