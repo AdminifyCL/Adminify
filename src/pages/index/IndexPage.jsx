@@ -2,13 +2,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { FaConciergeBell } from "react-icons/fa";
+import { Button } from "@mui/material";
 
 // Importación de estilos.
 import "./IndexPage.scss";
-import IndexBg from "~assets/images/index-bg.jpg";
 
 // Importación de componentes.
-import Button from "~components/Button/Button.jsx";
 import { Link } from "react-router-dom";
 
 // Definición de la pagina: Index.
@@ -16,46 +15,41 @@ const IndexPage = (props) => {
   // Estado y props.
   const { info } = props;
 
-  console.log(info);
   // Renderizado visual.
   return (
-    <section className="index_container">
-      <section className="index_content">
-        {/* Titulo */}
-        <div className="title_container">
-          {/* Icono */}
-          <FaConciergeBell className="title_container--icon" />
+    <section className="container">
+      {/* Contenido Izquierda: Registro de cambios.*/}
+      <section className="container-registro">
+        {/* Contenido titular. */}
+        <section className="container-header">
+          {/* Icono & Emblema de versión. */}
+          <div className="container-title">
+            {/* Icono. */}
+            <FaConciergeBell className="container-title_icon" />
 
-          {/* Titulo banner */}
-          <div className="title_container--title">
-            <h1>PAYADMIN</h1>
-            <h2>Registro de cambios</h2>
+            {/* Titulos. */}
+            <div className="container-titles">
+              <h1>{info?.appName.toUpperCase() || "😵"}</h1>
+              <h2>Registro de cambios</h2>
+            </div>
           </div>
 
-          {/* Version */}
-          <div className="title_container--badge">
-            <h3>v{info?.appVersion || "???"}</h3>
+          {/* Badge */}
+          <div className="container-badge">
+            <h3>v{info?.appVersion.toUpperCase() || "😵"}</h3>
           </div>
-        </div>
+        </section>
 
-        {/* Contendor de las cartas. */}
-        <div></div>
+        {/* Contenido de cartas */}
+        <section className="container-cardlist"></section>
+      </section>
 
-        <div className="banner_container"></div>
-        <div
-          className="banner_container"
-          style={{
-            backgroundImage: `url(${IndexBg})`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="banner_container--btn">
-            <Link to="login">
-              <Button theme="light" btnText="Iniciar sesión" />
-            </Link>
-          </div>
+      {/* Contenido Derecha: Botón de entrada. */}
+      <section className="container-boton">
+        <div className="container-boton_btn">
+          <Link to="login">
+            <Button variant="contained">Iniciar sesión</Button>
+          </Link>
         </div>
       </section>
     </section>
@@ -64,7 +58,7 @@ const IndexPage = (props) => {
 
 // PropTypes.
 IndexPage.propTypes = {
-  info: PropTypes.object,
+  info: PropTypes.object.isRequired,
 };
 
 // Exportación de la pagina: Index.

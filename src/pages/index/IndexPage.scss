@@ -2,105 +2,124 @@
 @use "../../styles/colors" as color;
 
 // Definición del estilo.
-.index_container {
+// -- Estilo general.
+.container {
   height: 100vh;
+  display: flex;
+
+  flex-direction: row;
 }
 
-.index_content {
+// -- Columna: registro.
+.container-registro {
+  padding-top: 0.125rem;
+  margin-top: 0;
   margin-left: 120px;
 
-  height: 100vh;
+  border-left: 3px dashed color.$primary-color;
 
-  border-left: 2px dashed color.$primary-color;
-
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, auto);
+  width: 70%;
 }
 
-.title_container {
-  grid-row: 1 / 2;
-  grid-column: 1 / 2;
+.container-header {
+  border-bottom: 2px dashed color.$primary-color;
 
   display: flex;
   flex-direction: row;
 
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-around;
 
-  justify-content: flex-start;
+  padding-bottom: 2.125rem;
+}
+
+.container-title {
+  display: flex;
+  flex-direction: row;
+
   align-items: flex-end;
 
-  padding-left: 2rem;
-  height: 96px;
+  gap: 2rem;
 
-  border-bottom: 1px dashed color.$primary-color;
+  .container-title_icon {
+    font-size: 70px;
+
+    color: color.$primary-color;
+  }
 }
 
-.title_container--icon {
-  height: 80px;
-  width: 80px;
-
-  margin-right: 1rem;
-
-  color: color.$primary-color;
-}
-
-.title_container--title {
+.container-titles {
   display: flex;
   flex-direction: column;
 
-  color: color.$primary-color;
-
   h1 {
-    font-size: 64px;
+    font-family: "Poppins";
+    font-style: normal;
     font-weight: 700;
+    font-size: 4rem;
 
-    margin-bottom: -25px;
+    letter-spacing: 0.063rem;
+
+    color: color.$primary-color;
+
+    text-align: left;
+
+    margin-bottom: -1.5rem;
+    padding: 0;
   }
 
   h2 {
-    font-size: 24px;
+    font-family: "Poppins";
+    font-style: normal;
     font-weight: 300;
+    font-size: 1.25rem;
+
+    letter-spacing: 0.063rem;
+
+    color: color.$primary-color;
+
+    text-align: left;
+
+    margin: 0;
+    padding: 0;
   }
 }
 
-.title_container--badge {
+.container-badge {
+  border: 5px solid color.$primary-color;
+  border-radius: 6.25rem;
+
   padding-left: 2rem;
   padding-right: 2rem;
-
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-
-  border-radius: 60px;
-
-  border: 4px solid color.$primary-color;
-
-  color: color.$primary-color;
-
-  align-self: center;
-
-  position: relative;
-
-  right: -10rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 
   h3 {
-    font-size: 18px;
-    font-weight: bold;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+
+    letter-spacing: 0.063rem;
+
+    color: color.$primary-color;
+
+    text-align: center;
   }
 }
 
-.banner_container {
-  grid-row: 1 / 3;
-  grid-column: 2;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .banner_container--btn {
-    margin-top: 1rem;
-  }
+// -- Columna: botón.
+.container-boton {
+  width: 30%;
 
   background-color: color.$primary-color;
-  background-blend-mode: multiply;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+}
+
+.container-boton_btn {
+  margin-top: 2rem;
 }
