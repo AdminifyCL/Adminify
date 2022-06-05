@@ -11,6 +11,12 @@ React (frontend)
 - react-icons
 - redux
 
+Material UI
+
+- @emotion/react
+- @emotion/styled
+- @mui/material
+
 ## Desarrollo
 
 Babel (JS compiler)
@@ -53,3 +59,9 @@ DevTools
 Pre-procesadores
 
 - sass
+
+Testing
+
+- Jest
+- identity-obj-proxy
+- @testing-library/react

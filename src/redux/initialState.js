@@ -5,7 +5,7 @@ const initialState = {
     appName: "payAdmin",
     appVersion: "pre-alpha",
     author: "payAdmin",
-    appMode: "PROD",
+    appMode: "DEV",
   },
 
   // Información del usuario activo.
