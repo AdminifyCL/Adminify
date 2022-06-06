@@ -1,0 +1,135 @@
+// Dependencias.
+@use "../../styles/colors" as color;
+
+// Definición del estilo.
+// -- Estilo general.
+.container {
+  height: 100%;
+  display: flex;
+
+  flex-direction: row;
+}
+
+// -- Columna: registro.
+.container-registro {
+  padding-top: 0.125rem;
+  margin-top: 0;
+  margin-left: 120px;
+
+  border-left: 3px dashed color.$primary-color;
+
+  width: 70%;
+}
+
+.container-header {
+  border-bottom: 2px dashed color.$primary-color;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-around;
+
+  padding-bottom: 2.125rem;
+}
+
+.container-title {
+  display: flex;
+  flex-direction: row;
+
+  align-items: flex-end;
+
+  gap: 2rem;
+
+  .container-title_icon {
+    font-size: 70px;
+
+    color: color.$primary-color;
+  }
+}
+
+.container-titles {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 4rem;
+
+    letter-spacing: 0.063rem;
+
+    color: color.$primary-color;
+
+    text-align: left;
+
+    margin-bottom: -1.5rem;
+    padding: 0;
+  }
+
+  h2 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.25rem;
+
+    letter-spacing: 0.063rem;
+
+    color: color.$primary-color;
+
+    text-align: left;
+
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.container-badge {
+  border: 5px solid color.$primary-color;
+  border-radius: 6.25rem;
+
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  h3 {
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.125rem;
+
+    letter-spacing: 0.063rem;
+
+    color: color.$primary-color;
+
+    text-align: center;
+  }
+}
+
+.container-cardlist {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 1rem;
+}
+
+// -- Columna: botón.
+.container-boton {
+  width: 30%;
+
+  background-color: color.$primary-color;
+
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+}
+
+.container-boton_btn {
+  margin-top: 2rem;
+}

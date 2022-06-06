@@ -1,12 +1,17 @@
 // Dependencias.
 import React from "react";
 
+// Importación de estilos.
+import "./CajaPage.scss";
+
 // Definición de la pagina: Index.
 const CajaPage = () => {
   return (
-    <div>
-      <h1>Caja - Page</h1>
-    </div>
+    <section className="caja_container">
+      <div className="title">
+        <h1>Caja - Page</h1>
+      </div>
+    </section>
   );
 };
 

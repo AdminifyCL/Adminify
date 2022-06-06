@@ -13,11 +13,15 @@
           "~components": "./src/components/",
           "~contexts": "./src/contexts/",
           "~containers": "./src/containers/",
+          "~hooks": "./src/hooks/",
+          "~models": "./src/models/",
           "~pages": "./src/pages/",
           "~reducers": "./src/reducers/",
           "~redux": "./src/redux/",
           "~routes": "./src/routes/",
-          "~styles": "./src/styles/"
+          "~styles": "./src/styles/",
+          "~themes": "./src/themes/",
+          "~types": "./src/types/"
         }
       }
     ]

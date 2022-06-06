@@ -1,12 +1,17 @@
 // Dependencias.
 import React from "react";
 
+// Importación de estilos.
+import "./LoginPage.scss";
+
 // Definición de la pagina: Index.
 const LoginPage = () => {
   return (
-    <div>
-      <h1>Login - Page</h1>
-    </div>
+    <section className="login_container">
+      <div className="title">
+        <h1>Login - Page</h1>
+      </div>
+    </section>
   );
 };
 

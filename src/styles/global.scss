@@ -10,4 +10,10 @@
 
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

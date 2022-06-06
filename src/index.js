@@ -2,14 +2,16 @@
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
-
-// Importación del store.
+import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material";
+import payAdminStore from "~redux/store.js";
 
 // Importación de componentes.
 import App from "~components/App/App.jsx";
 
 // Importación de estilos.
 import "~styles/global.scss";
+import payAdminTheme from "~themes/PayAdminTheme.js";
 
 // Renderizado.
 const contenedor = document.getElementById("app");
@@ -17,8 +19,15 @@ const root = createRoot(contenedor);
 
 root.render(
   <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
+    {/* REDUX - provider */}
+    <Provider store={payAdminStore}>
+      {/* React ROUTER - HASH */}
+      <HashRouter>
+        {/* My little app uwu */}
+        <ThemeProvider theme={payAdminTheme}>
+          <App />
+        </ThemeProvider>
+      </HashRouter>
+    </Provider>
   </React.StrictMode>
 );

@@ -12,11 +12,16 @@
     "build:dev": "webpack --mode development --config ./webpack.config.js",
     "build:prod": "webpack --mode production --config ./webpack.config.js",
     "tauri": "tauri",
-    "test": ""
+    "test": "jest"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.8.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "redux": "^4.2.0"
   },
@@ -25,6 +30,7 @@
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@tauri-apps/cli": "^1.0.0-rc.11",
+    "@testing-library/react": "^13.3.0",
     "babel-loader": "^8.2.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "copy-webpack-plugin": "^11.0.0",
@@ -32,7 +38,10 @@
     "file-loader": "^6.2.0",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^28.1.0",
     "mini-css-extract-plugin": "^2.6.0",
+    "prop-types": "^15.8.1",
     "redux-devtools": "^3.7.0",
     "sass": "^1.52.1",
     "sass-loader": "^13.0.0",
