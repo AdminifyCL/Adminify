@@ -23,6 +23,10 @@ const payAdminTheme = createTheme({
     MuiButton: {
       root: {
         fontSize: "1rem",
+        paddingLeft: "2rem",
+        paddingRight: "2rem",
+        paddingTop: "1rem",
+        paddingBottom: "1rem",
       },
     },
   },
