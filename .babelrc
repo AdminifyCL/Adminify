@@ -20,6 +20,7 @@
           "~reducers": "./src/reducers/",
           "~redux": "./src/redux/",
           "~routes": "./src/routes/",
+          "~schemas": "./src/schemas/",
           "~styles": "./src/styles/",
           "~themes": "./src/themes/",
           "~types": "./src/types/",

@@ -17,6 +17,10 @@ Material UI
 - @emotion/styled
 - @mui/material
 
+MongoDB
+
+- mongoose
+
 ## Desarrollo
 
 Babel (JS compiler)
