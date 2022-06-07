@@ -1,3 +1,18 @@
 {
-  "verbose": true
+  "verbose": true,
+  "moduleFileExtensions": [
+    "js",
+    "jsx"
+  ],
+  "transform": {
+    "\\.[jt]sx?$": "babel-jest"
+  },
+  "transformIgnorePatterns": [
+    "/node_modules/*",
+    "/styles/*"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|scss)$": "<rootDir>/src/__mocks__/styleMock.js"
+  },
+  "testEnvironment": "jsdom"
 }
