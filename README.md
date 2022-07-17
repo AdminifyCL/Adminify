@@ -56,6 +56,14 @@ Para instalar las dependencias del proyecto.
   $yarn install
 ```
 
+## Configuración
+
+Es necesario crear un archivo de configuraciones en el directorio _config/_. El archivo de configuraciones debe ser solicitado a alguno de los desarrolladores.
+
+```bash
+  ./src/config/config.js
+```
+
 ## Ejecución
 
 Ejecutar el proyecto en un servidor local.

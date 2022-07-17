@@ -9,6 +9,9 @@ WixTools
 .next/
 .next/*
 
+# Configuraciones.
+src/config/*.*
+
 # Variables de entorno.
 .env
 
