@@ -9,5 +9,14 @@ WixTools
 .next/
 .next/*
 
+# Configuraciones.
+src/config/*.*
+
+# Variables de entorno.
+.env
+
 # Editor de codigo.
 .vscode/
+
+# Logs.
+.yarn.error.log

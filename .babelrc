@@ -1,5 +1,5 @@
 {
-  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "presets": [["@babel/preset-env", { "targets": { "node": "current" } }], "@babel/preset-react"],
   "plugins": [
     [
       "module-resolver",
@@ -7,21 +7,25 @@
         "root": ["./src"],
         "alias": {
           "~": "./src/",
+          "~mocks": "./src/__mocks__/",
           "~test": "./src/__test__/",
           "~actions": "./src/actions/",
           "~assets": "./src/assets/",
           "~components": "./src/components/",
-          "~contexts": "./src/contexts/",
+          "~config": "./src/config/",
           "~containers": "./src/containers/",
+          "~contexts": "./src/contexts/",
           "~hooks": "./src/hooks/",
           "~models": "./src/models/",
           "~pages": "./src/pages/",
           "~reducers": "./src/reducers/",
           "~redux": "./src/redux/",
           "~routes": "./src/routes/",
+          "~schemas": "./src/schemas/",
           "~styles": "./src/styles/",
           "~themes": "./src/themes/",
-          "~types": "./src/types/"
+          "~types": "./src/types/",
+          "~utils": "./src/utils/"
         }
       }
     ]

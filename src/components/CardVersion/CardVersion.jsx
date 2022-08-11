@@ -2,6 +2,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Chip } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 // Importación de estilos.
 import "./CardVersion.scss";
@@ -13,7 +14,6 @@ const CardVersion = (props) => {
   // Estado y props.
   const { data } = props;
 
-  console.log({ data });
   // Renderizado.
   return (
     <div className="container-cardVersion">

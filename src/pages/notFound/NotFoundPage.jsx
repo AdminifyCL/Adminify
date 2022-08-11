@@ -7,8 +7,8 @@ import "./NotFoundPage.scss";
 // Definición de la pagina: Index.
 const NotFoundPage = () => {
   return (
-    <section className="notFound_container">
-      <div className="title">
+    <section className="">
+      <div className="">
         <h1>404 - Page</h1>
       </div>
     </section>
