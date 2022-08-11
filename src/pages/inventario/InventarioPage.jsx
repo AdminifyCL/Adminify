@@ -7,8 +7,8 @@ import "./InventarioPage.scss";
 // Definición de la pagina: Index.
 const InventarioPage = () => {
   return (
-    <section className="inventario_container">
-      <div className="title">
+    <section className="">
+      <div className="">
         <h1>Inventario - Page</h1>
       </div>
     </section>

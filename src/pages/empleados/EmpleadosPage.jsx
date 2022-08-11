@@ -7,8 +7,8 @@ import "./EmpleadosPage.scss";
 // Definición de la pagina: Index.
 const EmpleadosPage = () => {
   return (
-    <section className="empleados_container">
-      <div className="title">
+    <section className="">
+      <div className="">
         <h1>Empleados - Page</h1>
       </div>
     </section>

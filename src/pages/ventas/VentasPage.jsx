@@ -7,8 +7,8 @@ import "./VentasPage.scss";
 // Definición de la pagina: Index.
 const VentasPage = () => {
   return (
-    <section className="ventas_container">
-      <div className="title">
+    <section className="">
+      <div className="">
         <h1>Ventas - Page</h1>
       </div>
     </section>
