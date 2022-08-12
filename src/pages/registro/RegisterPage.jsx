@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
-import "./IndexPage.scss";
+import "./RegisterPage.scss";
 
 // Definición de la pagina: Index.
-class IndexPage extends Component {
+class RegisterPage extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
@@ -22,9 +22,6 @@ class IndexPage extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleUser = () => {
-    const { createUser } = this.props;
-  };
   // -- Métodos [MAPPING].
 
   // Renderizado.
@@ -32,7 +29,7 @@ class IndexPage extends Component {
     return (
       <section className="">
         <div className="">
-          <h1>Index - Page</h1>
+          <h1>Register - Page</h1>
         </div>
       </section>
     );
@@ -40,7 +37,7 @@ class IndexPage extends Component {
 }
 
 // PropTypes.
-IndexPage.propTypes = {};
+RegisterPage.propTypes = {};
 
 // Exportación de la pagina: Index.
-export default IndexPage;
+export default RegisterPage;
