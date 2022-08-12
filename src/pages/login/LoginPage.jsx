@@ -1,23 +1,43 @@
 // Dependencias.
-import React from "react";
-import { TextField, Button } from "@mui/material";
-import { FaConciergeBell } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 // Importación de estilos.
 import "./LoginPage.scss";
 
 // Definición de la pagina: Index.
-const LoginPage = () => {
-  // Renderizado visual.
-  return (
-    <section className="">
-      <div className="">
-        <h1>Login - Page</h1>
-      </div>
-    </section>
-  );
-};
+class LoginPage extends Component {
+  // -- Constructor.
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+  // -- Ciclo de vida del componente.
+  componentDidMount() {}
+  componentDidUpdate(prevProps, prevState) {}
+  componentWillUnmount() {}
+
+  // -- Métodos.
+  // -- Métodos [REDIRECT].
+  // -- Métodos [HANDLER].
+  // -- Métodos [MAPPING].
+
+  // Renderizado.
+  render() {
+    return (
+      <section className="">
+        <div className="">
+          <h1>Login - Page</h1>
+        </div>
+      </section>
+    );
+  }
+}
+
+// PropTypes.
+LoginPage.propTypes = {};
 
 // Exportación de la pagina: Index.
 export default LoginPage;

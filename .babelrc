@@ -14,6 +14,8 @@
           "~components": "./src/components/",
           "~config": "./src/config/",
           "~containers": "./src/containers/",
+          "~database": "./src/database/",
+          "~handlers": "./src/handlers",
           "~contexts": "./src/contexts/",
           "~hooks": "./src/hooks/",
           "~models": "./src/models/",
