@@ -29,7 +29,7 @@ class IndexPage extends Component {
     return (
       <section className="">
         <div className="">
-          <h1>Index - Page</h1>
+          <h1>PayAdmin</h1>
         </div>
       </section>
     );
