@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 // Importación de componentes.
-import Router from "~routes/Router";
+import Router from "../../routes/router.js";
 
 // Definición del componente: <App />.
 class App extends Component {
