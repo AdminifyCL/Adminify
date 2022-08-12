@@ -6,6 +6,9 @@
   "repository": "https://github.com/PayAdmin/PayAdmin",
   "author": "JajoScript <javieralmarzabucarey@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "16"
+  },
   "scripts": {
     "serve:dev": "webpack serve --mode development --config ./webpack.config.js",
     "serve:prod": "webpack serve --mode production --config ./webpack.config.js",
