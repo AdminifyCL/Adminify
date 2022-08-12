@@ -5,7 +5,7 @@ import { createUser } from "../../actions/actionUser.js";
 import PropTypes from "prop-types";
 
 // Importación de componentes.
-import RegistroPage from "~pages/registro/RegistroPage.jsx";
+import RegistroPage from "../../pages/registro/RegistroPage.jsx";
 
 // Definición del contenedor.
 class RegistroContainer extends Component {
