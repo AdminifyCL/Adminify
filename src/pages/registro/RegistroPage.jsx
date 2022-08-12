@@ -1,6 +1,6 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -12,7 +12,9 @@ class RegistroPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      error: false,
+    };
   }
 
   // -- Ciclo de vida del componente.
@@ -23,26 +25,48 @@ class RegistroPage extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleCreateUser = async () => {
+  reiniciarError = (evento) => {
+    // Reinicio del stado.
+    this.setState({ error: false });
+  };
+  validarFormulario = () => {
+    // Lectura de los datos.
+    const input_name = document.getElementById("nombre").value;
+
+    console.log("[] TAMAÑO:");
+    console.log(input_name.length);
+
+    // Validaciones
+    if (!input_name) {
+      this.setState({ error: true });
+      return;
+    }
+
+    // Estructura
+    const data = {
+      nombre: input_name,
+    };
+
+    this.handleCreateUser(data);
+  };
+
+  handleCreateUser = async (data) => {
     console.log("[#️⃣][INFO][PAGE:REGISTRO][handleCreateUser] Creando usuario...");
     const { createUser } = this.props;
 
-    // Datos de ejemplo.
-    const data = {
-      nombre: "Gonzalo",
-      apellido: "Cañas",
-      email: "gonzalo@gmail.com",
-      contraseña: "asd123",
-      cargo: "dueño",
-      licencia: "CUADRILLE-PAYADMIN-01",
-    };
+    // Lectura de los datos.
+    console.log(" DATOS: ");
+    console.log(data);
 
-    await createUser(data);
+    // await createUser(data);
   };
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
+    const { error } = this.state;
+    console.log("[] ERROR: ", error);
+
     return (
       <section
         className=""
@@ -63,10 +87,20 @@ class RegistroPage extends Component {
             flexDirection: "column",
             justifyContent: "center",
             alignContent: "center",
+            gap: "20px",
           }}
         >
           <h1>Vista de Registro</h1>
-          <Button variant="contained" onClick={() => this.handleCreateUser()}>
+          <TextField
+            variant="outlined"
+            label={error ? "ERROR" : "Ingresa tu nombre"}
+            id="nombre"
+            error={error}
+            helperText={error ? "Es necesario un nombre" : null}
+            onChange={(event) => this.reiniciarError(event)}
+          />
+
+          <Button variant="contained" onClick={() => this.validarFormulario()}>
             Crear usuario
           </Button>
         </div>
