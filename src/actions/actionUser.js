@@ -8,7 +8,7 @@ import { actionUserTypes } from "~types/actionUserTypes.js";
  * @return {object}
  */
 const createUser = (payload) => {
-  console.log("[INFO][ACTION][createUser] Creando usuario...");
+  console.log("[#️⃣][INFO][ACTION][createUser] Creando usuario...");
 
   console.log("[] PAYLOAD");
   console.log({ payload });

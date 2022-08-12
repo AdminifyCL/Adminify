@@ -126,7 +126,7 @@ module.exports = {
       },
 
       // Mostrar progreso de compilación.
-      progress: true,
+      progress: false,
 
       // Reconeccion automática.
       reconnect: true,
