@@ -1,44 +1,42 @@
 // Dependencias.
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 // Importación de componentes.
-import DevNavigation from "~components/DevNavigation/DevNavigation.jsx";
 import Router from "~routes/Router";
 
 // Definición del componente: <App />.
-const App = (props) => {
-  // Estado y props.
-  const { appMode } = props;
+class App extends Component {
+  // -- Constructor.
+  constructor(props) {
+    super(props);
 
-  // Metodos.
-  function handleAppMode() {
-    if (appMode === "DEV") {
-      return <DevNavigation />;
-    } else {
-      return null;
-    }
+    this.state = {};
   }
 
-  // Retorno visual.
-  return (
-    <>
-      {/* Navigation */}
-      {handleAppMode()}
+  // -- Ciclo de vida del componente.
+  componentDidMount() {}
+  componentDidUpdate(prevProps, prevState) {}
+  componentWillUnmount() {}
 
-      {/* Router de la aplicación */}
-      <Router />
-    </>
-  );
-};
+  // -- Métodos.
+  // -- Métodos [REDIRECT].
+  // -- Métodos [HANDLER].
+  // -- Métodos [MAPPING].
+
+  // Renderizado.
+  render() {
+    return <Router />;
+  }
+}
 
 // PropTypes.
+App.propTypes = {};
 
 // Consulta al store.
 const mapStateToProps = (state) => {
-  return {
-    appMode: state.app.appMode || "DEV",
-  };
+  return {};
 };
 
 // Exportación del componente: <App />.

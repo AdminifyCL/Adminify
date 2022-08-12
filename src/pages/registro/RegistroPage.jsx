@@ -3,10 +3,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
-import "./NotFoundPage.scss";
+import "./RegistroPage.scss";
 
 // Definición de la pagina: Index.
-class NotFoundPage extends Component {
+class RegistroPage extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
@@ -29,7 +29,7 @@ class NotFoundPage extends Component {
     return (
       <section className="">
         <div className="">
-          <h1>404 - Page</h1>
+          <h1>Register hola</h1>
         </div>
       </section>
     );
@@ -37,7 +37,7 @@ class NotFoundPage extends Component {
 }
 
 // PropTypes.
-NotFoundPage.propTypes = {};
+RegistroPage.propTypes = {};
 
 // Exportación de la pagina: Index.
-export default NotFoundPage;
+export default RegistroPage;

@@ -9,6 +9,7 @@ import EmpleadosContainer from "~containers/empleados/EmpleadosContainer.jsx";
 import LoginContainer from "~containers/login/LoginContainer.jsx";
 import InventarioContainer from "~containers/inventario/InventarioContainer.jsx";
 import VentasContainer from "~containers/ventas/VentasContainer.jsx";
+import RegistroContainer from "~containers/registro/RegistroContainer.jsx";
 import NotFoundContainer from "~containers/notFound/NotFoundContainer.jsx";
 
 // Definición del router.
@@ -21,6 +22,7 @@ const Router = () => {
       <Route exact path="empleados" element={<EmpleadosContainer />} />
       <Route exact path="inventario" element={<InventarioContainer />} />
       <Route exact path="ventas" element={<VentasContainer />} />
+      <Route exact path="registro" element={<RegistroContainer />} />
       <Route path="*" element={<NotFoundContainer />} />
     </Routes>
   );
