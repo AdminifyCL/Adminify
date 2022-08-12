@@ -29,7 +29,7 @@ class RegistroPage extends Component {
     return (
       <section className="">
         <div className="">
-          <h1>Register hola</h1>
+          <h1>Register hola XD</h1>
         </div>
       </section>
     );
