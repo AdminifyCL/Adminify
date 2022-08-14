@@ -47,6 +47,7 @@ class LoginPage extends Component {
   // Renderizado.
   render() {
     const { logged } = this.props;
+    console.log("[] PAGE IS AUTH:", logged);
 
     return (
       <section className="contenedor">

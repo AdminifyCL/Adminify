@@ -14,71 +14,44 @@ class Auth extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isAuth: false,
+    };
   }
 
   // -- Ciclo de vida del componente.
-  componentDidMount = async () => {
-    const { getUserAuth, isAuth } = this.props;
+  componentDidMount = async () => {};
 
-    await getUserAuth();
-
-    console.log("[] IS AUTH:");
-    console.log(isAuth);
-  };
-
-  componentDidUpdate = async (prevProps, prevState) => {
-    const { getUserAuth, isAuth } = this.props;
-
-    await getUserAuth();
-
-    console.log("[] IS AUTH:");
-    console.log(isAuth);
-  };
+  componentDidUpdate = async (prevProps, prevState) => {};
 
   componentWillUnmount() {}
 
   // -- Métodos.
   // -- Métodos [REDIRECT].
+  // ...
+
   // -- Métodos [HANDLER].
+  handleUserAthentication = async () => {};
 
   // -- Métodos [MAPPING].
+  // ...
 
   // Renderizado.
   render() {
     const { children } = this.props;
-
-    if (!isAuth) {
-      return (
-        <div>
-          <h1>Debes iniciar sesión antes de ver esta vista.</h1>
-
-          <Link to="/login">
-            <Button variant="contained">Iniciar sesión</Button>
-          </Link>
-        </div>
-      );
-    }
-
     return children;
   }
 }
 
 // PropTypes.
-Auth.propTypes = {
-  user: PropTypes.object.isRequired,
-};
+Auth.propTypes = {};
 
 // Redux.
 const mapStateToProps = (state) => {
-  return {
-    user: state.user || {},
-  };
+  return {};
 };
 
-const mapDispatchToProps = {
-  getUserAuth,
-};
+const mapDispatchToProps = {};
 
 // Exportación del componente: <App />.
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

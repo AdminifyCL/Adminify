@@ -25,7 +25,9 @@ const userReducer = async (state = initialState, action) => {
     case actionUserTypes.getUserAuth:
       console.log(`[#️⃣][INFO][REDUCER][${actionUserTypes.getUserAuth}]`);
 
-      let isAuth = await handleGetAuth();
+      let responseAuth = await handleGetAuth();
+      let isAuth = responseAuth ? true : false;
+
       return { ...state, isAuth: isAuth };
 
     //? Inicio de sesión del usuario.
@@ -33,7 +35,7 @@ const userReducer = async (state = initialState, action) => {
       console.log(`[#️⃣][INFO][REDUCER][${actionUserTypes.userLogin}]`);
 
       // Iniciando sesión del usuario.
-      const response = await handleUserSession(data);
+      let response = await handleUserSession(data);
 
       let userAuth = response ? true : false;
       console.log("[] USER AUTH :", userAuth);

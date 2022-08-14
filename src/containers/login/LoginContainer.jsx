@@ -20,26 +20,7 @@ class LoginContainer extends Component {
 
   // -- Ciclo de vida del componente.
   componentDidMount() {}
-  componentDidUpdate = async (prevProps, prevState) => {
-    console.log("[INfO][CONTAINER] componentDidUpdate");
-    const { user } = this.props;
-    const { user: prevUser } = prevProps;
-
-    const reducerData = await user.then((data) => {
-      return data;
-    });
-
-    const reducerPrevData = await prevUser.then((data) => {
-      return data;
-    });
-
-    const { isAuth: prevIsAuth } = reducerPrevData;
-    const { isAuth } = reducerData;
-
-    if (prevIsAuth !== isAuth) {
-      this.setState({ isAuth });
-    }
-  };
+  componentDidUpdate = async (prevProps, prevState) => {};
 
   componentWillUnmount() {}
 
@@ -57,28 +38,17 @@ class LoginContainer extends Component {
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { isAuth } = this.state;
-    return <LoginPage userLogin={this.handleUserSession} logged={isAuth} />;
+    return <LoginPage userLogin={this.handleUserSession} />;
   }
 }
 
 // PropTypes.
-LoginContainer.propTypes = {
-  userLogin: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
-};
+LoginContainer.propTypes = {};
 
 // Redux
-const mapStateToProps = (state) => {
-  return {
-    user: state.user || {},
-  };
-};
+const mapStateToProps = (state) => {};
 
-const mapDispatchToProps = {
-  // Actions
-  userLogin,
-};
+const mapDispatchToProps = {};
 
 // Exportación del contenedor.
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
