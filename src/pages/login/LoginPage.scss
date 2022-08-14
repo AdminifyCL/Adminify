@@ -1,3 +1,7 @@
-.clase {
-  font-size: 5rem;
+.carta {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid #ccc;
+  padding: 1rem;
 }

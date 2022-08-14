@@ -11,6 +11,7 @@ const initialState = {
   // Información del usuario activo.
   user: {
     isLogged: false,
+    isAuth: false,
   },
 
   // Información de la empresa.
