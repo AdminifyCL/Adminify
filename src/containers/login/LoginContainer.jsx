@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { loginUserWithEmail } from "../../actions/user/loginWithEmail.js";
 
 // Importación de componentes.
 import LoginPage from "../../pages/login/LoginPage.jsx";
@@ -12,34 +13,48 @@ class LoginContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      isAuth: false,
+    };
   }
 
   // -- Ciclo de vida del componente.
   componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate = async (prevProps, prevState) => {};
+
   componentWillUnmount() {}
 
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
+  handleUserSession = async (userData) => {
+    const { loginWithEmail } = this.props;
+
+    // Ejecución del action correspondiente.
+    await loginWithEmail(userData);
+  };
+
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    return <LoginPage />;
+    const { userData } = this.props;
+    return <LoginPage userLogin={this.handleUserSession} userInfo={userData} />;
   }
 }
 
 // PropTypes.
-LoginContainer.propTypes = {};
-
-// Redux
-const mapStateToProps = (state) => {
-  return {};
+LoginContainer.propTypes = {
+  loginWithEmail: PropTypes.func.isRequired,
+  userData: PropTypes.object,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
+// Redux
+const mapStateToProps = (state) => ({
+  userData: state.user.userData,
+});
+
+const mapDispatchToProps = {
+  loginWithEmail: loginUserWithEmail,
 };
 
 // Exportación del contenedor.

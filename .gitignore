@@ -22,5 +22,7 @@ src/config/*.*
 .yarn.error.log
 
 # Locks
-yarn.lock
 package-lock.json
+yarn.lock
+*.lock
+*-lock.json

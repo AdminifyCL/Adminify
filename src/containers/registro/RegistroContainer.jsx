@@ -1,7 +1,6 @@
 // Dependencias.
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createUser } from "../../actions/actionUser.js";
 import PropTypes from "prop-types";
 
 // Importación de componentes.
@@ -24,11 +23,7 @@ class RegistroContainer extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleCreateUser = async (data) => {
-    console.log("[#️⃣][INFO][CONTAINER:Registro][handleCreateUser] Creando usuario...");
-    const { createUser } = this.props;
-    await createUser(data);
-  };
+  handleCreateUser = async (data) => {};
 
   // -- Métodos [MAPPING].
   // -- Render
@@ -38,9 +33,7 @@ class RegistroContainer extends Component {
 }
 
 // PropTypes.
-RegistroContainer.propTypes = {
-  createUser: PropTypes.func.isRequired,
-};
+RegistroContainer.propTypes = {};
 
 // Redux.
 const mapStateToProps = (state) => {
@@ -48,9 +41,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    createUser: (user) => dispatch(createUser(user)),
-  };
+  return {};
 };
 
 // Exportación del contenedor.
