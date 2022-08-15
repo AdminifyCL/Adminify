@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { createUser } from "~actions/actionUser.js";
 
 // Importación de componentes.
 import IndexPage from "~pages/index/IndexPage.jsx";
@@ -24,15 +23,10 @@ class IndexContainer extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleCreateUser = async () => {
-    const { createUser } = this.props;
-    createUser({ email: "jajo", password: "asd123" });
-  };
-
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    return <IndexPage createUser={this.handleCreateUser} />;
+    return <IndexPage />;
   }
 }
 
@@ -41,15 +35,11 @@ IndexContainer.propTypes = {};
 
 // Redux
 const mapStateToProps = (state) => {
-  //? Desde aquí se llaman a los parametros que necesitemos desde el store.
   return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
-  //? Desde aquí se llaman a los métodos que necesitemos desde el store.
-  return {
-    createUser: (user) => dispatch(createUser(user)),
-  };
+  return {};
 };
 
 // Exportación del contenedor.

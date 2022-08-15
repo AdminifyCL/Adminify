@@ -119,14 +119,14 @@ module.exports = {
 
     // Información del navegador para el cliente.
     client: {
-      logging: "info",
+      logging: "none",
       overlay: {
         errors: true,
         warnings: true,
       },
 
       // Mostrar progreso de compilación.
-      progress: true,
+      progress: false,
 
       // Reconeccion automática.
       reconnect: true,

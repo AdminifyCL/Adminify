@@ -20,3 +20,6 @@ src/config/*.*
 
 # Logs.
 .yarn.error.log
+
+# Locks
+package-lock.json

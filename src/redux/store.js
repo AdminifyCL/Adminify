@@ -1,5 +1,6 @@
 // Dependencias.
-import { legacy_createStore as createStore } from "redux";
+import { legacy_createStore as createStore, applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
 import Reducers from "~reducers/index.js";
 import initialState from "~redux/initialState.js";
 
@@ -7,7 +8,7 @@ import initialState from "~redux/initialState.js";
 const payAdminStore = createStore(
   Reducers,
   initialState,
-  //! OJO Desconozco como esto puede afectar a la app de Tauri.
+  applyMiddleware(thunkMiddleware),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
