@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUserWithEmail } from "../../actions/actionUser.js";
+import { loginUserWithEmail } from "../../actions/user/loginWithEmail.js";
 
 // Importación de componentes.
 import LoginPage from "../../pages/login/LoginPage.jsx";
@@ -28,7 +28,6 @@ class LoginContainer extends Component {
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
   handleUserSession = async (userData) => {
-    console.log("[#️⃣][INFO][CONTAINER:LOGIN][handleUserSession]");
     const { loginWithEmail } = this.props;
 
     // Ejecución del action correspondiente.
@@ -46,6 +45,7 @@ class LoginContainer extends Component {
 // PropTypes.
 LoginContainer.propTypes = {
   loginWithEmail: PropTypes.func.isRequired,
+  userData: PropTypes.object,
 };
 
 // Redux

@@ -1,9 +1,9 @@
 // Dependencias.
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { actionUserTypes } from "../types/actionUserTypes.js";
 
 // Configuraciones.
-import { firebaseApp, firestore } from "../database/config.js";
+import { firebaseApp, firestore } from "../../database/config.js";
+import { actionUserTypes } from "../../types/actionUserTypes.js";
 const { loginWithEmail } = actionUserTypes;
 
 /**
@@ -13,7 +13,7 @@ const { loginWithEmail } = actionUserTypes;
  * @returns {object} dispatch
  */
 const loginUserWithEmail = (data) => {
-  console.log("[INFO][ACTION][loginUserWithEmail]");
+  console.log(`[INFO][ACTION][${loginWithEmail}]`);
   return async (dispatch) => {
     // Eventos.
     const onSuccess = (response) => {
@@ -24,7 +24,7 @@ const loginUserWithEmail = (data) => {
     };
 
     const onError = (err) => {
-      console.log("[ERROR][ACTION][loginUserWithEmail]");
+      console.error(`[ERROR][ACTION][${loginWithEmail}]`);
       console.error(err);
 
       dispatch({
@@ -43,7 +43,6 @@ const loginUserWithEmail = (data) => {
       const userData = await signInWithEmailAndPassword(auth, USER_EMAIL, USER_PASSWORD)
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log("[] USER:", user);
           return user;
         })
         .catch((err) => {

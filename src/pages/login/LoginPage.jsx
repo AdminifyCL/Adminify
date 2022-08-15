@@ -67,7 +67,10 @@ class LoginPage extends Component {
 }
 
 // PropTypes.
-LoginPage.propTypes = {};
+LoginPage.propTypes = {
+  userLogin: PropTypes.func.isRequired,
+  userInfo: PropTypes.object,
+};
 
 // Exportación de la pagina: Index.
 export default LoginPage;
