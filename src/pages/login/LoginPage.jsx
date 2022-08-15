@@ -18,10 +18,7 @@ class LoginPage extends Component {
 
   // -- Ciclo de vida del componente.
   componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {
-    console.log("[] LOGIN PAGE: componentDidUpdate");
-    console.log("[] LOGGED: ", this.props.logged);
-  }
+  componentDidUpdate(prevProps, prevState) {}
   componentWillUnmount() {}
 
   // -- Métodos.
@@ -29,7 +26,7 @@ class LoginPage extends Component {
   // -- Métodos [HANDLER].
   handleUserLogin = async () => {
     console.log("[#️⃣][INFO][PAGE:LOGIN][handleUserLogin]");
-    const { userLogin, logged } = this.props;
+    const { userLogin } = this.props;
 
     // Datos de ejemplo.
     const datos = {
@@ -38,16 +35,15 @@ class LoginPage extends Component {
     };
 
     // Iniciando la sesión del usuario.
-    console.log("[] PRE-Logged: ", logged);
     await userLogin(datos);
-    console.log("[] POST-Logged: ", logged);
   };
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
-    const { logged } = this.props;
-    console.log("[] PAGE IS AUTH:", logged);
+    const { userInfo } = this.props;
+    console.log("[] USER INFO: ", userInfo);
+    const { isAuthenticated } = userInfo;
 
     return (
       <section className="contenedor">
@@ -62,7 +58,8 @@ class LoginPage extends Component {
             Iniciar sesión
           </Button>
 
-          <h1>{logged ? <Navigate to="/caja" replace={false} /> : "No iniciaste sesión"}</h1>
+          {isAuthenticated ? "Autenticado" : "No autenticado"}
+          {isAuthenticated ? <Navigate to="/caja" /> : null}
         </div>
       </section>
     );
@@ -70,10 +67,7 @@ class LoginPage extends Component {
 }
 
 // PropTypes.
-LoginPage.propTypes = {
-  userLogin: PropTypes.func.isRequired,
-  logged: PropTypes.bool.isRequired,
-};
+LoginPage.propTypes = {};
 
 // Exportación de la pagina: Index.
 export default LoginPage;

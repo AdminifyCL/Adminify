@@ -119,7 +119,7 @@ module.exports = {
 
     // Información del navegador para el cliente.
     client: {
-      logging: "info",
+      logging: "none",
       overlay: {
         errors: true,
         warnings: true,

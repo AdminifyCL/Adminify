@@ -1,47 +1,63 @@
-// Dependencias
+// Dependencias.
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { actionUserTypes } from "../types/actionUserTypes.js";
 
-/**
- * @name createUser
- * @description Creación de usuario en la base de datos.
- * @param {object} payload { email, password }
- * @return {object}
- */
-const createUser = (payload) => {
-  console.log(`[#️⃣][INFO][ACTION][${actionUserTypes.createUser}] `);
-
-  // Dispatch.
-  return {
-    type: actionUserTypes.createUser,
-    data: payload,
-  };
-};
+// Configuraciones.
+import { firebaseApp, firestore } from "../database/config.js";
+const { loginWithEmail } = actionUserTypes;
 
 /**
- * @name getUserAuth
- * @description Obtención de la autenticación del usuario.
- * @param {object} payload
- * @returns {object}
+ * @title Iniciar sesión con email y contraseña.
+ * @description Inicio de sesión del usuario.
+ * @param {object} data {email, password}
+ * @returns {object} dispatch
  */
-const getUserAuth = (payload) => {
-  console.log(`[#️⃣][INFO][ACTION][${actionUserTypes.getUserAuth}]`);
+const loginUserWithEmail = (data) => {
+  console.log("[INFO][ACTION][loginUserWithEmail]");
+  return async (dispatch) => {
+    // Eventos.
+    const onSuccess = (response) => {
+      dispatch({
+        type: loginWithEmail,
+        data: response,
+      });
+    };
 
-  // Dispatch.
-  return {
-    type: actionUserTypes.getUserAuth,
-    data: payload,
-  };
-};
+    const onError = (err) => {
+      console.log("[ERROR][ACTION][loginUserWithEmail]");
+      console.error(err);
 
-const userLogin = (payload) => {
-  console.log(`[#️⃣][INFO][ACTION][${actionUserTypes.userLogin}]`);
+      dispatch({
+        type: loginWithEmail,
+        data: {},
+      });
+    };
 
-  // Dispatch.
-  return {
-    type: actionUserTypes.userLogin,
-    data: payload,
+    // Fetch.
+    try {
+      const auth = getAuth();
+      let USER_EMAIL = data?.email;
+      let USER_PASSWORD = data?.contraseña;
+
+      // Iniciar sesión en Firebase.
+      const userData = await signInWithEmailAndPassword(auth, USER_EMAIL, USER_PASSWORD)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("[] USER:", user);
+          return user;
+        })
+        .catch((err) => {
+          console.log(`[${err.code}] Error al iniciar sesión`);
+          console.error(err);
+          onError(err);
+        });
+
+      onSuccess(userData);
+    } catch (err) {
+      onError(err);
+    }
   };
 };
 
 // Exportación.
-export { createUser, getUserAuth, userLogin };
+export { loginUserWithEmail };

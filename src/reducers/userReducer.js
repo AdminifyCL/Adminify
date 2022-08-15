@@ -1,46 +1,27 @@
 // Dependencias.
 import initialState from "~redux/initialState.js";
 import { actionUserTypes } from "../types/actionUserTypes.js";
-import { handleCreateUser } from "../handlers/handleUsers.js";
-import { handleGetAuth } from "../handlers/handleGetAuth.js";
-import { handleUserSession } from "../handlers/handleUserSession.js";
+const { loginWithEmail } = actionUserTypes;
 
 // Definiendo los reducers de la pagina.
-const userReducer = async (state = initialState, action) => {
-  console.log("[#️⃣][INFO][REDUCER][userReducer] Reducer de usuario...");
-
+const userReducer = (state = initialState, action) => {
+  console.log(`[#️⃣][INFO][REDUCER][${action.type}]`);
   const { data } = action;
 
   // Manejando los actions.
   switch (action.type) {
-    //? Creación de usuario.
-    case actionUserTypes.createUser:
-      console.log(`[#️⃣][INFO][REDUCER][${actionUserTypes.createUser}]`);
+    case loginWithEmail:
+      console.log("[] REDUCER DATA::");
+      console.log(data);
 
-      // Creando usuario en la base de datos.
-      await handleCreateUser(data);
-      return state;
+      let userData = {
+        isAuthenticated: data ? true : false,
+        email: data?.email ?? "",
+        emailVerified: false,
+        uid: data?.uid ?? "",
+      };
 
-    //? Obtención de la autenticación del usuario.
-    case actionUserTypes.getUserAuth:
-      console.log(`[#️⃣][INFO][REDUCER][${actionUserTypes.getUserAuth}]`);
-
-      let responseAuth = await handleGetAuth();
-      let isAuth = responseAuth ? true : false;
-
-      return { ...state, isAuth: isAuth };
-
-    //? Inicio de sesión del usuario.
-    case actionUserTypes.userLogin:
-      console.log(`[#️⃣][INFO][REDUCER][${actionUserTypes.userLogin}]`);
-
-      // Iniciando sesión del usuario.
-      let response = await handleUserSession(data);
-
-      let userAuth = response ? true : false;
-      console.log("[] USER AUTH :", userAuth);
-      return { ...state, isAuth: userAuth };
-
+      return { ...state, userData };
     default:
       return state;
   }
