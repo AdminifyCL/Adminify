@@ -36,6 +36,10 @@ const payAdminTheme = createTheme({
     primaryColor: "#226f54",
     whiteColor: "#FFFFFF",
   },
+
+  typography: {
+    fontFamily: ["Poppins"].join(","),
+  },
 });
 
 // Exportación del tema.

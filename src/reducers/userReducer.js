@@ -3,6 +3,8 @@ import initialState from "~redux/initialState.js";
 import { actionUserTypes } from "../types/actionUserTypes.js";
 const { loginWithEmail, onAuthState, logout, createUser } = actionUserTypes;
 
+// TODO: Falta estandarizar los datos del usuario para los reducers presentados a continuación. Cada uno de ellos recibe y procesa información distinta, omitiendo algunos parametros. Se debe ver detenidamente. Atte: @JajoScript.
+
 // Definiendo los reducers de la pagina.
 const userReducer = (state = initialState, action) => {
   console.log(`[#️⃣][INFO][REDUCER][${action.type}]`);
@@ -20,6 +22,7 @@ const userReducer = (state = initialState, action) => {
         isAuthenticated: data ? true : false,
         email: data?.email ?? "",
         emailVerified: false,
+        displayName: data?.displayName ?? "",
         uid: data?.uid ?? "",
       };
 
@@ -34,6 +37,7 @@ const userReducer = (state = initialState, action) => {
         isAuthenticated: isAuth,
         email: data?.email ?? "",
         emailVerified: false,
+        displayName: data?.displayName ?? "",
         uid: data?.uid ?? "",
       };
 

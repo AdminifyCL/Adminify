@@ -1,8 +1,8 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
 // Importación de estilos.
 import "./CajaPage.scss";
@@ -38,39 +38,13 @@ class CajaPage extends Component {
 
     console.log({ userInfo });
     return (
-      <section className="">
-        <div className="">
-          <h1>Caja - Page</h1>
+      <section className="cajaPage_container">
+        {/* Navegación de la aplicación. */}
+        <section className="cajaPage_navigation">
+          <TabNavigation />
+        </section>
 
-          {/* Temporal */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              margin: 30,
-              borderWidth: 2,
-              borderStyle: "solid",
-              borderColor: "black",
-              padding: 5,
-            }}
-          >
-            <h1 style={{ fontSize: "1rem" }}>EMAIL : {userInfo.email}</h1>
-            <h2 style={{ fontSize: "1rem" }}>ID : {userInfo.uid}</h2>
-            <h2 style={{ fontSize: "1rem" }}>
-              isAuth : {userInfo.isAuthenticated ? "autenticado" : "no autenticado"}
-            </h2>
-          </div>
-
-          {/* Cerrar sesión. */}
-          <div>
-            <Link to="/">
-              <Button variant="contained" onClick={() => this.handleUserLogout()}>
-                Cerrar sesión
-              </Button>
-            </Link>
-          </div>
-        </div>
+        <section className="cajaPage_content">Hola</section>
       </section>
     );
   }

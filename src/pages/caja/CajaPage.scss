@@ -1,0 +1,21 @@
+// Dependencias.
+@use "../../styles/colors" as Colors;
+
+// Definición de estilos.
+.cajaPage_container {
+  width: 100%;
+  height: 100vh;
+}
+
+.cajaPage_content {
+  margin-left: 7.5rem;
+  margin-right: 7.5rem;
+
+  background-color: Colors.$white-color;
+
+  height: 100%;
+}
+
+.cajaPage_navigation {
+  width: 100%;
+}
