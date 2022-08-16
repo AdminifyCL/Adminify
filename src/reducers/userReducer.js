@@ -1,7 +1,7 @@
 // Dependencias.
 import initialState from "~redux/initialState.js";
 import { actionUserTypes } from "../types/actionUserTypes.js";
-const { loginWithEmail, onAuthState, logout } = actionUserTypes;
+const { loginWithEmail, onAuthState, logout, createUser } = actionUserTypes;
 
 // Definiendo los reducers de la pagina.
 const userReducer = (state = initialState, action) => {
@@ -27,9 +27,6 @@ const userReducer = (state = initialState, action) => {
 
     // ? Vigilancia al estado de la autenticación del usuario.
     case onAuthState:
-      console.log("[] DATA: ");
-      console.log(data);
-
       let isAuth = Object.entries(data).length > 0;
 
       // Manejo de la información del usuario.
@@ -40,19 +37,18 @@ const userReducer = (state = initialState, action) => {
         uid: data?.uid ?? "",
       };
 
-      console.log("[] USER DATA: ");
-      console.log(userData);
-
       return { ...state, userData };
 
     //? Cierre de sesión del usuario.
     case logout:
-      console.log("[] Cierre de sesión del usuario.");
-      console.log("[] DATA:", data);
-
       userData = { ...data };
-
       return { ...state, userData };
+
+    // ? Creación de usuario con email y contraseña.
+    case createUser:
+      userData = { ...data };
+      return { ...state, userData };
+
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 // Dependencias.
 import React, { Component } from "react";
-
+import { Navigate } from "react-router-dom";
 import {
   Button,
   TextField,
@@ -40,20 +40,25 @@ class RegistroPage extends Component {
   };
   validarFormulario = () => {
     // Lectura de los datos.
-    const input_name = document.getElementById("nombre").value;
+    // const input_name = document.getElementById("nombre").value;
 
-    console.log("[] TAMAÑO:");
-    console.log(input_name.length);
+    // console.log("[] TAMAÑO:");
+    // console.log(input_name.length);
 
     // Validaciones
-    if (!input_name) {
-      this.setState({ error: true });
-      return;
-    }
+    // if (!input_name) {
+    //   this.setState({ error: true });
+    //   return;
+    // }
 
     // Estructura
     const data = {
-      nombre: input_name,
+      nombre: "Javier",
+      email: "javier@gmail.com",
+      apellido: "Almarza",
+      licencia: "CUADRILLE-PAYADMIN-01",
+      cargo: "dueño",
+      contraseña: "asd123",
     };
 
     this.handleCreateUser(data);
@@ -67,17 +72,18 @@ class RegistroPage extends Component {
     console.log(" DATOS: ");
     console.log(data);
 
-    // await createUser(data);
+    await createUser(data);
   };
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
     const { error } = this.state;
+    const { userInfo } = this.props;
     console.log("[] ERROR: ", error);
 
     return (
-      <body>
+      <>
         <section className="registroPage_Titulo">
           <h1>Registro</h1>
         </section>
@@ -112,14 +118,17 @@ class RegistroPage extends Component {
           <Button
             variant="contained"
             onClick={() => {
-              console.log("Hola");
+              this.validarFormulario();
             }}
           >
             {" "}
             Crea tu cuenta{" "}
           </Button>
         </div>
-      </body>
+
+        {/* Se redirige al usuario cuando se crea exitosamente su cuenta */}
+        {userInfo ? <Navigate to="/caja" /> : null}
+      </>
     );
   }
 }
@@ -127,6 +136,7 @@ class RegistroPage extends Component {
 // PropTypes.
 RegistroPage.propTypes = {
   createUser: PropTypes.func.isRequired,
+  userInof: PropTypes.object,
 };
 
 // Exportación de la pagina: Index.

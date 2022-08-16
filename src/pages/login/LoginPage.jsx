@@ -13,7 +13,9 @@ class LoginPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      redirectRegister: false,
+    };
   }
 
   // -- Ciclo de vida del componente.
@@ -23,6 +25,10 @@ class LoginPage extends Component {
 
   // -- Métodos.
   // -- Métodos [REDIRECT].
+  redirectToRegister = () => {
+    this.setState({ redirectRegister: true });
+  };
+
   // -- Métodos [HANDLER].
   handleUserLogin = async () => {
     console.log("[#️⃣][INFO][PAGE:LOGIN][handleUserLogin]");
@@ -42,6 +48,7 @@ class LoginPage extends Component {
   // Renderizado.
   render() {
     const { userInfo } = this.props;
+    const { redirectRegister } = this.state;
     console.log("[] USER INFO: ", userInfo);
     const { isAuthenticated } = userInfo;
 
@@ -58,8 +65,13 @@ class LoginPage extends Component {
             Iniciar sesión
           </Button>
 
+          <Button variant="outlined" onClick={() => this.redirectToRegister()}>
+            Registrarse
+          </Button>
+
           {isAuthenticated ? "Autenticado" : "No autenticado"}
           {isAuthenticated ? <Navigate to="/caja" /> : null}
+          {redirectRegister ? <Navigate to="/registro" /> : null}
         </div>
       </section>
     );
