@@ -78,10 +78,10 @@ class RegistroPage extends Component {
 
     return (
       <body>
-        <section className="Titulo">
+        <section className="registroPage_Titulo">
           <h1>Registro</h1>
         </section>
-        <section className="Formulario">
+        <section className="registroPage_Formulario">
           <TextField fullWidth label="Nombre" variant="outlined" margin="dense" />
           <TextField fullWidth label="Apellido" variant="outlined" margin="dense" />
           <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
@@ -97,8 +97,9 @@ class RegistroPage extends Component {
           <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />
         </section>
 
-        <div className="hiper">
+        <div className="registroPage_hiper">
           <a
+            className="registroPage_hiper_link"
             target="_blank"
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
           >
@@ -107,7 +108,7 @@ class RegistroPage extends Component {
           </a>
         </div>
 
-        <div className="Boton">
+        <div className="registroPage_Boton">
           <Button
             variant="contained"
             onClick={() => {
@@ -133,7 +134,7 @@ export default RegistroPage;
 
 /*
       <section
-        className=""
+        className="registroPage_"
         style={{
           display: "flex",
           flexDirection: "row",
@@ -145,7 +146,7 @@ export default RegistroPage;
         }}
       >
         <div
-          className=""
+          className="registroPage_"
           style={{
             display: "flex",
             flexDirection: "column",
