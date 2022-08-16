@@ -53,12 +53,12 @@ class RegistroPage extends Component {
 
     // Estructura
     const data = {
-      nombre: "Javier",
-      email: "javier@gmail.com",
-      apellido: "Almarza",
+      nombre: "gonzalo",
+      email: "gonzalo@gmail.com",
+      apellido: "cañas",
       licencia: "CUADRILLE-PAYADMIN-01",
       cargo: "dueño",
-      contraseña: "asd123",
+      contraseña: "12345",
     };
 
     this.handleCreateUser(data);

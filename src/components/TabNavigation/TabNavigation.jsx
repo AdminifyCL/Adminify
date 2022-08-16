@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "@mui/material";
 import PropTypes from "prop-types";
+import { logoutUser } from "../../actions/user/signOutUser.js";
+import { Navigate } from "react-router-dom";
 
 // Estilos.
 import { tabStyle, exitButton } from "./TabStyle.jsx";
@@ -38,6 +40,10 @@ class TabNavigation extends Component {
   };
 
   // -- Métodos [HANDLER].
+  signOut = async () => {
+    const { cerrarSesion } = this.props;
+    await cerrarSesion();
+  };
   // -- Métodos [MAPPING].
   mappingTabs = () => {
     const { tabList } = this.state;
@@ -74,7 +80,7 @@ class TabNavigation extends Component {
 
         {/* Botón de salida para la navegación. */}
         <div className="TabNavigation-btn">
-          <Button variant="contained" style={exitButton.container}>
+          <Button variant="contained" style={exitButton.container} onClick={() => this.signOut()}>
             <p style={exitButton.text}>Salir</p>
           </Button>
         </div>
@@ -87,6 +93,9 @@ class TabNavigation extends Component {
 TabNavigation.propTypes = {};
 
 // Redux.
-
+const mapStateToProps = (state) => ({});
+const mapDispatchToProps = {
+  cerrarSesion: logoutUser,
+};
 // Exportación
-export default TabNavigation;
+export default connect(mapStateToProps, mapDispatchToProps)(TabNavigation);
