@@ -2,6 +2,9 @@
 import * as React from "react";
 import { Route, Routes } from "react-router-dom";
 
+// Componentes.
+import Auth from "../components/Auth/Auth.jsx";
+
 // Importación de contenedores.
 import IndexContainer from "~containers/index/IndexContainer.jsx";
 import CajaContainer from "~containers/caja/CajaContainer.jsx";
@@ -16,14 +19,48 @@ import NotFoundContainer from "~containers/notFound/NotFoundContainer.jsx";
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<IndexContainer />} />
+      <Route path="/" element={<IndexContainer />} index />
       <Route exact path="login" element={<LoginContainer />} />
-      <Route exact path="caja" element={<CajaContainer />} />
-      <Route exact path="empleados" element={<EmpleadosContainer />} />
-      <Route exact path="inventario" element={<InventarioContainer />} />
-      <Route exact path="ventas" element={<VentasContainer />} />
       <Route exact path="registro" element={<RegistroContainer />} />
       <Route path="*" element={<NotFoundContainer />} />
+
+      {/* Rutas protegidas; El usuario debe iniciar sesión para acceder. */}
+      <Route
+        exact
+        path="caja"
+        element={
+          <Auth>
+            <CajaContainer />
+          </Auth>
+        }
+      />
+      <Route
+        exact
+        path="empleados"
+        element={
+          <Auth>
+            <EmpleadosContainer />
+          </Auth>
+        }
+      />
+      <Route
+        exact
+        path="inventario"
+        element={
+          <Auth>
+            <InventarioContainer />
+          </Auth>
+        }
+      />
+      <Route
+        exact
+        path="ventas"
+        element={
+          <Auth>
+            <VentasContainer />
+          </Auth>
+        }
+      />
     </Routes>
   );
 };

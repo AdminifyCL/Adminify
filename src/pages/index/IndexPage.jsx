@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
-import {Button} from "@mui/material";
+import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -28,10 +29,13 @@ class IndexPage extends Component {
   // Renderizado.
   render() {
     return (
-      <section className="">
-        <div className="">
-          <h1>Inicio de sesión PayAdmin</h1>
-          <Button variant="contained">Contained</Button>
+      <section className="contenedor">
+        <div className="contenido">
+          <h1>Inicio</h1>
+
+          <Link to="login">
+            <Button variant="contained">Entrar</Button>
+          </Link>
         </div>
       </section>
     );

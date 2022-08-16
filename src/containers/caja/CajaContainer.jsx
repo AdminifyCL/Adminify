@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { logoutUser } from "../../actions/user/signOutUser.js";
 
 // Importación de componentes.
 import CajaPage from "../../pages/caja/CajaPage.jsx";
@@ -23,23 +24,34 @@ class CajaContainer extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
+  handleUserLogout = async () => {
+    const { logout } = this.props;
+
+    await logout();
+  };
+
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    return <CajaPage />;
+    const { userData } = this.props;
+
+    return <CajaPage userInfo={userData} logout={this.handleUserLogout} />;
   }
 }
 
 // PropTypes.
-CajaContainer.propTypes = {};
-
-// Redux
-const mapStateToProps = (state) => {
-  return {};
+CajaContainer.propTypes = {
+  logout: PropTypes.func.isRequired,
+  userData: PropTypes.object,
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
+// Redux
+const mapStateToProps = (state) => ({
+  userData: state.user.userData,
+});
+
+const mapDispatchToProps = {
+  logout: logoutUser,
 };
 
 // Exportación del contenedor.
