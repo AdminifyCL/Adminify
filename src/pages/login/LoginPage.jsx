@@ -29,7 +29,7 @@ class LoginPage extends Component {
     return (
       <section className="">
         <div className="">
-          <h1>Login - Page</h1>
+          <h1>INICIO DE SESION PAYADMIN</h1>
         </div>
       </section>
     );

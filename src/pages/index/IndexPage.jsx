@@ -1,5 +1,6 @@
 // Dependencias.
 import React, { Component } from "react";
+import {Button} from "@mui/material";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -29,7 +30,8 @@ class IndexPage extends Component {
     return (
       <section className="">
         <div className="">
-          <h1>PayAdmin</h1>
+          <h1>Inicio de sesión PayAdmin</h1>
+          <Button variant="contained">Contained</Button>
         </div>
       </section>
     );
