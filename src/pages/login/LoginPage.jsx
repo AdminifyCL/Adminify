@@ -36,7 +36,7 @@ class LoginPage extends Component {
 
     // Datos de ejemplo.
     const datos = {
-      email: "gonzalo@gmail.com",
+      email: "javier@gmail.com",
       contraseña: "asd123",
     };
 

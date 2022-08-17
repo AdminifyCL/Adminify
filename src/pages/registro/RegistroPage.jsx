@@ -127,7 +127,6 @@ class RegistroPage extends Component {
         </div>
 
         {/* Se redirige al usuario cuando se crea exitosamente su cuenta */}
-        {userInfo ? <Navigate to="/caja" /> : null}
       </>
     );
   }

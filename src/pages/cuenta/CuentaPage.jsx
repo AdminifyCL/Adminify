@@ -1,13 +1,13 @@
 // Dependencias.
-import React, { Component } from "react";
 import PropTypes from "prop-types";
+import React, { Component } from "react";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
 // Importación de estilos.
-import "./VentasPage.scss";
+import "./CuentaPage.scss";
 
 // Definición de la pagina: Index.
-class VentasPage extends Component {
+class CuentaPage extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
@@ -28,15 +28,15 @@ class VentasPage extends Component {
   // Renderizado.
   render() {
     return (
-      <section className="ventasPage_container">
+      <section className="cuentaPage_container">
         {/* Navegación de la aplicación. */}
-        <section className="ventasPage_navigation">
+        <section className="cuentaPage_navigation">
           <TabNavigation />
         </section>
 
         {/* Vista de la caja. */}
-        <section className="ventasPage_content">
-          <h1>Ventas</h1>
+        <section className="cuentaPage_content">
+          <h1>Cuenta</h1>
         </section>
       </section>
     );
@@ -44,7 +44,7 @@ class VentasPage extends Component {
 }
 
 // PropTypes.
-VentasPage.propTypes = {};
+CuentaPage.propTypes = {};
 
 // Exportación de la pagina: Index.
-export default VentasPage;
+export default CuentaPage;

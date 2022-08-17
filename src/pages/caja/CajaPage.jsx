@@ -44,7 +44,10 @@ class CajaPage extends Component {
           <TabNavigation />
         </section>
 
-        <section className="cajaPage_content">Hola</section>
+        {/* Vista de la caja. */}
+        <section className="cajaPage_content">
+          <h1>Caja</h1>
+        </section>
       </section>
     );
   }

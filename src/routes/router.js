@@ -6,14 +6,16 @@ import { Route, Routes } from "react-router-dom";
 import Auth from "../components/Auth/Auth.jsx";
 
 // Importación de contenedores.
-import IndexContainer from "~containers/index/IndexContainer.jsx";
-import CajaContainer from "~containers/caja/CajaContainer.jsx";
-import EmpleadosContainer from "~containers/empleados/EmpleadosContainer.jsx";
-import LoginContainer from "~containers/login/LoginContainer.jsx";
-import InventarioContainer from "~containers/inventario/InventarioContainer.jsx";
-import VentasContainer from "~containers/ventas/VentasContainer.jsx";
-import RegistroContainer from "~containers/registro/RegistroContainer.jsx";
-import NotFoundContainer from "~containers/notFound/NotFoundContainer.jsx";
+import IndexContainer from "../containers/index/IndexContainer.jsx";
+import CajaContainer from "../containers/caja/CajaContainer.jsx";
+import EmpleadosContainer from "../containers/empleados/EmpleadosContainer.jsx";
+import LoginContainer from "../containers/login/LoginContainer.jsx";
+import InventarioContainer from "../containers/inventario/InventarioContainer.jsx";
+import VentasContainer from "../containers/ventas/VentasContainer.jsx";
+import RegistroContainer from "../containers/registro/RegistroContainer.jsx";
+import NotFoundContainer from "../containers/notFound/NotFoundContainer.jsx";
+import StatsContainer from "../containers/estadisticas/EstadisticasContainer.jsx";
+import AccountContainer from "../containers/cuenta/CuentaContainer.jsx";
 
 // Definición del router.
 const Router = () => {
@@ -25,6 +27,7 @@ const Router = () => {
       <Route path="*" element={<NotFoundContainer />} />
 
       {/* Rutas protegidas; El usuario debe iniciar sesión para acceder. */}
+      {/* Vista de Caja. */}
       <Route
         exact
         path="caja"
@@ -34,6 +37,8 @@ const Router = () => {
           </Auth>
         }
       />
+
+      {/* Vista de Empleados. */}
       <Route
         exact
         path="empleados"
@@ -43,6 +48,8 @@ const Router = () => {
           </Auth>
         }
       />
+
+      {/* Vista de Inventario. */}
       <Route
         exact
         path="inventario"
@@ -52,12 +59,36 @@ const Router = () => {
           </Auth>
         }
       />
+
+      {/* Vista de Ventas. */}
       <Route
         exact
         path="ventas"
         element={
           <Auth>
             <VentasContainer />
+          </Auth>
+        }
+      />
+
+      {/* Vista de Estadisticas. */}
+      <Route
+        exact
+        path="estadisticas"
+        element={
+          <Auth>
+            <StatsContainer />
+          </Auth>
+        }
+      />
+
+      {/* Vista de Mi cuenta. */}
+      <Route
+        exact
+        path="cuenta"
+        element={
+          <Auth>
+            <AccountContainer />
           </Auth>
         }
       />
