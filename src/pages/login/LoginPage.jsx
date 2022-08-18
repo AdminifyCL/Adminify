@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 
@@ -46,23 +47,31 @@ class LoginPage extends Component {
     const { isAuthenticated } = userInfo;
 
     return (
-
-      <section className="contenedor">
+      <body>
         <div className="contenido">
-          <div className="carta">
-            <h1>Login</h1>
-            <h2>email : gonzalo@gmail.com</h2>
-            <h2>contraseña: asd123</h2>
-          </div>
+          <section className="LoginPage_Titulo">
+            <h1>Login Paydmin Box</h1>
+          </section>
 
           <Button variant="contained" onClick={() => this.handleUserLogin()}>
             Iniciar sesión
           </Button>
 
+          <Button variant="contained">Registrarse</Button>
+
+          <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
+          <TextField
+            type={"password"}
+            fullWidth
+            label="Contraseña"
+            variant="outlined"
+            margin="dense"
+          />
+
           {isAuthenticated ? "Autenticado" : "No autenticado"}
           {isAuthenticated ? <Navigate to="/caja" /> : null}
         </div>
-      </section>
+      </body>
     );
   }
 }
@@ -75,3 +84,10 @@ LoginPage.propTypes = {
 
 // Exportación de la pagina: Index.
 export default LoginPage;
+
+/*           <div className="carta">
+<h1>Login</h1>
+<h2>email : gonzaaalo@gmail.com</h2>
+<h2>contraseña: asd123</h2>
+</div>
+*/
