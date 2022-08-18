@@ -36,7 +36,9 @@ class CajaPage extends Component {
 
         {/* Vista de la caja. */}
         <section className="cajaPage_content">
-          <h1>Caja</h1>
+          <h1>
+            <button> Click me </button>
+          </h1>
         </section>
       </section>
     );
