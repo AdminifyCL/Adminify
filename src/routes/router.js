@@ -1,6 +1,7 @@
 // Dependencias.
 import * as React from "react";
 import { Route, Routes } from "react-router-dom";
+import { PublicUrls, PrivateUrls } from "../models/Navigation.js";
 
 // Componentes.
 import Auth from "../components/Auth/Auth.jsx";
@@ -21,16 +22,16 @@ import AccountContainer from "../containers/cuenta/CuentaContainer.jsx";
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<IndexContainer />} index />
-      <Route exact path="login" element={<LoginContainer />} />
-      <Route exact path="registro" element={<RegistroContainer />} />
-      <Route path="*" element={<NotFoundContainer />} />
+      <Route path={PublicUrls.index} element={<IndexContainer />} index />
+      <Route exact path={PublicUrls.login} element={<LoginContainer />} />
+      <Route exact path={PublicUrls.registro} element={<RegistroContainer />} />
+      <Route path={PublicUrls.notFound} element={<NotFoundContainer />} />
 
       {/* Rutas protegidas; El usuario debe iniciar sesión para acceder. */}
       {/* Vista de Caja. */}
       <Route
         exact
-        path="caja"
+        path={PrivateUrls.caja}
         element={
           <Auth>
             <CajaContainer />
@@ -41,7 +42,7 @@ const Router = () => {
       {/* Vista de Empleados. */}
       <Route
         exact
-        path="empleados"
+        path={PrivateUrls.empleados}
         element={
           <Auth>
             <EmpleadosContainer />
@@ -52,7 +53,7 @@ const Router = () => {
       {/* Vista de Inventario. */}
       <Route
         exact
-        path="inventario"
+        path={PrivateUrls.inventario}
         element={
           <Auth>
             <InventarioContainer />
@@ -63,7 +64,7 @@ const Router = () => {
       {/* Vista de Ventas. */}
       <Route
         exact
-        path="ventas"
+        path={PrivateUrls.ventas}
         element={
           <Auth>
             <VentasContainer />
@@ -74,7 +75,7 @@ const Router = () => {
       {/* Vista de Estadisticas. */}
       <Route
         exact
-        path="estadisticas"
+        path={PrivateUrls.estadisticas}
         element={
           <Auth>
             <StatsContainer />
@@ -85,7 +86,7 @@ const Router = () => {
       {/* Vista de Mi cuenta. */}
       <Route
         exact
-        path="cuenta"
+        path={PrivateUrls.cuenta}
         element={
           <Auth>
             <AccountContainer />

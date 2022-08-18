@@ -19,6 +19,7 @@ class TabNavigation extends Component {
 
     this.state = {
       isLogged: true,
+      exit: false,
       tabList: [
         { id: "caja", name: "Caja", active: true, url: "/caja" },
         { id: "inventario", name: "Inventario", active: false, url: "/inventario" },
@@ -58,7 +59,10 @@ class TabNavigation extends Component {
   signOut = async () => {
     const { cerrarSesion } = this.props;
     await cerrarSesion();
+
+    this.setState({ exit: true });
   };
+
   // -- Métodos [MAPPING].
   mappingTabs = () => {
     const { tabList } = this.state;
@@ -83,6 +87,7 @@ class TabNavigation extends Component {
 
   // Renderizado.
   render() {
+    const { exit } = this.state;
     return (
       <section className="TabNavigation">
         {/* Icono para la navegación. */}
@@ -101,6 +106,8 @@ class TabNavigation extends Component {
               Salir
             </p>
           </Button>
+
+          {exit ? <Navigate to="/login" /> : null}
         </div>
       </section>
     );
@@ -108,7 +115,9 @@ class TabNavigation extends Component {
 }
 
 // PropTypes.
-TabNavigation.propTypes = {};
+TabNavigation.propTypes = {
+  cerrarSesion: PropTypes.func.isRequired,
+};
 
 // Redux.
 const mapStateToProps = (state) => ({});

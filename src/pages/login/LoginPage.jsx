@@ -49,13 +49,12 @@ class LoginPage extends Component {
   render() {
     const { userInfo } = this.props;
     const { redirectRegister } = this.state;
-    console.log("[] USER INFO: ", userInfo);
     const { isAuthenticated } = userInfo;
 
     return (
-      <section className="contenedor">
-        <div className="contenido">
-          <div className="carta">
+      <section className="loginPage_contenedor">
+        <div className="loginPage_contenido">
+          <div className="loginPage_carta">
             <h1>Login</h1>
             <h2>email : gonzalo@gmail.com</h2>
             <h2>contraseña: asd123</h2>

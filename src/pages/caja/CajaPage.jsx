@@ -1,6 +1,5 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
@@ -24,19 +23,10 @@ class CajaPage extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleUserLogout = async () => {
-    const { logout } = this.props;
-
-    await logout();
-  };
-
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
-    const { userInfo } = this.props;
-
-    console.log({ userInfo });
     return (
       <section className="cajaPage_container">
         {/* Navegación de la aplicación. */}
@@ -55,7 +45,6 @@ class CajaPage extends Component {
 
 // PropTypes.
 CajaPage.propTypes = {
-  logout: PropTypes.func.isRequired,
   userInfo: PropTypes.object,
 };
 

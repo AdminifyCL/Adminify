@@ -29,7 +29,6 @@ class EstadisticasPage extends Component {
   render() {
     const { userInfo } = this.props;
 
-    console.log({ userInfo });
     return (
       <section className="estadisticasPage_container">
         {/* Navegación de la aplicación. */}

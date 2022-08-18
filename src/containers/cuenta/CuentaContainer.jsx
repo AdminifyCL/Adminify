@@ -27,7 +27,8 @@ class CuentaContainer extends Component {
 
   // -- Render
   render() {
-    return <CuentaPage />;
+    const { userData } = this.props;
+    return <CuentaPage userInfo={userData} />;
   }
 }
 
@@ -35,7 +36,9 @@ class CuentaContainer extends Component {
 CuentaContainer.propTypes = {};
 
 // Redux
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  userData: state.user.userData,
+});
 
 const mapDispatchToProps = {};
 
