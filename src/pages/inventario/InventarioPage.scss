@@ -21,11 +21,87 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
 
   h1 {
     font-size: 2rem;
     font-weight: bold;
   }
+}
+
+.inventarioPage_content_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+
+  padding-top: 1.25rem;
+
+  width: 100%;
+
+  h1 {
+    color: Colors.$primary-color;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+}
+
+.inventarioPage_content_container {
+  width: 100%;
+  height: 75%;
+
+  margin-top: 1.25rem;
+
+  border: 0.25rem solid Colors.$primary-color;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  row-gap: 1.25rem;
+
+  overflow-y: scroll;
+}
+
+.inventarioPage_content_container-element {
+  margin-left: 1.25rem;
+  margin-top: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  width: 95%;
+}
+
+.inventarioPage_content_element {
+  border: 0.125rem solid Colors.$primary-color;
+  border-radius: 0.625rem;
+
+  height: 5.625rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.625rem;
+  padding-left: 1.25rem;
+
+  column-gap: 0.625rem;
+}
+
+.inventarioPage_content_element-button {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.625rem;
+}
+
+.inventarioPage_content_column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
