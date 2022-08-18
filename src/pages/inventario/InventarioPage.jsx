@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import fakeElements from "../../models/fakeElements.js";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import { FaHamburger, FaHotdog } from "react-icons/fa";
 
 // Importación de estilos.
 import "./InventarioPage.scss";
@@ -39,38 +40,60 @@ class InventarioPage extends Component {
         <div className="inventarioPage_content_element" key={`product-${index}`}>
           {/* Icono column */}
           <div className="inventarioPage_content_column">
-            <p>{element.icono}</p>
-            <div>contenedor</div>
+            <h1>Icono</h1>
+            <div className="inventarioPage_content_column-container">
+              <FaHotdog className="inventarioPage_content_column-icon" />
+            </div>
           </div>
 
           {/* Identificador column */}
           <div className="inventarioPage_content_column">
-            <p>{element.id}</p>
-            <div>contenedor</div>
+            <h1>Identificador</h1>
+            <div className="inventarioPage_content_column-container">
+              <p className="inventarioPage_content_column-text">{element.id}</p>
+            </div>
           </div>
 
           {/* Nombre column */}
           <div className="inventarioPage_content_column">
-            <p>{element.nombre}</p>
-            <div>contenedor</div>
+            <h1>Nombre del producto</h1>
+            <div className="inventarioPage_content_column-container">
+              <p className="inventarioPage_content_column-text"> {element.nombre}</p>
+            </div>
+          </div>
+
+          {/* Categoria column */}
+          <div className="inventarioPage_content_column">
+            <h1>Categoria</h1>
+            <div className="inventarioPage_content_column-container">
+              <p className="inventarioPage_content_column-text"> {element.categoria}</p>
+            </div>
           </div>
 
           {/* Valor column */}
           <div className="inventarioPage_content_column">
-            <p>{element.valor}</p>
-            <div>contenedor</div>
+            <h1>Valor</h1>
+            <div className="inventarioPage_content_column-container">
+              <p className="inventarioPage_content_column-text">{element.valor}</p>
+            </div>
           </div>
 
           {/* Disponibilidad column */}
           <div className="inventarioPage_content_column">
-            <p>{element.disponibilidad ? "Sí" : "No"}</p>
-            <div>contenedor</div>
+            <h1>Disponibilidad</h1>
+            <div className="inventarioPage_content_column-container">
+              <p className="inventarioPage_content_column-text">
+                {element.disponibilidad ? "Disponible" : "No Disponible"}
+              </p>
+            </div>
           </div>
 
           {/* Unidades column */}
           <div className="inventarioPage_content_column">
-            <p>{element.unidades}</p>
-            <div>contenedor</div>
+            <h1>Unidades</h1>
+            <div className="inventarioPage_content_column-container">
+              <p className="inventarioPage_content_column-text">{element.unidades}</p>
+            </div>
           </div>
 
           {/* Botones column */}
