@@ -1,3 +1,7 @@
+// Dependencias.
+@use "../../styles/colors" as Colors;
+
+// Definición de estilos.
 .TableContainer_container {
   width: 100%;
   height: 100%;
@@ -10,4 +14,23 @@
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
+}
+
+.TableContainer_title {
+  font-size: 4rem;
+  font-weight: bold;
+  color: Colors.$primary-color;
+
+  text-transform: capitalize;
+
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.TableContainer_subtitle {
+  font-size: 1rem;
+  font-weight: 200;
+  color: Colors.$primary-color;
+
+  text-transform: capitalize;
 }

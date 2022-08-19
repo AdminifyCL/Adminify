@@ -4,7 +4,6 @@ import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import fakeElements from "../../models/fakeElements.js";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import { FaHamburger, FaHotdog } from "react-icons/fa";
 import TableContainer from "../../components/Table/Table.jsx";
 
 // Importación de estilos.
@@ -54,7 +53,7 @@ class InventarioPage extends Component {
           {/* Contenedor de elementos. */}
           <div className="inventarioPage_content_container">
             {/* Tabla de elementos. */}
-            <TableContainer data={fakeElements} />
+            <TableContainer data={[]} />
           </div>
         </section>
       </section>

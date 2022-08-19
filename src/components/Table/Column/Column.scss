@@ -4,7 +4,7 @@
 // Definición de estilos.
 .ColumnContainer_container {
   // background-color: burlywood;
-  width: 95%;
+  width: 12rem;
 
   margin: 0.125rem;
 
@@ -42,4 +42,36 @@
   color: Colors.$primary-color;
 
   text-transform: capitalize;
+}
+
+.ColumnContainer_valueContainer-icon {
+  background-color: Colors.$gray-color;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ColumnContainer_container-icon {
+  // background-color: burlywood;
+  width: 2rem;
+
+  margin: 0.125rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 0.5rem;
+
+  padding-left: 1rem;
+}
+
+.ColumnContainer_value-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: Colors.$primary-color;
 }
