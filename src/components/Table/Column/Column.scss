@@ -1,0 +1,45 @@
+// Dependencias.
+@use "../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.ColumnContainer_container {
+  // background-color: burlywood;
+  width: 95%;
+
+  margin: 0.125rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  row-gap: 0.5rem;
+
+  padding-left: 1rem;
+}
+
+.ColumnContainer_title {
+  font-size: 1rem;
+  font-weight: 200;
+  color: Colors.$primary-color;
+
+  text-transform: capitalize;
+}
+
+.ColumnContainer_valueContainer {
+  background-color: Colors.$gray-color;
+
+  width: 85%;
+
+  border-radius: 0.5rem;
+
+  padding: 0.8rem;
+}
+
+.ColumnContainer_value {
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  color: Colors.$primary-color;
+
+  text-transform: capitalize;
+}
