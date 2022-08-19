@@ -53,12 +53,11 @@ class LoginPage extends Component {
             <h1>Login Paydmin Box</h1>
           </section>
 
-          <Button variant="contained" onClick={() => this.handleUserLogin()}>
-            Iniciar sesión
-          </Button>
+          {isAuthenticated ? "Autenticado" : "No autenticado"}
+          {isAuthenticated ? <Navigate to="/caja" /> : null}
+        </div>
 
-          <Button variant="contained">Registrarse</Button>
-
+        <div className="datosInicioSesion">
           <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
           <TextField
             type={"password"}
@@ -67,9 +66,14 @@ class LoginPage extends Component {
             variant="outlined"
             margin="dense"
           />
-
-          {isAuthenticated ? "Autenticado" : "No autenticado"}
-          {isAuthenticated ? <Navigate to="/caja" /> : null}
+        </div>
+        <div className="botonInicio">
+          <Button variant="contained" onClick={() => this.handleUserLogin()}>
+            Iniciar sesión
+          </Button>
+        </div>
+        <div className="botonRegistro">
+          <Button variant="contained">Registrarse</Button>
         </div>
       </body>
     );
