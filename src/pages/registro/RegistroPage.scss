@@ -1,54 +1,64 @@
-
-body{
-    background-color: #e5e5e5;
+body {
+  background-color: #e5e5e5;
 }
-.Formulario{
-    width: 500px;
-    padding: 10px;
-    margin:auto;
+.Formulario {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: "center";
+  width: 30%;
+  margin: auto;
+  padding-top: 1px;
+  padding-bottom: 30px;
 }
 
-.Boton{
-    margin-top: 70px;
-    margin-left: 1053px;
+.Boton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: "center";
+  width: 10%;
+  padding: 30px;
+  margin: auto;
 }
-
-
 
 a {
-    margin-left: 800px;
-    outline: none;
-    text-decoration: none;
-    padding: 2px 1px 0;
-  }
-
-
-  a:link {
-    color: #7A7A7A;
-  }
-  
-  a:visited {
-    color: #7A7A7A;
-  }
-  
-  a:focus {
-    border-bottom: 1px solid;
-    background:none;
-  }
-  
-  a:hover {
-    border-bottom: 1px solid;
-    background:none;
-  }
-  
-  a:active {
-    color:#226F54;
-  }
-
-
-.Titulo{
-    color: #226F54 ;
-    margin-top: 100px;
-   margin-left: 710px;
+  text-align: center;
+  margin-left: 800px;
+  outline: none;
+  text-decoration: none;
+  padding: 2px 1px 0;
 }
 
+a:link {
+  color: #7a7a7a;
+}
+
+a:visited {
+  color: #7a7a7a;
+}
+
+a:focus {
+  border-bottom: 1px solid;
+  background: none;
+}
+
+a:hover {
+  border-bottom: 1px solid;
+  background: none;
+}
+
+a:active {
+  color: #226f54;
+}
+
+.Titulo {
+  color: #226f54;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: "center";
+  padding-top: 8%;
+  width: 30%;
+  margin: auto;
+}
