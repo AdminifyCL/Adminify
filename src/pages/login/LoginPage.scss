@@ -7,24 +7,27 @@
   padding: 1rem;
 }
 
-.datosInicioSesion {
-  width: 500px;
-  padding: 200px;
+.loginPage_Titulo {
+  color: #226f54;
+  margin-top: 100px;
+  margin-left: 710px;
+  font-size: xx-large;
+}
+
+.formulario {
+  width: 500px; //ancho que ocupa el objeto en la pagina
+  height: 70px; //distancia con los botones de abajo
+
   margin: auto;
 }
 
-.LoginPage_Titulo {
-  color: #226f54;
-  margin-top: 10px;
-  margin-left: 710px;
+.loginPageHiperLink {
+  margin-left: 550px;
+  padding: 65px;
 }
 
 .botonInicio {
-  margin-top: 0px;
-  margin-left: 800px;
-}
-
-.botonRegistro {
-  margin-top: 0px;
-  margin-left: 500px;
+  margin-left: 550px;
+  margin-top: -120px;
+  padding: 70px; //el margen invisible que tienen los objetos
 }

@@ -49,15 +49,12 @@ class LoginPage extends Component {
     return (
       <body>
         <div className="contenido">
-          <section className="LoginPage_Titulo">
-            <h1>Login Paydmin Box</h1>
+          <section className="loginPage_Titulo">
+            <h1>PayAdminBox</h1>
           </section>
-
-          {isAuthenticated ? "Autenticado" : "No autenticado"}
-          {isAuthenticated ? <Navigate to="/caja" /> : null}
         </div>
 
-        <div className="datosInicioSesion">
+        <div className="formulario">
           <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
           <TextField
             type={"password"}
@@ -67,12 +64,21 @@ class LoginPage extends Component {
             margin="dense"
           />
         </div>
+
+        <div className="loginPageHiperLink">
+          <a
+            className="loginHiperLink"
+            target="_blank"
+            href="https://www.youtube.com/shorts/U3yPe9G6JSs"
+          >
+            ¿Olvidaste tu contraseña? Recupérala aquí.
+          </a>
+        </div>
+
         <div className="botonInicio">
           <Button variant="contained" onClick={() => this.handleUserLogin()}>
             Iniciar sesión
           </Button>
-        </div>
-        <div className="botonRegistro">
           <Button variant="contained">Registrarse</Button>
         </div>
       </body>
