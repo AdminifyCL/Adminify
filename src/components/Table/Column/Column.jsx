@@ -19,7 +19,6 @@ class ColumnContainer extends Component {
   // -- Métodos.
   handleColumnType = () => {
     const { data } = this.props;
-    console.log("[] handleColumnType");
 
     const name = data[0];
     const value = data[1];

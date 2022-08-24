@@ -68,6 +68,7 @@ class LoginPage extends Component {
             Registrarse
           </Button>
 
+          {/* Esto podria cambiarse */}
           {isAuthenticated ? "Autenticado" : "No autenticado"}
           {isAuthenticated ? <Navigate to="/caja" /> : null}
           {redirectRegister ? <Navigate to="/registro" /> : null}

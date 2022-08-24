@@ -1,10 +1,12 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Button } from "@mui/material";
+import { Button, Modal } from "@mui/material";
 import PropTypes from "prop-types";
 import fakeElements from "../../models/fakeElements.js";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 import TableContainer from "../../components/Table/Table.jsx";
+import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
+import ModalContext from "../../contexts/ModalContext.jsx";
 
 // Importación de estilos.
 import "./InventarioPage.scss";
@@ -15,7 +17,9 @@ class InventarioPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      modalVisibility: false,
+    };
   }
 
   // -- Ciclo de vida del componente.
@@ -28,18 +32,28 @@ class InventarioPage extends Component {
   // -- Métodos [HANDLER].
   handleCreateProduct = () => {
     console.log("[] Agregando producto...");
+    this.setState({ modalVisibility: true });
+  };
+
+  handleVisibility = () => {
+    this.setState({ modalVisibility: !this.state.modalVisibility });
   };
 
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
+    const { modalProduct } = this.state;
+
     return (
       <section className="inventarioPage_container">
         {/* Navegación de la aplicación. */}
         <section className="inventarioPage_navigation">
           <TabNavigation />
         </section>
+
+        {/* Modal */}
+        <ProductModal open={this.state.modalVisibility} onClose={this.handleVisibility} />
 
         {/* Vista de la caja. */}
         <section className="inventarioPage_content">

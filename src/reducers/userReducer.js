@@ -46,7 +46,7 @@ const userReducer = (state = initialState, action) => {
     //? Cierre de sesión del usuario.
     case logout:
       userData = { ...data };
-      return { ...state, userData };
+      return { ...state, userData: userData };
 
     // ? Creación de usuario con email y contraseña.
     case createUser:

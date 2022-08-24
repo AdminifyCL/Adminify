@@ -40,7 +40,6 @@ class Auth extends Component {
   render() {
     const { children, userData } = this.props;
     const { isAuthenticated } = userData;
-    console.log("[auth] USER AUTH: ", isAuthenticated);
 
     // Caso 1: El usuario esta autenticado.
     if (isAuthenticated) {

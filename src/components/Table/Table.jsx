@@ -16,8 +16,6 @@ class TableContainer extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
-
-    console.log(this.props);
   }
 
   // -- Ciclo de vida del componente.
