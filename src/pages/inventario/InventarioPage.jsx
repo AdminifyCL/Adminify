@@ -1,10 +1,12 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Button } from "@mui/material";
+import { Button, Modal } from "@mui/material";
 import PropTypes from "prop-types";
 import fakeElements from "../../models/fakeElements.js";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import { FaHamburger, FaHotdog } from "react-icons/fa";
+import TableContainer from "../../components/Table/Table.jsx";
+import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
+import ModalContext from "../../contexts/ModalContext.jsx";
 
 // Importación de estilos.
 import "./InventarioPage.scss";
@@ -15,7 +17,9 @@ class InventarioPage extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      modalVisibility: false,
+    };
   }
 
   // -- Ciclo de vida del componente.
@@ -28,92 +32,28 @@ class InventarioPage extends Component {
   // -- Métodos [HANDLER].
   handleCreateProduct = () => {
     console.log("[] Agregando producto...");
+    this.setState({ modalVisibility: true });
+  };
+
+  handleVisibility = () => {
+    this.setState({ modalVisibility: !this.state.modalVisibility });
   };
 
   // -- Métodos [MAPPING].
-  mappingElements = () => {
-    const elements = [...fakeElements];
-
-    // Recorriendo el arreglo de elementos.
-    return elements.map((element, index) => {
-      return (
-        <div className="inventarioPage_content_element" key={`product-${index}`}>
-          {/* Icono column */}
-          <div className="inventarioPage_content_column">
-            <h1>Icono</h1>
-            <div className="inventarioPage_content_column-container">
-              <FaHotdog className="inventarioPage_content_column-icon" />
-            </div>
-          </div>
-
-          {/* Identificador column */}
-          <div className="inventarioPage_content_column">
-            <h1>Identificador</h1>
-            <div className="inventarioPage_content_column-container">
-              <p className="inventarioPage_content_column-text">{element.id}</p>
-            </div>
-          </div>
-
-          {/* Nombre column */}
-          <div className="inventarioPage_content_column">
-            <h1>Nombre del producto</h1>
-            <div className="inventarioPage_content_column-container">
-              <p className="inventarioPage_content_column-text"> {element.nombre}</p>
-            </div>
-          </div>
-
-          {/* Categoria column */}
-          <div className="inventarioPage_content_column">
-            <h1>Categoria</h1>
-            <div className="inventarioPage_content_column-container">
-              <p className="inventarioPage_content_column-text"> {element.categoria}</p>
-            </div>
-          </div>
-
-          {/* Valor column */}
-          <div className="inventarioPage_content_column">
-            <h1>Valor</h1>
-            <div className="inventarioPage_content_column-container">
-              <p className="inventarioPage_content_column-text">{element.valor}</p>
-            </div>
-          </div>
-
-          {/* Disponibilidad column */}
-          <div className="inventarioPage_content_column">
-            <h1>Disponibilidad</h1>
-            <div className="inventarioPage_content_column-container">
-              <p className="inventarioPage_content_column-text">
-                {element.disponibilidad ? "Disponible" : "No Disponible"}
-              </p>
-            </div>
-          </div>
-
-          {/* Unidades column */}
-          <div className="inventarioPage_content_column">
-            <h1>Unidades</h1>
-            <div className="inventarioPage_content_column-container">
-              <p className="inventarioPage_content_column-text">{element.unidades}</p>
-            </div>
-          </div>
-
-          {/* Botones column */}
-          <div className="inventarioPage_content_element-button">
-            <Button variant="contained">Editar</Button>
-            <Button variant="outlined">Eliminar</Button>
-          </div>
-        </div>
-      );
-    });
-  };
 
   // Renderizado.
   render() {
+    const { modalProduct } = this.state;
+
     return (
       <section className="inventarioPage_container">
         {/* Navegación de la aplicación. */}
         <section className="inventarioPage_navigation">
           <TabNavigation />
         </section>
+
+        {/* Modal */}
+        <ProductModal open={this.state.modalVisibility} onClose={this.handleVisibility} />
 
         {/* Vista de la caja. */}
         <section className="inventarioPage_content">
@@ -126,8 +66,8 @@ class InventarioPage extends Component {
           </div>
           {/* Contenedor de elementos. */}
           <div className="inventarioPage_content_container">
-            {/* Elementos de la tabla. */}
-            <div className="inventarioPage_content_container-element">{this.mappingElements()}</div>
+            {/* Tabla de elementos. */}
+            <TableContainer data={[]} />
           </div>
         </section>
       </section>

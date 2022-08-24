@@ -19,7 +19,7 @@ class TabNavigation extends Component {
 
     this.state = {
       isLogged: true,
-      exit: false,
+
       tabList: [
         { id: "caja", name: "Caja", active: true, url: "/caja" },
         { id: "inventario", name: "Inventario", active: false, url: "/inventario" },
@@ -87,7 +87,6 @@ class TabNavigation extends Component {
 
   // Renderizado.
   render() {
-    const { exit } = this.state;
     return (
       <section className="TabNavigation">
         {/* Icono para la navegación. */}
@@ -100,14 +99,14 @@ class TabNavigation extends Component {
 
         {/* Botón de salida para la navegación. */}
         <div className="TabNavigation-btn">
-          <Button variant="contained" style={exitButton.container} onClick={() => this.signOut()}>
-            <p style={exitButton.text}>
-              <FaSignOutAlt />
-              Salir
-            </p>
-          </Button>
-
-          {exit ? <Navigate to="/login" /> : null}
+          <Link to="/">
+            <Button variant="contained" style={exitButton.container} onClick={() => this.signOut()}>
+              <p style={exitButton.text}>
+                <FaSignOutAlt />
+                Salir
+              </p>
+            </Button>
+          </Link>
         </div>
       </section>
     );
