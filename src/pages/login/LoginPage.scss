@@ -1,22 +1,98 @@
+// Dependencias.
+@use "../../styles/colors" as Colors;
+
+// Definición de estilos.
 .loginPage_contenedor {
   height: 100vh;
   width: 100%;
-}
-.loginPage_contenido {
-  padding: 2rem;
+
+  background-color: Colors.$primary-color;
 
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
 }
-.loginPage_carta {
+
+.loginPage_contenido {
+  height: 90%;
+  width: 40%;
+
+  background-color: Colors.$white-color;
+
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+
+  margin: 0;
+  padding-bottom: 0;
+
+  border-radius: 1rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  text-align: left;
+  align-items: center;
+}
 
-  border: 1px solid #ccc;
+.loginPage-titulo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 10%;
+  width: 80%;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: Colors.$primary-color;
+  }
+}
+
+.loginPage-titulo-icon {
+  font-size: 2rem;
+  color: Colors.$primary-color;
+}
+
+.loginPage_formulario {
+  width: 80%;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.loginPage_contendorBotones {
+  width: 80%;
+
+  padding-top: 1rem;
+
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  column-gap: 1rem;
+}
+
+.loginPage_olvidaste {
+  height: 10%;
+  width: 80%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    font-size: 1rem;
+    color: Colors.$primary-color;
+  }
+}
+
+.loginPage_alertContainer {
+  padding-top: 1rem;
+
+  width: 80%;
+  height: 10%;
 }
