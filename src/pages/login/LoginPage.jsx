@@ -1,6 +1,8 @@
 // Dependencias.
 import React, { Component } from "react";
+import { Button } from "@mui/material";
 import { Button, TextField, Alert, AlertTitle, Snackbar } from "@mui/material";
+import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -215,7 +217,7 @@ class LoginPage extends Component {
           {isAuthenticated ? <Navigate to="/caja" /> : null}
           {redirectRegister ? <Navigate to="/registro" /> : null}
         </div>
-      </section>
+      </body>
     );
   }
 }
@@ -229,3 +231,10 @@ LoginPage.propTypes = {
 
 // Exportación de la pagina: Index.
 export default LoginPage;
+
+/*           <div className="carta">
+<h1>Login</h1>
+<h2>email : gonzaaalo@gmail.com</h2>
+<h2>contraseña: asd123</h2>
+</div>
+*/

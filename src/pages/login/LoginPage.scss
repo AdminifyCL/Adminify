@@ -51,14 +51,8 @@
   }
 }
 
-.loginPage-titulo-icon {
-  font-size: 2rem;
-  color: Colors.$primary-color;
-}
-
 .loginPage_formulario {
   width: 80%;
-
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -95,4 +89,29 @@
 
   width: 80%;
   height: 10%;
+}
+
+.loginPage_Titulo {
+  color: #226f54;
+  margin-top: 100px;
+  margin-left: 710px;
+  font-size: xx-large;
+}
+
+.formulario {
+  width: 500px; //ancho que ocupa el objeto en la pagina
+  height: 70px; //distancia con los botones de abajo
+
+  margin: auto;
+}
+
+.loginPageHiperLink {
+  margin-left: 550px;
+  padding: 65px;
+}
+
+.botonInicio {
+  margin-left: 550px;
+  margin-top: -120px;
+  padding: 70px; //el margen invisible que tienen los objetos
 }
