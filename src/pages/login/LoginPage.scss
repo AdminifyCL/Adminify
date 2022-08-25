@@ -12,6 +12,7 @@
   gap: 1rem;
 }
 .loginPage_carta {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,4 +20,29 @@
   text-align: left;
 
   border: 1px solid #ccc;
+}
+
+.loginPage_Titulo {
+  color: #226f54;
+  margin-top: 100px;
+  margin-left: 710px;
+  font-size: xx-large;
+}
+
+.formulario {
+  width: 500px; //ancho que ocupa el objeto en la pagina
+  height: 70px; //distancia con los botones de abajo
+
+  margin: auto;
+}
+
+.loginPageHiperLink {
+  margin-left: 550px;
+  padding: 65px;
+}
+
+.botonInicio {
+  margin-left: 550px;
+  margin-top: -120px;
+  padding: 70px; //el margen invisible que tienen los objetos
 }

@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
 import PropTypes from "prop-types";
 import { Navigate } from "react-router-dom";
 
@@ -52,18 +53,39 @@ class LoginPage extends Component {
     const { isAuthenticated } = userInfo;
 
     return (
-      <section className="loginPage_contenedor">
-        <div className="loginPage_contenido">
-          <div className="loginPage_carta">
-            <h1>Login</h1>
-            <h2>email : gonzalo@gmail.com</h2>
-            <h2>contraseña: asd123</h2>
-          </div>
+      <body>
+        <div className="contenido">
+          <section className="loginPage_Titulo">
+            <h1>PayAdminBox</h1>
+          </section>
+        </div>
 
+        <div className="formulario">
+          <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
+          <TextField
+            type={"password"}
+            fullWidth
+            label="Contraseña"
+            variant="outlined"
+            margin="dense"
+          />
+        </div>
+
+
+        <div className="loginPageHiperLink">
+          <a
+            className="loginHiperLink"
+            target="_blank"
+            href="https://www.youtube.com/shorts/U3yPe9G6JSs"
+          >
+            ¿Olvidaste tu contraseña? Recupérala aquí.
+          </a>
+        </div>
+
+        <div className="botonInicio">
           <Button variant="contained" onClick={() => this.handleUserLogin()}>
             Iniciar sesión
           </Button>
-
           <Button variant="outlined" onClick={() => this.redirectToRegister()}>
             Registrarse
           </Button>
@@ -73,7 +95,7 @@ class LoginPage extends Component {
           {isAuthenticated ? <Navigate to="/caja" /> : null}
           {redirectRegister ? <Navigate to="/registro" /> : null}
         </div>
-      </section>
+      </body>
     );
   }
 }
@@ -86,3 +108,10 @@ LoginPage.propTypes = {
 
 // Exportación de la pagina: Index.
 export default LoginPage;
+
+/*           <div className="carta">
+<h1>Login</h1>
+<h2>email : gonzaaalo@gmail.com</h2>
+<h2>contraseña: asd123</h2>
+</div>
+*/
