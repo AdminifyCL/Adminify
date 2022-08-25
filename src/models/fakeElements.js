@@ -18,7 +18,6 @@ const fakeElements = [
     disponibilidad: true,
     unidades: 30,
   },
-
   {
     icono: "sandwich",
     id: "sandwich003",

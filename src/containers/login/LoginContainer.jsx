@@ -15,6 +15,7 @@ class LoginContainer extends Component {
 
     this.state = {
       isAuth: false,
+      loading: false,
     };
   }
 
@@ -31,14 +32,25 @@ class LoginContainer extends Component {
     const { loginWithEmail } = this.props;
 
     // Ejecución del action correspondiente.
-    await loginWithEmail(userData);
+    this.setState({ loading: true });
+    await loginWithEmail(userData).then(() => {
+      this.setState({ loading: false });
+    });
   };
 
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <LoginPage userLogin={this.handleUserSession} userInfo={userData} />;
+    const { loading } = this.state;
+    const { userData, userError } = this.props;
+    return (
+      <LoginPage
+        userLogin={this.handleUserSession}
+        userInfo={userData}
+        userError={userError}
+        loading={loading}
+      />
+    );
   }
 }
 
@@ -50,7 +62,8 @@ LoginContainer.propTypes = {
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userData: state.user.userData ?? {},
+  userError: state.user.userError ?? {},
 });
 
 const mapDispatchToProps = {

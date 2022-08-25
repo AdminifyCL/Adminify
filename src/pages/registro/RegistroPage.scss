@@ -1,45 +1,64 @@
-.registroPage_Formulario {
-  width: 500px;
-  padding: 10px;
+body {
+  background-color: #e5e5e5;
+}
+.Formulario {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: "center";
+  width: 30%;
+  margin: auto;
+  padding-top: 1px;
+  padding-bottom: 30px;
+}
+
+.Boton {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: "center";
+  width: 10%;
+  padding: 30px;
   margin: auto;
 }
 
-.registroPage_Boton {
-  margin-top: 70px;
-  margin-left: 1053px;
-}
-
-.registroPage_hiper_link {
+a {
+  text-align: center;
   margin-left: 800px;
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
 }
 
-.registroPage_hiper_link:link {
+a:link {
   color: #7a7a7a;
 }
 
-.registroPage_hiper_link:visited {
+a:visited {
   color: #7a7a7a;
 }
 
-.registroPage_hiper_link:focus {
+a:focus {
   border-bottom: 1px solid;
   background: none;
 }
 
-.registroPage_hiper_link:hover {
+a:hover {
   border-bottom: 1px solid;
   background: none;
 }
 
-.registroPage_hiper_link:active {
+a:active {
   color: #226f54;
 }
 
-.registroPage_Titulo {
+.Titulo {
   color: #226f54;
-  margin-top: 100px;
-  margin-left: 710px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: "center";
+  padding-top: 8%;
+  width: 30%;
+  margin: auto;
 }

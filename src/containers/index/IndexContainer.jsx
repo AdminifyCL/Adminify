@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 // Importación de componentes.
-import IndexPage from "~pages/index/IndexPage.jsx";
+import IndexPage from "../../pages/index/IndexPage.jsx";
 
 // Definición del contenedor.
 class IndexContainer extends Component {

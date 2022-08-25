@@ -1,6 +1,7 @@
 // Dependencias.
 import initialState from "~redux/initialState.js";
 import { actionUserTypes } from "../types/actionUserTypes.js";
+import handleFirebaseErrors from "./handlers/handleFirebaseErrors.js";
 const { loginWithEmail, onAuthState, logout, createUser } = actionUserTypes;
 
 // TODO: Falta estandarizar los datos del usuario para los reducers presentados a continuación. Cada uno de ellos recibe y procesa información distinta, omitiendo algunos parametros. Se debe ver detenidamente. Atte: @JajoScript.
@@ -19,12 +20,27 @@ const userReducer = (state = initialState, action) => {
     case loginWithEmail:
       // Manejo de la información del usuario.
       userData = {
-        isAuthenticated: data ? true : false,
+        isAuthenticated: data?.uid ? true : false,
         email: data?.email ?? "",
         emailVerified: false,
         displayName: data?.displayName ?? "",
         uid: data?.uid ?? "",
       };
+
+      if (data?.error) {
+        const message = handleFirebaseErrors(data.error.firebaseError);
+
+        let dataError = {
+          error: true,
+          message: message,
+        };
+
+        return {
+          ...state,
+          userData: {},
+          userError: dataError,
+        };
+      }
 
       return { ...state, userData };
 
@@ -46,7 +62,7 @@ const userReducer = (state = initialState, action) => {
     //? Cierre de sesión del usuario.
     case logout:
       userData = { ...data };
-      return { ...state, userData };
+      return { ...state, userData: userData };
 
     // ? Creación de usuario con email y contraseña.
     case createUser:

@@ -1,8 +1,10 @@
 // Dependencias.
 import React, { Component } from "react";
 import { Button } from "@mui/material";
-import PropTypes from "prop-types";
+import { Button, TextField, Alert, AlertTitle, Snackbar, CircularProgress } from "@mui/material";
 import { Navigate } from "react-router-dom";
+import { FaAccessibleIcon } from "react-icons/fa";
+import PropTypes from "prop-types";
 
 // Importación de estilos.
 import "./LoginPage.scss";
@@ -15,12 +17,33 @@ class LoginPage extends Component {
 
     this.state = {
       redirectRegister: false,
+      showAlert: false,
+      messageAlert: "",
+
+      inputCorreo: {
+        value: "",
+        error: false,
+      },
+      inputContraseña: {
+        value: "",
+        error: false,
+      },
     };
   }
 
   // -- Ciclo de vida del componente.
   componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState) {
+    const { userError } = this.props;
+    const { userError: prevUserError } = prevProps;
+
+    if (userError !== prevUserError) {
+      this.setState({
+        showAlert: true,
+        messageAlert: userError.message,
+      });
+    }
+  }
   componentWillUnmount() {}
 
   // -- Métodos.
@@ -30,45 +53,170 @@ class LoginPage extends Component {
   };
 
   // -- Métodos [HANDLER].
+  handleAlerts = () => {
+    this.setState({ showAlert: false });
+  };
+
+  handleUserError = (userError) => {
+    if (userError?.error) {
+      this.setState({ showAlert: true });
+    }
+  };
+
+  handleClearFields = () => {
+    this.setState({
+      inputCorreo: {
+        value: "",
+        error: false,
+      },
+      inputContraseña: {
+        value: "",
+        error: false,
+      },
+    });
+  };
+
+  handleValidation = (email, contraseña) => {
+    let voidEmail = email.length === 0;
+    let voidContraseña = contraseña.length === 0;
+
+    // Manejando los errores del correo.
+    if (voidEmail) {
+      this.setState({}, () => {
+        this.setState({
+          inputCorreo: {
+            value: "",
+            error: "El correo es requerido",
+          },
+        });
+      });
+    }
+
+    // Manejando los errores de contraseña.
+    if (voidContraseña) {
+      this.setState({}, () => {
+        this.setState({
+          inputContraseña: {
+            value: "",
+            error: "La contraseña es requerida",
+          },
+        });
+      });
+    }
+
+    if (!voidEmail && !voidContraseña) {
+      return true;
+    }
+
+    return false;
+  };
+
   handleUserLogin = async () => {
     console.log("[#️⃣][INFO][PAGE:LOGIN][handleUserLogin]");
     const { userLogin } = this.props;
+    const { inputCorreo, inputContraseña } = this.state;
+
+    const email = inputCorreo.value;
+    const contraseña = inputContraseña.value;
+
+    // Validar los datos.
+    const verificacion = this.handleValidation(email, contraseña);
+
+    // Limpiar los campos.
+    this.handleClearFields();
 
     // Datos de ejemplo.
     const datos = {
-      email: "javier@gmail.com",
-      contraseña: "asd123",
+      email: email,
+      contraseña: contraseña,
     };
 
-    // Iniciando la sesión del usuario.
-    await userLogin(datos);
+    if (verificacion) {
+      // Iniciando la sesión del usuario.
+      await userLogin(datos);
+    }
   };
+
+  handleChange = (value) => {
+    console.log("[] EVENTO");
+    console.log(value.target);
+
+    const inputId = value.target.id; // inputCorreo = ""
+    const inputValue = value.target.value; // ""
+
+    this.setState({
+      [inputId]: {
+        value: inputValue,
+        error: false,
+      },
+    });
+  };
+
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
-    const { userInfo } = this.props;
-    const { redirectRegister } = this.state;
+    const { userInfo, loading } = this.props;
+    const { redirectRegister, inputCorreo, inputContraseña, showAlert, messageAlert } = this.state;
     const { isAuthenticated } = userInfo;
 
     return (
       <section className="loginPage_contenedor">
         <div className="loginPage_contenido">
-          <div className="loginPage_carta">
-            <h1>Login</h1>
-            <h2>email : gonzalo@gmail.com</h2>
-            <h2>contraseña: asd123</h2>
+          {/* Inputs */}
+          <div className="loginPage_formulario">
+            <TextField
+              id="inputCorreo"
+              variant="filled"
+              fullWidth={true}
+              label="Correo"
+              required={true}
+              error={inputCorreo?.error ? true : false}
+              helperText={inputCorreo.error}
+              onChange={(event) => this.handleChange(event)}
+              value={inputCorreo.value}
+            />
+            <TextField
+              id="inputContraseña"
+              variant="filled"
+              fullWidth={true}
+              label="Contraseña"
+              type="password"
+              required={true}
+              error={inputContraseña?.error ? true : false}
+              helperText={inputContraseña.error}
+              onChange={(event) => this.handleChange(event)}
+              value={inputContraseña.value}
+            />
           </div>
 
-          <Button variant="contained" onClick={() => this.handleUserLogin()}>
-            Iniciar sesión
-          </Button>
+          {/* Botones */}
+          <div className="loginPage_contendorBotones">
+            <Button variant="contained" onClick={() => this.handleUserLogin()} disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : "Iniciar sesión"}
+            </Button>
 
-          <Button variant="outlined" onClick={() => this.redirectToRegister()}>
-            Registrarse
-          </Button>
+            <Button variant="outlined" onClick={() => this.redirectToRegister()} disabled={loading}>
+              Registrarse
+            </Button>
+          </div>
 
-          {isAuthenticated ? "Autenticado" : "No autenticado"}
+          <div className="loginPage_alertContainer">
+            <Snackbar
+              open={showAlert}
+              autoHideDuration={5000}
+              onClose={() => this.handleAlerts()}
+              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            >
+              {/* Alerta: Error al iniciar sesión */}
+              <Alert severity="error" elevation={1} variant="filled">
+                <AlertTitle>Error al iniciar sesión</AlertTitle>
+                {messageAlert}
+              </Alert>
+            </Snackbar>
+          </div>
+
+          {/* Esto podria cambiarse */}
           {isAuthenticated ? <Navigate to="/caja" /> : null}
           {redirectRegister ? <Navigate to="/registro" /> : null}
         </div>
@@ -81,7 +229,16 @@ class LoginPage extends Component {
 LoginPage.propTypes = {
   userLogin: PropTypes.func.isRequired,
   userInfo: PropTypes.object,
+  userError: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 // Exportación de la pagina: Index.
 export default LoginPage;
+
+/*           <div className="carta">
+<h1>Login</h1>
+<h2>email : gonzaaalo@gmail.com</h2>
+<h2>contraseña: asd123</h2>
+</div>
+*/
