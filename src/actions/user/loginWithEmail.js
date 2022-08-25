@@ -16,20 +16,19 @@ const loginUserWithEmail = (data) => {
   console.log(`[INFO][ACTION][${loginWithEmail}]`);
   return async (dispatch) => {
     // Eventos.
-    const onSuccess = (response) => {
-      dispatch({
+    const onSuccess = async (response) => {
+      await dispatch({
         type: loginWithEmail,
         data: response,
       });
     };
 
-    const onError = (err) => {
+    const onError = async (error) => {
       console.error(`[ERROR][ACTION][${loginWithEmail}]`);
-      console.error(err);
 
-      dispatch({
+      await dispatch({
         type: loginWithEmail,
-        data: {},
+        data: { error: { error: true, firebaseError: error } },
       });
     };
 
@@ -47,7 +46,6 @@ const loginUserWithEmail = (data) => {
         })
         .catch((err) => {
           console.log(`[${err.code}] Error al iniciar sesión`);
-          console.error(err);
           onError(err);
         });
 

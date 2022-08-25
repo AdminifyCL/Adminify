@@ -37,8 +37,10 @@ class LoginContainer extends Component {
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <LoginPage userLogin={this.handleUserSession} userInfo={userData} />;
+    const { userData, userError } = this.props;
+    return (
+      <LoginPage userLogin={this.handleUserSession} userInfo={userData} userError={userError} />
+    );
   }
 }
 
@@ -50,7 +52,8 @@ LoginContainer.propTypes = {
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userData: state.user.userData ?? {},
+  userError: state.user.userError ?? {},
 });
 
 const mapDispatchToProps = {

@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { FaCube } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -31,7 +32,10 @@ class IndexPage extends Component {
     return (
       <section className="indexPage_contenedor">
         <div className="indexPage_contenido">
-          <h1>Inicio</h1>
+          <div className="indexPage_titlecontent">
+            <FaCube className="indexPage_titlecontent-icon" />
+            <h1 className="indexPage_titlecontent-title">Pay Admin Box</h1>
+          </div>
 
           <Link to="login">
             <Button variant="contained">Entrar</Button>
