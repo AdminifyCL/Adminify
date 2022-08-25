@@ -1,9 +1,9 @@
 // Dependencias.
 import React, { Component } from "react";
 import { Button } from "@mui/material";
-import { Button, TextField, Alert, AlertTitle, Snackbar } from "@mui/material";
-import PropTypes from "prop-types";
+import { Button, TextField, Alert, AlertTitle, Snackbar, CircularProgress } from "@mui/material";
 import { Navigate } from "react-router-dom";
+import { FaAccessibleIcon } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -93,7 +93,7 @@ class LoginPage extends Component {
     }
 
     // Manejando los errores de contraseña.
-    if (voidEmail) {
+    if (voidContraseña) {
       this.setState({}, () => {
         this.setState({
           inputContraseña: {
@@ -127,8 +127,8 @@ class LoginPage extends Component {
 
     // Datos de ejemplo.
     const datos = {
-      email,
-      contraseña,
+      email: email,
+      contraseña: contraseña,
     };
 
     if (verificacion) {
@@ -138,8 +138,11 @@ class LoginPage extends Component {
   };
 
   handleChange = (value) => {
-    const inputId = value.target.id;
-    const inputValue = value.target.value;
+    console.log("[] EVENTO");
+    console.log(value.target);
+
+    const inputId = value.target.id; // inputCorreo = ""
+    const inputValue = value.target.value; // ""
 
     this.setState({
       [inputId]: {
@@ -153,7 +156,7 @@ class LoginPage extends Component {
 
   // Renderizado.
   render() {
-    const { userInfo } = this.props;
+    const { userInfo, loading } = this.props;
     const { redirectRegister, inputCorreo, inputContraseña, showAlert, messageAlert } = this.state;
     const { isAuthenticated } = userInfo;
 
@@ -189,11 +192,11 @@ class LoginPage extends Component {
 
           {/* Botones */}
           <div className="loginPage_contendorBotones">
-            <Button variant="contained" onClick={() => this.handleUserLogin()}>
-              Iniciar sesión
+            <Button variant="contained" onClick={() => this.handleUserLogin()} disabled={loading}>
+              {loading ? <CircularProgress color="secondary" /> : "Iniciar sesión"}
             </Button>
 
-            <Button variant="outlined" onClick={() => this.redirectToRegister()}>
+            <Button variant="outlined" onClick={() => this.redirectToRegister()} disabled={loading}>
               Registrarse
             </Button>
           </div>
@@ -217,7 +220,7 @@ class LoginPage extends Component {
           {isAuthenticated ? <Navigate to="/caja" /> : null}
           {redirectRegister ? <Navigate to="/registro" /> : null}
         </div>
-      </body>
+      </section>
     );
   }
 }
@@ -227,6 +230,7 @@ LoginPage.propTypes = {
   userLogin: PropTypes.func.isRequired,
   userInfo: PropTypes.object,
   userError: PropTypes.object,
+  loading: PropTypes.bool,
 };
 
 // Exportación de la pagina: Index.
