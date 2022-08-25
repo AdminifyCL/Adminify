@@ -1,6 +1,6 @@
 // Dependencias.
 import React, { Component } from "react";
-
+import { Navigate } from "react-router-dom";
 import {
   Button,
   TextField,
@@ -40,20 +40,25 @@ class RegistroPage extends Component {
   };
   validarFormulario = () => {
     // Lectura de los datos.
-    const input_name = document.getElementById("nombre").value;
+    // const input_name = document.getElementById("nombre").value;
 
-    console.log("[] TAMAÑO:");
-    console.log(input_name.length);
+    // console.log("[] TAMAÑO:");
+    // console.log(input_name.length);
 
     // Validaciones
-    if (!input_name) {
-      this.setState({ error: true });
-      return;
-    }
+    // if (!input_name) {
+    //   this.setState({ error: true });
+    //   return;
+    // }
 
     // Estructura
     const data = {
-      nombre: input_name,
+      nombre: "gonzalo",
+      email: "gonzalo@gmail.com",
+      apellido: "cañas",
+      licencia: "CUADRILLE-PAYADMIN-01",
+      cargo: "dueño",
+      contraseña: "12345",
     };
 
     this.handleCreateUser(data);
@@ -67,21 +72,22 @@ class RegistroPage extends Component {
     console.log(" DATOS: ");
     console.log(data);
 
-    // await createUser(data);
+    await createUser(data);
   };
   // -- Métodos [MAPPING].
 
   // Renderizado.
   render() {
     const { error } = this.state;
+    const { userInfo } = this.props;
     console.log("[] ERROR: ", error);
 
     return (
-      <body>
-        <section className="Titulo">
+      <>
+        <section className="registroPage_Titulo">
           <h1>Registro</h1>
         </section>
-        <section className="Formulario">
+        <section className="registroPage_Formulario">
           <TextField fullWidth label="Nombre" variant="outlined" margin="dense" />
           <TextField fullWidth label="Apellido" variant="outlined" margin="dense" />
           <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
@@ -97,8 +103,9 @@ class RegistroPage extends Component {
           <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />
         </section>
 
-        <div className="hiper">
+        <div className="registroPage_hiper">
           <a
+            className="registroPage_hiper_link"
             target="_blank"
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
           >
@@ -107,18 +114,20 @@ class RegistroPage extends Component {
           </a>
         </div>
 
-        <div className="Boton">
+        <div className="registroPage_Boton">
           <Button
             variant="contained"
             onClick={() => {
-              console.log("Hola");
+              this.validarFormulario();
             }}
           >
             {" "}
             Crea tu cuenta{" "}
           </Button>
         </div>
-      </body>
+
+        {/* Se redirige al usuario cuando se crea exitosamente su cuenta */}
+      </>
     );
   }
 }
@@ -126,46 +135,8 @@ class RegistroPage extends Component {
 // PropTypes.
 RegistroPage.propTypes = {
   createUser: PropTypes.func.isRequired,
+  userInof: PropTypes.object,
 };
 
 // Exportación de la pagina: Index.
 export default RegistroPage;
-
-/*
-      <section
-        className=""
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignContent: "center",
-
-          height: "100vh",
-          width: "100%",
-        }}
-      >
-        <div
-          className=""
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignContent: "center",
-            gap: "20px",
-          }}
-        >
-          <h1>Vista de Registro</h1>
-          <TextField
-            variant="outlined"
-            label={error ? "ERROR" : "Ingresa tu nombre"}
-            id="nombre"
-            error={error}
-            helperText={error ? "Es necesario un nombre" : null}
-            onChange={(event) => this.reiniciarError(event)}
-          />
-
-          <Button variant="contained" onClick={() => this.validarFormulario()}>
-            Crear usuario
-          </Button>
-        </div>
->>>>>>> origin/dev-javier */

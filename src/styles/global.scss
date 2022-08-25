@@ -1,7 +1,7 @@
 // Dependencias.
 @use "variables" as var;
 @use "fonts" as font;
-@use "colors" as color;
+@use "colors" as Colors;
 
 // Configuraciones globales.
 * {
@@ -11,9 +11,8 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
 
-  scrollbar-width: none;
-}
+  text-decoration: none;
 
-::-webkit-scrollbar {
-  display: none;
+  scrollbar-width: thin;
+  scrollbar-color: Colors.$primary-color Colors.$white-color;
 }

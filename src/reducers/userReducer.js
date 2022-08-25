@@ -1,7 +1,10 @@
 // Dependencias.
 import initialState from "~redux/initialState.js";
 import { actionUserTypes } from "../types/actionUserTypes.js";
-const { loginWithEmail, onAuthState, logout } = actionUserTypes;
+import handleFirebaseErrors from "./handlers/handleFirebaseErrors.js";
+const { loginWithEmail, onAuthState, logout, createUser } = actionUserTypes;
+
+// TODO: Falta estandarizar los datos del usuario para los reducers presentados a continuación. Cada uno de ellos recibe y procesa información distinta, omitiendo algunos parametros. Se debe ver detenidamente. Atte: @JajoScript.
 
 // Definiendo los reducers de la pagina.
 const userReducer = (state = initialState, action) => {
@@ -17,19 +20,32 @@ const userReducer = (state = initialState, action) => {
     case loginWithEmail:
       // Manejo de la información del usuario.
       userData = {
-        isAuthenticated: data ? true : false,
+        isAuthenticated: data?.uid ? true : false,
         email: data?.email ?? "",
         emailVerified: false,
+        displayName: data?.displayName ?? "",
         uid: data?.uid ?? "",
       };
+
+      if (data?.error) {
+        const message = handleFirebaseErrors(data.error.firebaseError);
+
+        let dataError = {
+          error: true,
+          message: message,
+        };
+
+        return {
+          ...state,
+          userData: {},
+          userError: dataError,
+        };
+      }
 
       return { ...state, userData };
 
     // ? Vigilancia al estado de la autenticación del usuario.
     case onAuthState:
-      console.log("[] DATA: ");
-      console.log(data);
-
       let isAuth = Object.entries(data).length > 0;
 
       // Manejo de la información del usuario.
@@ -37,22 +53,22 @@ const userReducer = (state = initialState, action) => {
         isAuthenticated: isAuth,
         email: data?.email ?? "",
         emailVerified: false,
+        displayName: data?.displayName ?? "",
         uid: data?.uid ?? "",
       };
-
-      console.log("[] USER DATA: ");
-      console.log(userData);
 
       return { ...state, userData };
 
     //? Cierre de sesión del usuario.
     case logout:
-      console.log("[] Cierre de sesión del usuario.");
-      console.log("[] DATA:", data);
-
       userData = { ...data };
+      return { ...state, userData: userData };
 
+    // ? Creación de usuario con email y contraseña.
+    case createUser:
+      userData = { ...data };
       return { ...state, userData };
+
     default:
       return state;
   }

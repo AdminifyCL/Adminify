@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
 // Importación de estilos.
 import "./VentasPage.scss";
@@ -27,10 +28,16 @@ class VentasPage extends Component {
   // Renderizado.
   render() {
     return (
-      <section className="">
-        <div className="">
-          <h1>Ventas - Page</h1>
-        </div>
+      <section className="ventasPage_container">
+        {/* Navegación de la aplicación. */}
+        <section className="ventasPage_navigation">
+          <TabNavigation />
+        </section>
+
+        {/* Vista de la caja. */}
+        <section className="ventasPage_content">
+          <h1>Ventas</h1>
+        </section>
       </section>
     );
   }

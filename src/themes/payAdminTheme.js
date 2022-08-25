@@ -1,10 +1,13 @@
 // Dependencias.
 import { createTheme } from "@mui/material";
 
+// Fuentes.
+
 // Definición del tema por defecto.
 const colors = {
   primaryColor: "#226f54",
   whiteColor: "#FFFFFF",
+  grayColor: "#EFF0F6",
 };
 
 const payAdminTheme = createTheme({
@@ -28,6 +31,13 @@ const payAdminTheme = createTheme({
         paddingTop: "1rem",
         paddingBottom: "1rem",
       },
+      styleOverrides: {
+        root: {
+          fontFamily: "'Poppins', sans-serif",
+          fontWeight: "bold",
+          fontSize: "1rem",
+        },
+      },
     },
   },
 
@@ -35,6 +45,10 @@ const payAdminTheme = createTheme({
   colors: {
     primaryColor: "#226f54",
     whiteColor: "#FFFFFF",
+  },
+
+  typography: {
+    fontFamily: ["'Poppins', sans-serif"].join(","),
   },
 });
 

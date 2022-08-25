@@ -55,7 +55,7 @@
     },
     "windows": [
       {
-        "fullscreen": false,
+        "fullscreen": true,
         "center": true,
         "resizable": true,
         "title": "PayAdmin pre-alpha",
