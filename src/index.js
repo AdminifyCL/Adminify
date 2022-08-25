@@ -7,11 +7,11 @@ import { ThemeProvider } from "@mui/material";
 import payAdminStore from "~redux/store.js";
 
 // Importación de componentes.
-import App from "~components/App/App.jsx";
+import App from "./components/App/App.jsx";
 
 // Importación de estilos.
-import "~styles/global.scss";
-import payAdminTheme from "~themes/PayAdminTheme.js";
+import "./styles/global.scss";
+import payAdminTheme from "./themes/payAdminTheme.js";
 
 // Renderizado.
 const contenedor = document.getElementById("app");

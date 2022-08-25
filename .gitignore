@@ -21,6 +21,10 @@ src/config/*.*
 # Logs.
 .yarn.error.log
 
+# Archivos temporales.
+temp.*
+temp*.*
+
 # Locks
 package-lock.json
 yarn.lock

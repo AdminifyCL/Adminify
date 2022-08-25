@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { createUserWithEmail } from "../../actions/user/createUser.js";
 import PropTypes from "prop-types";
 
 // Importación de componentes.
@@ -23,12 +24,16 @@ class RegistroContainer extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleCreateUser = async (data) => {};
+  handleCreateUser = async (data) => {
+    const { signUp } = this.props;
+    await signUp(data);
+  };
 
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    return <RegistroPage createUser={this.handleCreateUser} />;
+    const { userData } = this.props;
+    return <RegistroPage createUser={this.handleCreateUser} userInfo={userData} />;
   }
 }
 
@@ -36,12 +41,12 @@ class RegistroContainer extends Component {
 RegistroContainer.propTypes = {};
 
 // Redux.
-const mapStateToProps = (state) => {
-  return {};
-};
+const mapStateToProps = (state) => ({
+  userData: state.user.userData,
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
+const mapDispatchToProps = {
+  signUp: createUserWithEmail,
 };
 
 // Exportación del contenedor.

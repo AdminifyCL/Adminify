@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
 // Importación de estilos.
 import "./EmpleadosPage.scss";
@@ -27,10 +28,16 @@ class EmpleadosPage extends Component {
   // Renderizado.
   render() {
     return (
-      <section className="">
-        <div className="">
-          <h1>Empleados - Page</h1>
-        </div>
+      <section className="empleadosPage_container">
+        {/* Navegación de la aplicación. */}
+        <section className="empleadosPage_navigation">
+          <TabNavigation />
+        </section>
+
+        {/* Vista del empleado. */}
+        <section className="empleadosPage_content">
+          <h1>Empleados</h1>
+        </section>
       </section>
     );
   }

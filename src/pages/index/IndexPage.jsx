@@ -29,8 +29,8 @@ class IndexPage extends Component {
   // Renderizado.
   render() {
     return (
-      <section className="contenedor">
-        <div className="contenido">
+      <section className="indexPage_contenedor">
+        <div className="indexPage_contenido">
           <h1>Inicio</h1>
 
           <Link to="login">
