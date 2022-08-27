@@ -28,19 +28,24 @@ a {
   outline: none;
   text-decoration: none;
   padding: 2px 1px 0;
+
+  display: flex;
 }
 
 a:link {
   color: #7a7a7a;
+  display: flex;
 }
 
 a:visited {
   color: #7a7a7a;
+  display: flex;
 }
 
 a:focus {
   border-bottom: 1px solid;
   background: none;
+  display: flex;
 }
 
 a:hover {
