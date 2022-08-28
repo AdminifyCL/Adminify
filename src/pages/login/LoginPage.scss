@@ -35,6 +35,7 @@
   align-items: center;
 }
 
+/*
 .loginPage-titulo {
   display: flex;
   flex-direction: column;
@@ -49,6 +50,31 @@
     font-weight: bold;
     color: Colors.$primary-color;
   }
+}
+*/
+
+.loginPage_titulo {
+  color: #226f54;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 40px;
+  font-size: xx-large;
+}
+
+.loginPage_icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #226f54;
+  font-size: 100px;
+}
+
+.loginPage_recuperarContraseña {
+  color: #7a7a7a;
+  display: flex;
+  width: 90%;
+  justify-content: flex-end;
 }
 
 .loginPage_formulario {
@@ -76,13 +102,7 @@
   height: 10%;
 }
 
-.loginPage_Titulo {
-  color: #226f54;
-  margin-top: 100px;
-  margin-left: 710px;
-  font-size: xx-large;
-}
-
+/*
 .formulario {
   width: 500px; //ancho que ocupa el objeto en la pagina
   height: 70px; //distancia con los botones de abajo
@@ -100,3 +120,4 @@
   margin-top: -120px;
   padding: 70px; //el margen invisible que tienen los objetos
 }
+*/

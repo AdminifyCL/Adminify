@@ -1,11 +1,10 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Button } from "@mui/material";
 import { Button, TextField, Alert, AlertTitle, Snackbar, CircularProgress } from "@mui/material";
 import { Navigate } from "react-router-dom";
-import { FaAccessibleIcon } from "react-icons/fa";
+import { FaAccessibleIcon, FaConciergeBell } from "react-icons/fa";
 import PropTypes from "prop-types";
-
+//import favicon.png
 // Importación de estilos.
 import "./LoginPage.scss";
 
@@ -86,7 +85,7 @@ class LoginPage extends Component {
         this.setState({
           inputCorreo: {
             value: "",
-            error: "El correo es requerido",
+            error: "No puedes dejar este campo vacío",
           },
         });
       });
@@ -98,7 +97,7 @@ class LoginPage extends Component {
         this.setState({
           inputContraseña: {
             value: "",
-            error: "La contraseña es requerida",
+            error: "No puedes dejar este campo vacío",
           },
         });
       });
@@ -163,13 +162,24 @@ class LoginPage extends Component {
     return (
       <section className="loginPage_contenedor">
         <div className="loginPage_contenido">
+          {/* TITULO E IMAGEN */}
+
+          <div className="loginPage_icon">
+            <FaConciergeBell />
+          </div>
+
+          <div className="loginPage_titulo">
+            <h1>PayAdmin Box</h1>
+            <h2>login</h2>
+          </div>
+
           {/* Inputs */}
           <div className="loginPage_formulario">
             <TextField
               id="inputCorreo"
-              variant="filled"
+              variant="outlined"
               fullWidth={true}
-              label="Correo"
+              label="Correo electrónico"
               required={true}
               error={inputCorreo?.error ? true : false}
               helperText={inputCorreo.error}
@@ -178,7 +188,7 @@ class LoginPage extends Component {
             />
             <TextField
               id="inputContraseña"
-              variant="filled"
+              variant="outlined"
               fullWidth={true}
               label="Contraseña"
               type="password"
@@ -188,6 +198,18 @@ class LoginPage extends Component {
               onChange={(event) => this.handleChange(event)}
               value={inputContraseña.value}
             />
+          </div>
+
+          <div className="loginPage_recuperarContraseña">
+            <a
+              className="loginPage_recuperarContraseña"
+              target="_blank"
+              href=""
+              // onClick={() => this.redirectToRegister()}
+            >
+              {" "}
+              ¿Haz olvidado tu contraseña? Recupérala aquí
+            </a>
           </div>
 
           {/* Botones */}
