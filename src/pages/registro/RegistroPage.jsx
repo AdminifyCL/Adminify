@@ -84,49 +84,63 @@ class RegistroPage extends Component {
 
     return (
       <>
-        <section className="registroPage_Titulo">
-          <h1>Registro</h1>
+        <section className="registroPage_Contenedor">
+          <section className="registroPage_Contenido">
+            <section className="registroPage_Titulo">
+              <h1>Registro</h1>
+            </section>
+            <section className="registroPage_Formulario">
+              <TextField fullWidth label="Nombre" variant="outlined" margin="dense" />
+              <TextField fullWidth label="Apellido" variant="outlined" margin="dense" />
+              <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
+
+              <TextField
+                type={"password"}
+                fullWidth
+                label="Contraseña"
+                variant="outlined"
+                margin="dense"
+              />
+
+              <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />
+            </section>
+            {/* <div className="registroPage_hiper">
+              <a
+                className="registroPage_hiper_link"
+                target="_blank"
+                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+              >
+                {" "}
+                ¿No sabes cual es tu código de licencia?
+              </a>
+            </div> */}
+
+            <section className="registroPage_ContenedorBotones">
+              <Button
+                className="registroPage_Volver"
+                variant="outlined"
+                onClick={() => {
+                  this.validarFormulario();
+                }}
+              >
+                {" "}
+                Volver{" "}
+              </Button>
+              <Button
+                className="registroPage_CrearCuenta"
+                variant="contained"
+                onClick={() => {
+                  this.validarFormulario();
+                }}
+              >
+                {" "}
+                Crea tu cuenta{" "}
+              </Button>
+            </section>
+
+            {/* Se redirige al usuario cuando se crea exitosamente su cuenta */}
+          </section>
         </section>
-        <section className="registroPage_Formulario">
-          <TextField fullWidth label="Nombre" variant="outlined" margin="dense" />
-          <TextField fullWidth label="Apellido" variant="outlined" margin="dense" />
-          <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
-
-          <TextField
-            type={"password"}
-            fullWidth
-            label="Contraseña"
-            variant="outlined"
-            margin="dense"
-          />
-
-          <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />
-        </section>
-
-        <div className="registroPage_hiper">
-          <a
-            className="registroPage_hiper_link"
-            target="_blank"
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-          >
-            {" "}
-            ¿No sabes cual es tu código de licencia?
-          </a>
-        </div>
-
-        <div className="registroPage_Boton">
-          <Button
-            variant="contained"
-            onClick={() => {
-              this.validarFormulario();
-            }}
-          >
-            {" "}
-            Crea tu cuenta{" "}
-          </Button>
-        </div>
-
-        {/* Se redirige al usuario cuando se crea exitosamente su cuenta */}
       </>
     );
   }
