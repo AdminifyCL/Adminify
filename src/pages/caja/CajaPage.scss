@@ -112,12 +112,12 @@
   border: 2px solid Colors.$primary_dark-color;
   border-radius: 0.5rem;
   width: 95%;
-  p{
-    background-color: Colors.$gray-color;
-    border-radius: 0.5rem;
-    color: Colors.$primary_dark-color;
-    padding: 5px;
-  }
+  // p{
+  //   background-color: Colors.$gray-color;
+  //   border-radius: 0.5rem;
+  //   color: Colors.$primary_dark-color;
+  //   padding: 5px;
+  // }
 }
 
 .cajaPage_Boton_quitar{
@@ -161,7 +161,7 @@
   /*border: 1px solid black;*/
 }
 
-.titulo{
+.cajaPage_titulo{
   width: 100%;
   color: Colors.$primary-color;
   font-family: "Poppins", sans-serif;
@@ -169,7 +169,7 @@
   font-size: 2rem;
 }
 
-.Buscador{
+.cajaPage_Buscador{
   width: 80%;
   height: 10%;
   margin-left: 50px;
@@ -178,4 +178,20 @@
   border: 2px solid Colors.$primary_dark-color;
   border-radius: 1rem;
   font-size: 1rem;
+}
+
+.cajaPage_carro_boton{
+  border: 1px solid Colors.$primary-color;
+  border-radius: 0.5rem;
+  width: 30px;
+  height: 20px;
+  font-size: 1rem;
+  margin: 5px;
+}
+
+.cajaPage_carro_cantidad{
+  width: 21%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
