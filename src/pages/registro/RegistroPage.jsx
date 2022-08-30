@@ -154,7 +154,7 @@ class RegistroPage extends Component {
                 className="registroPage_Volver"
                 variant="outlined"
                 onClick={() => {
-                  this.validarFormulario();
+                  history.go(-1);
                 }}
               >
                 {" "}
