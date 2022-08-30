@@ -169,8 +169,11 @@ class LoginPage extends Component {
           </div>
 
           <div className="loginPage_titulo">
-            <h1>PayAdmin Box</h1>
-            <h2>login</h2>
+            <h1>Pay Admin Box</h1>
+          </div>
+
+          <div className="loginPage_subtitulo">
+            <h2>Inicio de sesión</h2>
           </div>
 
           {/* Inputs */}
@@ -202,7 +205,6 @@ class LoginPage extends Component {
 
           <div className="loginPage_recuperarContraseña">
             <a
-              className="loginPage_recuperarContraseña"
               target="_blank"
               href=""
               // onClick={() => this.redirectToRegister()}
