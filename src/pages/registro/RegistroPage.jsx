@@ -34,6 +34,21 @@ class RegistroPage extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
+  handleChange = (value) => {
+    console.log("[] EVENTO");
+    console.log(value.target);
+
+    const inputId = value.target.id; // inputCorreo = ""
+    const inputValue = value.target.value; // ""
+
+    this.setState({
+      [inputId]: {
+        value: inputValue,
+        error: false,
+      },
+    });
+  };
+
   reiniciarError = (evento) => {
     // Reinicio del stado.
     this.setState({ error: false });
@@ -90,11 +105,30 @@ class RegistroPage extends Component {
               <h1>Registro</h1>
             </section>
             <section className="registroPage_Formulario">
-              <TextField fullWidth label="Nombre" variant="outlined" margin="dense" />
-              <TextField fullWidth label="Apellido" variant="outlined" margin="dense" />
-              <TextField type={"email"} fullWidth label="Email" variant="outlined" margin="dense" />
-
               <TextField
+                id="inputNombre"
+                fullWidth
+                label="Nombre"
+                variant="outlined"
+                margin="dense"
+              />
+              <TextField
+                id="inputApellido"
+                fullWidth
+                label="Apellido"
+                variant="outlined"
+                margin="dense"
+              />
+              <TextField
+                id="inputEmail"
+                type={"email"}
+                fullWidth
+                label="Email"
+                variant="outlined"
+                margin="dense"
+              />
+              <TextField
+                id="inputPassword"
                 type={"password"}
                 fullWidth
                 label="Contraseña"
