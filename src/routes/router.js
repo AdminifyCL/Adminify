@@ -8,13 +8,15 @@ import Auth from "../components/Auth/Auth.jsx";
 
 // Importación de contenedores.
 import IndexContainer from "../containers/index/IndexContainer.jsx";
-import CajaContainer from "../containers/caja/CajaContainer.jsx";
-import EmpleadosContainer from "../containers/empleados/EmpleadosContainer.jsx";
 import LoginContainer from "../containers/login/LoginContainer.jsx";
-import InventarioContainer from "../containers/inventario/InventarioContainer.jsx";
-import VentasContainer from "../containers/ventas/VentasContainer.jsx";
 import RegistroContainer from "../containers/registro/RegistroContainer.jsx";
 import NotFoundContainer from "../containers/notFound/NotFoundContainer.jsx";
+import PasswordContainer from "../containers/password/PasswordContainer.jsx";
+
+import CajaContainer from "../containers/caja/CajaContainer.jsx";
+import EmpleadosContainer from "../containers/empleados/EmpleadosContainer.jsx";
+import InventarioContainer from "../containers/inventario/InventarioContainer.jsx";
+import VentasContainer from "../containers/ventas/VentasContainer.jsx";
 import StatsContainer from "../containers/estadisticas/EstadisticasContainer.jsx";
 import AccountContainer from "../containers/cuenta/CuentaContainer.jsx";
 
@@ -22,10 +24,12 @@ import AccountContainer from "../containers/cuenta/CuentaContainer.jsx";
 const Router = () => {
   return (
     <Routes>
+      {/* Rutas publicas; No es necesaria una sesión para acceder. */}
       <Route path={PublicUrls.index} element={<IndexContainer />} index />
       <Route exact path={PublicUrls.login} element={<LoginContainer />} />
       <Route exact path={PublicUrls.registro} element={<RegistroContainer />} />
       <Route path={PublicUrls.notFound} element={<NotFoundContainer />} />
+      <Route path={PublicUrls.forgotPassword} element={<PasswordContainer />} />
 
       {/* Rutas protegidas; El usuario debe iniciar sesión para acceder. */}
       {/* Vista de Caja. */}

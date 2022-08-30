@@ -197,9 +197,11 @@ class LoginPage extends Component {
           </div>
 
           <div className="loginPage_recuperarContraseña">
-            <a target="_blank" href="">
-              ¿Haz olvidado tu contraseña? Recupérala aquí
-            </a>
+            <Link to="/recuperar">
+              <p className="loginPage_recuperarContraseña-text">
+                ¿Haz olvidado tu contraseña? Recupérala aquí
+              </p>
+            </Link>
           </div>
 
           {/* Botones */}
