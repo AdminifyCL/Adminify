@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import { Button, TextField, Alert, AlertTitle, Snackbar, CircularProgress } from "@mui/material";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { FaAccessibleIcon, FaConciergeBell } from "react-icons/fa";
 import PropTypes from "prop-types";
 //import favicon.png
@@ -15,7 +15,6 @@ class LoginPage extends Component {
     super(props);
 
     this.state = {
-      redirectRegister: false,
       showAlert: false,
       messageAlert: "",
 
@@ -47,9 +46,6 @@ class LoginPage extends Component {
 
   // -- Métodos.
   // -- Métodos [REDIRECT].
-  redirectToRegister = () => {
-    this.setState({ redirectRegister: true });
-  };
 
   // -- Métodos [HANDLER].
   handleAlerts = () => {
@@ -137,9 +133,6 @@ class LoginPage extends Component {
   };
 
   handleChange = (value) => {
-    console.log("[] EVENTO");
-    console.log(value.target);
-
     const inputId = value.target.id; // inputCorreo = ""
     const inputValue = value.target.value; // ""
 
@@ -156,7 +149,7 @@ class LoginPage extends Component {
   // Renderizado.
   render() {
     const { userInfo, loading } = this.props;
-    const { redirectRegister, inputCorreo, inputContraseña, showAlert, messageAlert } = this.state;
+    const { inputCorreo, inputContraseña, showAlert, messageAlert } = this.state;
     const { isAuthenticated } = userInfo;
 
     return (
@@ -204,12 +197,7 @@ class LoginPage extends Component {
           </div>
 
           <div className="loginPage_recuperarContraseña">
-            <a
-              target="_blank"
-              href=""
-              // onClick={() => this.redirectToRegister()}
-            >
-              {" "}
+            <a target="_blank" href="">
               ¿Haz olvidado tu contraseña? Recupérala aquí
             </a>
           </div>
@@ -220,9 +208,11 @@ class LoginPage extends Component {
               {loading ? <CircularProgress color="secondary" /> : "Iniciar sesión"}
             </Button>
 
-            <Button variant="outlined" onClick={() => this.redirectToRegister()} disabled={loading}>
-              Registrarse
-            </Button>
+            <Link to="/registro">
+              <Button variant="outlined" disabled={loading}>
+                Registrarse
+              </Button>
+            </Link>
           </div>
 
           <div className="loginPage_alertContainer">
@@ -242,7 +232,6 @@ class LoginPage extends Component {
 
           {/* Esto podria cambiarse */}
           {isAuthenticated ? <Navigate to="/caja" /> : null}
-          {redirectRegister ? <Navigate to="/registro" /> : null}
         </div>
       </section>
     );
@@ -259,10 +248,3 @@ LoginPage.propTypes = {
 
 // Exportación de la pagina: Index.
 export default LoginPage;
-
-/*           <div className="carta">
-<h1>Login</h1>
-<h2>email : gonzaaalo@gmail.com</h2>
-<h2>contraseña: asd123</h2>
-</div>
-*/

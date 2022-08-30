@@ -1,6 +1,6 @@
 // Dependencias.
 import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import {
   Button,
   TextField,
@@ -35,9 +35,6 @@ class RegistroPage extends Component {
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
   handleChange = (value) => {
-    console.log("[] EVENTO");
-    console.log(value.target);
-
     const inputId = value.target.id; // inputCorreo = ""
     const inputValue = value.target.value; // ""
 
@@ -150,16 +147,17 @@ class RegistroPage extends Component {
             </div> */}
 
             <section className="registroPage_ContenedorBotones">
-              <Button
-                className="registroPage_Volver"
-                variant="outlined"
-                onClick={() => {
-                  history.go(-1);
-                }}
-              >
-                {" "}
-                Volver{" "}
-              </Button>
+              <Link to="/login">
+                <Button
+                  className="registroPage_Volver"
+                  variant="outlined"
+                  // onClick={() => {
+                  //   history.go(-1);
+                  // }}
+                >
+                  Volver
+                </Button>
+              </Link>
               <Button
                 className="registroPage_CrearCuenta"
                 variant="contained"
@@ -167,8 +165,7 @@ class RegistroPage extends Component {
                   this.validarFormulario();
                 }}
               >
-                {" "}
-                Crea tu cuenta{" "}
+                Crea tu cuenta
               </Button>
             </section>
 
