@@ -57,7 +57,9 @@ const userReducer = (state = initialState, action) => {
         uid: data?.uid ?? "",
       };
 
-      return { ...state, userData };
+      console.log("[] USER DATA: ", userData);
+
+      return { ...state, userData: userData };
 
     //? Cierre de sesión del usuario.
     case logout:

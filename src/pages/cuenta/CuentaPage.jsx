@@ -27,6 +27,9 @@ class CuentaPage extends Component {
 
   // Renderizado.
   render() {
+    const { userInfo } = this.props;
+    console.log("[] userData: ", userInfo);
+
     return (
       <section className="cuentaPage_container">
         {/* Navegación de la aplicación. */}
@@ -36,7 +39,13 @@ class CuentaPage extends Component {
 
         {/* Vista de la caja. */}
         <section className="cuentaPage_content">
-          <h1>Cuenta</h1>
+          {/* Titulo. */}
+          <div className="cuentaPage_banner">
+            <h1>Mi Cuenta</h1>
+            <p>
+              Sección para editar las <strong>configuraciones</strong> de su cuenta.
+            </p>
+          </div>
         </section>
       </section>
     );

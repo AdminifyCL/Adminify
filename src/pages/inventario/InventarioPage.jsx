@@ -67,7 +67,7 @@ class InventarioPage extends Component {
           {/* Contenedor de elementos. */}
           <div className="inventarioPage_content_container">
             {/* Tabla de elementos. */}
-            <TableContainer data={[]} />
+            <TableContainer data={fakeElements} />
           </div>
         </section>
       </section>

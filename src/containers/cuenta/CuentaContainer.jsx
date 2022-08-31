@@ -33,11 +33,13 @@ class CuentaContainer extends Component {
 }
 
 // PropTypes.
-CuentaContainer.propTypes = {};
+CuentaContainer.propTypes = {
+  userData: PropTypes.object.isRequired,
+};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userData: state.user.userData ?? {},
 });
 
 const mapDispatchToProps = {};

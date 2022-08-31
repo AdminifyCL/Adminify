@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Input } from "@mui/material";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -37,14 +37,14 @@ class PasswordPage extends Component {
             <p>Ingresa tu correo para recuperar tu contraseña</p>
           </div>
 
-          <TextField fullWidth={true} placeholder="Correo" label="Correo" />
+          <TextField fullWidth={true} placeholder="Correo" variant="filled" label="Correo" />
 
           <div className="PasswordPage_buttonContainer">
             <Link to="/login">
               <Button variant="outlined">Volver</Button>
             </Link>
 
-            <Button variant="contained">Guardar</Button>
+            <Button variant="contained">Enviar</Button>
           </div>
         </div>
       </section>

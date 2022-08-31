@@ -24,6 +24,15 @@ class RegistroPage extends Component {
     this.state = {
       error: false,
     };
+
+    const data = {
+      nombre: "gonzalo",
+      email: "gonzalo@gmail.com",
+      apellido: "cañas",
+      licencia: "CUADRILLE-PAYADMIN-01",
+      cargo: "dueño",
+      contraseña: "12345",
+    };
   }
 
   // -- Ciclo de vida del componente.
@@ -51,18 +60,6 @@ class RegistroPage extends Component {
     this.setState({ error: false });
   };
   validarFormulario = () => {
-    // Lectura de los datos.
-    // const input_name = document.getElementById("nombre").value;
-
-    // console.log("[] TAMAÑO:");
-    // console.log(input_name.length);
-
-    // Validaciones
-    // if (!input_name) {
-    //   this.setState({ error: true });
-    //   return;
-    // }
-
     // Estructura
     const data = {
       nombre: "gonzalo",
@@ -91,8 +88,6 @@ class RegistroPage extends Component {
   // Renderizado.
   render() {
     const { error } = this.state;
-    const { userInfo } = this.props;
-    console.log("[] ERROR: ", error);
 
     return (
       <>
@@ -135,29 +130,15 @@ class RegistroPage extends Component {
 
               <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />
             </section>
-            {/* <div className="registroPage_hiper">
-              <a
-                className="registroPage_hiper_link"
-                target="_blank"
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-              >
-                {" "}
-                ¿No sabes cual es tu código de licencia?
-              </a>
-            </div> */}
 
+            {/* Botones de acción */}
             <section className="registroPage_ContenedorBotones">
               <Link to="/login">
-                <Button
-                  className="registroPage_Volver"
-                  variant="outlined"
-                  // onClick={() => {
-                  //   history.go(-1);
-                  // }}
-                >
+                <Button className="registroPage_Volver" variant="outlined">
                   Volver
                 </Button>
               </Link>
+
               <Button
                 className="registroPage_CrearCuenta"
                 variant="contained"
@@ -168,8 +149,6 @@ class RegistroPage extends Component {
                 Crea tu cuenta
               </Button>
             </section>
-
-            {/* Se redirige al usuario cuando se crea exitosamente su cuenta */}
           </section>
         </section>
       </>
@@ -180,7 +159,6 @@ class RegistroPage extends Component {
 // PropTypes.
 RegistroPage.propTypes = {
   createUser: PropTypes.func.isRequired,
-  userInof: PropTypes.object,
 };
 
 // Exportación de la pagina: Index.

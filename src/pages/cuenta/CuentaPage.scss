@@ -6,6 +6,7 @@
   width: 100%;
   height: 100vh;
 }
+
 .cuentaPage_content {
   margin-left: 7.5rem;
   margin-right: 7.5rem;
@@ -16,14 +17,29 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-  }
+  justify-content: flex-start;
+  align-items: flex-start;
 }
+
 .cuentaPage_navigation {
   width: 100%;
+}
+
+.cuentaPage_banner {
+  margin-top: 1.25rem;
+
+  h1 {
+    color: Colors.$primary-color;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  p {
+    color: Colors.$dark-color;
+  }
+
+  strong {
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
 }
