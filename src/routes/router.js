@@ -1,7 +1,8 @@
 // Dependencias.
-import * as React from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { PublicUrls, PrivateUrls } from "../models/Navigation.js";
+import Cargando from "../components/Cargando/Cargando.jsx";
 
 // Componentes.
 import Auth from "../components/Auth/Auth.jsx";

@@ -3,6 +3,8 @@ import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import handleDateMonth from "../../handlers/methods/handleDateMonth.js";
+import LicenciasContainer from "./components/Licencias/Licencias.jsx";
 
 // Importación de estilos.
 import "./CuentaPage.scss";
@@ -24,47 +26,12 @@ class CuentaPage extends Component {
   // -- Métodos.
   // -- Métodos [REDIRECT].
   // -- Métodos [HANDLER].
-  handleMes = (mes) => {
-    switch (mes) {
-      case 0:
-        return "Enero";
-      case 1:
-        return "Febrero";
-      case 2:
-        return "Marzo";
-      case 3:
-        return "Abril";
-      case 4:
-        return "Mayo";
-      case 5:
-        return "Junio";
-      case 6:
-        return "Julio";
-      case 7:
-        return "Agosto";
-      case 8:
-        return "Septiembre";
-      case 9:
-        return "Octubre";
-      case 10:
-        return "Noviembre";
-      case 11:
-        return "Diciembre";
-      default:
-        return "Error";
-    }
-  };
-
   handleFecha = (dateAt) => {
-    console.log("[] DATEAT: ", dateAt);
     const timestamp = parseInt(dateAt);
 
     let fecha = new Date(timestamp);
-
-    const fechaHumana = `${fecha.getDate()} de ${this.handleMes(
-      fecha.getMonth()
-    )} del ${fecha.getFullYear()}`;
-
+    const month = handleDateMonth(fecha.getMonth());
+    const fechaHumana = `${fecha.getDate()} de ${month} del ${fecha.getFullYear()}`;
     return fechaHumana;
   };
   // -- Métodos [MAPPING].
@@ -72,7 +39,6 @@ class CuentaPage extends Component {
   // Renderizado.
   render() {
     const { userInfo } = this.props;
-    console.log("[] INFO:", userInfo);
 
     return (
       <section className="cuentaPage_container">
@@ -140,7 +106,13 @@ class CuentaPage extends Component {
           </div>
 
           {/* Categorias. */}
+          <div>Categoria</div>
+
           {/* Licencia. */}
+          <LicenciasContainer />
+
+          {/* Interfaz. */}
+          <div>Interfaz</div>
         </section>
       </section>
     );

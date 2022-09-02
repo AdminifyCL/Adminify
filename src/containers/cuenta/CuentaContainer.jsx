@@ -1,11 +1,13 @@
 // Dependencias.
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import { fetchUserData } from "../../actions/user/fetchUserData.js";
+import Cargando from "../../components/Cargando/Cargando.jsx";
 
 // Importación de componentes.
-import CuentaPage from "../../pages/cuenta/CuentaPage.jsx";
+// import CuentaPage from "../../pages/cuenta/CuentaPage.jsx";
+const CuentaPage = lazy(() => import("../../pages/cuenta/CuentaPage.jsx"));
 
 // Definición del contenedor.
 class CuentaContainer extends Component {
@@ -34,8 +36,12 @@ class CuentaContainer extends Component {
 
   // -- Render
   render() {
-    const { userInfo, userAuth } = this.props;
-    return <CuentaPage userInfo={userInfo} />;
+    const { userInfo } = this.props;
+    return (
+      <Suspense fallback={<Cargando />}>
+        <CuentaPage userInfo={userInfo} />
+      </Suspense>
+    );
   }
 }
 

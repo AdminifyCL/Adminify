@@ -1,0 +1,42 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.LicenciasContainer_container {
+  width: 100%;
+
+  padding-bottom: 1.25rem;
+
+  border-bottom: 2px dashed rgba(Colors.$dark-color, $alpha: 0.3);
+}
+
+.LicenciasContainer_banner {
+  h1 {
+    color: Colors.$primary-color;
+
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  p {
+    color: Colors.$dark-color;
+
+    font-size: 1.25rem;
+    font-weight: normal;
+
+    strong {
+      color: Colors.$dark-color;
+
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+
+  margin-bottom: 1rem;
+}
+
+.LicenciasContainer_licencias {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
