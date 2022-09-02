@@ -23,7 +23,6 @@ root.render(
     <Provider store={payAdminStore}>
       {/* React ROUTER - HASH */}
       <HashRouter>
-        {/* My little app uwu */}
         <ThemeProvider theme={payAdminTheme}>
           <App />
         </ThemeProvider>

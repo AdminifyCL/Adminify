@@ -1,8 +1,10 @@
 // Dependencias.
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { updateDoc, doc, serverTimestamp } from "firebase/firestore";
 
 // Configuraciones.
 import { firebaseApp, firestore } from "../../database/config.js";
+import collections from "../../types/database/collections.js";
 import { actionUserTypes } from "../../types/actionUserTypes.js";
 const { loginWithEmail } = actionUserTypes;
 
@@ -13,7 +15,7 @@ const { loginWithEmail } = actionUserTypes;
  * @returns {object} dispatch
  */
 const loginUserWithEmail = (data) => {
-  console.log(`[INFO][ACTION][${loginWithEmail}]`);
+  console.log(`[🛂][ACTION][${loginWithEmail}]`);
   return async (dispatch) => {
     // Eventos.
     const onSuccess = async (response) => {
@@ -48,6 +50,14 @@ const loginUserWithEmail = (data) => {
           console.log(`[${err.code}] Error al iniciar sesión`);
           onError(err);
         });
+
+      // Actualizar los datos de la ultima conexión.
+      const userDoc = doc(firestore, collections.usuarios, userData.uid);
+      await updateDoc(userDoc, {
+        lastLoginAt: serverTimestamp(),
+      }).then(() => {
+        console.log("[] Datos de la ultima conexión actualizados");
+      });
 
       onSuccess(userData);
     } catch (err) {

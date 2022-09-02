@@ -12,7 +12,7 @@ const { onAuthState } = actionUserTypes;
  * @returns {void}
  */
 const authStateChanged = () => {
-  console.log(`[INFO][ACTION][${onAuthState}]`);
+  console.log(`[🛂][ACTION][${onAuthState}]`);
   return async (dispatch) => {
     // Eventos.
     const onSuccess = (response) => {

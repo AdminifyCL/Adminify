@@ -6,6 +6,7 @@
   width: 100%;
   height: 100vh;
 }
+
 .cuentaPage_content {
   margin-left: 7.5rem;
   margin-right: 7.5rem;
@@ -16,14 +17,113 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-  }
+  justify-content: flex-start;
+  align-items: flex-start;
 }
+
 .cuentaPage_navigation {
   width: 100%;
+}
+
+/* sección de información de la cuenta */
+.cuentaPage_miCuenta_container {
+  width: 100%;
+
+  padding-top: 1.25rem;
+
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: 1.25rem;
+  border-bottom: 2px dashed rgba(Colors.$dark-color, $alpha: 0.3);
+}
+
+.cuentaPage_miCuenta_banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.cuentaPage_miCuenta_title {
+  h1 {
+    font-weight: bolder;
+    font-size: 2rem;
+    color: Colors.$primary-color;
+  }
+  p {
+    font-size: 1.25rem;
+    color: Colors.$dark-color;
+  }
+  strong {
+    font-weight: bolder;
+  }
+}
+
+.cuentaPage_miCuenta_button {
+  width: 20%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.cuentaPage_miCuenta_content {
+  margin-top: 1rem;
+  padding-left: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+
+  border-radius: 10px;
+  background-color: Colors.$gray-color;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.cuentaPage_miCuenta_content_usuario {
+  p {
+    color: Colors.$dark-color;
+    font-weight: normal;
+    font-size: 0.75rem;
+  }
+}
+.cuentaPage_miCuenta_content_usuario_nombre {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  column-gap: 0.5rem;
+
+  cursor: none;
+
+  h1 {
+    color: Colors.$primary-color;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: Colors.$white-color;
+    background-color: Colors.$primary-color;
+    padding: 0.25rem 0.5rem;
+    border-radius: 25px;
+  }
+}
+
+.cuentaPage_miCuenta_content_creacion {
+  h1 {
+    color: Colors.$primary-color;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: Colors.$dark-color;
+    font-weight: normal;
+    font-size: 0.75rem;
+  }
 }

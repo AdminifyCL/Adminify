@@ -2,6 +2,7 @@
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import React, { Component } from "react";
+import { fetchUserData } from "../../actions/user/fetchUserData.js";
 
 // Importación de componentes.
 import CuentaPage from "../../pages/cuenta/CuentaPage.jsx";
@@ -16,7 +17,13 @@ class CuentaContainer extends Component {
   }
 
   // -- Ciclo de vida del componente.
-  componentDidMount() {}
+  componentDidMount() {
+    const { fetchUserData, userAuth } = this.props;
+
+    // Conseguir la información del usuario.
+    const USER_ID = userAuth.uid;
+    fetchUserData(USER_ID);
+  }
   componentDidUpdate(prevProps, prevState) {}
   componentWillUnmount() {}
 
@@ -27,20 +34,25 @@ class CuentaContainer extends Component {
 
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <CuentaPage userInfo={userData} />;
+    const { userInfo, userAuth } = this.props;
+    return <CuentaPage userInfo={userInfo} />;
   }
 }
 
 // PropTypes.
-CuentaContainer.propTypes = {};
+CuentaContainer.propTypes = {
+  userInfo: PropTypes.object.isRequired,
+};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userAuth: state.user.userAuth ?? {},
+  userInfo: state.user.userInfo ?? {},
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchUserData,
+};
 
 // Exportación del contenedor.
 export default connect(mapStateToProps, mapDispatchToProps)(CuentaContainer);

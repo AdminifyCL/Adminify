@@ -38,8 +38,8 @@ class Auth extends Component {
 
   // Renderizado.
   render() {
-    const { children, userData } = this.props;
-    const { isAuthenticated } = userData;
+    const { children, userAuth } = this.props;
+    const { isAuthenticated } = userAuth;
 
     // Caso 1: El usuario esta autenticado.
     if (isAuthenticated) {
@@ -54,12 +54,12 @@ class Auth extends Component {
 // PropTypes.
 Auth.propTypes = {
   onAuth: PropTypes.func.isRequired,
-  userData: PropTypes.object.isRequired,
+  userAuth: PropTypes.object.isRequired,
 };
 
 // Redux.
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userAuth: state.user.userAuth,
 });
 
 const mapDispatchToProps = {

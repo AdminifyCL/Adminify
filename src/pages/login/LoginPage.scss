@@ -35,24 +35,6 @@
   align-items: center;
 }
 
-/*
-.loginPage-titulo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 10%;
-  width: 80%;
-
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: Colors.$primary-color;
-  }
-}
-*/
-
 .loginPage_titulo {
   color: #226f54;
   display: flex;
@@ -90,10 +72,13 @@
   justify-content: flex-end;
   margin-top: 1rem;
   margin-bottom: 0.3rem;
-  a {
-    text-decoration: none;
-    color: Colors.$gray_dark_bg-color;
-  }
+}
+
+.loginPage_recuperarContraseña-text {
+  text-decoration: none;
+  color: Colors.$primary-color;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
 }
 
 .loginPage_formulario {

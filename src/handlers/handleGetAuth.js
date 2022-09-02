@@ -6,7 +6,7 @@ import { firebaseApp, firestore } from "../database/config.js";
  *
  */
 const handleGetAuth = async () => {
-  console.log("[#️⃣][INFO][handleGetAuth]");
+  console.log("[🛂][handleGetAuth]");
 
   const auth = getAuth();
   const isAuth = onAuthStateChanged(auth, (user) => {

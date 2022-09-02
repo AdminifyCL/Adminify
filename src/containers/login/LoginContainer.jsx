@@ -42,11 +42,11 @@ class LoginContainer extends Component {
   // -- Render
   render() {
     const { loading } = this.state;
-    const { userData, userError } = this.props;
+    const { userError, userAuth } = this.props;
     return (
       <LoginPage
         userLogin={this.handleUserSession}
-        userInfo={userData}
+        userAuth={userAuth}
         userError={userError}
         loading={loading}
       />
@@ -57,12 +57,13 @@ class LoginContainer extends Component {
 // PropTypes.
 LoginContainer.propTypes = {
   loginWithEmail: PropTypes.func.isRequired,
-  userData: PropTypes.object,
+  userAuth: PropTypes.object.isRequired,
+  userError: PropTypes.object.isRequired,
 };
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData ?? {},
+  userAuth: state.user.userAuth ?? {},
   userError: state.user.userError ?? {},
 });
 

@@ -12,12 +12,13 @@ const initialState = {
   user: {
     isLogged: false,
     isAuth: false,
-    userData: {
+    userAuth: {
       isAuthenticated: false,
       email: "",
       emailVerified: false,
       uid: "",
     },
+    userData: {},
   },
 
   // Información de la empresa.

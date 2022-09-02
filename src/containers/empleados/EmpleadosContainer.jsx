@@ -26,8 +26,8 @@ class EmpleadosContainer extends Component {
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <EmpleadosPage userInfo={userData} />;
+    const { userInfo } = this.props;
+    return <EmpleadosPage userInfo={userInfo} />;
   }
 }
 
@@ -36,7 +36,7 @@ EmpleadosContainer.propTypes = {};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = {};

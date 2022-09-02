@@ -3,6 +3,7 @@ const PublicUrls = {
   index: "/",
   login: "/login",
   registro: "/registro",
+  forgotPassword: "/recuperar",
   notFound: "*",
 };
 

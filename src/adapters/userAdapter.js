@@ -6,7 +6,25 @@
  * @param {object} externalData
  */
 const userAdapter = (externalData) => {
-  return {};
+  let formattedData = {
+    //* Información del usuario.
+    uid: externalData?.uid ?? "",
+    nombre: externalData?.nombre ?? "",
+    apellido: externalData?.apellido ?? "",
+    displayName: externalData?.displayName ?? "",
+    email: externalData?.email ?? "",
+    emailVerified: externalData?.emailVerified ?? false,
+
+    //* Información de la cuenta.
+    licencia: externalData?.licencia ?? "",
+    cargo: externalData?.cargo ?? "",
+
+    //* Tiempo.
+    lastLoginAt: externalData?.lastLoginAt ?? "",
+    createdAt: externalData?.createdAt ?? "",
+  };
+
+  return formattedData;
 };
 
 // Exportación.
