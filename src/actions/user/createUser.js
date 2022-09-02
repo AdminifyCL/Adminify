@@ -8,7 +8,7 @@ import { actionUserTypes } from "../../types/actionUserTypes.js";
 const { createUser } = actionUserTypes;
 
 const createUserWithEmail = (data) => {
-  console.log(`[INFO][ACTION][${createUser}]`);
+  console.log(`[🛂][ACTION][${createUser}]`);
 
   return async (dispatch) => {
     // Eventos.
@@ -64,9 +64,7 @@ const createUserWithEmail = (data) => {
             displayName: `${newData.nombre} ${newData.apellido}`,
           })
             .then(() => {
-              console.log(
-                "[#️⃣][INFO][updateProfile] Nombre actualizado en Firebase Authentication."
-              );
+              console.log("[🛂][updateProfile] Nombre actualizado en Firebase Authentication.");
             })
             .catch((err) => {
               console.log(`[❌][ERROR][updateProfile]${err.code} ${err.message}`);
@@ -91,7 +89,7 @@ const createUserWithEmail = (data) => {
       const usuarioDoc = doc(firestore, "USUARIOS", newData.uid);
       await setDoc(usuarioDoc, newData)
         .then(() => {
-          console.log("[#️⃣][INFO][setDoc] Documento creado!");
+          console.log("[🛂][setDoc] Documento creado!");
         })
         .catch((err) => {
           console.log("[❌][ERROR][setDoc] Error al crear el documento.");

@@ -107,7 +107,7 @@ class LoginPage extends Component {
   };
 
   handleUserLogin = async () => {
-    console.log("[#️⃣][INFO][PAGE:LOGIN][handleUserLogin]");
+    console.log("[🛂][PAGE:LOGIN][handleUserLogin]");
     const { userLogin } = this.props;
     const { inputCorreo, inputContraseña } = this.state;
 
@@ -148,9 +148,9 @@ class LoginPage extends Component {
 
   // Renderizado.
   render() {
-    const { userInfo, loading } = this.props;
+    const { userAuth, loading } = this.props;
     const { inputCorreo, inputContraseña, showAlert, messageAlert } = this.state;
-    const { isAuthenticated } = userInfo;
+    const { isAuthenticated } = userAuth;
 
     return (
       <section className="loginPage_contenedor">
@@ -243,7 +243,7 @@ class LoginPage extends Component {
 // PropTypes.
 LoginPage.propTypes = {
   userLogin: PropTypes.func.isRequired,
-  userInfo: PropTypes.object,
+  userAuth: PropTypes.object,
   userError: PropTypes.object,
   loading: PropTypes.bool,
 };

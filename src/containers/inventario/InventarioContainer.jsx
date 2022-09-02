@@ -26,8 +26,8 @@ class InventarioContainer extends Component {
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <InventarioPage userInfo={userData} />;
+    const { userInfo } = this.props;
+    return <InventarioPage userInfo={userInfo} />;
   }
 }
 
@@ -36,12 +36,10 @@ InventarioContainer.propTypes = {};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userInfo: state.user.userInfo,
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
+const mapDispatchToProps = {};
 
 // Exportación del contenedor.
 export default connect(mapStateToProps, mapDispatchToProps)(InventarioContainer);

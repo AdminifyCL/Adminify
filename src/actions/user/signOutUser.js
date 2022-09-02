@@ -11,7 +11,7 @@ const { logout } = actionUserTypes;
  * @returns
  */
 const logoutUser = () => {
-  console.log(`[INFO][ACTION][${logout}]`);
+  console.log(`[🛂][ACTION][${logout}]`);
   return async (dispatch) => {
     // Eventos.
     const onSuccess = (response) => {

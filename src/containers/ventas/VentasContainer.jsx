@@ -26,8 +26,8 @@ class VentasContainer extends Component {
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <VentasPage userInfo={userData} />;
+    const { userInfo } = this.props;
+    return <VentasPage userInfo={userInfo} />;
   }
 }
 
@@ -36,7 +36,7 @@ VentasContainer.propTypes = {};
 
 // Redux.
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = {};

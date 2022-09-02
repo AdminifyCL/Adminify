@@ -74,7 +74,7 @@ class RegistroPage extends Component {
   };
 
   handleCreateUser = async (data) => {
-    console.log("[#️⃣][INFO][PAGE:REGISTRO][handleCreateUser] Creando usuario...");
+    console.log("[🛂][PAGE:REGISTRO][handleCreateUser] Creando usuario...");
     const { createUser } = this.props;
 
     // Lectura de los datos.

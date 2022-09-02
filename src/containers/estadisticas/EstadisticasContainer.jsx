@@ -27,8 +27,8 @@ class EstadisticasContainer extends Component {
 
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <EstadisticasPage userInfo={userData} />;
+    const { userInfo } = this.props;
+    return <EstadisticasPage userInfo={userInfo} />;
   }
 }
 
@@ -37,7 +37,7 @@ EstadisticasContainer.propTypes = {};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = {};
