@@ -1,10 +1,11 @@
 // Dependencias.
-import { Button } from "@mui/material";
-import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { Button } from "@mui/material";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import Categorias from "./components/Categorias/Categorias.jsx";
 import handleDateMonth from "../../handlers/methods/handleDateMonth.js";
 import LicenciasContainer from "./components/Licencias/Licencias.jsx";
+import PropTypes from "prop-types";
 
 // Importación de estilos.
 import "./CuentaPage.scss";
@@ -106,7 +107,7 @@ class CuentaPage extends Component {
           </div>
 
           {/* Categorias. */}
-          <div>Categoria</div>
+          <Categorias />
 
           {/* Licencia. */}
           <LicenciasContainer />
