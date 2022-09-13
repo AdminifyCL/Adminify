@@ -32,37 +32,48 @@
 .cajaPage_Productos {
   background-color: Colors.$white-color;
   border: 4px solid Colors.$primary_dark-color;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   width: 45%;
-  height: 65%;
+  height: 45%;
   position: absolute;
-  left: 2%;
-  top: 22%;
+  left: 9%;
+  top: 15%;
+  padding-top: 0px;
   margin: 5px;
-  padding: 1%;
   overflow: auto;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // align-items: center;
+}
+
+.cajaPage_Productos_lista{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .cajaPage_Productos_titulo {
   font-size: 1.5rem;
   font-weight: bold;
   padding-left: 25%;
-  padding-top: 1%;
+  padding-top: 0.1%;
   padding-bottom: 1%;
 }
 
 .cajaPage_Productos_producto {
   color: Colors.$primary_dark-color;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 1%;
   margin: 1%;
   border: 2px solid Colors.$primary_dark-color;
   border-radius: 0.5rem;
-  width: 95%;
+  width: 90%;
   p {
     background-color: Colors.$gray-color;
     border-radius: 0.5rem;
@@ -80,78 +91,80 @@
   border-radius: 0.3rem;
 }
 
+.cajaPage_Cajero{
+  background-color: Colors.$white-color;
+  border: 4px solid Colors.$primary_dark-color;
+  border-radius: 0.75rem;
+  width: 46%;
+  height: 25%;
+  position: absolute;
+  left: 9%;
+  top: 68%;
+  padding: 0px;
+}
+
 .cajaPage_Carro {
   background-color: Colors.$white-color;
   border: 4px solid Colors.$primary_dark-color;
   border-radius: 0.75rem;
   margin: 5px;
 
-  width: 44%;
-  height: 51%;
+  width: 32%;
+  height: 55%;
 
   position: absolute;
-  left: 51%;
-  top: 22%;
+  left: 58%;
+  top: 15%;
   overflow: auto;
-  padding: 1%;
-}
-
-.cajaPage_Carro_titulo {
-  font-size: 1.5rem;
+  
 }
 
 .cajaPage_Carro_producto {
   color: Colors.$primary_dark-color;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 1%;
-  margin: 1%;
+  margin: 3%;
   border: 2px solid Colors.$primary_dark-color;
   border-radius: 0.5rem;
-  width: 95%;
-  // p{
-  //   background-color: Colors.$gray-color;
-  //   border-radius: 0.5rem;
-  //   color: Colors.$primary_dark-color;
-  //   padding: 5px;
-  // }
-}
-
-.cajaPage_Boton_quitar {
-  border-color: Colors.$primary_dark-color;
-  background-color: Colors.$primary_dark-color;
-  color: aliceblue;
-  height: 40px;
-  width: 60px;
-  border-radius: 0.3rem;
+  width: 90%;
+  p {
+    background-color: Colors.$gray-color;
+    border-radius: 0.5rem;
+    color: Colors.$primary_dark-color;
+    padding: 5px;
+    text-align: center;
+  }
 }
 
 .cajaPage_Total {
   background-color: Colors.$white-color;
-  border: 4px solid Colors.$primary_dark-color;
-  border-radius: 0.75rem;
-  width: 23%;
-  height: 11%;
+  // border: 4px solid Colors.$primary_dark-color;
+  // border-radius: 0.75rem;
+  width: 30%;
+  height: 8%;
   position: absolute;
-  left: 51%;
-  top: 80%;
+  left: 58%;
+  top: 74%;
   margin: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: Colors.$primary_dark-color;
 }
 
 .cajaPage_Botones {
   position: absolute;
-  top: 80%;
-  left: 77%;
-  width: 20%;
+  top: 82%;
+  left: 59%;
+  width: 32%;
   height: 15%;
   display: flex;
   flex-direction: row;
@@ -160,37 +173,79 @@
   /*border: 1px solid black;*/
 }
 
-.cajaPage_titulo {
-  width: 100%;
-  color: Colors.$primary-color;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
-}
-
 .cajaPage_Buscador {
-  width: 80%;
-  height: 10%;
-  margin-left: 50px;
-  padding-left: 50px;
-  margin-bottom: 10px;
+  width: 60%;
+  height: 2rem;
   border: 2px solid Colors.$primary_dark-color;
+  padding-left: 50px;
   border-radius: 1rem;
   font-size: 1rem;
 }
 
 .cajaPage_carro_boton {
-  border: 1px solid Colors.$primary-color;
+  border: 2px solid Colors.$primary-color;
   border-radius: 0.5rem;
-  width: 30px;
-  height: 20px;
+  width: 32px;
+  height: 29px;
   font-size: 1rem;
   margin: 5px;
+  // padding-bottom: 5px;
+  text-align: center;
+  background-color: Colors.$white-color;
 }
 
 .cajaPage_carro_cantidad {
-  width: 21%;
+  // border: 1px solid black;
+  width: 37%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cajaPage_Productos_cabecera{
+  // border: 1px solid black;
+  width: 100%;
+  height: 15%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: Colors.$gray-color;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.cajaPage_Carro_cabecera{
+  // border: 1px solid black;
+  width: 100%;
+  height: 12.5%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: Colors.$gray-color;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.cajaPage_Cajero_cabecera{
+  // border: 1px solid black;
+  width: 100%;
+  height: 12.5%;
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: Colors.$gray-color;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
+}
+
+.cajaPage_Total_valor{
+  width: 70%;
+  background-color: Colors.$gray-color;
+  text-align: center;
 }
