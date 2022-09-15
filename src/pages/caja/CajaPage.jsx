@@ -5,23 +5,25 @@ import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 import fakeElements from "../../models/fakeElements.js";
 import { Button } from "@mui/material";
 import { FaHamburger, FaHotdog } from "react-icons/fa";
-import { getDatabase } from "firebase/database"
-import { Menu } from "./Menu"
+import { getDatabase } from "firebase/database";
+import { Menu } from "./Menu";
+import { Navigate } from "react-router-dom";
+import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
 
 // Importación de estilos.
 import "./CajaPage.scss";
 import { width } from "@mui/system";
 
 const productos = [...fakeElements];
-const data = getDatabase()
+const data = getDatabase();
 
 function capitalize(word) {
-  if (word.length>1){
+  if (word.length > 1) {
     return word[0].toUpperCase() + word.slice(1);
-  }else if (word.length == 1){
-    return word.toUpperCase()
-  }else{
-    return word
+  } else if (word.length == 1) {
+    return word.toUpperCase();
+  } else {
+    return word;
   }
 }
 
@@ -30,7 +32,7 @@ class CajaPage extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
-    this.state = { total: 0 , carro : [], finder :"", pago: true};
+    this.state = { total: 0, carro: [], finder: "", pago: true, toPago: false };
   }
 
   // -- Ciclo de vida del componente.
@@ -45,7 +47,7 @@ class CajaPage extends Component {
 
   // Renderizado.
   render() {
-    return (( this.state.pago ? 
+    return this.state.pago ? (
       <section className="cajaPage_container">
         {/* Navegación de la aplicación. */}
         <section className="cajaPage_navigation">
@@ -57,70 +59,73 @@ class CajaPage extends Component {
             {/* Division en la que se ven los productos */}
             <div className="cajaPage_Productos">
               <div className="cajaPage_Productos_cabecera">
-              <p>Lista de productos</p>
-              <input
-                type={"search"}
-                className="cajaPage_Buscador"
-                onChange={(e) => {
-                  this.setState({ finder: e.target.value });
-                }}
-              ></input>
+                <p>Lista de productos</p>
+                <input
+                  type={"search"}
+                  className="cajaPage_Buscador"
+                  onChange={(e) => {
+                    this.setState({ finder: e.target.value });
+                  }}
+                ></input>
               </div>
               <div className="cajaPage_Productos_lista">
-              {productos.map((producto) => {
-                if (producto.nombre.startsWith(capitalize(this.state.finder))) {
-                return (
-                  <div className="cajaPage_Productos_producto">
-                    <p><FaHamburger></FaHamburger></p>
-                    <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
-                      {producto.nombre}
-                    </p>
-                    <p className="cajaPage_producto_texto">${producto.valor}</p>
-                    <Button
-                      variant="contained"
-                      onClick={() => {
-                        // Si no existe un objeto en el carro con el nombre de este producto lo agrega al carro
-                        let vista_carro = this.state.carro.map((producto_carro) => {
-                          if (producto_carro.nombre == producto.nombre) {
-                            return true;
-                          } else {
-                            return false;
-                          }
-                        });
-                        if (!vista_carro.includes(true)) {
-                          this.setState({total: this.state.total+producto.valor})
-                          this.setState({
-                            carro: [
-                              ...this.state.carro,
-                              {
-                                index: this.state.carro.length,
-                                nombre: producto.nombre,
-                                precio: producto.valor,
-                                cantidad: 1,
-                              },
-                            ],
-                          })
-                        }else{
-                          this.setState({
-                            carro: this.state.carro.map((item) => {
-                              if (producto.cantidad > 1) {
-                                this.setState({ total: this.state.total + producto.precio });
+                {productos.map((producto) => {
+                  if (producto.nombre.startsWith(capitalize(this.state.finder))) {
+                    return (
+                      <div className="cajaPage_Productos_producto">
+                        <p>
+                          <FaHamburger></FaHamburger>
+                        </p>
+                        <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
+                          {producto.nombre}
+                        </p>
+                        <p className="cajaPage_producto_texto">${producto.valor}</p>
+                        <Button
+                          variant="contained"
+                          onClick={() => {
+                            // Si no existe un objeto en el carro con el nombre de este producto lo agrega al carro
+                            let vista_carro = this.state.carro.map((producto_carro) => {
+                              if (producto_carro.nombre == producto.nombre) {
+                                return true;
+                              } else {
+                                return false;
                               }
-                              if (item.nombre == producto.nombre) {
-                                item.cantidad = item.cantidad + 1
-                              }
-                              return item;
-                            }),
-                          });
-                          this.setState({ total: this.state.total + producto.valor });
-                        }
-                      }}
-                    >
-                      Añadir
-                    </Button>
-                  </div>
-                );}
-              })}
+                            });
+                            if (!vista_carro.includes(true)) {
+                              this.setState({ total: this.state.total + producto.valor });
+                              this.setState({
+                                carro: [
+                                  ...this.state.carro,
+                                  {
+                                    index: this.state.carro.length,
+                                    nombre: producto.nombre,
+                                    precio: producto.valor,
+                                    cantidad: 1,
+                                  },
+                                ],
+                              });
+                            } else {
+                              this.setState({
+                                carro: this.state.carro.map((item) => {
+                                  if (producto.cantidad > 1) {
+                                    this.setState({ total: this.state.total + producto.precio });
+                                  }
+                                  if (item.nombre == producto.nombre) {
+                                    item.cantidad = item.cantidad + 1;
+                                  }
+                                  return item;
+                                }),
+                              });
+                              this.setState({ total: this.state.total + producto.valor });
+                            }
+                          }}
+                        >
+                          Añadir
+                        </Button>
+                      </div>
+                    );
+                  }
+                })}
               </div>
             </div>
             {/*Division en la que se ven los datos del cajero*/}
@@ -139,7 +144,8 @@ class CajaPage extends Component {
                       {elemento.nombre}
                     </p>
                     <div className="cajaPage_carro_cantidad">
-                      <button style={{"padding-bottom":"4px"}}
+                      <button
+                        style={{ "padding-bottom": "4px" }}
                         className="cajaPage_carro_boton"
                         onClick={() => {
                           this.setState({
@@ -158,7 +164,10 @@ class CajaPage extends Component {
                         -
                       </button>
 
-                      <p style={{margin: "1px 5px 1px 5px",width:"20%"}}> {elemento.cantidad >= 1 ? elemento.cantidad : 1} </p>
+                      <p style={{ margin: "1px 5px 1px 5px", width: "20%" }}>
+                        {" "}
+                        {elemento.cantidad >= 1 ? elemento.cantidad : 1}{" "}
+                      </p>
 
                       <button
                         className="cajaPage_carro_boton"
@@ -189,9 +198,12 @@ class CajaPage extends Component {
             </div>
             {/* Division en la que se ve el total */}
             {/* <VistaTotal total={this.state.total} /> */}
-            <div className="cajaPage_Total"><p>Total </p><p className="cajaPage_Total_valor">${this.state.total}</p></div>
+            <div className="cajaPage_Total">
+              <p>Total </p>
+              <p className="cajaPage_Total_valor">${this.state.total}</p>
+            </div>
             <div className="cajaPage_Botones">
-            <Button
+              <Button
                 variant="outlined"
                 style={{ height: "50px", width: "130px" }}
                 onClick={() => {
@@ -209,18 +221,21 @@ class CajaPage extends Component {
                 variant="contained"
                 style={{ height: "50px", width: "130px" }}
                 onClick={() => {
-                  console.log("Pagando...")
-                  this.setState({pago: (!this.state.pago)})
+                  // Para redirigir a la vista de pago.
+                  this.setState({ toPago: true });
                 }}
               >
                 Pagar
               </Button>
-              
             </div>
           </section>
         </h1>
+
+        {this.state.toPago ? <Navigate to={PrivateUrls.pago} /> : null}
       </section>
-    : <Menu></Menu>));
+    ) : (
+      <Menu></Menu>
+    );
   }
 }
 

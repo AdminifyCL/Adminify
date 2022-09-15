@@ -15,6 +15,8 @@ import NotFoundContainer from "../containers/notFound/NotFoundContainer.jsx";
 import PasswordContainer from "../containers/password/PasswordContainer.jsx";
 
 import CajaContainer from "../containers/caja/CajaContainer.jsx";
+import PagoContainer from "../containers/pago/PagoContainer.jsx";
+import ConfirmacionContainer from "../containers/confirmacion/ConfirmacionContainer.jsx";
 import EmpleadosContainer from "../containers/empleados/EmpleadosContainer.jsx";
 import InventarioContainer from "../containers/inventario/InventarioContainer.jsx";
 import VentasContainer from "../containers/ventas/VentasContainer.jsx";
@@ -40,6 +42,28 @@ const Router = () => {
         element={
           <Auth>
             <CajaContainer />
+          </Auth>
+        }
+      />
+
+      {/* Vista de Metodo de pago. */}
+      <Route
+        exact
+        path={PrivateUrls.pago}
+        element={
+          <Auth>
+            <PagoContainer />
+          </Auth>
+        }
+      />
+
+      {/* Vista de Confirmación del pago. */}
+      <Route
+        exact
+        path={PrivateUrls.confirmacion}
+        element={
+          <Auth>
+            <ConfirmacionContainer />
           </Auth>
         }
       />
