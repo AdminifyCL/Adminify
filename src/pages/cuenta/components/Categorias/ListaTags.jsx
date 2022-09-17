@@ -6,10 +6,11 @@ import { Chip } from "@mui/material";
 import "./ListaTags.scss";
 
 // Definiendo el componente: <ListaTags />
-const ListaTags = ({ tags }) => {
+const ListaTags = ({ tags, setCategorias }) => {
   // --- Metodos.
   const handleDelete = (tagId) => {
-    console.log(tagId);
+    let newTags = tags.filter((tag) => tag.id !== tagId);
+    setCategorias(newTags);
   };
 
   // --- Renderizado.

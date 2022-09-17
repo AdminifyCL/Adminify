@@ -35,6 +35,8 @@ const EditarCategorias = ({ visible, changeVisibility, setCategorias }) => {
       return [...prev, new_categoria];
     });
 
+    setCategoria("");
+
     // Cerrando el modal.
     changeVisibility();
   };

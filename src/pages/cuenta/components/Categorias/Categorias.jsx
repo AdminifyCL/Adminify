@@ -1,5 +1,6 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
+import { useLocalStorage } from "../../../../hooks/useLocalStorage.jsx";
 import { Button } from "@mui/material";
 import ListaTags from "./ListaTags.jsx";
 import fakeCategorias from "../../../../models/fakeCategorias.js";
@@ -11,7 +12,8 @@ import EditarCategorias from "./EditarCategorias.jsx";
 // Definición del componente: <CategoriasContainer />
 const CategoriasContainer = ({}) => {
   // -- Manejo del estado.
-  const [categorias, setCategorias] = useState([]);
+  const [categorias, setCategorias] = useLocalStorage("categorias", []);
+
   const [visible, setVisible] = useState(false);
 
   // -- Ciclo de vida del componente.
@@ -21,7 +23,6 @@ const CategoriasContainer = ({}) => {
 
   // -- Metodos.
   const handleVisibility = () => {
-    console.log("[] Handle visibility");
     setVisible(!visible);
   };
 
@@ -55,8 +56,7 @@ const CategoriasContainer = ({}) => {
       </div>
 
       {/* Contenedor de las categorias. */}
-      {console.log("[] CATEGORIAS:", categorias)}
-      <ListaTags tags={categorias} />
+      <ListaTags tags={categorias} setCategorias={setCategorias} />
     </div>
   );
 };
