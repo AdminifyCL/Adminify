@@ -1,6 +1,8 @@
 // Dependencias.
 import React from "react";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 // Estilos.
 import "./PagosPage.scss";
@@ -8,8 +10,15 @@ import "./PagosPage.scss";
 // Definición del componente: <ConfirmacionPage />
 const PagosPage = ({}) => {
   // -- Manejo del estado.
+  const navigate = useNavigate();
+
   // -- Ciclo de vida.
   // -- Metodos.
+  const handleRedirect = () => {
+    // Redirigir a la confirmación del pago
+    navigate("/confirmacion");
+  };
+
   // -- Renderizado.
   return (
     <section>
@@ -21,6 +30,7 @@ const PagosPage = ({}) => {
       {/* Visual */}
       <section className="">
         <h1>Vista: Pago</h1>
+        <Button onClick={() => handleRedirect()}>Confirmar pago</Button>
       </section>
     </section>
   );

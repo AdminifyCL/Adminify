@@ -12,14 +12,14 @@ const ConfirmacionPage = ({}) => {
   // -- Ciclo de vida.
   // -- Metodos.
   const handleImpresion = () => {
-    // const ventana = window.open("", "PRINT", "height=720,width=1280");
-    // ventana.document.write("Hola, esto es una prueba jeje");
-    // ventana.document.close();
-    // ventana.focus();
-    // ventana.onload = function () {
-    //   ventana.print();
-    //   ventana.close();
-    // };
+    const ventana = window.open("", "PRINT", "height=720,width=1280");
+    ventana.document.write("Hola, esto es una prueba jeje");
+    ventana.document.close();
+    ventana.focus();
+    ventana.onload = function () {
+      ventana.print();
+      ventana.close();
+    };
   };
 
   // -- Renderizado.
