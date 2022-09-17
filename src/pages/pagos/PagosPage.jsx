@@ -30,7 +30,9 @@ const PagosPage = ({}) => {
       {/* Visual */}
       <section className="">
         <h1>Vista: Pago</h1>
-        <Button onClick={() => handleRedirect()}>Confirmar pago</Button>
+        <Button onClick={() => handleRedirect()} variant="contained">
+          Confirmar pago
+        </Button>
       </section>
     </section>
   );

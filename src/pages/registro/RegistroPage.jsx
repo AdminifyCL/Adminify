@@ -14,7 +14,7 @@ const RegistroPage = ({}) => {
   // -- Ciclo de vida.
   // -- Metodos.
   // -- Renderizado.
-  retrun(
+  return (
     <section className="registroPage_Contenedor">
       <section className="registroPage_Contenido">
         <section className="registroPage_Titulo">
