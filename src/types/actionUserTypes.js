@@ -8,6 +8,9 @@ const actionUserTypes = {
 
   //* -- Datos del usuario.
   getUserData: "GET_USER_DATA",
+
+  //* -- Control de errores.
+  cleanErrors: "CLEAN_ERRORS",
 };
 
 // Exportación de los actionsType.

@@ -1,12 +1,20 @@
 // Dependencias.
-import initialState from "~redux/initialState.js";
+import { actionAppTypes } from "../types/actionAppTypes.js";
+import initialState from "../redux/initialState.js";
+
+const { cleanErrors } = actionAppTypes;
 
 // Definiendo los reducers de la pagina.
 const appReducer = (state = initialState, action) => {
+  console.log(`[🛂][REDUCER:APP][${action.type}]`);
   const { data } = action;
 
   // Manejando los actions.
   switch (action.type) {
+    //? Limpiar los errores.
+    case cleanErrors:
+      return { ...state, appError: {} };
+
     default:
       return state;
   }

@@ -5,29 +5,12 @@ import { setDoc, doc, collection, getDoc } from "firebase/firestore";
 import { firebaseApp, firestore } from "../../database/config.js";
 import { actionUserTypes } from "../../types/actionUserTypes.js";
 import collections from "../../types/database/collections.js";
-const { getUserData } = actionUserTypes;
-
-// Eventos.
-const onSuccess = (dispatch, data) => {
-  dispatch({
-    type: getUserData,
-    error: false,
-    success: true,
-    data: data,
-  });
-};
-const onError = (dispatch, error) => {
-  dispatch({
-    type: getUserData,
-    error: true,
-    success: false,
-    data: error,
-  });
-};
+import { onSuccess, onError } from "../response.js";
+const { getUserData: TYPE } = actionUserTypes;
 
 // Action: GET USER DATA.
 const fetchUserData = (userId) => {
-  console.log(`[🛂][ACTION][${getUserData}]`);
+  console.log(`[🛂][ACTION][${TYPE}]`);
 
   return async (dispatch) => {
     try {
@@ -36,10 +19,10 @@ const fetchUserData = (userId) => {
       const userSnapshot = await getDoc(userDoc);
 
       const userData = userSnapshot.data();
-      onSuccess(dispatch, userData);
+      onSuccess(dispatch, TYPE, userData);
     } catch (err) {
       console.error(err);
-      onError(dispatch, err);
+      onError(dispatch, TYPE, err);
     }
   };
 };

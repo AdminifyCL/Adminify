@@ -4,8 +4,11 @@ import { Snackbar, Alert } from "@mui/material";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+// Actions.
+import clearErrors from "../../actions/app/cleanErrors.js";
+
 // Definición del componente: <Alerts />.
-const AlertsContainer = ({ children, userError }) => {
+const AlertsContainer = ({ children, userError, clearErrors }) => {
   // -- Manejo del estado.
   const [visibility, setVisibility] = useState(false);
 
@@ -19,6 +22,9 @@ const AlertsContainer = ({ children, userError }) => {
   // -- Metodos.
   const handleVisibility = () => {
     setVisibility(false);
+
+    // Dispatch.
+    clearErrors();
   };
 
   // -- Renderizado.
@@ -46,7 +52,9 @@ const mapStateToProps = (state) => ({
   userError: state.user.userError ?? {},
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  clearErrors,
+};
 
 // Exportación.
 export default connect(mapStateToProps, mapDispatchToProps)(AlertsContainer);

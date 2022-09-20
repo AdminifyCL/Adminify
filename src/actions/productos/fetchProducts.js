@@ -3,9 +3,9 @@
 // Configuraciones.
 import { actionProductTypes } from "../../types/actionProductTypes.js";
 import { onSuccess, onError } from "../response.js";
-const { createProduct: TYPE } = actionProductTypes;
+const { getProducts: TYPE } = actionProductTypes;
 
-const createProduct = (data) => {
+const fetchProducts = (data) => {
   console.log(`[🛂][ACTION][${TYPE}]`);
 
   // Fetch
@@ -19,4 +19,4 @@ const createProduct = (data) => {
 };
 
 // Exportación.
-export default createProduct;
+export default fetchProducts;

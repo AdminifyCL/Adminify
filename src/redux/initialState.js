@@ -6,6 +6,7 @@ const initialState = {
     appVersion: "pre-alpha",
     author: "payAdmin",
     appMode: "PROD",
+    appError: {},
   },
 
   // Información del usuario activo.
@@ -19,6 +20,7 @@ const initialState = {
       uid: "",
     },
     userData: {},
+    userError: {},
   },
 
   // Información de la empresa.
@@ -27,6 +29,7 @@ const initialState = {
     logo: "",
     slogan: "Una solución moderna a problemas anticuados",
     employees: ["Javier Almarza", "Gonzalo Cañas", "Nicolás Cruz", "Vicente Salas"],
+    companyError: {},
   },
 
   // Información del sitio.
@@ -34,6 +37,7 @@ const initialState = {
     actualPage: "index",
     theme: "",
     isLoading: false,
+    pageError: {},
   },
 };
 
