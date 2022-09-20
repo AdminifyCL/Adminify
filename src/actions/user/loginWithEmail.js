@@ -51,15 +51,17 @@ const loginUserWithEmail = (data) => {
           onError(err);
         });
 
-      // Actualizar los datos de la ultima conexión.
-      const userDoc = doc(firestore, collections.usuarios, userData.uid);
-      await updateDoc(userDoc, {
-        lastLoginAt: serverTimestamp(),
-      }).then(() => {
-        console.log("[] Datos de la ultima conexión actualizados");
-      });
+      if (userData) {
+        // Actualizar los datos de la ultima conexión.
+        const userDoc = doc(firestore, collections.usuarios, userData.uid);
+        await updateDoc(userDoc, {
+          lastLoginAt: serverTimestamp(),
+        }).then(() => {
+          console.log("[] Datos de la ultima conexión actualizados");
+        });
 
-      onSuccess(userData);
+        onSuccess(userData);
+      }
     } catch (err) {
       onError(err);
     }

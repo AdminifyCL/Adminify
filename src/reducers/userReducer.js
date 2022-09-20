@@ -23,6 +23,7 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     // ? Inicio de sesión del usuario con email y contraseña.
     case loginWithEmail:
+      console.log(data);
       // Manejo de la información del usuario.
       userAuth = {
         isAuthenticated: data?.uid ? true : false,
@@ -45,6 +46,7 @@ const userReducer = (state = initialState, action) => {
           userAuth: {},
           userError: dataError,
         };
+        break;
       }
 
       return { ...state, userAuth };

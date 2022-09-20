@@ -4,7 +4,7 @@ import { Button, TextField, Alert, AlertTitle, Snackbar, CircularProgress } from
 import { useNavigate } from "react-router-dom";
 import { FaAccessibleIcon, FaConciergeBell } from "react-icons/fa";
 import PropTypes from "prop-types";
-//import favicon.png
+
 // Importación de estilos.
 import "./LoginPage.scss";
 
@@ -180,21 +180,6 @@ const LoginPage = ({ userError, userLogin, userAuth, loading }) => {
           <Button variant="outlined" disabled={loading} onClick={() => navigate("/registro")}>
             Registrarse
           </Button>
-        </div>
-
-        <div className="loginPage_alertContainer">
-          <Snackbar
-            open={showAlert}
-            autoHideDuration={5000}
-            onClose={() => handleAlerts()}
-            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-          >
-            {/* Alerta: Error al iniciar sesión */}
-            <Alert severity="error" elevation={1} variant="filled">
-              <AlertTitle>Error al iniciar sesión</AlertTitle>
-              {messageAlert}
-            </Alert>
-          </Snackbar>
         </div>
       </div>
     </section>
