@@ -40,6 +40,7 @@ const AlertsContainer = ({ children, userError }) => {
 };
 
 // Proptypes.
+
 // Redux.
 const mapStateToProps = (state) => ({
   userError: state.user.userError ?? {},
