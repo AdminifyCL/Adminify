@@ -19,4 +19,4 @@ const createProduct = (data) => {
 };
 
 // Exportación.
-export default createProduct;
+export { createProduct };

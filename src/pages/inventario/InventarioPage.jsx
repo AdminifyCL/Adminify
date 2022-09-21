@@ -11,11 +11,17 @@ import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
 import "./InventarioPage.scss";
 
 // Definición de la pagina: <InventarioPage />
-const InventarioPage = ({}) => {
+const InventarioPage = ({ userInfo, getProducts, products }) => {
   // -- Manejo del estado.
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("[page] Mount");
+    if (userInfo?.tiendaId) {
+      let id = userInfo.tiendaId;
+      getProducts(id);
+    }
+  }, [userInfo]);
 
   // -- Ciclo de vida.
   // -- Metodos.
@@ -50,7 +56,8 @@ const InventarioPage = ({}) => {
         {/* Contenedor de elementos. */}
         <div className="inventarioPage_content_container">
           {/* Tabla de elementos. */}
-          <TableContainer data={fakeElements} />
+          {console.log("products:", products)}
+          <TableContainer data={products} />
         </div>
       </section>
     </section>

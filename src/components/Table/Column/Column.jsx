@@ -23,16 +23,7 @@ class ColumnContainer extends Component {
     const name = data[0];
     const value = data[1];
 
-    if (name === "disponibilidad") {
-      return (
-        <div className="ColumnContainer_container">
-          <p className="ColumnContainer_title">{name}</p>
-          <div className="ColumnContainer_valueContainer">
-            <p className="ColumnContainer_value">{value ? "Disponible" : "No disponible"}</p>
-          </div>
-        </div>
-      );
-    } else if (name === "icono") {
+    if (name === "icono") {
       return (
         <div className="ColumnContainer_container-icon">
           <p className="ColumnContainer_title">{name}</p>
