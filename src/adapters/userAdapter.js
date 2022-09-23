@@ -16,6 +16,7 @@ const userAdapter = (externalData) => {
     emailVerified: externalData?.emailVerified ?? false,
 
     //* Información de la cuenta.
+    tiendaId: externalData?.tiendaId ?? "",
     licencia: externalData?.licencia ?? "",
     cargo: externalData?.cargo ?? "",
 

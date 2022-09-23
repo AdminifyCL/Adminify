@@ -1,10 +1,12 @@
 // Dependencias.
-import * as React from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { PublicUrls, PrivateUrls } from "../models/Navigation.js";
+import Cargando from "../components/Cargando/Cargando.jsx";
 
 // Componentes.
 import Auth from "../components/Auth/Auth.jsx";
+import AlertsContainer from "../components/Alerts/AlertsContainer.jsx";
 
 // Importación de contenedores.
 import IndexContainer from "../containers/index/IndexContainer.jsx";
@@ -14,6 +16,8 @@ import NotFoundContainer from "../containers/notFound/NotFoundContainer.jsx";
 import PasswordContainer from "../containers/password/PasswordContainer.jsx";
 
 import CajaContainer from "../containers/caja/CajaContainer.jsx";
+import PagoContainer from "../containers/pago/PagoContainer.jsx";
+import ConfirmacionContainer from "../containers/confirmacion/ConfirmacionContainer.jsx";
 import EmpleadosContainer from "../containers/empleados/EmpleadosContainer.jsx";
 import InventarioContainer from "../containers/inventario/InventarioContainer.jsx";
 import VentasContainer from "../containers/ventas/VentasContainer.jsx";
@@ -26,7 +30,15 @@ const Router = () => {
     <Routes>
       {/* Rutas publicas; No es necesaria una sesión para acceder. */}
       <Route path={PublicUrls.index} element={<IndexContainer />} index />
-      <Route exact path={PublicUrls.login} element={<LoginContainer />} />
+      <Route
+        exact
+        path={PublicUrls.login}
+        element={
+          <AlertsContainer>
+            <LoginContainer />
+          </AlertsContainer>
+        }
+      />
       <Route exact path={PublicUrls.registro} element={<RegistroContainer />} />
       <Route path={PublicUrls.notFound} element={<NotFoundContainer />} />
       <Route path={PublicUrls.forgotPassword} element={<PasswordContainer />} />
@@ -38,7 +50,35 @@ const Router = () => {
         path={PrivateUrls.caja}
         element={
           <Auth>
-            <CajaContainer />
+            <AlertsContainer>
+              <CajaContainer />
+            </AlertsContainer>
+          </Auth>
+        }
+      />
+
+      {/* Vista de Metodo de pago. */}
+      <Route
+        exact
+        path={PrivateUrls.pago}
+        element={
+          <Auth>
+            <AlertsContainer>
+              <PagoContainer />
+            </AlertsContainer>
+          </Auth>
+        }
+      />
+
+      {/* Vista de Confirmación del pago. */}
+      <Route
+        exact
+        path={PrivateUrls.confirmacion}
+        element={
+          <Auth>
+            <AlertsContainer>
+              <ConfirmacionContainer />
+            </AlertsContainer>
           </Auth>
         }
       />
@@ -49,7 +89,9 @@ const Router = () => {
         path={PrivateUrls.empleados}
         element={
           <Auth>
-            <EmpleadosContainer />
+            <AlertsContainer>
+              <EmpleadosContainer />
+            </AlertsContainer>
           </Auth>
         }
       />
@@ -60,7 +102,9 @@ const Router = () => {
         path={PrivateUrls.inventario}
         element={
           <Auth>
-            <InventarioContainer />
+            <AlertsContainer>
+              <InventarioContainer />
+            </AlertsContainer>
           </Auth>
         }
       />
@@ -71,7 +115,9 @@ const Router = () => {
         path={PrivateUrls.ventas}
         element={
           <Auth>
-            <VentasContainer />
+            <AlertsContainer>
+              <VentasContainer />
+            </AlertsContainer>
           </Auth>
         }
       />
@@ -82,7 +128,9 @@ const Router = () => {
         path={PrivateUrls.estadisticas}
         element={
           <Auth>
-            <StatsContainer />
+            <AlertsContainer>
+              <StatsContainer />
+            </AlertsContainer>
           </Auth>
         }
       />
@@ -93,7 +141,9 @@ const Router = () => {
         path={PrivateUrls.cuenta}
         element={
           <Auth>
-            <AccountContainer />
+            <AlertsContainer>
+              <AccountContainer />
+            </AlertsContainer>
           </Auth>
         }
       />

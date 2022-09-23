@@ -9,6 +9,8 @@ const PublicUrls = {
 
 const PrivateUrls = {
   caja: "/caja",
+  pago: "/pago",
+  confirmacion: "/confirmacion",
   empleados: "/empleados",
   inventario: "/inventario",
   ventas: "/ventas",

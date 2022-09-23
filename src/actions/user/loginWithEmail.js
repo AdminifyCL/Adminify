@@ -6,7 +6,8 @@ import { updateDoc, doc, serverTimestamp } from "firebase/firestore";
 import { firebaseApp, firestore } from "../../database/config.js";
 import collections from "../../types/database/collections.js";
 import { actionUserTypes } from "../../types/actionUserTypes.js";
-const { loginWithEmail } = actionUserTypes;
+import { onSuccess, onError } from "../response.js";
+const { loginWithEmail: TYPE } = actionUserTypes;
 
 /**
  * @title Iniciar sesión con email y contraseña.
@@ -15,25 +16,8 @@ const { loginWithEmail } = actionUserTypes;
  * @returns {object} dispatch
  */
 const loginUserWithEmail = (data) => {
-  console.log(`[🛂][ACTION][${loginWithEmail}]`);
+  console.log(`[🛂][ACTION][${TYPE}]`);
   return async (dispatch) => {
-    // Eventos.
-    const onSuccess = async (response) => {
-      await dispatch({
-        type: loginWithEmail,
-        data: response,
-      });
-    };
-
-    const onError = async (error) => {
-      console.error(`[ERROR][ACTION][${loginWithEmail}]`);
-
-      await dispatch({
-        type: loginWithEmail,
-        data: { error: { error: true, firebaseError: error } },
-      });
-    };
-
     // Fetch.
     try {
       const auth = getAuth();
@@ -48,20 +32,22 @@ const loginUserWithEmail = (data) => {
         })
         .catch((err) => {
           console.log(`[${err.code}] Error al iniciar sesión`);
-          onError(err);
+          onError(dispatch, TYPE, err);
         });
 
-      // Actualizar los datos de la ultima conexión.
-      const userDoc = doc(firestore, collections.usuarios, userData.uid);
-      await updateDoc(userDoc, {
-        lastLoginAt: serverTimestamp(),
-      }).then(() => {
-        console.log("[] Datos de la ultima conexión actualizados");
-      });
+      if (userData) {
+        // Actualizar los datos de la ultima conexión.
+        const userDoc = doc(firestore, collections.usuarios, userData.uid);
+        await updateDoc(userDoc, {
+          lastLoginAt: serverTimestamp(),
+        }).then(() => {
+          console.log("[] Datos de la ultima conexión actualizados");
+        });
 
-      onSuccess(userData);
+        onSuccess(dispatch, TYPE, userData);
+      }
     } catch (err) {
-      onError(err);
+      onError(dispatch, TYPE, err);
     }
   };
 };

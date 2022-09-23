@@ -4,6 +4,7 @@ import { appReducer } from "./appReducer.js";
 import { companyReducer } from "./companyReducer.js";
 import { pageReducer } from "./pagesReducer.js";
 import { userReducer } from "./userReducer.js";
+import { productReducer } from "./productReducer.js";
 
 // Definición de los reducers.
 const Reducers = combineReducers({
@@ -11,6 +12,7 @@ const Reducers = combineReducers({
   app: appReducer,
   company: companyReducer,
   user: userReducer,
+  product: productReducer,
 });
 
 // Exportación de los reducers.

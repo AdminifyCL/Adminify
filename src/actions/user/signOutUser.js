@@ -4,33 +4,16 @@ import { getAuth, signOut } from "firebase/auth";
 // Configuraciones.
 import { firebaseApp, firestore } from "../../database/config.js";
 import { actionUserTypes } from "../../types/actionUserTypes.js";
-const { logout } = actionUserTypes;
+import { onSuccess, onError } from "../response.js";
+const { logout: TYPE } = actionUserTypes;
 
 /**
  *
  * @returns
  */
 const logoutUser = () => {
-  console.log(`[🛂][ACTION][${logout}]`);
+  console.log(`[🛂][ACTION][${TYPE}]`);
   return async (dispatch) => {
-    // Eventos.
-    const onSuccess = (response) => {
-      dispatch({
-        type: logout,
-        data: response,
-      });
-    };
-
-    const onError = (err) => {
-      console.error(`[ERROR][ACTION][${logout}]`);
-      console.error(err);
-
-      dispatch({
-        type: logout,
-        data: {},
-      });
-    };
-
     // Fetch.
     try {
       // Auth Firebase.
@@ -49,9 +32,9 @@ const logoutUser = () => {
         uid: "",
       };
 
-      onSuccess(userData);
+      onSuccess(dispatch, TYPE, userData);
     } catch (err) {
-      onError(err);
+      onError(dispatch, TYPE, err);
     }
   };
 };

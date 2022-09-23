@@ -4,7 +4,8 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 // Configuraciones.
 import { firebaseApp, firestore } from "../../database/config.js";
 import { actionUserTypes } from "../../types/actionUserTypes.js";
-const { onAuthState } = actionUserTypes;
+import { onSuccess, onError } from "../response.js";
+const { onAuthState: TYPE } = actionUserTypes;
 
 /**
  * @name onAuthStateChanged
@@ -12,26 +13,8 @@ const { onAuthState } = actionUserTypes;
  * @returns {void}
  */
 const authStateChanged = () => {
-  console.log(`[🛂][ACTION][${onAuthState}]`);
+  console.log(`[🛂][ACTION][${TYPE}]`);
   return async (dispatch) => {
-    // Eventos.
-    const onSuccess = (response) => {
-      dispatch({
-        type: onAuthState,
-        data: response,
-      });
-    };
-
-    const onError = (err) => {
-      console.error(`[ERROR][ACTION][${onAuthState}]`);
-      console.error(err);
-
-      dispatch({
-        type: onAuthState,
-        data: {},
-      });
-    };
-
     // Fetch.
     try {
       const auth = getAuth();
@@ -39,13 +22,13 @@ const authStateChanged = () => {
       // Identificar el estado de autenticación de la cuenta.
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          onSuccess(user);
+          onSuccess(dispatch, TYPE, user);
         } else {
-          onSuccess({});
+          onSuccess(dispatch, TYPE);
         }
       });
     } catch (err) {
-      onError(err);
+      onError(dispatch, TYPE, err);
     }
   };
 };

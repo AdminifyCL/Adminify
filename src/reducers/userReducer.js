@@ -3,21 +3,31 @@ import initialState from "~redux/initialState.js";
 import { actionUserTypes } from "../types/actionUserTypes.js";
 import handleFirebaseErrors from "./handlers/handleFirebaseErrors.js";
 import userAdapter from "../adapters/userAdapter.js";
-const { loginWithEmail, onAuthState, logout, createUser, getUserData } = actionUserTypes;
-
-// TODO: Falta estandarizar los datos del usuario para los reducers presentados a continuación. Cada uno de ellos recibe y procesa información distinta, omitiendo algunos parametros. Se debe ver detenidamente. Atte: @JajoScript.
+const { loginWithEmail, onAuthState, logout, createUser, getUserData, cleanErrors } =
+  actionUserTypes;
 
 // Definiendo los reducers de la pagina.
 const userReducer = (state = initialState, action) => {
-  console.log(`[🛂][REDUCER][${action.type}]`);
-  const { data } = action;
+  console.log(`[🛂][REDUCER:USER][${action.type}]`);
+  const { data, error, success } = action;
 
   // Variables.
   let userAuth = {};
   let userData = {};
 
   // Control de errores.
-  // TODO: Por hacer.
+  if (error) {
+    console.log(`[🛂][REDUCER][${action.type}][ERROR]`);
+
+    const message = handleFirebaseErrors(data);
+
+    let dataError = {
+      error: true,
+      message: message ?? "",
+    };
+
+    return { ...state, userError: dataError };
+  }
 
   // Manejando los actions.
   switch (action.type) {
@@ -31,21 +41,6 @@ const userReducer = (state = initialState, action) => {
         displayName: data?.displayName ?? "",
         uid: data?.uid ?? "",
       };
-
-      if (data?.error) {
-        const message = handleFirebaseErrors(data.error.firebaseError);
-
-        let dataError = {
-          error: true,
-          message: message,
-        };
-
-        return {
-          ...state,
-          userAuth: {},
-          userError: dataError,
-        };
-      }
 
       return { ...state, userAuth };
       break;
@@ -85,6 +80,10 @@ const userReducer = (state = initialState, action) => {
 
       return { ...state, userInfo };
       break;
+
+    //? Limpiar los errores.
+    case cleanErrors:
+      return { ...state, userError: {} };
 
     default:
       return state;
