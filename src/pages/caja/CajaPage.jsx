@@ -1,10 +1,6 @@
 // Dependencias.
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React , { useState } from "react";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import fakeElements from "../../models/fakeElements.js";
-import { collection, getDocs } from "firebase/firestore";
-import {firestore} from "../../database/config.js"
 import {CajaProductos} from "./CajaProductos.jsx"
 import {CajaCarro} from "./CajaCarro.jsx"
 import {CajaCajero} from "./CajaCajero.jsx"
@@ -13,149 +9,72 @@ import {CajaBotones} from "./CajaBotones.jsx"
 
 // Importación de estilos.
 import "./CajaPage.scss";
+import { useEffect } from "react";
 
-const productos = [...fakeElements];
+const productos = [{index:0 , nombre:"Completo Italiano" , valor:1900, cantidad:1 }]
 
-// const getData = ()=>{ return getDocs(collection(firestore,'TIENDAS'))}
+const CajaPage = (props)=>{
 
+  const [total,setTotal]= useState(0)
+  const [carrito,setCarrito]= useState([])
 
-// Definición de la pagina: Index.
-class CajaPage extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
-    this.state = { total: 0 , carro : [], finder :"", pago: true};
+  const cambiarTotal = (valor)=>{
+      setTotal(total+valor)
   }
 
-  // Funciones para cambiar valores desde los componentes
-  cambiarTotal = (valor)=>{this.setState({total: this.state.total+valor})}
-  cambiarCarro = (n_index,n_nombre,n_precio)=>{
-    this.setState({carro: [...this.state.carro,{
-          index: n_index,
-          nombre: n_nombre,
-          precio: n_precio,
-          cantidad: 1,
+  const cambiarCarro = (index,nombre,precio,cantidad)=>{
+    setCarrito([...carrito,{index,nombre,precio,cantidad}]);
+  }
+
+  const limpiar = () => {
+    setTotal(0);
+    setCarrito([]);
+  };
+
+  const cambiarCantidad = (cantidad, valor, nombre, suma) => {
+    const carro = [...carrito]
+    carro.map((item)=>{ 
+      if(suma){
+        item.cantidad = item.cantidad + 1
+        setTotal(total+valor)
+      }else{
+        if (cantidad > 1){
+          item.cantidad = item.cantidad -1
+          setTotal(total-valor)
         }
-      ],
-    })
-  }
-  limpiar = ()=>{
-    this.setState({carro:[],total:0})
-  }
-  cambiarCantidad = (cantidad,valor,nombre)=>{this.setState({
-    carro: this.state.carro.map((item) => {
-      if ( cantidad > 1) {
-        this.setState({ total: this.state.total + valor });
-      }
-      if (item.nombre == nombre) {
-        item.cantidad = item.cantidad + 1;
-      }
-      return item;
-    }),
-  });}
+      }})
+    console.log(carro)
+  };
 
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-
-  // Renderizado.
-  render( async ) {
-    return (
-      <section className="cajaPage_container">
-        {/* Navegación de la aplicación. */}
-        <section className="cajaPage_navigation">
-          <TabNavigation />
-        </section>
-        {/* Vista de la caja. */}
-        <section className="cajaPage_content">
-          {/* Division en la que se ven los productos */}
-          <CajaProductos
-            total={this.state.total}
-            productos={productos}
-            carro={[...this.state.carro]}
-            cambiaCarro={this.cambiarCarro}
-            cambiaTotal={this.cambiarTotal}
-            cambiaCantidad={this.cambiarCantidad}
-          ></CajaProductos>
-          <CajaCarro carro={this.state.carro}></CajaCarro>
-          {/*<div className="cajaPage_Carro">
-              <div className="cajaPage_Carro_cabecera">
-                <p> Carrito </p>
-              </div>
-              {this.state.carro.map((elemento) => {
-                return (
-                  <div className="cajaPage_Carro_producto">
-                    <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
-                      {elemento.nombre}
-                    </p>
-                    <div className="cajaPage_carro_cantidad">
-                      <button style={{padding:"0px 0px 4px 0px"}}
-                        className="cajaPage_carro_boton"
-                        onClick={() => {
-                          this.setState({
-                            carro: this.state.carro.map((item) => {
-                              if (elemento.cantidad > 1) {
-                                this.setState({ total: this.state.total - elemento.precio });
-                              }
-                              if (item.nombre == elemento.nombre) {
-                                item.cantidad = item.cantidad - 1 > 0 ? item.cantidad - 1 : 1;
-                              }
-                              return item;
-                            }),
-                          });
-                        }}
-                      >
-                        -
-                      </button>
-
-                      <p style={{margin: "1px 5px 1px 5px",width:"20%"}}> {elemento.cantidad >= 1 ? elemento.cantidad : 1} </p>
-
-                      <button
-                        className="cajaPage_carro_boton"
-                        onClick={() => {
-                          this.setState({
-                            carro: this.state.carro.map((item) => {
-                              if (item.nombre == elemento.nombre) {
-                                item.cantidad = item.cantidad + 1;
-                              }
-                              return item;
-                            }),
-                          });
-                          this.setState({ total: this.state.total + elemento.precio });
-                        }}
-                      >
-                        +
-                      </button>
-                    </div>
-                    <p className="cajaPage_producto_texto">
-                      $
-                      {elemento.cantidad >= 1
-                        ? elemento.cantidad * elemento.precio
-                        : elemento.precio}
-                    </p>
-                  </div>
-                );
-              })}
-            </div> */}
-          <CajaCajero></CajaCajero>
-          <CajaTotal total={this.state.total}></CajaTotal>
-          <CajaBotones limpia={this.limpiar}></CajaBotones>
-        </section>
+  return (
+    <section className="cajaPage_container">
+      {/* Navegación de la aplicación. */}
+      <section className="cajaPage_navigation">
+        <TabNavigation />
       </section>
-    );
-  }
-}
+      {/* Vista de la caja. */}
+      <section className="cajaPage_content">
+        <CajaProductos
+          total={total}
+          productos={productos}
+          carro={[...carrito]}
+          cambiaCarro={cambiarCarro}
+          cambiaTotal={cambiarTotal}
+          cambiaCantidad={cambiarCantidad}
+        ></CajaProductos>
 
-// PropTypes.
-CajaPage.propTypes = {
-  userInfo: PropTypes.object,
-};
+        <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad}></CajaCarro>
+
+        <CajaCajero></CajaCajero>
+
+        <CajaTotal total={total}></CajaTotal>
+
+        <CajaBotones limpia={limpiar}></CajaBotones>
+        
+      </section>
+    </section>
+  );
+}
 
 // Exportación de la pagina: Index.
 export default CajaPage;

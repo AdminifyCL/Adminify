@@ -16,7 +16,8 @@ class CajaContainer extends Component {
   }
 
   // -- Ciclo de vida del componente.
-  componentDidMount() {}
+  componentDidMount() {
+  }
   componentDidUpdate(prevProps, prevState) {}
   componentWillUnmount() {}
 
@@ -27,7 +28,7 @@ class CajaContainer extends Component {
   // -- Render
   render() {
     const { userData } = this.props;
-    return <CajaPage userInfo={userData} />;
+    return <CajaPage userInfo={userData}/>;
   }
 }
 

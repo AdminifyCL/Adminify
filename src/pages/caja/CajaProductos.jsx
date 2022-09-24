@@ -33,7 +33,7 @@ export function CajaProductos(props){
             {props.productos.map(producto=>{
               if (producto.nombre.startsWith(capitalize(entrada))) {
                 return (
-                  <div className="cajaPage_Productos_producto">
+                  <div key={producto.nombre} className="cajaPage_Productos_producto">
                     <p>
                       <FaHamburger></FaHamburger>
                     </p>
@@ -53,9 +53,9 @@ export function CajaProductos(props){
                         });
                         if (!vista_producto.includes(true)) {
                           props.cambiaTotal(producto.valor);
-                          props.cambiaCarro(props.carro.length, producto.nombre, producto.valor);
+                          props.cambiaCarro(props.carro.length, producto.nombre, producto.valor, producto.cantidad);
                         } else {
-                          props.cambiaCantidad(producto.cantidad, producto.valor, producto.nombre);
+                          props.cambiaCantidad(producto.cantidad, producto.valor, producto.nombre, true);
                           props.cambiaTotal(producto.valor);
                         }
                       }}

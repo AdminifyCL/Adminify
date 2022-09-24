@@ -1,8 +1,6 @@
 import React from "react";
 import { FaHamburger, FaHotdog } from "react-icons/fa";
 import { Button } from "@mui/material";
-import { useState } from "react";
-import { capitalize } from "./CajaPage"
 
 export function CajaBotones(props){
 
