@@ -8,6 +8,7 @@ const PublicUrls = {
 };
 
 const PrivateUrls = {
+  cargando: "/cargando",
   caja: "/caja",
   pago: "/pago",
   confirmacion: "/confirmacion",

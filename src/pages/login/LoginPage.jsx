@@ -30,7 +30,7 @@ const LoginPage = ({ userError, userLogin, userAuth, loading }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/caja");
+      navigate("/cargando");
     }
   }, [isAuthenticated]);
 

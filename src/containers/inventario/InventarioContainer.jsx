@@ -12,31 +12,61 @@ import { fetchUserData } from "../../actions/user/fetchUserData.js";
 import InventarioPage from "../../pages/inventario/InventarioPage.jsx";
 
 // Definición del contenedor: <InventarioContainer />
-const InventarioContainer = ({ userInfo, userAuth, fetchUserData, fetchProducts, allProducts }) => {
+const InventarioContainer = (props) => {
   // -- Manejo del estado.
+  const { userAuth, fetchUserData, fetchProducts, allProducts } = props;
   const [productos, setProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   // -- Ciclo de vida.
   useEffect(() => {
     console.log("[container] Mount");
-    if (userAuth?.uid) {
+    let isSubscribed = true;
+
+    // Fetch de productos.
+    const fetchStoreProducts = async () => {
+      // Consulta a la información del usuario.
       let userId = userAuth.uid;
-      fetchUserData(userId);
-    }
+      const user = await fetchUserData(userId)
+        .then((userData) => {
+          console.log("[] Me traje la información del usuario.");
+          return userData;
+        })
+        .catch((error) => console.error(error));
+
+      // Consulta a la tienda.
+      const storeId = user.tiendaId;
+      console.log("[] Store id:", storeId);
+      const products = await fetchProducts(storeId)
+        .then(() => {
+          console.log("[] Me traje los productos.");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      console.log("[] Productos", products);
+      if (isSubscribed) {
+        setProductos(products);
+      }
+    };
+
+    fetchStoreProducts()
+      .then(() => {
+        setLoading(false);
+      })
+      .catch((err) => console.error(err));
+
+    // Garbage
+    return () => (isSubscribed = false);
   }, []);
 
   // -- Metodos.
-  const conseguirProductos = async (id) => {
-    console.log("[] Conseguir productos");
-    await fetchProducts(id);
-  };
-
   const createProducto = () => {};
 
   // -- Renderizado.
-  return (
-    <InventarioPage userInfo={userInfo} getProducts={conseguirProductos} products={allProducts} />
-  );
+  console.log("[] Productos: ", productos);
+  return <InventarioPage products={productos} loading={loading} />;
 };
 
 // PropTypes.
@@ -44,7 +74,6 @@ InventarioContainer.propTypes = {};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userInfo: state.user.userInfo ?? {},
   userAuth: state.user.userAuth ?? {},
   allProducts: state.product.allProducts ?? [],
 });
