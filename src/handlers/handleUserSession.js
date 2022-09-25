@@ -9,7 +9,7 @@ import { firebaseApp, firestore } from "../database/config.js";
  * @returns {object}
  */
 const handleUserSession = async (data) => {
-  console.log("[#️⃣][INFO][handleUserSession]");
+  console.log("[🛂][handleUserSession]");
 
   const { email, contraseña: pass } = data;
 

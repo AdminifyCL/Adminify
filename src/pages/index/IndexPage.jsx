@@ -1,6 +1,6 @@
 // Dependencias.
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { FaCube } from "react-icons/fa";
 import PropTypes from "prop-types";
@@ -8,43 +8,29 @@ import PropTypes from "prop-types";
 // Importación de estilos.
 import "./IndexPage.scss";
 
-// Definición de la pagina: Index.
-class IndexPage extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+// Definición de la pagina: <IndexPage />.
+const IndexPage = ({}) => {
+  // -- Manejo del estado.
+  const navigate = useNavigate();
 
-    this.state = {};
-  }
-
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-
-  // Renderizado.
-  render() {
-    return (
-      <section className="indexPage_contenedor">
-        <div className="indexPage_contenido">
-          <div className="indexPage_titlecontent">
-            <FaCube className="indexPage_titlecontent-icon" />
-            <h1 className="indexPage_titlecontent-title">Pay Admin Box</h1>
-          </div>
-
-          <Link to="login">
-            <Button variant="contained">Entrar</Button>
-          </Link>
+  // -- Ciclo de vida.
+  // -- Metodos.
+  // -- Renderizado.
+  return (
+    <section className="indexPage_contenedor">
+      <div className="indexPage_contenido">
+        <div className="indexPage_titlecontent">
+          <FaCube className="indexPage_titlecontent-icon" />
+          <h1 className="indexPage_titlecontent-title">Pay Admin Box</h1>
         </div>
-      </section>
-    );
-  }
-}
+
+        <Button variant="contained" onClick={() => navigate("/login")}>
+          Entrar
+        </Button>
+      </div>
+    </section>
+  );
+};
 
 // PropTypes.
 IndexPage.propTypes = {};

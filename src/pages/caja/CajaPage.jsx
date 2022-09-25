@@ -1,11 +1,19 @@
 // Dependencias.
-import React , { useState } from "react";
+import React, { Component,useState } from "react";
+import PropTypes from "prop-types";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 import {CajaProductos} from "./CajaProductos.jsx"
 import {CajaCarro} from "./CajaCarro.jsx"
 import {CajaCajero} from "./CajaCajero.jsx"
 import {CajaTotal} from "./CajaTotal.jsx"
 import {CajaBotones} from "./CajaBotones.jsx"
+import fakeElements from "../../models/fakeElements.js";
+import { Button } from "@mui/material";
+import { FaHamburger, FaHotdog } from "react-icons/fa";
+import { getDatabase } from "firebase/database";
+import { Menu } from "./Menu";
+import { Navigate } from "react-router-dom";
+import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
 
 // Importación de estilos.
 import "./CajaPage.scss";

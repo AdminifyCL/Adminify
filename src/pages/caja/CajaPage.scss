@@ -47,7 +47,7 @@
   // align-items: center;
 }
 
-.cajaPage_Productos_lista{
+.cajaPage_Productos_lista {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -91,7 +91,7 @@
   border-radius: 0.3rem;
 }
 
-.cajaPage_Cajero{
+.cajaPage_Cajero {
   background-color: Colors.$white-color;
   border: 4px solid Colors.$primary_dark-color;
   border-radius: 0.75rem;
@@ -116,7 +116,6 @@
   left: 58%;
   top: 15%;
   overflow: auto;
-  
 }
 
 .cajaPage_Carro_producto {
@@ -202,7 +201,7 @@
   align-items: center;
 }
 
-.cajaPage_Productos_cabecera{
+.cajaPage_Productos_cabecera {
   // border: 1px solid black;
   width: 100%;
   height: 15%;
@@ -216,7 +215,7 @@
   margin-bottom: 0.25rem;
 }
 
-.cajaPage_Carro_cabecera{
+.cajaPage_Carro_cabecera {
   // border: 1px solid black;
   width: 100%;
   height: 12.5%;
@@ -230,7 +229,7 @@
   margin-bottom: 0.5rem;
 }
 
-.cajaPage_Cajero_cabecera{
+.cajaPage_Cajero_cabecera {
   // border: 1px solid black;
   width: 100%;
   height: 12.5%;
@@ -244,7 +243,7 @@
   margin-bottom: 0.25rem;
 }
 
-.cajaPage_Total_valor{
+.cajaPage_Total_valor {
   width: 70%;
   background-color: Colors.$gray-color;
   text-align: center;

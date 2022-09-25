@@ -32,8 +32,8 @@ class RegistroContainer extends Component {
   // -- Métodos [MAPPING].
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <RegistroPage createUser={this.handleCreateUser} userInfo={userData} />;
+    const { userInfo } = this.props;
+    return <RegistroPage createUser={this.handleCreateUser} userInfo={userInfo} />;
   }
 }
 
@@ -42,7 +42,7 @@ RegistroContainer.propTypes = {};
 
 // Redux.
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = {

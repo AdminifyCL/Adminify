@@ -1,10 +1,13 @@
 // Dependencias.
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
+import { fetchUserData } from "../../actions/user/fetchUserData.js";
+import Cargando from "../../components/Cargando/Cargando.jsx";
 
 // Importación de componentes.
-import CuentaPage from "../../pages/cuenta/CuentaPage.jsx";
+// import CuentaPage from "../../pages/cuenta/CuentaPage.jsx";
+const CuentaPage = lazy(() => import("../../pages/cuenta/CuentaPage.jsx"));
 
 // Definición del contenedor.
 class CuentaContainer extends Component {
@@ -16,7 +19,13 @@ class CuentaContainer extends Component {
   }
 
   // -- Ciclo de vida del componente.
-  componentDidMount() {}
+  componentDidMount() {
+    const { fetchUserData, userAuth } = this.props;
+
+    // Conseguir la información del usuario.
+    const USER_ID = userAuth.uid;
+    fetchUserData(USER_ID);
+  }
   componentDidUpdate(prevProps, prevState) {}
   componentWillUnmount() {}
 
@@ -27,20 +36,29 @@ class CuentaContainer extends Component {
 
   // -- Render
   render() {
-    const { userData } = this.props;
-    return <CuentaPage userInfo={userData} />;
+    const { userInfo } = this.props;
+    return (
+      <Suspense fallback={<Cargando />}>
+        <CuentaPage userInfo={userInfo} />
+      </Suspense>
+    );
   }
 }
 
 // PropTypes.
-CuentaContainer.propTypes = {};
+CuentaContainer.propTypes = {
+  userInfo: PropTypes.object.isRequired,
+};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userData: state.user.userData,
+  userAuth: state.user.userAuth ?? {},
+  userInfo: state.user.userInfo ?? {},
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  fetchUserData,
+};
 
 // Exportación del contenedor.
 export default connect(mapStateToProps, mapDispatchToProps)(CuentaContainer);

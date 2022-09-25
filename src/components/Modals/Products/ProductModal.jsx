@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dialog,
   DialogTitle,
@@ -10,42 +10,51 @@ import {
   MenuItem,
 } from "@mui/material";
 import { FaEgg, FaDrumstickBite, FaFish, FaHamburger, FaIceCream } from "react-icons/fa";
+import { useLocalStorage } from "../../../hooks/useLocalStorage.jsx";
+import PropTypes from "prop-types";
 
 // Estilos.
 
-// Definición del componente.
-class ProductModal extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+// Definición del componente: <ProductModal />
+const ProductModal = ({ open, onClose }) => {
+  // -- Manejo de estado.
+  const [categorias, setCategorias] = useLocalStorage("categorias", []);
+  const [inputName, setInputName] = useState("");
+  const [inputCategory, setInputCategory] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [inputUnits, setInputUnits] = useState("");
+  const [inputIcon, setInputIcon] = useState("");
 
-    this.state = {
-      inputName: "",
-      inputCategory: "",
-      inputValue: "",
-      inputUnits: "",
-      inputIcon: "",
-    };
-  }
+  // -- Ciclo de vida.
+  // -- Metodos.
+  const handleChange = (event) => {
+    // setState({ [event.target.name]: event.target.value });
+    const inputId = event.target.name;
+    const new_value = event.target.value;
 
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    switch (inputId) {
+      case "inputName":
+        setInputName(new_value);
+        break;
+      case "inputCategory":
+        setInputCategory(new_value);
+        break;
+      case "inputValue":
+        setInputValue(new_value);
+        break;
+      case "inputUnits":
+        setInputUnits(new_value);
+        break;
+      case "inputIcon":
+        setInputIcon(new_value);
+        break;
+      default:
+        break;
+    }
   };
 
-  handleVisibility = () => {
-    const { onClose } = this.props;
-
+  const handleVisibility = () => {
     // Paso 1: Enviar datos.
-    const { inputName, inputCategory, inputValue, inputUnits, inputIcon } = this.state;
     const data = {
       nombre: inputName,
       categoria: inputCategory,
@@ -54,110 +63,106 @@ class ProductModal extends Component {
       icono: inputIcon,
     };
 
-    console.log("[] Datos del formulario: ", data);
-
     // 2: Ocultar el modal.
     onClose();
 
     // 3: Resetear el formulario.
-    this.setState({
-      inputName: "",
-      inputCategory: "",
-      inputValue: "",
-      inputUnits: "",
-      inputIcon: "",
+    setInputName("");
+    setInputCategory("");
+    setInputValue("");
+    setInputUnits("");
+    setInputIcon("");
+  };
+
+  const mappingCategorias = () => {
+    return categorias.map((categoria) => {
+      return (
+        <MenuItem key={categoria.id} value={categoria.nombre}>
+          {categoria.nombre}
+        </MenuItem>
+      );
     });
   };
 
-  // -- Métodos [MAPPING].
+  // -- Renderizado.
+  return (
+    <Dialog open={open} fullWidth={true}>
+      {/* Titulo del modal */}
+      <DialogTitle align="center">Agregar producto</DialogTitle>
 
-  // Renderizado.
-  render() {
-    const { open } = this.props;
-    const { inputCategory } = this.state;
+      {/* Contenido del modal */}
+      <DialogContent dividers={true}>
+        <div style={{ display: "flex", flexDirection: "column", rowGap: 10 }}>
+          <TextField
+            name="inputName"
+            label="Nombre"
+            placeholder="Nombre del producto"
+            variant="filled"
+            fullWidth={true}
+            onChange={(event) => handleChange(event)}
+          />
+          <TextField
+            name="inputCategory"
+            label="Categoria"
+            placeholder="Categoria del producto"
+            value={inputCategory}
+            select={true}
+            variant="filled"
+            fullWidth={true}
+            onChange={(event) => handleChange(event)}
+          >
+            {mappingCategorias()}
+          </TextField>
+          <TextField
+            name="inputValue"
+            label="Valor"
+            placeholder="Valor del producto"
+            variant="filled"
+            fullWidth={true}
+            onChange={(event) => handleChange(event)}
+          />
+          <TextField
+            name="inputUnits"
+            label="Unidades"
+            placeholder="Unidades en stock"
+            variant="filled"
+            fullWidth={true}
+            onChange={(event) => handleChange(event)}
+          />
 
-    return (
-      <Dialog open={open} fullWidth={true}>
-        {/* Titulo del modal */}
-        <DialogTitle align="center">Agregar producto</DialogTitle>
-
-        {/* Contenido del modal */}
-        <DialogContent dividers={true}>
-          <div style={{ display: "flex", flexDirection: "column", rowGap: 10 }}>
-            <TextField
-              name="inputName"
-              label="Nombre"
-              placeholder="Nombre del producto"
-              variant="filled"
-              fullWidth={true}
-              onChange={(event) => this.handleChange(event)}
-            />
-            <TextField
-              name="inputCategory"
-              label="Categoria"
-              placeholder="Categoria del producto"
-              value={inputCategory}
-              select={true}
-              variant="filled"
-              fullWidth={true}
-              onChange={(event) => this.handleChange(event)}
-            >
-              <MenuItem key="sandwich" value="sandwich">
-                Sandwich
-              </MenuItem>
-              <MenuItem key="vienesa" value="vienesa">
-                Vienesa
-              </MenuItem>
-              <MenuItem key="as" value="as">
-                AS
-              </MenuItem>
-            </TextField>
-            <TextField
-              name="inputValue"
-              label="Valor"
-              placeholder="Valor del producto"
-              variant="filled"
-              fullWidth={true}
-              onChange={(event) => this.handleChange(event)}
-            />
-            <TextField
-              name="inputUnits"
-              label="Unidades"
-              placeholder="Unidades en stock"
-              variant="filled"
-              fullWidth={true}
-              onChange={(event) => this.handleChange(event)}
-            />
-
-            {/* Iconos del producto */}
-            <div style={{ display: "flex", flexDirection: "row", columnGap: 10 }}>
-              <Button variant="outlined">
-                <FaHamburger />
-              </Button>
-              <Button variant="outlined">
-                <FaIceCream />
-              </Button>
-              <Button variant="outlined">
-                <FaDrumstickBite />
-              </Button>
-            </div>
+          {/* Iconos del producto */}
+          <div style={{ display: "flex", flexDirection: "row", columnGap: 10 }}>
+            <Button variant="outlined">
+              <FaHamburger />
+            </Button>
+            <Button variant="outlined">
+              <FaIceCream />
+            </Button>
+            <Button variant="outlined">
+              <FaDrumstickBite />
+            </Button>
           </div>
-        </DialogContent>
+        </div>
+      </DialogContent>
 
-        {/* Botones del modal */}
-        <DialogActions>
-          <Button variant="outlined" onClick={() => this.handleVisibility()}>
-            Cancelar
-          </Button>
-          <Button variant="contained" onClick={() => this.handleVisibility()}>
-            Guardar
-          </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  }
-}
+      {/* Botones del modal */}
+      <DialogActions>
+        <Button variant="outlined" onClick={() => handleVisibility()}>
+          Cancelar
+        </Button>
+        <Button variant="contained" onClick={() => handleVisibility()}>
+          Guardar
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
 
 // Proptypes.
+ProductModal.proptypes = {
+  open: PropTypes.bool.isRequired,
+  setClose: PropTypes.func.isRequired,
+};
+
 // Exportación.
 export default ProductModal;

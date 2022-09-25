@@ -48,7 +48,7 @@ const payAdminTheme = createTheme({
   },
 
   typography: {
-    fontFamily: ["'Poppins', sans-serif"].join(","),
+    fontFamily: ["Poppins", "sans-serif"].join(","),
   },
 });
 

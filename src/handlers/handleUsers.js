@@ -13,7 +13,7 @@ import { firebaseApp, firestore } from "../database/config.js";
  * @param {object} data
  */
 const handleCreateUser = async (data) => {
-  console.log("[#️⃣][INFO][handleCreateUser] Creando usuario...");
+  console.log("[🛂][handleCreateUser] Creando usuario...");
 
   const { email, contraseña, nombre, apellido, licencia, cargo } = data;
 
@@ -37,7 +37,7 @@ const handleCreateUser = async (data) => {
           displayName: `${nombre} ${apellido}`,
         })
           .then(() => {
-            console.log("[#️⃣][INFO][updateProfile] Nombre actualizado en Firebase Authentication.");
+            console.log("[🛂][updateProfile] Nombre actualizado en Firebase Authentication.");
           })
           .catch((err) => {
             console.log(`[❌][ERROR][updateProfile]${err.code} ${err.message}`);
@@ -64,7 +64,7 @@ const handleCreateUser = async (data) => {
     const usuarioDoc = doc(firestore, "USUARIOS", newData.uid);
     await setDoc(usuarioDoc, newData)
       .then(() => {
-        console.log("[#️⃣][INFO][setDoc] Documento creado!");
+        console.log("[🛂][setDoc] Documento creado!");
       })
       .catch((err) => {
         console.log("[❌][ERROR][setDoc] Error al crear el documento.");

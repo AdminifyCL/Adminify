@@ -1,6 +1,7 @@
 // Dependencias.
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 import config from "~config/config.js";
 
 // Configuraciones.
@@ -16,7 +17,8 @@ const firebaseConfig = {
 
 // Inicialización de la base de datos.
 const firebaseApp = initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
 // Exportación de las configuraciones.
-export { firebaseApp, firestore };
+export { firebaseApp, firebaseAuth, firestore };
