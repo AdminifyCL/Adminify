@@ -35,10 +35,6 @@ class CajaContainer extends Component {
 
   render() {
     const { userInfo, productos } = this.props;
-
-    {
-      console.log("[] Productos", productos);
-    }
     return <CajaPage userInfo={userInfo} />;
   }
 }
