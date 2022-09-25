@@ -16,10 +16,10 @@ const ConfirmacionPage = ({}) => {
   const navigate = useNavigate();
   // -- Ciclo de vida.
   // -- Metodos.
-  const steps = ["Select master blaster campaign settings", "proceso de pago", "pago confimado"];
+  const steps = ["Selección de productos", "Proceso de pago", "Confirmación de pago"];
   const handleImpresion = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
-    ventana.document.write("Hola, esto es una prueba jeje");
+    ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
     ventana.document.close();
     ventana.focus();
     ventana.onload = function () {
