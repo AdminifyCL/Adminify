@@ -1,5 +1,5 @@
 // Dependencias.
-import { setDoc, doc, collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import { doc, collection, getDoc, getDocs } from "firebase/firestore";
 
 // Configuraciones.
 import { firebaseApp, firebaseAuth, firestore } from "../../database/config.js";
@@ -18,12 +18,12 @@ const fetchProducts = () => {
         // Información del usuario.
         const userId = firebaseAuth.currentUser.uid;
 
+        // Consultar la información del usuario.
         const userDoc = doc(firestore, collections.usuarios, userId);
         const userSnapshot = await getDoc(userDoc);
         const userData = userSnapshot.data();
 
         const tiendaId = userData.tiendaId;
-        console.log("[] Tienda ID: ", tiendaId);
 
         let listaProductos = [];
 

@@ -38,7 +38,7 @@ class CajaContainer extends Component {
     {
       console.log("[] Productos", productos);
     }
-    return <CajaPage userInfo={userInfo} productos = {productos} />;
+    return <CajaPage userInfo={userInfo} productos={productos} />;
   }
 }
 

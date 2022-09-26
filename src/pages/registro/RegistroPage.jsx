@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
-
+import { FaAccessibleIcon, FaConciergeBell } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -17,6 +17,9 @@ const RegistroPage = ({}) => {
   return (
     <section className="registroPage_Contenedor">
       <section className="registroPage_Contenido">
+        <div className="registroPage_icon">
+          <FaConciergeBell />
+        </div>
         <section className="registroPage_Titulo">
           <h1>Registro</h1>
         </section>
