@@ -123,15 +123,14 @@
   color: Colors.$primary_dark-color;
 }
 .pagosPage_ComboBox {
-  width: 30%;
+  width: 20%;
   height: 8%;
   position: absolute;
-  left: 48%;
-  top: 65%;
+  left: 43%;
+  top: 68%;
   margin: 5px;
   padding-left: 15px;
   padding-right: 15px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
@@ -139,7 +138,7 @@
   color: Colors.$primary_dark-color;
 }
 .pagosPage_InfoCompraContenido {
-  width: 38%;
+  width: 26.1%;
   height: 7%;
   position: absolute;
   left: 43%;
@@ -153,4 +152,71 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: Colors.$primary_dark-color;
+}
+
+.pagosPage_ProductosLista {
+  color: Colors.$primary_dark-color;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1%;
+  margin: 1%;
+  width: 97%;
+}
+
+.pagosPage_Cantidad {
+  text-align: center;
+  background-color: Colors.$gray-color;
+  border-radius: 0.5rem;
+  color: Colors.$primary_dark-color;
+  padding: 15px;
+  width: 5%;
+}
+
+.pagosPage_Producto {
+  text-align: center;
+  background-color: Colors.$gray-color;
+  border-radius: 0.5rem;
+  color: Colors.$primary_dark-color;
+  padding: 15px;
+  width: 60%;
+}
+
+.pagosPage_Valor {
+  border-radius: 0.5rem;
+  color: Colors.$primary_dark-color;
+  padding: 15px;
+}
+
+.show-elementPagos {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: fadeInPagos;
+  background-color: rgb(225, 225, 255);
+}
+
+.hide-elementPagos {
+  animation-duration: 2s;
+  animation-fill-mode: both;
+  animation-name: fadeOutPagos;
+  animation-name: rotate;
+}
+@keyframes fadeInPagos {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutPagos {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

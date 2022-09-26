@@ -6,8 +6,9 @@ import {
   Button,
   TextField,
   Checkbox,
+  Autocomplete,
   Box,
-  InputaLabel,
+  InputLabel,
   MenuItem,
   FormControl,
   Select,
@@ -23,6 +24,12 @@ const PagosPage = ({}) => {
   const label = { inputProps: { "aria-label": "Checkbox cliente" } };
 
   const [checked, setChecked] = React.useState(true);
+  const [pago, setpago] = React.useState("");
+  const [mostrarComponente, setMostrarComponente] = React.useState(true);
+
+  const handleChangePago = (event) => {
+    setpago(event.target.value);
+  };
 
   const handleChange = () => {
     setChecked(event.target.checked);
@@ -49,68 +56,101 @@ const PagosPage = ({}) => {
           <div className="pagosPage_Titulo">
             <h1>Pago</h1>
           </div>
-          <section className="pagosPage_TituloCliente">
-            <p>
-              ¿Desea agregar un cliente?{" "}
-              <Checkbox onChange={handleChange} inputProps={{ "aria-label": "controlled" }} />
-            </p>
-          </section>
+
           <section className="pagosPage_ProductosContenedor">
             <section className="pagosPage_ProductosContenido">
               <div className="pagosPage_ProductosCabecera">
-                <p>Lista de productos</p>
+                <p>Resumen de productos</p>
               </div>
               <div className="pagosPage_ProductosLista">
-                <p>...</p>
+                <div className="pagosPage_Cantidad">1</div>
+                <div className="pagosPage_Producto">Completo italiano</div>
+                <div className="pagosPage_Valor">$1900</div>
               </div>
             </section>
           </section>
 
           <section className="pagosPage_ProductosTotal">
             <p>Total:</p>
-            <p className="pagosPage_totalValor">...</p>
+            <p className="pagosPage_totalValor">$1900</p>
           </section>
 
-          <section className="pagosPage_Clientecontenedor">
-            <section className="pagosPage_ClienteContenido">
-              <div className="pagosPage_ClienteCabecera">
-                <p> Nuevo cliente </p>
-              </div>
-              <div className="pagosPage_ClienteFormulario">
-                <TextField
-                  id="inputNombreCliente"
-                  fullWidth
-                  label="Nombre"
-                  variant="outlined"
-                  margin="dense"
-                />
-                <TextField
-                  id="inputCorreoCliente"
-                  fullWidth
-                  label="Correo"
-                  variant="outlined"
-                  margin="dense"
-                />
-                <TextField
-                  id="inputNumeroCliente"
-                  fullWidth
-                  label="Numero"
-                  variant="outlined"
-                  margin="dense"
-                />
-              </div>
-              <div className="pagosPage_ClienteBoton">
-                <Button variant="contained">guardar</Button>
-              </div>
-            </section>
+          <section className="pagosPage_TituloCliente">
+            <p>
+              ¿Desea agregar un cliente?{" "}
+              <Checkbox
+                onChange={() => setMostrarComponente(!mostrarComponente)}
+                inputProps={{ "aria-label": "controlled" }}
+              />
+            </p>
           </section>
-
+          <div className={!mostrarComponente ? "show-elementPagos" : null}>
+            {!mostrarComponente && (
+              <div>
+                {" "}
+                <section className="pagosPage_Clientecontenedor">
+                  <section className="pagosPage_ClienteContenido">
+                    <div className="pagosPage_ClienteCabecera">
+                      <p> Nuevo cliente </p>
+                    </div>
+                    <div className="pagosPage_ClienteFormulario">
+                      <TextField
+                        id="inputNombreCliente"
+                        fullWidth
+                        label="Nombre"
+                        variant="filled"
+                        margin="dense"
+                      />
+                      <TextField
+                        id="inputCorreoCliente"
+                        fullWidth
+                        label="Correo"
+                        variant="filled"
+                        margin="dense"
+                      />
+                      <TextField
+                        id="inputNumeroCliente"
+                        fullWidth
+                        label="Número telefónico"
+                        variant="filled"
+                        margin="dense"
+                      />
+                    </div>
+                    <div className="pagosPage_ClienteBoton">
+                      <Button
+                        onClick={() => {
+                          alert("Cliente guardado con éxito");
+                        }}
+                        variant="contained"
+                      >
+                        Guardar
+                      </Button>
+                    </div>
+                  </section>
+                </section>{" "}
+              </div>
+            )}
+          </div>
           <section className="pagosPage_InfoCompraContenedor">
             <div className="pagosPage_InfoCompraTitulo">
               <p>Información de la compra</p>
             </div>
             <div className="pagosPage_ComboBox">
-              <p>(COMBOBOX)</p>
+              <Box sx={{ minWidth: 500 }}>
+                <FormControl variant="filled" fullWidth>
+                  <InputLabel id="simple-select-labelPago">Método de Pago</InputLabel>
+                  <Select
+                    labelId="simple-select-labelPago"
+                    id="simple-selectPago"
+                    value={pago}
+                    label="pago"
+                    onChange={handleChangePago}
+                  >
+                    <MenuItem value={1}>Efectivo</MenuItem>
+                    <MenuItem value={2}>Débito</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
             </div>
             <section className="pagosPage_InfoCompraContenido">
               <div className="pagosPage_CancelarBoton">
