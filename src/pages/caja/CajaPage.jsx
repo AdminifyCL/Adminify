@@ -8,9 +8,10 @@ import {CajaCarro} from "./CajaCarro.jsx"
 import {CajaCajero} from "./CajaCajero.jsx"
 import {CajaTotal} from "./CajaTotal.jsx"
 import {CajaBotones} from "./CajaBotones.jsx"
-import { Menu } from "./Menu";
 import { Navigate } from "react-router-dom";
 import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
+import { Fab } from "@mui/material";
+import { VscGear } from "react-icons/vsc";
 
 // Importación de estilos.
 import "./CajaPage.scss";
@@ -84,6 +85,9 @@ const CajaPage = (props)=>{
 
         <CajaBotones limpia={limpiar} toPagar = {toPagar}></CajaBotones>
         
+        <Fab color="primary" aria-label="add" style={{position:"absolute",top:"89%",left:"94%"}}>
+          <VscGear/>
+        </Fab>   
         
       </section>
       {toPago ? <Navigate to={PrivateUrls.pago} /> : null}
