@@ -1,6 +1,7 @@
 import React from "react";
 import { FaHamburger, FaHotdog } from "react-icons/fa";
-import { Button } from "@mui/material";
+import { Button, Fab } from "@mui/material";
+import { TbBuildingStore } from "react-icons/tb";
 
 export function CajaBotones(props){
 
@@ -19,11 +20,14 @@ export function CajaBotones(props){
                 variant="contained"
                 style={{ height: "50px", width: "130px" }}
                 onClick={() => {
-                  console.log("Pagando...")
+                  props.toPagar()
                 }}
               >
                 Pagar
-              </Button>          
+              </Button>
+              <Fab color="primary" aria-label="add">
+        <TbBuildingStore/>
+      </Fab>        
             </div>
     )
     

@@ -12,7 +12,6 @@ class CajaContainer extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
@@ -39,7 +38,7 @@ class CajaContainer extends Component {
     {
       console.log("[] Productos", productos);
     }
-    return <CajaPage userInfo={userInfo} />;
+    return <CajaPage userInfo={userInfo} productos = {productos} />;
   }
 }
 
