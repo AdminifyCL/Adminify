@@ -1,4 +1,5 @@
 // Dependencias.
+//Pa que se vayan los cambios
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";

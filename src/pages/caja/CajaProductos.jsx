@@ -2,6 +2,7 @@ import React from "react";
 import { FaHamburger} from "react-icons/fa";
 import { Button } from "@mui/material";
 import { useState } from "react";
+//Pa que se vayan los cambios
 
 import "./CajaPage.scss";
 
