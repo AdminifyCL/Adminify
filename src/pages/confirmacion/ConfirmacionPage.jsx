@@ -4,13 +4,17 @@ import { Button } from "@mui/material";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 import { Step, Stepper, StepLabel } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import ImageBg from "../../assets/images/bg-table.png";
+import fondo from "../../assets/images/bg-table.png";
 import { FaReceipt, AiFillCheckCircle, FaCheckCircle } from "react-icons/fa";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
 
 // Definición del componente: <ConfirmacionPage />
+const Estilos = {
+  backgroundImage: fondo,
+  backgroundColor: "red",
+};
 const ConfirmacionPage = ({}) => {
   // -- Manejo del estado.
   const navigate = useNavigate();
@@ -50,7 +54,7 @@ const ConfirmacionPage = ({}) => {
           ))}
         </Stepper>
       </div>
-      <section className="ConfirmaciónPage-container">
+      <section style={Estilos}>
         <div className="confirmacionPage_titulo">
           <h1>¡Pago confirmado!</h1>
           <div className="confirmacionPage_subtitulo">
