@@ -2,8 +2,16 @@
 import React from "react";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 import { useNavigate } from "react-router-dom";
-import { Button, TextField, Checkbox } from "@mui/material";
-import Autocomplete from "@mui/material/Autocomplete";
+import {
+  Button,
+  TextField,
+  Checkbox,
+  Box,
+  InputaLabel,
+  MenuItem,
+  FormControl,
+  Select,
+} from "@mui/material";
 // Estilos.
 import "./PagosPage.scss";
 
@@ -11,7 +19,15 @@ import "./PagosPage.scss";
 const PagosPage = ({}) => {
   // -- Manejo del estado.
   const navigate = useNavigate();
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+  const label = { inputProps: { "aria-label": "Checkbox cliente" } };
+
+  const [checked, setChecked] = React.useState(true);
+
+  const handleChange = () => {
+    setChecked(event.target.checked);
+    console.log("hola mundo");
+  };
   // -- Ciclo de vida.
   // -- Metodos.
   const handleRedirect = () => {
@@ -35,7 +51,8 @@ const PagosPage = ({}) => {
           </div>
           <section className="pagosPage_TituloCliente">
             <p>
-              ¿Desea agregar un cliente? <Checkbox {...label} defaultChecked />
+              ¿Desea agregar un cliente?{" "}
+              <Checkbox onChange={handleChange} inputProps={{ "aria-label": "controlled" }} />
             </p>
           </section>
           <section className="pagosPage_ProductosContenedor">
@@ -93,11 +110,13 @@ const PagosPage = ({}) => {
               <p>Información de la compra</p>
             </div>
             <div className="pagosPage_ComboBox">
-              <p>combobox</p>
+              <p>(COMBOBOX)</p>
             </div>
             <section className="pagosPage_InfoCompraContenido">
               <div className="pagosPage_CancelarBoton">
-                <Button variant="outlined">Cancelar compra</Button>
+                <Button onClick={() => navigate("/caja")} variant="outlined">
+                  Cancelar compra
+                </Button>
               </div>
               <Button onClick={() => handleRedirect()} variant="contained">
                 Confirmar pago

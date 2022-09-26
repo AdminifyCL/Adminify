@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .registroPage_Contenido {
   height: 90%;
   width: 40%;
@@ -28,6 +29,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.registroPage_icon {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  color: #226f54;
+  font-size: 100px;
+  position: absolute;
+  top: 10%;
 }
 
 .registroPage_Formulario {
