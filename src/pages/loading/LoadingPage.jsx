@@ -27,13 +27,15 @@ const LoadingPage = (props) => {
   return (
     <div className="LoadingPage-container">
       <FaTruck size={60} className="LoadingPage-icon" />
-      <h1 className="LoadingPage-title">Loading Page</h1>
+      <h1 className="LoadingPage-title">Pay Admin Box</h1>
 
       {/* Barra de carga */}
       <div className="LoadingPage-loadContainer">
         <LinearProgress value={percent} variant="determinate" />
         <p className="LoadingPage-subTitle">{message}</p>
       </div>
+
+      {/* Se podrian incluir consejos aquí. */}
     </div>
   );
 };
