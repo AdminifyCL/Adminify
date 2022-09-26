@@ -9,7 +9,7 @@ export function CajaCarro(props){
       </div>
       {props.carro.map((producto)=>{
         return (
-          <div className="cajaPage_Carro_producto">
+          <div key = {producto.nombre}className="cajaPage_Carro_producto">
             <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
               {producto.nombre}
             </p>

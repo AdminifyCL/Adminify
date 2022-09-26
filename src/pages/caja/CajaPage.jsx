@@ -40,16 +40,18 @@ const CajaPage = (props)=>{
   const cambiarCantidad = (cantidad, valor, nombre, suma) => {
     const carro = [...carrito]
     carro.map((item)=>{ 
-      if(suma){
-        item.cantidad = item.cantidad + 1
-        setTotal(total+valor)
-      }else{
-        if (cantidad > 1){
-          item.cantidad = item.cantidad -1
-          setTotal(total-valor)
-        }
-      }})
-    console.log(carro)
+      if(item.nombre==nombre){
+        if(suma){
+          item.cantidad = item.cantidad + 1
+          setTotal(total+valor)
+        }else{
+          if (cantidad > 1){
+            item.cantidad = item.cantidad -1
+            setTotal(total-valor)
+          }
+        }}
+      }
+      )
   };
 
   const toPagar = () => {
