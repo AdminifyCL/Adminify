@@ -1,37 +1,51 @@
 // Dependencias.
-import { setDoc, doc, collection, getDoc, getDocs, query, where } from "firebase/firestore";
+import { doc, collection, getDoc, getDocs } from "firebase/firestore";
 
 // Configuraciones.
-import { firebaseApp, firestore } from "../../database/config.js";
+import { firebaseApp, firebaseAuth, firestore } from "../../database/config.js";
 import collections from "../../types/database/collections.js";
 import { actionProductTypes } from "../../types/actionProductTypes.js";
 import { onSuccess, onError } from "../response.js";
 const { getProducts: TYPE } = actionProductTypes;
 
-const fetchProducts = (tiendaId) => {
+const fetchProducts = () => {
   console.log(`[🛂][ACTION][${TYPE}]`);
 
   // Fetch
   return async (dispatch) => {
-    try {
-      let listaProductos = [];
+    return new Promise(async (resolve, reject) => {
+      try {
+        // Información del usuario.
+        const userId = firebaseAuth.currentUser.uid;
 
-      // Consulta a la base de datos.
-      const productoPath = `${collections.productos}/${tiendaId}/${collections.producto}`;
-      const productoRef = collection(firestore, productoPath);
+        // Consultar la información del usuario.
+        const userDoc = doc(firestore, collections.usuarios, userId);
+        const userSnapshot = await getDoc(userDoc);
+        const userData = userSnapshot.data();
 
-      const productoDocs = await getDocs(productoRef);
-      productoDocs.forEach((documento) => {
-        if (documento.exists()) {
-          const producto = documento.data();
-          listaProductos.push(producto);
-        }
-      });
+        const tiendaId = userData.tiendaId;
 
-      onSuccess(dispatch, TYPE, listaProductos);
-    } catch (error) {
-      onError(dispatch, TYPE, error);
-    }
+        let listaProductos = [];
+
+        // Consulta a la base de datos.
+        const productoPath = `${collections.productos}/${tiendaId}/${collections.producto}`;
+        const productoRef = collection(firestore, productoPath);
+
+        const productoDocs = await getDocs(productoRef);
+        productoDocs.forEach((documento) => {
+          if (documento.exists()) {
+            const producto = documento.data();
+            listaProductos.push(producto);
+          }
+        });
+
+        onSuccess(dispatch, TYPE, listaProductos);
+        resolve(listaProductos);
+      } catch (error) {
+        onError(dispatch, TYPE, error);
+        reject(error);
+      }
+    });
   };
 };
 

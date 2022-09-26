@@ -12,31 +12,16 @@ import { fetchUserData } from "../../actions/user/fetchUserData.js";
 import InventarioPage from "../../pages/inventario/InventarioPage.jsx";
 
 // Definición del contenedor: <InventarioContainer />
-const InventarioContainer = ({ userInfo, userAuth, fetchUserData, fetchProducts, allProducts }) => {
+const InventarioContainer = (props) => {
   // -- Manejo del estado.
-  const [productos, setProductos] = useState([]);
+  const { allProducts } = props;
 
   // -- Ciclo de vida.
-  useEffect(() => {
-    console.log("[container] Mount");
-    if (userAuth?.uid) {
-      let userId = userAuth.uid;
-      fetchUserData(userId);
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   // -- Metodos.
-  const conseguirProductos = async (id) => {
-    console.log("[] Conseguir productos");
-    await fetchProducts(id);
-  };
-
-  const createProducto = () => {};
-
   // -- Renderizado.
-  return (
-    <InventarioPage userInfo={userInfo} getProducts={conseguirProductos} products={allProducts} />
-  );
+  return <InventarioPage products={allProducts} />;
 };
 
 // PropTypes.
@@ -44,8 +29,6 @@ InventarioContainer.propTypes = {};
 
 // Redux
 const mapStateToProps = (state) => ({
-  userInfo: state.user.userInfo ?? {},
-  userAuth: state.user.userAuth ?? {},
   allProducts: state.product.allProducts ?? [],
 });
 
