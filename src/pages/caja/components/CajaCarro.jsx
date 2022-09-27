@@ -17,21 +17,22 @@ export function CajaCarro(props) {
               <button
                 className="cajaPage_carro_boton"
                 onClick={() => {
-                  props.cambiaCantidad(producto.cantidad, producto.precio, producto.nombre, true);
+                  props.cambiaCantidad(producto.cantidad, producto.precio, producto.nombre, false);
                 }}
               >
-                +
+                -
               </button>
+
               <p style={{ margin: "1px 5px 1px 5px", width: "20%" }}>
                 {producto.cantidad >= 1 ? producto.cantidad : 1}
               </p>
               <button
                 className="cajaPage_carro_boton"
                 onClick={() => {
-                  props.cambiaCantidad(producto.cantidad, producto.precio, producto.nombre, false);
+                  props.cambiaCantidad(producto.cantidad, producto.precio, producto.nombre, true);
                 }}
               >
-                -
+                +
               </button>
             </div>
             <p className="cajaPage_producto_texto">
