@@ -3,12 +3,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import { CajaProductos } from "./CajaProductos.jsx";
-import { CajaCarro } from "./CajaCarro.jsx";
-import { CajaCajero } from "./CajaCajero.jsx";
-import { CajaTotal } from "./CajaTotal.jsx";
-import { CajaBotones } from "./CajaBotones.jsx";
-import { Menu } from "./Menu";
+import { CajaProductos } from "./components/CajaProductos.jsx";
+import { CajaCarro } from "./components/CajaCarro.jsx";
+import { CajaCajero } from "./components/CajaCajero.jsx";
+import { CajaTotal } from "./components/CajaTotal.jsx";
+import { CajaBotones } from "./components/CajaBotones.jsx";
+import { Menu } from "./components/Menu";
 import { Navigate } from "react-router-dom";
 import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
 import { Fab } from "@mui/material";
