@@ -19,12 +19,15 @@ const Estilos = {
   backgroundPosition: "center bottom",
   //backgroundColor: "green",
 };
-const ConfirmacionPage = ({}) => {
+const ConfirmacionPage = (props) => {
   // -- Manejo del estado.
+  const { carroProducts } = props;
   const navigate = useNavigate();
+
   // -- Ciclo de vida.
   // -- Metodos.
   const steps = ["Selección de productos", "Proceso de pago", "Confirmación de pago"];
+
   const handleImpresion = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
     ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
@@ -34,10 +37,35 @@ const ConfirmacionPage = ({}) => {
       ventana.print();
       ventana.close();
     };
-    const handleRedirect = () => {
-      // Redirigir a la confirmación del pago
-      navigate("/ventas");
-    };
+  };
+
+  const handleMontoTotal = () => {
+    let total = 0;
+
+    carroProducts.forEach((item) => {
+      total = total + item.precio * item.cantidad;
+    });
+
+    return `$${total}`;
+  };
+
+  const handleTotalProductos = () => {
+    let total = 0;
+
+    carroProducts.forEach((item) => {
+      total = total + item.cantidad;
+    });
+
+    return total;
+  };
+
+  const handleActualDate = () => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
   };
 
   // -- Renderizado.
@@ -92,17 +120,15 @@ const ConfirmacionPage = ({}) => {
               backgroundRepeat: "no-repeat",
               backgroundSize: "contain",
               backgroundPosition: "center bottom",
-              //backgroundColor: "red",
-              //alignItems: "end",
               width: "95%",
               marginTop: "1%",
             }}
           >
-            <h1>Empleado: Gonzalo Cañas Madariaga</h1>
-            <h1>Monto total: $1900</h1>
+            <h1>Empleado: Javier Almarza</h1>
+            <h1>Monto total: {handleMontoTotal()}</h1>
             <h1>Metodo de pago: Efectivo</h1>
-            <h1>Cantidad de Productos: 1</h1>
-            <h1>Fecha de venta: 27/09/2022</h1>
+            <h1>Cantidad de Productos: {handleTotalProductos()}</h1>
+            <h1>Fecha de venta: {handleActualDate()}</h1>
           </div>
         </div>
 

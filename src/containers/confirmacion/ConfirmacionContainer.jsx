@@ -7,20 +7,26 @@ import { connect } from "react-redux";
 import ConfirmacionPage from "../../pages/confirmacion/ConfirmacionPage";
 
 // Definición del componente: <ConfirmacionPage />
-const ConfirmacionContainer = ({}) => {
+const ConfirmacionContainer = (props) => {
   // -- Manejo del estado.
+  const { carroProducts } = props;
+
   // -- Ciclo de vida.
   // -- Metodos.
   // -- Renderizado.
-  return <ConfirmacionPage />;
+  return <ConfirmacionPage carroProducts={carroProducts} />;
 };
 
 // PropTypes.
-ConfirmacionContainer.propTypes = {};
+ConfirmacionContainer.propTypes = {
+  carroProducts: PropTypes.array.isRequired,
+};
 
 // Redux
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    carroProducts: state.product.carroProducts ?? [],
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

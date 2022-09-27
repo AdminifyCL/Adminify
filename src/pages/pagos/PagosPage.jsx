@@ -43,10 +43,9 @@ const PagosPage = (props) => {
   };
 
   const mappingCarroProducts = () => {
-    return carroProducts.map((product) => {
-      console.log("[] Product:", product);
+    return carroProducts.map((product, index) => {
       return (
-        <div className="pagosPage_productContainer">
+        <div className="pagosPage_productContainer" key={`${index}-product`}>
           <div className="pagosPage_Cantidad">{product.cantidad}</div>
           <div className="pagosPage_Producto">{product.nombre}</div>
           <div className="pagosPage_Valor">${product.precio}</div>
