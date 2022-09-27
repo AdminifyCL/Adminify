@@ -113,7 +113,7 @@ class CuentaPage extends Component {
           <LicenciasContainer />
 
           {/* Interfaz. */}
-          <div>Interfaz</div>
+          {/* <div>Interfaz</div> */}
         </section>
       </section>
     );

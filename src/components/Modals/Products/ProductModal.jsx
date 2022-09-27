@@ -8,16 +8,21 @@ import {
   Button,
   TextField,
   MenuItem,
+  IconButton,
 } from "@mui/material";
 import { FaEgg, FaDrumstickBite, FaFish, FaHamburger, FaIceCream } from "react-icons/fa";
-import { useLocalStorage } from "../../../hooks/useLocalStorage.jsx";
+
 import PropTypes from "prop-types";
+
+// Hooks.
+import { useLocalStorage } from "../../../hooks/useLocalStorage.jsx";
 
 // Estilos.
 
 // Definición del componente: <ProductModal />
-const ProductModal = ({ open, onClose }) => {
+const ProductModal = (props) => {
   // -- Manejo de estado.
+  const { open, onClose, createProduct } = props;
   const [categorias, setCategorias] = useLocalStorage("categorias", []);
   const [inputName, setInputName] = useState("");
   const [inputCategory, setInputCategory] = useState("");
@@ -53,7 +58,21 @@ const ProductModal = ({ open, onClose }) => {
     }
   };
 
-  const handleVisibility = () => {
+  const handleVisibility = async (type) => {
+    if (type === "close") {
+      // 2: Ocultar el modal.
+      onClose();
+
+      // 3: Resetear el formulario.
+      setInputName("");
+      setInputCategory("");
+      setInputValue("");
+      setInputUnits("");
+      setInputIcon("");
+
+      return;
+    }
+
     // Paso 1: Enviar datos.
     const data = {
       nombre: inputName,
@@ -62,6 +81,11 @@ const ProductModal = ({ open, onClose }) => {
       unidades: inputUnits,
       icono: inputIcon,
     };
+
+    // 0: Validar los campos.
+
+    // 1: Crear los productos en la BD.
+    await createProduct(data);
 
     // 2: Ocultar el modal.
     onClose();
@@ -72,6 +96,8 @@ const ProductModal = ({ open, onClose }) => {
     setInputValue("");
     setInputUnits("");
     setInputIcon("");
+
+    return;
   };
 
   const mappingCategorias = () => {
@@ -132,25 +158,48 @@ const ProductModal = ({ open, onClose }) => {
 
           {/* Iconos del producto */}
           <div style={{ display: "flex", flexDirection: "row", columnGap: 10 }}>
-            <Button variant="outlined">
+            <IconButton
+              size="medium"
+              color={inputIcon === "icon001" ? "primary" : "default"}
+              id="icon001"
+              onClick={() => setInputIcon("icon001")}
+            >
               <FaHamburger />
-            </Button>
-            <Button variant="outlined">
+            </IconButton>
+            <IconButton
+              size="medium"
+              color={inputIcon === "icon002" ? "primary" : "default"}
+              id="icon002"
+              onClick={() => setInputIcon("icon002")}
+            >
               <FaIceCream />
-            </Button>
-            <Button variant="outlined">
+            </IconButton>
+            <IconButton
+              size="medium"
+              color={inputIcon === "icon003" ? "primary" : "default"}
+              id="icon003"
+              onClick={() => setInputIcon("icon003")}
+            >
               <FaDrumstickBite />
-            </Button>
+            </IconButton>
+            <IconButton
+              size="medium"
+              color={inputIcon === "icon004" ? "primary" : "default"}
+              id="icon003"
+              onClick={() => setInputIcon("icon004")}
+            >
+              <FaFish />
+            </IconButton>
           </div>
         </div>
       </DialogContent>
 
       {/* Botones del modal */}
       <DialogActions>
-        <Button variant="outlined" onClick={() => handleVisibility()}>
+        <Button variant="outlined" onClick={() => handleVisibility("close")}>
           Cancelar
         </Button>
-        <Button variant="contained" onClick={() => handleVisibility()}>
+        <Button variant="contained" onClick={() => handleVisibility("save")}>
           Guardar
         </Button>
       </DialogActions>

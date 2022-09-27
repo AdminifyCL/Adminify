@@ -14,6 +14,14 @@ const productReducer = (state = initialState, action) => {
     case getProducts:
       return { ...state, allProducts: data };
 
+    //? Crear un producto.
+    case createProduct:
+      // Agregando el producto a la lista de productos.
+      const { new_product, products } = data;
+      const newProducts = [...products, new_product];
+
+      return { ...state, allProducts: newProducts };
+
     //? Limpiar los errores.
     case cleanErrors:
       return { ...state, productError: {} };

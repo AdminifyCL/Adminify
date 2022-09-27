@@ -17,7 +17,7 @@ import InventarioPage from "../../pages/inventario/InventarioPage.jsx";
 // Definición del contenedor: <InventarioContainer />
 const InventarioContainer = (props) => {
   // -- Manejo del estado.
-  const { allProducts } = props;
+  const { allProducts, createProduct } = props;
   const [inventario, setInventario] = useLocalStorage("inventario", []);
   const [productos, setProductos] = useState([]);
 
@@ -31,8 +31,27 @@ const InventarioContainer = (props) => {
   }, [allProducts]);
 
   // -- Metodos.
+  const handleCreateProduct = async (productData) => {
+    console.log("[] Product container: ", productData);
+
+    let productosAction = [];
+    if (allProducts.length === 0) {
+      productosAction = inventario;
+    } else {
+      productosAction = allProducts;
+    }
+
+    await createProduct(productData, productosAction)
+      .then(() => {
+        console.log("[✅] Se creo un producto!");
+      })
+      .catch((error) => {
+        console.log("[😞] No Se pudo crear un producto");
+      });
+  };
+
   // -- Renderizado.
-  return <InventarioPage products={productos} />;
+  return <InventarioPage products={productos} createProduct={handleCreateProduct} />;
 };
 
 // PropTypes.
