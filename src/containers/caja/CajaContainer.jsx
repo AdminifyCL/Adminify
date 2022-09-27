@@ -1,46 +1,35 @@
 // Dependencias.
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchUserData } from "../../actions/user/fetchUserData.js";
+
+// Hooks.
+import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
 
 // Importación de componentes.
 import CajaPage from "../../pages/caja/CajaPage.jsx";
 
 // Definición del contenedor.
-class CajaContainer extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+const CajaContainer = (props) => {
+  // -- Manejo del estado.
+  const { allProducts } = props;
+  const [inventario, setInventario] = useLocalStorage("inventario", []);
+  const [productos, setProductos] = useState([]);
 
-  // -- Ciclo de vida del componente.
-  componentDidMount() {
-    const { fetchUserData, userAuth } = this.props;
-
-    // Conseguir la información del usuario.
-    const USER_ID = userAuth.uid;
-    fetchUserData(USER_ID);
-  }
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-  // -- Render
-
-  render() {
-    const { userInfo, productos } = this.props;
-
-    {
-      console.log("[] Productos", productos);
+  // -- Ciclo de vida.
+  useEffect(() => {
+    if (allProducts.length === 0) {
+      setProductos(inventario);
+    } else {
+      setProductos(allProducts);
     }
-    return <CajaPage userInfo={userInfo} productos={productos} />;
-  }
-}
+  }, [allProducts]);
+
+  // -- Metodos.
+  // -- Renderizado.
+  return <CajaPage productos={productos} />;
+};
 
 // PropTypes.
 CajaContainer.propTypes = {
@@ -52,7 +41,7 @@ CajaContainer.propTypes = {
 const mapStateToProps = (state) => ({
   userAuth: state.user.userAuth,
   userInfo: state.user.userInfo,
-  productos: state.product.allProducts ?? [],
+  allProducts: state.product.allProducts ?? [],
 });
 
 const mapDispatchToProps = {

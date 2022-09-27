@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import LoadingPage from "../../pages/loading/LoadingPage.jsx";
 
+// Hooks.
+import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
+
 // Actions.
 import { fetchUserData } from "../../actions/user/fetchUserData.js";
 import { fetchProducts } from "../../actions/productos/fetchProducts.js";
@@ -13,6 +16,7 @@ const LoadingContainer = (props) => {
   const { fetchUserData, fetchProducts } = props;
   const [loadMessage, setLoadMessage] = useState("Iniciando procesos...");
   const [loadPercent, setLoadPercent] = useState(0);
+  const [inventario, setInventario] = useLocalStorage("inventario", []);
 
   // -- Ciclo de vida.
   useEffect(() => {
@@ -41,8 +45,9 @@ const LoadingContainer = (props) => {
     const fetchUserProducts = async () => {
       console.log("[🛂] Consultando los productos del inventario.");
 
-      const userProducts = await fetchProducts()
+      await fetchProducts()
         .then((userProducts) => {
+          setInventario(userProducts);
           return userProducts;
         })
         .catch((error) => {

@@ -3,6 +3,9 @@ import React, { useEffect, useState, useMemo } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+// Hooks.
+import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
+
 // Actions.
 import { createProduct } from "../../actions/productos/createProduct.js";
 import { fetchProducts } from "../../actions/productos/fetchProducts.js";
@@ -15,13 +18,21 @@ import InventarioPage from "../../pages/inventario/InventarioPage.jsx";
 const InventarioContainer = (props) => {
   // -- Manejo del estado.
   const { allProducts } = props;
+  const [inventario, setInventario] = useLocalStorage("inventario", []);
+  const [productos, setProductos] = useState([]);
 
   // -- Ciclo de vida.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (allProducts.length === 0) {
+      setProductos(inventario);
+    } else {
+      setProductos(allProducts);
+    }
+  }, [allProducts]);
 
   // -- Metodos.
   // -- Renderizado.
-  return <InventarioPage products={allProducts} />;
+  return <InventarioPage products={productos} />;
 };
 
 // PropTypes.

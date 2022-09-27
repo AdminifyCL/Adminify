@@ -2,11 +2,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import {CajaProductos} from "./CajaProductos.jsx"
-import {CajaCarro} from "./CajaCarro.jsx"
-import {CajaCajero} from "./CajaCajero.jsx"
-import {CajaTotal} from "./CajaTotal.jsx"
-import {CajaBotones} from "./CajaBotones.jsx"
+import { CajaProductos } from "./CajaProductos.jsx";
+import { CajaCarro } from "./CajaCarro.jsx";
+import { CajaCajero } from "./CajaCajero.jsx";
+import { CajaTotal } from "./CajaTotal.jsx";
+import { CajaBotones } from "./CajaBotones.jsx";
 import { Menu } from "./Menu";
 import { Navigate } from "react-router-dom";
 import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
@@ -17,20 +17,19 @@ import { useEffect } from "react";
 
 // const productos = [{index:0 , nombre:"Completo Italiano" , valor:1900, cantidad:1 }]
 
-const CajaPage = (props)=>{
+const CajaPage = (props) => {
+  const productos = [...props.productos];
+  const [total, setTotal] = useState(0);
+  const [carrito, setCarrito] = useState([]);
+  const [toPago, setToPago] = useState(false);
 
-  const productos = [...props.productos]
-  const [total,setTotal]= useState(0)
-  const [carrito,setCarrito]= useState([])
-  const [toPago,setToPago] = useState(false)
+  const cambiarTotal = (valor) => {
+    setTotal(total + valor);
+  };
 
-  const cambiarTotal = (valor)=>{
-      setTotal(total+valor)
-  }
-
-  const cambiarCarro = (index,nombre,precio,cantidad)=>{
-    setCarrito([...carrito,{index,nombre,precio,cantidad}]);
-  }
+  const cambiarCarro = (index, nombre, precio, cantidad) => {
+    setCarrito([...carrito, { index, nombre, precio, cantidad }]);
+  };
 
   const limpiar = () => {
     setTotal(0);
@@ -38,23 +37,24 @@ const CajaPage = (props)=>{
   };
 
   const cambiarCantidad = (cantidad, valor, nombre, suma) => {
-    const carro = [...carrito]
-    carro.map((item)=>{ 
-      if(suma){
-        item.cantidad = item.cantidad + 1
-        setTotal(total+valor)
-      }else{
-        if (cantidad > 1){
-          item.cantidad = item.cantidad -1
-          setTotal(total-valor)
+    const carro = [...carrito];
+    carro.map((item) => {
+      if (suma) {
+        item.cantidad = item.cantidad + 1;
+        setTotal(total + valor);
+      } else {
+        if (cantidad > 1) {
+          item.cantidad = item.cantidad - 1;
+          setTotal(total - valor);
         }
-      }})
-    console.log(carro)
+      }
+    });
+    console.log(carro);
   };
 
   const toPagar = () => {
-    setToPago(true)
-  }
+    setToPago(true);
+  };
 
   return (
     <section className="cajaPage_container">
@@ -79,14 +79,12 @@ const CajaPage = (props)=>{
 
         <CajaTotal total={total}></CajaTotal>
 
-        <CajaBotones limpia={limpiar} toPagar = {toPagar}></CajaBotones>
-        
-        
+        <CajaBotones limpia={limpiar} toPagar={toPagar}></CajaBotones>
       </section>
       {toPago ? <Navigate to={PrivateUrls.pago} /> : null}
     </section>
   );
-}
+};
 
 // Exportación de la pagina: Index.
 export default CajaPage;
