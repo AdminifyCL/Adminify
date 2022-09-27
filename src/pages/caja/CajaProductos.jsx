@@ -1,7 +1,8 @@
 import React from "react";
-import { FaHamburger, FaHotdog } from "react-icons/fa";
+import { FaHamburger} from "react-icons/fa";
 import { Button } from "@mui/material";
 import { useState } from "react";
+//Pa que se vayan los cambios
 
 import "./CajaPage.scss";
 
@@ -53,7 +54,7 @@ export function CajaProductos(props){
                         });
                         if (!vista_producto.includes(true)) {
                           props.cambiaTotal(producto.valor);
-                          props.cambiaCarro(props.carro.length, producto.nombre, producto.valor, producto.cantidad);
+                          props.cambiaCarro(props.carro.length, producto.nombre, producto.valor, 1 );
                         } else {
                           props.cambiaCantidad(producto.cantidad, producto.valor, producto.nombre, true);
                           props.cambiaTotal(producto.valor);

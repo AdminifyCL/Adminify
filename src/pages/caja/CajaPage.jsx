@@ -1,4 +1,5 @@
 // Dependencias.
+//Pa que se vayan los cambios
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
@@ -10,6 +11,8 @@ import { CajaBotones } from "./CajaBotones.jsx";
 import { Menu } from "./Menu";
 import { Navigate } from "react-router-dom";
 import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
+import { Fab } from "@mui/material";
+import { VscGear } from "react-icons/vsc";
 
 // Importación de estilos.
 import "./CajaPage.scss";
