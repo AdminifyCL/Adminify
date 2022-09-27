@@ -66,7 +66,7 @@ const ConfirmacionPage = ({}) => {
           height: "685px",
           backgroundRepeat: "no-repeat",
           backgroundSize: "contain",
-          backgroundPosition: "center bottom",
+          backgroundPosition: "bottom",
           opacity: "95%",
         }}
       >
