@@ -1,4 +1,15 @@
 @use "../../styles/colors" as Colors;
+.pagosPage_Titulo {
+  position: absolute;
+  left: 10%;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  color: Colors.$primary-color;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+}
 .pagosPage_ProductosContenedor {
   background-color: Colors.$white-color;
   border: 4px solid Colors.$primary_dark-color;
@@ -202,6 +213,12 @@
   animation-fill-mode: both;
   animation-name: fadeOutPagos;
   animation-name: rotate;
+}
+.pagosPage_stepper {
+  width: 100%;
+  height: 4%;
+  position: absolute;
+  bottom: 5%;
 }
 @keyframes fadeInPagos {
   0% {
