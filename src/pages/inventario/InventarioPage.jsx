@@ -2,28 +2,22 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal } from "@mui/material";
 import PropTypes from "prop-types";
-import fakeElements from "../../models/fakeElements.js";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import TableContainer from "../../components/Table/Table.jsx";
+import ListProducts from "./components/ListProducts/ListProducts.jsx";
 import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
 
 // Importación de estilos.
 import "./InventarioPage.scss";
 
 // Definición de la pagina: <InventarioPage />
-const InventarioPage = ({ userInfo, getProducts, products }) => {
+const InventarioPage = (props) => {
   // -- Manejo del estado.
+  const { products } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  useEffect(() => {
-    console.log("[page] Mount");
-    if (userInfo?.tiendaId) {
-      let id = userInfo.tiendaId;
-      getProducts(id);
-    }
-  }, [userInfo]);
-
   // -- Ciclo de vida.
+  useEffect(() => {}, []);
+
   // -- Metodos.
   const handleCreateProduct = () => {
     setModalVisibility(true);
@@ -56,8 +50,7 @@ const InventarioPage = ({ userInfo, getProducts, products }) => {
         {/* Contenedor de elementos. */}
         <div className="inventarioPage_content_container">
           {/* Tabla de elementos. */}
-          {console.log("products:", products)}
-          <TableContainer data={products} />
+          <ListProducts productos={products} />
         </div>
       </section>
     </section>

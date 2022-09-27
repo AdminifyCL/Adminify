@@ -12,7 +12,6 @@ class CajaContainer extends Component {
   // -- Constructor.
   constructor(props) {
     super(props);
-
     this.state = {};
   }
 
@@ -32,9 +31,14 @@ class CajaContainer extends Component {
   // -- Métodos [HANDLER].
   // -- Métodos [MAPPING].
   // -- Render
+
   render() {
-    const { userInfo } = this.props;
-    return <CajaPage userInfo={userInfo} />;
+    const { userInfo, productos } = this.props;
+
+    {
+      console.log("[] Productos", productos);
+    }
+    return <CajaPage userInfo={userInfo} productos={productos} />;
   }
 }
 
@@ -48,6 +52,7 @@ CajaContainer.propTypes = {
 const mapStateToProps = (state) => ({
   userAuth: state.user.userAuth,
   userInfo: state.user.userInfo,
+  productos: state.product.allProducts ?? [],
 });
 
 const mapDispatchToProps = {

@@ -15,6 +15,7 @@ import RegistroContainer from "../containers/registro/RegistroContainer.jsx";
 import NotFoundContainer from "../containers/notFound/NotFoundContainer.jsx";
 import PasswordContainer from "../containers/password/PasswordContainer.jsx";
 
+import LoadingContainer from "../containers/loading/LoadingContainer.jsx";
 import CajaContainer from "../containers/caja/CajaContainer.jsx";
 import PagoContainer from "../containers/pago/PagoContainer.jsx";
 import ConfirmacionContainer from "../containers/confirmacion/ConfirmacionContainer.jsx";
@@ -44,6 +45,19 @@ const Router = () => {
       <Route path={PublicUrls.forgotPassword} element={<PasswordContainer />} />
 
       {/* Rutas protegidas; El usuario debe iniciar sesión para acceder. */}
+      {/* vista de Carga. */}
+      <Route
+        exact
+        path={PrivateUrls.cargando}
+        element={
+          <Auth>
+            <AlertsContainer>
+              <LoadingContainer />
+            </AlertsContainer>
+          </Auth>
+        }
+      />
+
       {/* Vista de Caja. */}
       <Route
         exact
