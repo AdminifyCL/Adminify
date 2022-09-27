@@ -8,9 +8,8 @@ import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCajero } from "./components/CajaCajero.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Menu } from "./components/Menu";
 import { Navigate } from "react-router-dom";
-import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
+import { PrivateUrls } from "../../models/Navigation.js";
 import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 
@@ -42,15 +41,17 @@ const CajaPage = (props) => {
   const cambiarCantidad = (cantidad, valor, nombre, suma) => {
     const carro = [...carrito];
     carro.map((item) => {
-      if (suma) {
-        item.cantidad = item.cantidad + 1;
-        setTotal(total + valor);
-      } else {
-        if (cantidad > 1) {
-          item.cantidad = item.cantidad - 1;
-          setTotal(total - valor);
+      if (item.nombre == nombre){
+        if (suma) {
+          item.cantidad = item.cantidad + 1;
+          setTotal(total + valor);
+        } else {
+          if (cantidad > 1) {
+            item.cantidad = item.cantidad - 1;
+            setTotal(total - valor);
+          }
         }
-      }
+      }     
     });
     console.log(carro);
   };
@@ -83,6 +84,9 @@ const CajaPage = (props) => {
         <CajaTotal total={total}></CajaTotal>
 
         <CajaBotones limpia={limpiar} toPagar={toPagar}></CajaBotones>
+        <Fab color="primary" aria-label="add" style={{position:"absolute",top:"88%",left:"93%"}}>
+          <VscGear/>
+        </Fab>
       </section>
       {toPago ? <Navigate to={PrivateUrls.pago} /> : null}
     </section>
