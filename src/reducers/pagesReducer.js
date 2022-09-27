@@ -5,7 +5,7 @@ const { cleanErrors } = actionsPageType;
 
 // Definiendo los reducers de la pagina.
 const pageReducer = (state = initialState, action) => {
-  console.log(`[🛂][REDUCER:PAGES][${action.type}]`);
+  // console.log(`[🛂][REDUCER:PAGES][${action.type}]`);
   const { data } = action;
 
   // Manejando los actions.

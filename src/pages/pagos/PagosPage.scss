@@ -166,15 +166,20 @@
 }
 
 .pagosPage_ProductosLista {
-  color: Colors.$primary_dark-color;
-  font-size: 1.2rem;
+  padding-top: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  row-gap: 0.5rem;
+}
+
+.pagosPage_productContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  padding: 1%;
-  margin: 1%;
-  width: 97%;
 }
 
 .pagosPage_Cantidad {
@@ -191,6 +196,9 @@
   background-color: Colors.$gray-color;
   border-radius: 0.5rem;
   color: Colors.$primary_dark-color;
+
+  font-weight: bold;
+
   padding: 15px;
   width: 60%;
 }

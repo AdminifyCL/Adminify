@@ -6,7 +6,7 @@ const { cleanErrors } = actionAppTypes;
 
 // Definiendo los reducers de la pagina.
 const appReducer = (state = initialState, action) => {
-  console.log(`[🛂][REDUCER:APP][${action.type}]`);
+  // console.log(`[🛂][REDUCER:APP][${action.type}]`);
   const { data } = action;
 
   // Manejando los actions.

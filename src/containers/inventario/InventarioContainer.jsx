@@ -9,7 +9,6 @@ import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
 // Actions.
 import { createProduct } from "../../actions/productos/createProduct.js";
 import { fetchProducts } from "../../actions/productos/fetchProducts.js";
-import { fetchUserData } from "../../actions/user/fetchUserData.js";
 
 // Importación de componentes.
 import InventarioPage from "../../pages/inventario/InventarioPage.jsx";
@@ -65,7 +64,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   createProduct,
   fetchProducts,
-  fetchUserData,
 };
 
 // Exportación del contenedor.

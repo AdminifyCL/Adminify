@@ -5,7 +5,7 @@ const { cleanErrors } = actionCompanyTypes;
 
 // Definiendo los reducers de la pagina.
 const companyReducer = (state = initialState, action) => {
-  console.log(`[🛂][REDUCER:COMPANY][${action.type}]`);
+  // console.log(`[🛂][REDUCER:COMPANY][${action.type}]`);
   const { data } = action;
 
   // Manejando los actions.

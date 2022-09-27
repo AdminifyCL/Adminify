@@ -7,20 +7,26 @@ import { connect } from "react-redux";
 import PagoPage from "../../pages/pagos/PagosPage.jsx";
 
 // Definición del componente: <PagoContainer />
-const PagoContainer = ({}) => {
+const PagoContainer = (props) => {
   // -- Manejo del estado.
+  const { carroProducts } = props;
+
   // -- Ciclo de vida.
   // -- Metodos.
   // -- Renderizado.
-  return <PagoPage />;
+  return <PagoPage carroProducts={carroProducts} />;
 };
 
 // PropTypes.
-PagoContainer.propTypes = {};
+PagoContainer.propTypes = {
+  carroProducts: PropTypes.array.isRequired,
+};
 
 // Redux
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    carroProducts: state.product.carroProducts ?? [],
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

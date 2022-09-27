@@ -8,7 +8,7 @@ const { loginWithEmail, onAuthState, logout, createUser, getUserData, cleanError
 
 // Definiendo los reducers de la pagina.
 const userReducer = (state = initialState, action) => {
-  console.log(`[🛂][REDUCER:USER][${action.type}]`);
+  // console.log(`[🛂][REDUCER:USER][${action.type}]`);
   const { data, error, success } = action;
 
   // Variables.

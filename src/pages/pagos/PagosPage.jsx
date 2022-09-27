@@ -19,8 +19,9 @@ import {
 import "./PagosPage.scss";
 
 // Definición del componente: <ConfirmacionPage />
-const PagosPage = ({}) => {
+const PagosPage = (props) => {
   // -- Manejo del estado.
+  const { carroProducts } = props;
   const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox cliente" } };
   const [checked, setChecked] = React.useState(true);
@@ -28,22 +29,40 @@ const PagosPage = ({}) => {
   const [mostrarComponente, setMostrarComponente] = React.useState(true);
   const steps = ["Selección de productos", "Proceso de pago", "Pago confimado"];
 
-  const handleChangePago = (event) => {
-    setpago(event.target.value);
-  };
-
-  {
-    /*const handleChange = () => {
-    setChecked(event.target.checked);
-    console.log("hola mundo");
-  };*/
-  }
-
   // -- Ciclo de vida.
+  // ...
+
   // -- Metodos.
   const handleRedirect = () => {
     // Redirigir a la confirmación del pago
     navigate("/confirmacion");
+  };
+
+  const handleChangePago = (event) => {
+    setpago(event.target.value);
+  };
+
+  const mappingCarroProducts = () => {
+    return carroProducts.map((product) => {
+      console.log("[] Product:", product);
+      return (
+        <div className="pagosPage_productContainer">
+          <div className="pagosPage_Cantidad">{product.cantidad}</div>
+          <div className="pagosPage_Producto">{product.nombre}</div>
+          <div className="pagosPage_Valor">${product.precio}</div>
+        </div>
+      );
+    });
+  };
+
+  const mappingTotal = () => {
+    let total = 0;
+
+    carroProducts.map((product) => {
+      total = total + product.precio * product.cantidad;
+    });
+
+    return `$${total}`;
   };
 
   // -- Renderizado.
@@ -78,17 +97,13 @@ const PagosPage = ({}) => {
                 <p>Resumen de productos</p>
               </div>
               {/* Contenedor de productos*/}
-              <div className="pagosPage_ProductosLista">
-                <div className="pagosPage_Cantidad">1</div>
-                <div className="pagosPage_Producto">Completo italiano</div>
-                <div className="pagosPage_Valor">$1900</div>
-              </div>
+              <div className="pagosPage_ProductosLista">{mappingCarroProducts()}</div>
             </section>
           </section>
           {/* Contenedor de valor total*/}
           <section className="pagosPage_ProductosTotal">
             <p>Total:</p>
-            <p className="pagosPage_totalValor">$1900</p>
+            <p className="pagosPage_totalValor">{mappingTotal()}</p>
           </section>
           {/* Sección agregar cliente*/}
           <section className="pagosPage_TituloCliente">
@@ -105,7 +120,6 @@ const PagosPage = ({}) => {
           <div className={!mostrarComponente ? "show-elementPagos" : null}>
             {!mostrarComponente && (
               <div>
-                {" "}
                 {/* Sección de formulario del cliente*/}
                 <section className="pagosPage_Clientecontenedor">
                   <section className="pagosPage_ClienteContenido">
@@ -146,7 +160,7 @@ const PagosPage = ({}) => {
                       </Button>
                     </div>
                   </section>
-                </section>{" "}
+                </section>
               </div>
             )}
           </div>
