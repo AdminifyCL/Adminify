@@ -5,7 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  //background-color: blue;
+  //background-image: "../../assets/images/bg-table.png";
   height: 90vh;
   width: 100%;
 }
@@ -48,6 +49,7 @@
   width: 40vw;
   outline: solid;
   outline-color: #226f54;
+  //background-image: "../../assets/images/bg-table.png";
   background-repeat: no-repeat;
   background-size: 40%;
   background-position: 50%;
@@ -68,10 +70,11 @@
   h1 {
     font-weight: 700;
   }
-  width: 95%;
+  width: 65%;
   height: 60%;
   padding-top: 30px;
   padding-left: 5%;
+  //background-color: red;
   //font-weight: bold;
   // padding: 40px;
 }
