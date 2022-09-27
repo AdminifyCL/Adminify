@@ -4,22 +4,30 @@ import { Button } from "@mui/material";
 import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 import { Step, Stepper, StepLabel } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import ImageBg from "../../assets/images/bg-table.png";
+import fondo from "../../assets/images/bg-table.png";
+import boleta from "../../assets/images/boleta.png";
 import { FaReceipt, AiFillCheckCircle, FaCheckCircle } from "react-icons/fa";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
 
 // Definición del componente: <ConfirmacionPage />
+const Estilos = {
+  backgroundImage: { fondo },
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "contain",
+  backgroundPosition: "center bottom",
+  //backgroundColor: "green",
+};
 const ConfirmacionPage = ({}) => {
   // -- Manejo del estado.
   const navigate = useNavigate();
   // -- Ciclo de vida.
   // -- Metodos.
-  const steps = ["Select master blaster campaign settings", "proceso de pago", "pago confimado"];
+  const steps = ["Selección de productos", "Proceso de pago", "Confirmación de pago"];
   const handleImpresion = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
-    ventana.document.write("Hola, esto es una prueba jeje");
+    ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
     ventana.document.close();
     ventana.focus();
     ventana.onload = function () {
@@ -50,7 +58,18 @@ const ConfirmacionPage = ({}) => {
           ))}
         </Stepper>
       </div>
-      <section className="ConfirmaciónPage-container">
+
+      <section
+        className="ConfirmaciónPage-container"
+        style={{
+          backgroundImage: "url(../../assets/images/bg-table.png)",
+          height: "685px",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "contain",
+          backgroundPosition: "center bottom",
+          opacity: "95%",
+        }}
+      >
         <div className="confirmacionPage_titulo">
           <h1>¡Pago confirmado!</h1>
           <div className="confirmacionPage_subtitulo">
@@ -65,12 +84,25 @@ const ConfirmacionPage = ({}) => {
           <div className="confirmacionPage_contendorTitulo">
             <h1>Resumen de la venta</h1>
           </div>
-          <div className="confirmacionPage_contendorDatosFinales">
+          <div
+            className="confirmacionPage_contendorDatosFinales"
+            style={{
+              backgroundImage: "url(../../assets/images/boleta.png)",
+              height: "72%",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+              backgroundPosition: "center bottom",
+              //backgroundColor: "red",
+              //alignItems: "end",
+              width: "95%",
+              marginTop: "1%",
+            }}
+          >
             <h1>Empleado: Gonzalo Cañas Madariaga</h1>
-            <h1>Monto total: $4200</h1>
-            <h1>Metodo de pago: Sodexo</h1>
-            <h1>Numero de Productos: 1</h1>
-            <h1>Fecha de venta: 07/03/2022</h1>
+            <h1>Monto total: $1900</h1>
+            <h1>Metodo de pago: Efectivo</h1>
+            <h1>Cantidad de Productos: 1</h1>
+            <h1>Fecha de venta: 27/09/2022</h1>
           </div>
         </div>
 
