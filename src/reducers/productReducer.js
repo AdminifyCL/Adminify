@@ -1,5 +1,4 @@
 // Dependencias.
-import initialState from "../redux/initialState.js";
 import { actionProductTypes } from "../types/actionProductTypes";
 const { cleanErrors, createProduct, getProducts, setCarrito } = actionProductTypes;
 

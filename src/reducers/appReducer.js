@@ -1,6 +1,5 @@
 // Dependencias.
 import { actionAppTypes } from "../types/actionAppTypes.js";
-import initialState from "../redux/initialState.js";
 
 const { cleanErrors } = actionAppTypes;
 

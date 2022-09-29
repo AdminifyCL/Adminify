@@ -1,23 +1,33 @@
 // Dependencias.
 import { createSlice } from "@reduxjs/toolkit";
-import userState from "../state/userState.js";
+import userState from "../state/usuariosState.js";
+
+// Adapters.
+// ...
 
 // Definición del reducer: userSlice.
-const userSlice = createSlice({
-  name: "userSlice",
+const usuarioSlice = createSlice({
+  name: "usuario",
   initialState: userState,
 
   // Reducers.
   reducers: {
-    userLogin: (state, action) => {
-      console.log("[] userSlice: userLogin");
+    //* -- Control de sesión del usuario.
+    userLogin: (state, action) => {},
 
-      state.isAuthenticated = true;
-      state.user = action.payload;
-    },
+    userLogout: (state, action) => {},
+
+    //* -- Control de datos del usuario.
+    getUserData: (state, action) => {},
+
+    getUserAuth: (state, action) => {},
+
+    //* -- Creación de nuevos usuarios.
+    createNewUser: (state, action) => {},
   },
 });
 
 // Exportación.
-export const { userLogin } = userSlice.actions;
-export default userSlice.reducer;
+export const { userLogin, userLogout, getUserData, getUserAuth, createNewUser } =
+  usuarioSlice.actions;
+export default usuarioSlice.reducer;

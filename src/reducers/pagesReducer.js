@@ -1,5 +1,5 @@
 // Dependencias.
-import initialState from "../redux/initialState.js";
+
 import { actionsPageType } from "../types/actionPageTypes.js";
 const { cleanErrors } = actionsPageType;
 

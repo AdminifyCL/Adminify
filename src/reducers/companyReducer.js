@@ -1,5 +1,5 @@
 // Dependencias.
-import initialState from "~redux/initialState.js";
+
 import { actionCompanyTypes } from "../types/actionCompanyTypes.js";
 const { cleanErrors } = actionCompanyTypes;
 

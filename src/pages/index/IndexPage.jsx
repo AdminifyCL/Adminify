@@ -6,9 +6,6 @@ import { Button } from "@mui/material";
 import { FaCube } from "react-icons/fa";
 import PropTypes from "prop-types";
 
-// Actions.
-import userLoginWithEmail from "../../redux/actions/user/userLogin";
-
 // Importación de estilos.
 import "./IndexPage.scss";
 
@@ -16,7 +13,6 @@ import "./IndexPage.scss";
 const IndexPage = ({}) => {
   // -- Manejo del estado.
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
   // -- Metodos.

@@ -1,5 +1,5 @@
 // Dependencias.
-import initialState from "~redux/initialState.js";
+
 import { actionUserTypes } from "../types/actionUserTypes.js";
 import handleFirebaseErrors from "./handlers/handleFirebaseErrors.js";
 import userAdapter from "../adapters/userAdapter.js";
