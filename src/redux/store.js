@@ -1,19 +1,29 @@
 // Dependencias.
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from "./slices/userSlice.js";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
+
+// Reducers.
+import appReducer from "./slices/appSlice.js";
+import empleadoReducer from "./slices/empleadoSlice.js";
+import productReducer from "./slices/productSlice.js";
+import userReducer from "./slices/userSlice.js";
+import ventasReducer from "./slices/ventasSlice.js";
+
+const rootReducer = combineReducers({
+  app: appReducer,
+  empleado: empleadoReducer,
+  product: productReducer,
+  user: userReducer,
+  venta: ventasReducer,
+});
 
 // Configuración de persistencia.
 const persistConfig = {
   key: "root",
   storage,
 };
-
-const rootReducer = combineReducers({
-  user: userReducer,
-});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
