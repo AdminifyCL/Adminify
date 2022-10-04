@@ -13,7 +13,15 @@ const usuarioSlice = createSlice({
   // Reducers.
   reducers: {
     //* -- Control de sesión del usuario.
-    userLogin: (state, action) => {},
+    userLogin: (state, action) => {
+      const payload = action.payload;
+      console.log("[] PAYLOAD: ", payload);
+
+      // Aplicación de los adapters.
+      // ...
+
+      return { ...state };
+    },
 
     userLogout: (state, action) => {},
 

@@ -6,6 +6,10 @@ import { Button } from "@mui/material";
 import { FaCube } from "react-icons/fa";
 import PropTypes from "prop-types";
 
+// Actions.
+import { userLogin } from "../../redux/slices/userSlice.js";
+import ApiUserLogin from "../../api/usuarios/userLogin.js";
+
 // Importación de estilos.
 import "./IndexPage.scss";
 
@@ -13,9 +17,24 @@ import "./IndexPage.scss";
 const IndexPage = ({}) => {
   // -- Manejo del estado.
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
   // -- Metodos.
+  const handleFunction = async () => {
+    let formData = { email: "javier@gmail.com", password: "asd123" };
+    const userData = await ApiUserLogin(formData)
+      .then((response) => {
+        console.log("[] Login exitoso.");
+        return response;
+      })
+      .catch((error) => {
+        console.log("[] Algo salio mal.");
+      });
+
+    // Dispatch al slice de usuarios.
+    dispatch(userLogin(userData));
+  };
 
   // -- Renderizado.
   return (
@@ -28,6 +47,10 @@ const IndexPage = ({}) => {
 
         <Button variant="contained" onClick={() => navigate("/login")}>
           Entrar
+        </Button>
+
+        <Button variant="contained" onClick={() => handleFunction()}>
+          Probar
         </Button>
       </div>
     </section>

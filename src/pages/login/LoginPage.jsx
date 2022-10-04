@@ -9,115 +9,63 @@ import PropTypes from "prop-types";
 import "./LoginPage.scss";
 
 // Definición de la pagina: <LoginPage />
-const LoginPage = ({ userError, userLogin, userAuth, loading }) => {
+const LoginPage = (props) => {
   // -- Manejo del estado.
+  const { userLogin, loading } = props;
   const navigate = useNavigate();
-  const [showAlert, setShowAlert] = useState(false);
-  const [messageAlert, setMessageAlert] = useState("");
-  const [inputCorreo, setInputCorreo] = useState({ value: "", error: "" });
-  const [inputContraseña, setInputContraseña] = useState({ value: "", error: "" });
-  const { isAuthenticated } = userAuth;
+
+  const [emailValue, setEmailValue] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const [passValue, setPassValue] = useState("");
+  const [passError, setPassError] = useState("");
 
   // -- Ciclo de vida.
-  useEffect(() => {
-    if (userError?.message) {
-      setShowAlert(true);
-      setMessageAlert(userError.message);
-    }
-
-    return () => {};
-  }, [userError]);
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/cargando");
-    }
-  }, [isAuthenticated]);
+  useEffect(() => {}, []);
 
   // -- Metodos.
-  const handleAlerts = () => {
-    setShowAlert(false);
-  };
-
-  const handleUserError = (userError) => {
-    if (userError?.error) {
-      setShowAlert(true);
-    }
-  };
-
-  const handleClearFields = () => {
-    setInputCorreo({ value: "", error: false });
-    setInputContraseña({ value: "", error: false });
-  };
-
-  const handleValidation = (email, contraseña) => {
-    let voidEmail = email.length === 0;
-    let voidContraseña = contraseña.length === 0;
-    console.log("VOID:", voidEmail, voidContraseña);
-
-    // Manejando los errores del correo.
-    if (voidEmail) {
-      setInputCorreo((prevState) => ({
-        inputCorreo: {
-          ...prevState,
-          error: "El correo no puede estar vacio.",
-        },
-      }));
-    }
-
-    // Manejando los errores de contraseña.
-    if (voidContraseña) {
-      setInputContraseña({ value: "", error: "No puedes dejar este campo vacío" });
-    }
-
-    if (!voidEmail && !voidContraseña) {
-      return true;
-    }
-
-    return false;
-  };
-
   const handleUserLogin = async () => {
-    console.log("[🛂][PAGE:LOGIN][handleUserLogin]");
-
-    const email = inputCorreo.value;
-    const contraseña = inputContraseña.value;
-
-    // Validar los datos.
-    const verificacion = handleValidation(email, contraseña);
-    console.log("verificacion", verificacion);
-
-    // Limpiar los campos.
-    handleClearFields();
-
-    // Datos de ejemplo.
-    const datos = {
-      email: email,
-      contraseña: contraseña,
-    };
-
-    if (verificacion) {
-      // Iniciando la sesión del usuario.
-      await userLogin(datos);
+    if (emailValue.length === 0) {
+      setEmailError("El campo no puede estar vacio");
+      return;
+    } else if (passValue.length === 0) {
+      setPassError("El campo no puede estar vacio");
+      return;
     }
+
+    // Iniciar sesión con el formulario.
+    let formData = {
+      email: emailValue,
+      password: passValue,
+    };
+    await userLogin(formData);
+
+    // Limpiar los inputs.
+    clearInputs();
   };
 
-  const handleChange = (value) => {
-    const inputId = value.target.id; // inputCorreo = ""
-    const inputValue = value.target.value; // ""
+  const handleChanges = (event) => {
+    let new_value = event.target.value;
+    let input_id = event.target.id;
 
-    switch (inputId) {
-      case "inputCorreo":
-        setInputCorreo({ value: inputValue, error: false });
-        break;
-
-      case "inputContraseña":
-        setInputContraseña({ value: inputValue, error: false });
-        break;
-
-      default:
-        break;
+    if (input_id === "inputCorreo") {
+      setEmailValue(new_value);
+    } else {
+      setPassValue(new_value);
     }
+
+    // Limpiar los errores.
+    clearErrors();
+  };
+
+  const clearErrors = () => {
+    setEmailError("");
+    setPassError("");
+  };
+
+  const clearInputs = () => {
+    setEmailValue("");
+    setPassValue("");
   };
 
   // -- Renderizado.
@@ -141,27 +89,29 @@ const LoginPage = ({ userError, userLogin, userAuth, loading }) => {
         {/* Inputs */}
         <div className="loginPage_formulario">
           <TextField
+            disabled={loading}
             id="inputCorreo"
             variant="outlined"
             fullWidth={true}
             label="Correo electrónico"
             required={true}
-            error={inputCorreo?.error ? true : false}
-            helperText={inputCorreo.error}
-            onChange={(event) => handleChange(event)}
-            value={inputCorreo.value}
+            error={emailError ? true : false}
+            helperText={emailError}
+            onChange={(event) => handleChanges(event)}
+            value={emailValue}
           />
           <TextField
+            disabled={loading}
             id="inputContraseña"
             variant="outlined"
             fullWidth={true}
             label="Contraseña"
             type="password"
             required={true}
-            error={inputContraseña?.error ? true : false}
-            helperText={inputContraseña.error}
-            onChange={(event) => handleChange(event)}
-            value={inputContraseña.value}
+            error={passError ? true : false}
+            helperText={passError}
+            onChange={(event) => handleChanges(event)}
+            value={passValue}
           />
         </div>
 
@@ -177,7 +127,7 @@ const LoginPage = ({ userError, userLogin, userAuth, loading }) => {
             Iniciar sesión
           </Button>
 
-          <Button variant="outlined" disabled={loading} onClick={() => navigate("/registro")}>
+          <Button variant="outlined" onClick={() => navigate("/registro")} disabled={loading}>
             Registrarse
           </Button>
         </div>
@@ -189,9 +139,7 @@ const LoginPage = ({ userError, userLogin, userAuth, loading }) => {
 // PropTypes.
 LoginPage.propTypes = {
   userLogin: PropTypes.func.isRequired,
-  userAuth: PropTypes.object,
-  userError: PropTypes.object,
-  loading: PropTypes.bool,
+  loading: PropTypes.bool.isRequired,
 };
 
 // Exportación de la pagina: Index.
