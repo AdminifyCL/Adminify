@@ -7,8 +7,8 @@ import { FaCube } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 // Actions.
-import { userLogin } from "../../redux/slices/userSlice.js";
-import ApiUserLogin from "../../api/usuarios/userLogin.js";
+// import { userLogin } from "../../redux/slices/userSlice.js";
+// import ApiUserLogin from "../../api/usuarios/userLogin.js";
 
 // Importación de estilos.
 import "./IndexPage.scss";
@@ -21,20 +21,20 @@ const IndexPage = ({}) => {
 
   // -- Ciclo de vida.
   // -- Metodos.
-  const handleFunction = async () => {
-    let formData = { email: "javier@gmail.com", password: "asd123" };
-    const userData = await ApiUserLogin(formData)
-      .then((response) => {
-        console.log("[] Login exitoso.");
-        return response;
-      })
-      .catch((error) => {
-        console.log("[] Algo salio mal.");
-      });
+  // const handleFunction = async () => {
+  //   let formData = { email: "javier@gmail.com", password: "asd123" };
+  //   const userData = await ApiUserLogin(formData)
+  //     .then((response) => {
+  //       console.log("[] Login exitoso.");
+  //       return response;
+  //     })
+  //     .catch((error) => {
+  //       console.log("[] Algo salio mal.");
+  //     });
 
-    // Dispatch al slice de usuarios.
-    dispatch(userLogin(userData));
-  };
+  //   // Dispatch al slice de usuarios.
+  //   dispatch(userLogin(userData));
+  // };
 
   // -- Renderizado.
   return (
@@ -42,15 +42,11 @@ const IndexPage = ({}) => {
       <div className="indexPage_contenido">
         <div className="indexPage_titlecontent">
           <FaCube className="indexPage_titlecontent-icon" />
-          <h1 className="indexPage_titlecontent-title">Pay Admin Box</h1>
+          <h1 className="indexPage_titlecontent-title">Adminify</h1>
         </div>
 
         <Button variant="contained" onClick={() => navigate("/login")}>
           Entrar
-        </Button>
-
-        <Button variant="contained" onClick={() => handleFunction()}>
-          Probar
         </Button>
       </div>
     </section>
