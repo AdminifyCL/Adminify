@@ -14,7 +14,7 @@ import ventasReducer from "./slices/ventasSlice.js";
 const rootReducer = combineReducers({
   app: appReducer,
   empleado: empleadoReducer,
-  product: productReducer,
+  producto: productReducer,
   user: userReducer,
   venta: ventasReducer,
 });

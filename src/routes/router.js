@@ -7,6 +7,7 @@ import Cargando from "../components/Cargando/Cargando.jsx";
 // Componentes.
 import Auth from "../components/Auth/Auth.jsx";
 import AlertsContainer from "../components/Alerts/AlertsContainer.jsx";
+import LayoutContainer from "../components/Layout/LayoutContainer.jsx";
 
 // Importación de contenedores.
 import IndexContainer from "../containers/index/IndexContainer.jsx";
@@ -30,7 +31,15 @@ const Router = () => {
   return (
     <Routes>
       {/* Rutas publicas; No es necesaria una sesión para acceder. */}
-      <Route path={PublicUrls.index} element={<IndexContainer />} index />
+      <Route
+        path={PublicUrls.index}
+        element={
+          <LayoutContainer>
+            <IndexContainer />
+          </LayoutContainer>
+        }
+        index
+      />
       <Route
         exact
         path={PublicUrls.login}

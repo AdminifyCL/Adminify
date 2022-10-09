@@ -5,7 +5,22 @@ const usuariosState = {
     message: "",
   },
 
-  userAuth: {},
+  userAuth: {
+    // Identificación del usuario.
+    uid: "",
+    email: "",
+    username: "",
+
+    // Token de usuario.
+    tokens: {
+      accessToken: "",
+      refreshToken: "",
+      exp: 0,
+    },
+
+    // Auth.
+    isAuthenticated: false,
+  },
   userData: {},
 };
 

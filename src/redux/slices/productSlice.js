@@ -7,7 +7,7 @@ import productState from "../state/productosState.js";
 
 // Definición del reducer: productSlice.
 const productSlice = createSlice({
-  name: "aplicacion",
+  name: "producto",
   initialState: productState,
 
   // Reducers.

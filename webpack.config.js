@@ -95,7 +95,7 @@ module.exports = {
     new htmlWebpackPlugin({
       template: "./public/index.html",
       filename: "./index.html",
-      favicon: "./src/assets/images/favicon.png",
+      favicon: "./src/assets/images/logo250x250.png",
     }),
 
     // CSS plugin

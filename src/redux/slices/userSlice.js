@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import userState from "../state/usuariosState.js";
 
 // Adapters.
-// ...
+import adapterAuth from "../adapters/user/userAuth.js";
 
 // Definición del reducer: userSlice.
 const usuarioSlice = createSlice({
@@ -15,12 +15,11 @@ const usuarioSlice = createSlice({
     //* -- Control de sesión del usuario.
     userLogin: (state, action) => {
       const payload = action.payload;
-      console.log("[] PAYLOAD: ", payload);
 
       // Aplicación de los adapters.
-      // ...
+      let userAuth = adapterAuth(payload);
 
-      return { ...state };
+      return { ...state, userAuth };
     },
 
     userLogout: (state, action) => {},

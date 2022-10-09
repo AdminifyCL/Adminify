@@ -11,7 +11,7 @@ import "./LoginPage.scss";
 // Definición de la pagina: <LoginPage />
 const LoginPage = (props) => {
   // -- Manejo del estado.
-  const { userLogin, loading } = props;
+  const { loading, login } = props;
   const navigate = useNavigate();
 
   const [emailValue, setEmailValue] = useState("");
@@ -38,7 +38,8 @@ const LoginPage = (props) => {
       email: emailValue,
       password: passValue,
     };
-    await userLogin(formData);
+
+    await login(formData);
 
     // Limpiar los inputs.
     clearInputs();
@@ -79,7 +80,7 @@ const LoginPage = (props) => {
         </div>
 
         <div className="loginPage_titulo">
-          <h1>Pay Admin Box</h1>
+          <h1>Adminify</h1>
         </div>
 
         <div className="loginPage_subtitulo">
@@ -138,7 +139,7 @@ const LoginPage = (props) => {
 
 // PropTypes.
 LoginPage.propTypes = {
-  userLogin: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
 };
 
