@@ -44,14 +44,36 @@ const Router = () => {
         exact
         path={PublicUrls.login}
         element={
-          <AlertsContainer>
+          <LayoutContainer>
             <LoginContainer />
-          </AlertsContainer>
+          </LayoutContainer>
         }
       />
-      <Route exact path={PublicUrls.registro} element={<RegistroContainer />} />
-      <Route path={PublicUrls.notFound} element={<NotFoundContainer />} />
-      <Route path={PublicUrls.forgotPassword} element={<PasswordContainer />} />
+      <Route
+        exact
+        path={PublicUrls.registro}
+        element={
+          <LayoutContainer>
+            <RegistroContainer />
+          </LayoutContainer>
+        }
+      />
+      <Route
+        path={PublicUrls.notFound}
+        element={
+          <LayoutContainer>
+            <NotFoundContainer />
+          </LayoutContainer>
+        }
+      />
+      <Route
+        path={PublicUrls.forgotPassword}
+        element={
+          <LayoutContainer>
+            <PasswordContainer />
+          </LayoutContainer>
+        }
+      />
 
       {/* Rutas protegidas; El usuario debe iniciar sesión para acceder. */}
       {/* vista de Carga. */}
@@ -60,9 +82,9 @@ const Router = () => {
         path={PrivateUrls.cargando}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <LoadingContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -73,9 +95,9 @@ const Router = () => {
         path={PrivateUrls.caja}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <CajaContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -86,9 +108,9 @@ const Router = () => {
         path={PrivateUrls.pago}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <PagoContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -99,9 +121,9 @@ const Router = () => {
         path={PrivateUrls.confirmacion}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <ConfirmacionContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -112,9 +134,9 @@ const Router = () => {
         path={PrivateUrls.empleados}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <EmpleadosContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -125,9 +147,9 @@ const Router = () => {
         path={PrivateUrls.inventario}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <InventarioContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -138,9 +160,9 @@ const Router = () => {
         path={PrivateUrls.ventas}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <VentasContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -151,9 +173,9 @@ const Router = () => {
         path={PrivateUrls.estadisticas}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <StatsContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />
@@ -164,9 +186,9 @@ const Router = () => {
         path={PrivateUrls.cuenta}
         element={
           <Auth>
-            <AlertsContainer>
+            <LayoutContainer>
               <AccountContainer />
-            </AlertsContainer>
+            </LayoutContainer>
           </Auth>
         }
       />

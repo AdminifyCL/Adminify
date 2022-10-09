@@ -14,8 +14,6 @@ const aplicationSlice = createSlice({
   reducers: {
     //* --
     displayAlert: (state, action) => {
-      console.log("[] Display alert reducer");
-
       let alertData = action.payload;
       let alertVisible = true;
 
@@ -23,8 +21,6 @@ const aplicationSlice = createSlice({
     },
 
     deleteAlert: (state, action) => {
-      console.log("[] Delete alert reducer");
-
       let alertData = {
         type: "",
         title: "",

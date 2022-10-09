@@ -18,14 +18,13 @@ const LayoutContainer = (props) => {
   // 3. Metodos.
   const handlerNotification = async () => {
     const alertData = {
-      type: "success",
+      type: "",
       title: "Testing message",
       message: "Testing Body message",
     };
 
     await generateAlert(alertData)
       .then((new_alert) => {
-        console.log("[] Alerta generada!", new_alert);
         dispatch(displayAlert(new_alert));
       })
       .catch((error) => {
