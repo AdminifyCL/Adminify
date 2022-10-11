@@ -1,14 +1,14 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
 import PropTypes from "prop-types";
 
 // Componentes.
 
-// Estilos.
-import "./App.scss";
+// Contenedores.
 
-// Definición del componente: <App />.
-const App = (props) => {
+// Definición del router.
+const Router = (props) => {
   // 1. Manejo del estado.
   const {} = props;
 
@@ -18,14 +18,18 @@ const App = (props) => {
   // 3. Metodos.
   // 4. Render.
   return (
-    <>
-      <h1>App</h1>
-    </>
+    <Routes>
+      {/* Rutas publicas. */}
+      <Route />
+
+      {/* Rutas privadas. */}
+      <Route />
+    </Routes>
   );
 };
 
 // PropTypes.
-App.propTypes = {};
+Router.propTypes = {};
 
 // Exportación.
-export default App;
+export default Router;
