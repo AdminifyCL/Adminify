@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Alerts from "../Alerts/Alerts.jsx";
+import Auth from "../Auth/Auth.jsx";
+import PropTypes from "prop-types";
 
 // Action.
 import generateAlert from "../../api/aplicacion/createAlert.js";
@@ -11,7 +13,7 @@ import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 // Definición del componente: <LayoutContainer />
 const LayoutContainer = (props) => {
   // 1. Manejo del estado.
-  const { children } = props;
+  const { children, isPrivate } = props;
   const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
@@ -33,11 +35,20 @@ const LayoutContainer = (props) => {
   };
 
   // 4. Renderizado.
-  return (
-    <>
-      <Alerts>{children}</Alerts>
-    </>
-  );
+  if (isPrivate) {
+    return (
+      <Alerts>
+        <Auth>{children}</Auth>
+      </Alerts>
+    );
+  }
+  return <Alerts>{children}</Alerts>;
+};
+
+// PropTypes.
+LayoutContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+  isPrivate: PropTypes.bool.isRequired,
 };
 
 // Exportación.
