@@ -6,7 +6,7 @@ import NotificationsContainer from "../Notifications/Notifications.jsx";
 
 // Action.
 import generateAlert from "../../api/app/createAlert.js";
-import { displayAlert, deleteAlert } from "../../redux/slices/appSlice.js";
+import { displayAlert } from "../../redux/slices/appSlice.js";
 
 // Definición del componente: <LayoutContainer />
 const LayoutContainer = (props) => {
@@ -35,9 +35,6 @@ const LayoutContainer = (props) => {
   // 4. Renderizado.
   return (
     <>
-      <Button variant="contained" onClick={() => handlerNotification()}>
-        Send REDUX ALERT
-      </Button>
       <NotificationsContainer>{children}</NotificationsContainer>
     </>
   );

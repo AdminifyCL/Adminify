@@ -29,6 +29,7 @@ const NotificationsContainer = (props) => {
 
   const mappingAlert = () => {
     const { type, title, message } = app.alertData;
+    console.log("[] ALERT DATA:", app.alertData);
 
     // Renderizado de la alerta.
     if (title !== "" && message !== "") {
