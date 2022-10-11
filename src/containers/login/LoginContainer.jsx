@@ -20,6 +20,7 @@ const LoginContainer = (props) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userAuth = useSelector((state) => state.user.userAuth);
+  console.log("userAuth", userAuth);
 
   // Ciclo de vida del componente.
   useEffect(() => {}, []);
