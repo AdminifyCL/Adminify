@@ -1,11 +1,13 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+import { publicURL, privateURL } from "../schemas/Navigation.js";
 import PropTypes from "prop-types";
 
 // Componentes.
 
 // Contenedores.
+import IndexContainer from "../containers/index/IndexContainer.jsx";
 
 // Definición del router.
 const Router = (props) => {
@@ -20,10 +22,10 @@ const Router = (props) => {
   return (
     <Routes>
       {/* Rutas publicas. */}
-      <Route />
+      <Route path={publicURL.index} element={<IndexContainer />} index />
 
       {/* Rutas privadas. */}
-      <Route />
+      {/* <Route /> */}
     </Routes>
   );
 };

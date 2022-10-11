@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // Componentes.
+import Router from "../../router/router.jsx";
 
 // Estilos.
 import "./App.scss";
@@ -17,11 +18,7 @@ const App = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return (
-    <>
-      <h1>App</h1>
-    </>
-  );
+  return <Router />;
 };
 
 // PropTypes.
