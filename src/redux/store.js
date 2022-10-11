@@ -6,6 +6,7 @@ import { persistReducer, persistStore } from "redux-persist";
 
 // Reducers.
 import aplicacionReducer from "./slices/aplicacionSlice.js";
+import usuariosReducer from "./slices/usuariosSlice.js";
 
 const rootReducer = combineReducers({
   // Aplicación.
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   // Empleados.
   // Productos.
   // Usuarios.
+  user: usuariosReducer,
   // Ventas.
 });
 

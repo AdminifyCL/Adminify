@@ -5,9 +5,11 @@ import { publicURL, privateURL } from "../schemas/Navigation.js";
 import PropTypes from "prop-types";
 
 // Componentes.
+import Layout from "../components/Layout/Layout.jsx";
 
 // Contenedores.
 import IndexContainer from "../containers/index/IndexContainer.jsx";
+import LoginContainer from "../containers/login/LoginContainer.jsx";
 
 // Definición del router.
 const Router = (props) => {
@@ -22,10 +24,27 @@ const Router = (props) => {
   return (
     <Routes>
       {/* Rutas publicas. */}
-      <Route path={publicURL.index} element={<IndexContainer />} index />
+      <Route
+        index
+        path={publicURL.index}
+        element={
+          <Layout>
+            <IndexContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={publicURL.login}
+        element={
+          <Layout>
+            <LoginContainer />
+          </Layout>
+        }
+      />
 
       {/* Rutas privadas. */}
-      {/* <Route /> */}
     </Routes>
   );
 };

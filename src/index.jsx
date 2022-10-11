@@ -1,8 +1,10 @@
 // Dependencias.
 import React from "react";
+import Theme from "./themes/index.js";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store.js";
 
@@ -10,6 +12,8 @@ import { store, persistor } from "./redux/store.js";
 import App from "./components/App/App.jsx";
 
 // Estilos.
+import "./styles/global.scss";
+import theme from "./themes/index.js";
 
 // Renderizado.
 const contenedor = document.getElementById("root");
@@ -22,7 +26,9 @@ root.render(
       <PersistGate loading={null} persistor={persistor}>
         {/* Router */}
         <HashRouter>
-          <App />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
         </HashRouter>
       </PersistGate>
     </Provider>
