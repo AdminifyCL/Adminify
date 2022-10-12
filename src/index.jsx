@@ -1,6 +1,5 @@
 // Dependencias.
 import React from "react";
-import Theme from "./themes/index.js";
 import { createRoot } from "react-dom/client";
 import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";

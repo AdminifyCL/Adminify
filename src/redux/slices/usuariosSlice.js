@@ -4,6 +4,7 @@ import usuariosState from "../states/usuariosState.js";
 
 // Adapters.
 import adapterAuth from "../adapters/usuarios/userAuth.js";
+import adapterData from "../adapters/usuarios/userData.js";
 
 // Definición del reducer: userSlice.
 const usuariosSlice = createSlice({
@@ -25,7 +26,14 @@ const usuariosSlice = createSlice({
     userLogout: (state, action) => {},
 
     //* -- Control de datos del usuario.
-    getUserData: (state, action) => {},
+    getUserData: (state, action) => {
+      const payload = action.payload;
+
+      // Aplicación de los adapters.
+      let userData = adapterData(payload);
+
+      return { ...state, userData };
+    },
 
     getUserAuth: (state, action) => {},
 
