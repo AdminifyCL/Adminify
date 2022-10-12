@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import CargaPage from "../../pages/carga/CargaPage.jsx";
+import CargaPage from "../../pages/carga/CargaPage.jsx";
 import PropTypes from "prop-types";
 
 // API Handler.
@@ -23,7 +23,7 @@ const CargaContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <>Carga Container</>;
+  return <CargaPage />;
 };
 
 // PropTypes.

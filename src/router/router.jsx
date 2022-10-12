@@ -16,6 +16,7 @@ import ContraseñaContainer from "../containers/contraseña/ContraseñaContainer
 import RegistroContainer from "../containers/registro/RegistroContainer.jsx";
 
 import CargaContainer from "../containers/carga/CargaContainer.jsx";
+
 import CajaContainer from "../containers/caja/CajaContainer.jsx";
 import InventarioContainer from "../containers/inventario/InventarioContainer.jsx";
 import EmpleadosContainer from "../containers/empleados/EmpleadosContainer.jsx";
@@ -104,6 +105,76 @@ const Router = (props) => {
         element={
           <Layout isPrivate={true}>
             <CargaContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.inventario}
+        element={
+          <Layout isPrivate={true}>
+            <InventarioContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.empleados}
+        element={
+          <Layout isPrivate={true}>
+            <EmpleadosContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.estadisticas}
+        element={
+          <Layout isPrivate={true}>
+            <EstadisticasContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.pago}
+        element={
+          <Layout isPrivate={true}>
+            <PagoContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.ventas}
+        element={
+          <Layout isPrivate={true}>
+            <VentasContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.cuenta}
+        element={
+          <Layout isPrivate={true}>
+            <CuentaContainer />
+          </Layout>
+        }
+      />
+
+      <Route
+        exact
+        path={privateURL.confirmacion}
+        element={
+          <Layout isPrivate={true}>
+            <ConfirmacionContainer />
           </Layout>
         }
       />

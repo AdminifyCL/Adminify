@@ -6,17 +6,26 @@ import { persistReducer, persistStore } from "redux-persist";
 
 // Reducers.
 import aplicacionReducer from "./slices/aplicacionSlice.js";
+import empleadosReducer from "./slices/empleadosSlice.js";
+import productosReducer from "./slices/productosSlice.js";
 import usuariosReducer from "./slices/usuariosSlice.js";
+import ventasReducer from "./slices/ventasSlice.js";
 
 const rootReducer = combineReducers({
   // Aplicación.
   app: aplicacionReducer,
 
   // Empleados.
+  empleado: empleadosReducer,
+
   // Productos.
+  producto: productosReducer,
+
   // Usuarios.
   user: usuariosReducer,
+
   // Ventas.
+  venta: ventasReducer,
 });
 
 // Persistencia.
