@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import CajaPage from "../../pages/caja/CajaPage.jsx";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -12,7 +13,7 @@ const CajaContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <CajaPage />;
 };
 
 // PropTypes.
