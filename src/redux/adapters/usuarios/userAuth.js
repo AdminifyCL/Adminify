@@ -1,5 +1,6 @@
-const adapter = (data) => {
+const adapter = (formData) => {
   // Desestructuración.
+  const { data } = formData;
   const userId = data.uid ?? data.id ?? "";
   const userEmail = data.email ?? "";
   const displayName = data.displayName ?? "";

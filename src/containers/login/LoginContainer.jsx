@@ -20,10 +20,14 @@ const LoginContainer = (props) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userAuth = useSelector((state) => state.user.userAuth);
-  console.log("userAuth", userAuth);
 
   // Ciclo de vida del componente.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("[>] userAuth::", userAuth);
+    if (userAuth?.isAuthenticated) {
+      setAuth(true);
+    }
+  }, [userAuth]);
 
   // Metodos.
   const handleUserLogin = async (formData) => {
@@ -58,8 +62,6 @@ const LoginContainer = (props) => {
         title: "Error al iniciar sesión",
         message: errorMessage,
       };
-
-      console.log("[] NEW ALERT:", new_alert);
 
       // Dispatch.
       dispatch(displayAlert(new_alert));

@@ -1,8 +1,9 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { Button, TextField, Alert, AlertTitle, Snackbar, CircularProgress } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { FaAccessibleIcon, FaConciergeBell } from "react-icons/fa";
+import { FaConciergeBell } from "react-icons/fa";
+import { publicURL, privateURL } from "../../schemas/Navigation.js";
 import PropTypes from "prop-types";
 
 // Importación de estilos.
@@ -11,7 +12,7 @@ import "./LoginPage.scss";
 // Definición de la pagina: <LoginPage />
 const LoginPage = (props) => {
   // -- Manejo del estado.
-  const { loading, login } = props;
+  const { loading, login, isAuth } = props;
   const navigate = useNavigate();
 
   const [emailValue, setEmailValue] = useState("");
@@ -117,7 +118,7 @@ const LoginPage = (props) => {
         </div>
 
         <div className="loginPage_recuperarContraseña">
-          <Button onClick={() => navigate("/recuperar")} variant="text">
+          <Button onClick={() => navigate(publicURL.recuperar)} variant="text">
             ¿Haz olvidado tu contraseña? Recupérala aquí
           </Button>
         </div>
@@ -128,9 +129,16 @@ const LoginPage = (props) => {
             Iniciar sesión
           </Button>
 
-          <Button variant="outlined" onClick={() => navigate("/registro")} disabled={loading}>
+          <Button
+            variant="outlined"
+            onClick={() => navigate(publicURL.registro)}
+            disabled={loading}
+          >
             Registrarse
           </Button>
+
+          {/* Redirección */}
+          {isAuth ? navigate(privateURL.cargando) : null}
         </div>
       </div>
     </section>
