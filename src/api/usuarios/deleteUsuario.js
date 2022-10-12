@@ -1,8 +1,8 @@
 // Dependencias.
 
 // Definición...
-const fetchProducts = async () => {
-  console.log("[] API HANDLER: fetchProducts");
+const deleteUsuario = async () => {
+  console.log("[] API HANDLER: deleteUsuario");
   return new Promise(async (resolve, reject) => {
     try {
       resolve({});
@@ -14,4 +14,4 @@ const fetchProducts = async () => {
 };
 
 // Exportación.
-export default fetchProducts;
+export default deleteUsuario;
