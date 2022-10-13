@@ -1,39 +1,44 @@
 // Dependencias.
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
 
 // Reducers.
-import appReducer from "./slices/appSlice.js";
-import empleadoReducer from "./slices/empleadoSlice.js";
-import productReducer from "./slices/productSlice.js";
-import userReducer from "./slices/userSlice.js";
+import aplicacionReducer from "./slices/aplicacionSlice.js";
+import empleadosReducer from "./slices/empleadosSlice.js";
+import productosReducer from "./slices/productosSlice.js";
+import usuariosReducer from "./slices/usuariosSlice.js";
 import ventasReducer from "./slices/ventasSlice.js";
 
 const rootReducer = combineReducers({
-  app: appReducer,
-  empleado: empleadoReducer,
-  producto: productReducer,
-  user: userReducer,
+  // Aplicación.
+  app: aplicacionReducer,
+
+  // Empleados.
+  empleado: empleadosReducer,
+
+  // Productos.
+  producto: productosReducer,
+
+  // Usuarios.
+  user: usuariosReducer,
+
+  // Ventas.
   venta: ventasReducer,
 });
 
-// Configuración de persistencia.
+// Persistencia.
 const persistConfig = {
   key: "root",
-  storage,
+  storage: storage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-// Configuración de la store.
-const isDev = process.env.NODE_ENV !== "production";
-console.log(isDev ? "[🦆] Redux en modo desarrollo." : "[🦆] Redux en modo producción.");
-
+// Store.
 const store = configureStore({
   reducer: persistedReducer,
-  devTools: isDev,
   middleware: [thunk],
 });
 

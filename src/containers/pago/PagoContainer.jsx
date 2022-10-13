@@ -1,37 +1,22 @@
 // Dependencias.
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
-// Importación de componentes.
-import PagoPage from "../../pages/pagos/PagosPage.jsx";
-
-// Definición del componente: <PagoContainer />
+// Definición del contenedor: <PagoContainer />.
 const PagoContainer = (props) => {
-  // -- Manejo del estado.
-  const { carroProducts } = props;
+  // 1. Manejo del estado.
+  const {} = props;
 
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
-  return <PagoPage carroProducts={carroProducts} />;
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  // 4. Render.
+  return <></>;
 };
 
 // PropTypes.
-PagoContainer.propTypes = {
-  carroProducts: PropTypes.array.isRequired,
-};
-
-// Redux
-const mapStateToProps = (state) => {
-  return {
-    carroProducts: state.product.carroProducts ?? [],
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
+PagoContainer.propTypes = {};
 
 // Exportación.
-export default connect(mapStateToProps, mapDispatchToProps)(PagoContainer);
+export default PagoContainer;

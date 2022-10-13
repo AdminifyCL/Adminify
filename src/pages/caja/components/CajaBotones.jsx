@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { PrivateUrls } from "../../../models/Navigation.js";
+import { publicURL, privateURL } from "../../../schemas/Navigation.js";
 
 // Definición del componente: <CajaBotones />
 export function CajaBotones(props) {
@@ -17,7 +17,7 @@ export function CajaBotones(props) {
     sendCarrito();
 
     // Redirigir al pago.
-    navigate(PrivateUrls.pago);
+    navigate(privateURL.pago);
   };
 
   // -- Renderizado.

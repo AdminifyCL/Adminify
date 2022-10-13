@@ -1,8 +1,8 @@
 // Dependencias.
-//Pa que se vayan los cambios
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import { useSelector } from "react-redux";
+import TabNavigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCajero } from "./components/CajaCajero.jsx";
@@ -18,7 +18,7 @@ import "./CajaPage.scss";
 const CajaPage = (props) => {
   // -- Manejo del estado.
   const { sendCarrito } = props;
-  const productos = [...props.productos];
+  const productos = useSelector((state) => state.producto.productos);
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
 

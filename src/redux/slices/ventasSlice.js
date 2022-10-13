@@ -1,21 +1,19 @@
 // Dependencias.
 import { createSlice } from "@reduxjs/toolkit";
-import ventaState from "../state/ventasState.js";
+import ventasState from "../states/ventasState.js";
 
 // Adapters.
 // ...
 
-// Definición del reducer: ventasSlice.
-const ventaSlice = createSlice({
-  name: "venta",
-  initialState: ventaState,
+// Definición del slice.
+const ventasSlice = createSlice({
+  name: "ventas",
+  initialState: ventasState,
 
   // Reducers.
-  reducers: {
-    //* --
-  },
+  reducers: {},
 });
 
 // Exportación.
-export const {} = ventaSlice.actions;
-export default ventaSlice.reducer;
+export const {} = ventasSlice.actions;
+export default ventasSlice.reducer;

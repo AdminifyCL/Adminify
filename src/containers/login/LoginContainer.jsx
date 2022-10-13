@@ -1,18 +1,18 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import handleFirebaseError from "../../handlers/handleFirebaseError.js";
+import handleFirebaseError from "../../firebase/handlers/handleFirebaseError.js";
+import PropTypes from "prop-types";
 
-// Actions: API Handler
+// API Handler.
 import userLoginWithEmail from "../../api/usuarios/userLogin.js";
-import { userLogin } from "../../redux/slices/userSlice.js";
-import { displayAlert } from "../../redux/slices/appSlice.js";
+import { userLogin } from "../../redux/slices/usuariosSlice.js";
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
-// Importación de componentes.
+// Componentes.
 import LoginPage from "../../pages/login/LoginPage.jsx";
 
-// Definición del contenedor: <LoginContainer />
+// Definiciones del contenedor.
 const LoginContainer = (props) => {
   // Manejo del estado.
   const {} = props;
@@ -20,10 +20,14 @@ const LoginContainer = (props) => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const userAuth = useSelector((state) => state.user.userAuth);
-  console.log("userAuth", userAuth);
 
   // Ciclo de vida del componente.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log("[>] userAuth::", userAuth);
+    if (userAuth?.isAuthenticated) {
+      setAuth(true);
+    }
+  }, [userAuth]);
 
   // Metodos.
   const handleUserLogin = async (formData) => {
@@ -58,8 +62,6 @@ const LoginContainer = (props) => {
         title: "Error al iniciar sesión",
         message: errorMessage,
       };
-
-      console.log("[] NEW ALERT:", new_alert);
 
       // Dispatch.
       dispatch(displayAlert(new_alert));

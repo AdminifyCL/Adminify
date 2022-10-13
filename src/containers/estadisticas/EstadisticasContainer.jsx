@@ -1,48 +1,22 @@
 // Dependencias.
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import React, { Component } from "react";
 
-// Importación de componentes.
-import EstadisticasPage from "../../pages/estadisticas/EstadisticasPage.jsx";
+// Definición del contenedor: <EstadisticasContainer />.
+const EstadisticasContainer = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
 
-// Definición del contenedor.
-class EstadisticasContainer extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
 
-    this.state = {};
-  }
-
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-
-  // -- Render
-  render() {
-    const { userInfo } = this.props;
-    return <EstadisticasPage userInfo={userInfo} />;
-  }
-}
+  // 3. Metodos.
+  // 4. Render.
+  return <></>;
+};
 
 // PropTypes.
 EstadisticasContainer.propTypes = {};
 
-// Redux
-const mapStateToProps = (state) => ({
-  userInfo: state.user.userInfo,
-});
-
-const mapDispatchToProps = {};
-
-// Exportación del contenedor.
-export default connect(mapStateToProps, mapDispatchToProps)(EstadisticasContainer);
-
-//? mapStateToProps: Consulta el estado de redux y lo mapea a los props del componente.
+// Exportación.
+export default EstadisticasContainer;

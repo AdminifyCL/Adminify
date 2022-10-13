@@ -1,8 +1,8 @@
 // Dependencias.
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
-import { firebaseApp, firebaseAuth, firestore } from "../../database/config.js";
-import collections from "../../types/database/collections.js";
+import { firebaseApp, firebaseAuth, firestore } from "../../firebase/index.js";
+import collections from "../../firebase/config/collections.js";
 
 const userLogin = async (formData) => {
   console.log("[] API HANDLER: userLogin");

@@ -1,6 +1,6 @@
 // Dependencias.
 import { getAuth, signOut } from "firebase/auth";
-import { firebaseApp, firebaseAuth, firestore } from "../../database/config.js";
+import { firebaseApp, firebaseAuth, firestore } from "../../firebase/index.js";
 
 const userLogout = async () => {
   return new Promise(async (resolve, reject) => {

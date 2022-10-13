@@ -1,48 +1,25 @@
 // Dependencias.
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
-// Importación de componentes.
+// Componentes.
 import IndexPage from "../../pages/index/IndexPage.jsx";
 
 // Definición del contenedor.
-class IndexContainer extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+const IndexContainer = (props) => {
+  // 1. Manejo de estados.
+  const {} = props;
 
-    this.state = {};
-  }
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
 
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-  // -- Render
-  render() {
-    return <IndexPage />;
-  }
-}
+  // 3. Metodos.
+  // 4. Render.
+  return <IndexPage />;
+};
 
 // PropTypes.
 IndexContainer.propTypes = {};
 
-// Redux
-const mapStateToProps = (state) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-// Exportación del contenedor.
-export default connect(mapStateToProps, mapDispatchToProps)(IndexContainer);
-
-//? mapStateToProps: Consulta el estado de redux y lo mapea a los props del componente.
+// Exportación.
+export default IndexContainer;
