@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { FaSignOutAlt, FaConciergeBell } from "react-icons/fa";
 import tabsInfo from "../../schemas/Tabs.js";
 
 // API Handler
-// import userSignOut from "../../api/usuarios/userLogout.js";
+import userSignOut from "../../api/usuarios/userLogout.js";
+import { userLogout } from "../../redux/slices/usuariosSlice.js";
 
 // Estilos.
 import { tabStyle, exitButton } from "./TabStyle.jsx";
@@ -17,6 +19,7 @@ import "./Navigation.scss";
 const TabNavigation = (props) => {
   // 1. Menejo del estado.
   const [tabActive, setTabActive] = useState("");
+  const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
   useEffect(() => {
@@ -38,13 +41,13 @@ const TabNavigation = (props) => {
   };
 
   const handleSignOut = async () => {
-    // await userSignOut()
-    //   .then(() => {
-    //     console.log("[] Sesión del usuario cerrada");
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    await userSignOut()
+      .then(() => {
+        dispatch(userLogout({}));
+      })
+      .catch((error) => {
+        console.error("[] ERROR:", error);
+      });
   };
 
   const mappingTabs = () => {

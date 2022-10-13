@@ -8,7 +8,7 @@ const adapter = (formData) => {
   const refreshToken = data.stsTokenManager?.refreshToken ?? "";
   const expiration = data.stsTokenManager?.expirationTime ?? "";
 
-  const isAuthenticated = data?.uid !== "" ? true : false;
+  const isAuthenticated = userId !== "" ? true : false;
 
   // Modelo de datos.
   let userAuth = {

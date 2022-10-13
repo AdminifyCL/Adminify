@@ -23,7 +23,15 @@ const usuariosSlice = createSlice({
       return { ...state, userAuth };
     },
 
-    userLogout: (state, action) => {},
+    userLogout: (state, action) => {
+      // Aplicación de los adapters.
+      let userAuth = adapterAuth({ data: {} });
+
+      // Aplicación de los adapters.
+      let userData = adapterData({});
+
+      return { ...state, userAuth, userData };
+    },
 
     //* -- Control de datos del usuario.
     getUserData: (state, action) => {
