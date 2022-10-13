@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import VentasPage from "../../pages/ventas/VentasPage.jsx";
 
 // Definición del contenedor: <VentasContainer />.
 const VentasContainer = (props) => {
@@ -12,7 +13,7 @@ const VentasContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <VentasPage />;
 };
 
 // PropTypes.
