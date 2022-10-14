@@ -1,0 +1,121 @@
+@use "../../styles/colors" as Colors;
+
+.ConfirmaciónPage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //background-color: blue;
+  //background-image: "../../assets/images/bg-table.png";
+  height: 90vh;
+  width: 100%;
+}
+
+/*
+.confirmacionPage_textos {
+  display: flex;
+  background-color: red;
+  flex-direction: column;
+  justify-content: flex-start;
+}*/
+
+.confirmacionPage_titulo {
+  h1 {
+    font-weight: 600;
+  }
+  color: #226f54;
+  // background-color: red;
+  width: 80%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px;
+  font-size: xx-large;
+  font-weight: bolder;
+  position: absolute;
+  top: 15%;
+  left: 4%;
+}
+
+.confirmacionPage_subtitulo {
+  color: #226f54;
+  font-size: small;
+}
+
+.confirmacionPage_contendorDatos {
+  height: 30vh;
+  width: 40vw;
+  outline: solid;
+  outline-color: #226f54;
+  //background-image: "../../assets/images/bg-table.png";
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: 50%;
+  //background-color: white;
+  color: #226f54;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  position: absolute;
+  top: 28%;
+  left: 4%;
+}
+
+.confirmacionPage_contendorDatosFinales {
+  // background-color: red;
+  h1 {
+    font-weight: 700;
+  }
+  width: 65%;
+  height: 60%;
+  padding-top: 30px;
+  padding-left: 5%;
+  //background-color: red;
+  //font-weight: bold;
+  // padding: 40px;
+}
+
+.confirmacionPage_contendorTitulo {
+  outline: solid;
+  outline-color: #226f54;
+  height: 10%;
+  width: 100%;
+  border-radius: 15px 15px 0px 0px;
+  background-color: rgb(211, 211, 211);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmacionPage_contendorBotonesConfimacion {
+  height: 10%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+  column-gap: 1rem;
+  position: absolute;
+  bottom: 11%;
+  right: 3%;
+}
+
+.confirmacionPage_stepper {
+  width: 100%;
+  height: 4%;
+  //background-color: red;
+  position: absolute;
+  bottom: 5%;
+}
+
+.confirmacionPage_nombre {
+  /*display: flex;
+  flex-direction: row;*/
+  background-color: blue;
+}
