@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import EstadisticasPage from "../../pages/estadisticas/EstadisticasPage";
 
 // Definición del contenedor: <EstadisticasContainer />.
 const EstadisticasContainer = (props) => {
@@ -12,7 +13,7 @@ const EstadisticasContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <EstadisticasPage />;
 };
 
 // PropTypes.

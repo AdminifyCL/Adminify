@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import RegistroPage from "../../pages/registro/RegistroPage.jsx";
 
 // Definición del contenedor: <RegistroContainer />.
 const RegistroContainer = (props) => {
@@ -12,7 +13,7 @@ const RegistroContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <RegistroPage />;
 };
 
 // PropTypes.

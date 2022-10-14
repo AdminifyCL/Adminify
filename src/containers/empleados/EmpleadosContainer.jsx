@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import EmpleadosPage from "../../pages/empleados/EmpleadosPage";
 
 // Definición del contenedor: <EmpleadosContainer />.
 const EmpleadosContainer = (props) => {
@@ -12,7 +13,7 @@ const EmpleadosContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <EmpleadosPage />;
 };
 
 // PropTypes.

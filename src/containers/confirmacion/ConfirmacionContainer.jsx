@@ -1,5 +1,6 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
+import ConfirmacionPage from "../../pages/confirmacion/ConfirmacionPage.jsx";
 import PropTypes from "prop-types";
 
 // Definición del contenedor: <ConfirmacionContainer />.
@@ -12,7 +13,7 @@ const ConfirmacionContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <ConfirmacionPage carroProducts={[]} />;
 };
 
 // PropTypes.

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 // Estilos.
+import "./NotFoundPage.scss";
 
 // Definición del componente: <NotFoundPage />
 const NotFoundPage = (props) => {
@@ -14,7 +15,13 @@ const NotFoundPage = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return (
+    <section className="">
+      <div className="">
+        <h1>404 - Page</h1>
+      </div>
+    </section>
+  );
 };
 
 // PropTypes.
