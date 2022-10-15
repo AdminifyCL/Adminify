@@ -8,14 +8,14 @@ import PagosPage from "../../pages/pagos/PagosPage.jsx";
 const PagoContainer = (props) => {
   // 1. Manejo del estado.
   const {} = props;
-  const carroProducts = useSelector((state) => state);
+  const carroProducts = useSelector((state) => state.producto.carrito);
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
   // 4. Render.
-  return <PagosPage carroProducts={[]} />;
+  return <PagosPage carroProducts={carroProducts} />;
 };
 
 // PropTypes.
