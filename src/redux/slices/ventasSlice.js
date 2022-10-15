@@ -11,9 +11,16 @@ const ventasSlice = createSlice({
   initialState: ventasState,
 
   // Reducers.
-  reducers: {},
+  reducers: {
+    //* -- Metodo de pago.
+    setMetodo: (state, action) => {
+      const payload = action.payload;
+
+      return { ...state, metodo: payload };
+    },
+  },
 });
 
 // Exportación.
-export const {} = ventasSlice.actions;
+export const { setMetodo } = ventasSlice.actions;
 export default ventasSlice.reducer;

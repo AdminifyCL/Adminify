@@ -23,11 +23,12 @@ import "./PagosPage.scss";
 // Definición del componente: <PagosPage />
 const PagosPage = (props) => {
   // 1. Manejo del estado.
-  const { carroProducts } = props;
+  const { carroProducts, setMetodo } = props;
   const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox cliente" } };
   const [checked, setChecked] = useState(true);
   const [pago, setPago] = useState("");
+  const [isActive, setIsActive] = useState(false);
   const [mostrarComponente, setMostrarComponente] = useState(true);
   const steps = ["Selección de productos", "Proceso de pago", "Pago confimado"];
 
@@ -37,11 +38,21 @@ const PagosPage = (props) => {
   // 3. Metodos.
   const handleRedirect = () => {
     // Redirigir a la confirmación del pago
-    navigate("/confirmacion");
+    if (isActive) {
+      navigate("/confirmacion");
+      setMetodo(pago);
+    }
   };
 
   const handleChangePago = (event) => {
-    setPago(event.target.value);
+    let nuevo_metodo = event.target.value;
+    if (nuevo_metodo === 1) {
+      setPago("Efectivo");
+    } else {
+      setPago("Debito");
+    }
+
+    setIsActive(true);
   };
 
   const mappingCarroProducts = () => {
@@ -196,7 +207,7 @@ const PagosPage = (props) => {
                   Cancelar compra
                 </Button>
               </div>
-              <Button onClick={() => handleRedirect()} variant="contained">
+              <Button onClick={() => handleRedirect()} variant="contained" disabled={!isActive}>
                 Confirmar pago
               </Button>
             </section>

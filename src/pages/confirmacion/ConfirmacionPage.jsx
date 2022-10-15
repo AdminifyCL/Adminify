@@ -11,7 +11,7 @@ import "./ConfirmacionPage.scss";
 // Definición del componente: <ConfirmacionPage />
 const ConfirmacionPage = (props) => {
   // 1. Manejo del estado.
-  const { carroProducts } = props;
+  const { carroProducts, metodo } = props;
   const navigate = useNavigate();
   const steps = ["Selección de productos", "Proceso de pago", "Confirmación de pago"];
 
@@ -96,7 +96,7 @@ const ConfirmacionPage = (props) => {
           <div className="confirmacionPage_contendorDatosFinales">
             <h1>Empleado: Javier Almarza</h1>
             <h1>Monto total: {handleMontoTotal()}</h1>
-            <h1>Metodo de pago: Efectivo</h1>
+            <h1>Metodo de pago: {metodo}</h1>
             <h1>Cantidad de Productos: {handleTotalProductos()}</h1>
             <h1>Fecha de venta: {handleActualDate()}</h1>
           </div>

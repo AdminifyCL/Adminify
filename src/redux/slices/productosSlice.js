@@ -29,8 +29,6 @@ const productosSlice = createSlice({
     // * -- Control del carro de compra.
     setCarro: (state, action) => {
       const payload = action.payload;
-      console.log("[] Actions payload: ", payload);
-
       return { ...state, carrito: payload };
     },
 

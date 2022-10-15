@@ -1,5 +1,7 @@
 // Definición del estado inicial: Ventas.
-const ventasState = {};
+const ventasState = {
+  metodo: "",
+};
 
 // Exportación
 export default ventasState;
