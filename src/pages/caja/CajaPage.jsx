@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
-import TabNavigation from "../../components/Navigation/Navigation.jsx";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCajero } from "./components/CajaCajero.jsx";
@@ -10,6 +10,8 @@ import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
 import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
+import { publicURL, privateURL } from "../../schemas/Navigation.js";
 
 // Importación de estilos.
 import "./CajaPage.scss";
@@ -17,10 +19,10 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { sendCarrito } = props;
-  const productos = useSelector((state) => state.producto.productos);
+  const { productos, sendCarrito } = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
+  const navigate = useNavigate();
 
   // -- Ciclo de vida.
   useEffect(() => {}, []);
@@ -59,6 +61,11 @@ const CajaPage = (props) => {
   const enviarCarrito = () => {
     // Enviar los productos del carrito a REDUX.
     sendCarrito(carrito);
+
+    console.log({ carrito });
+
+    // Redirigir al pago.
+    // navigate(privateURL.pago);
   };
 
   // -- Renderizado.
@@ -66,7 +73,7 @@ const CajaPage = (props) => {
     <section className="cajaPage_container">
       {/* Navegación de la aplicación. */}
       <section className="cajaPage_navigation">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Vista de la caja. */}

@@ -27,7 +27,10 @@ const productosSlice = createSlice({
     deleteProduct: (state, action) => {},
 
     // * -- Control del carro de compra.
-    setCarro: (state, action) => {},
+    setCarro: (state, action) => {
+      const payload = action.payload;
+      console.log("[] Actions payload: ", payload);
+    },
   },
 });
 
