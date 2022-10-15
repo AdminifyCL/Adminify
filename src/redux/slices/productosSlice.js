@@ -30,11 +30,17 @@ const productosSlice = createSlice({
     setCarro: (state, action) => {
       const payload = action.payload;
       console.log("[] Actions payload: ", payload);
+
+      return { ...state, carrito: payload };
+    },
+
+    clearCarro: (state, action) => {
+      return { ...state, carrito: [] };
     },
   },
 });
 
 // Exportación.
-export const { fetchProducts, createProduct, editProduct, deleteProduct, setCarro } =
+export const { fetchProducts, createProduct, editProduct, deleteProduct, setCarro, clearCarro } =
   productosSlice.actions;
 export default productosSlice.reducer;

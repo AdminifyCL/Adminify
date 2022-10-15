@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
@@ -13,6 +13,9 @@ import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
 
+// Actions.
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
+
 // Importación de estilos.
 import "./CajaPage.scss";
 
@@ -22,10 +25,18 @@ const CajaPage = (props) => {
   const { productos, sendCarrito } = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
+  const [canPay, setCanPay] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (carrito.length > 0) {
+      setCanPay(true);
+    } else {
+      setCanPay(false);
+    }
+  }, [carrito]);
 
   // -- Metodo.
   const cambiarTotal = (valor) => {
@@ -60,12 +71,26 @@ const CajaPage = (props) => {
 
   const enviarCarrito = () => {
     // Enviar los productos del carrito a REDUX.
-    sendCarrito(carrito);
 
-    console.log({ carrito });
+    let total = carrito.length;
 
-    // Redirigir al pago.
-    // navigate(privateURL.pago);
+    if (total > 0) {
+      setCanPay(true);
+      sendCarrito(carrito);
+
+      // Redirigir al pago.
+      navigate(privateURL.pago);
+    } else {
+      setCanPay(false);
+
+      let newAlert = {
+        type: "error",
+        title: "Carrito vacío",
+        message: "El carrito está vacío, no se puede realizar la venta",
+      };
+
+      dispatch(displayAlert(newAlert));
+    }
   };
 
   // -- Renderizado.
@@ -95,7 +120,12 @@ const CajaPage = (props) => {
         <CajaTotal total={total} />
 
         {/* Botones. */}
-        <CajaBotones limpia={limpiar} carrito={carrito} sendCarrito={enviarCarrito} />
+        <CajaBotones
+          limpia={limpiar}
+          carrito={carrito}
+          sendCarrito={enviarCarrito}
+          canPay={canPay}
+        />
         <Fab
           color="primary"
           aria-label="add"

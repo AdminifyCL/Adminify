@@ -3,8 +3,9 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import CajaPage from "../../pages/caja/CajaPage.jsx";
 import { useSelector, useDispatch } from "react-redux";
-import setCarrito from "../../api/productos/setCarrito.js";
-import { setCarro } from "../../redux/slices/productosSlice.js";
+
+// Action
+import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -12,23 +13,21 @@ const CajaContainer = (props) => {
   const {} = props;
   const [productos, setProductos] = useState([]);
   const allProductos = useSelector((state) => state.producto.productos);
+  const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
   useEffect(() => {
     setProductos(allProductos);
   }, [allProductos]);
 
+  useEffect(() => {
+    dispatch(clearCarro());
+  }, []);
+
   // 3. Metodos.
   const handleCarritoProducts = async (productosCarro) => {
     // Establecer los productos en el carro.
-    await setCarrito(productosCarro)
-      .then((response) => {
-        console.log("[] Carrito establecido.");
-        useDispatch(setCarro(response));
-      })
-      .catch((error) => {
-        console.log("[] Error al establecer el carrito.");
-      });
+    dispatch(setCarro(productosCarro));
   };
 
   // 4. Render.
