@@ -23,7 +23,7 @@ import "./PagosPage.scss";
 // Definición del componente: <PagosPage />
 const PagosPage = (props) => {
   // 1. Manejo del estado.
-  const { carroProducts, setMetodo } = props;
+  const { carroProducts, setMetodo, setVenta } = props;
   const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox cliente" } };
   const [checked, setChecked] = useState(true);
@@ -36,9 +36,12 @@ const PagosPage = (props) => {
   useEffect(() => {}, []);
 
   // 3. Metodos.
-  const handleRedirect = () => {
+  const handleRedirect = async () => {
     // Redirigir a la confirmación del pago
     if (isActive) {
+      // Configurando la venta.
+      await setVenta(pago);
+
       navigate("/confirmacion");
       setMetodo(pago);
     }

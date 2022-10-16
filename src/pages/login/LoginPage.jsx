@@ -17,6 +17,7 @@ const LoginPage = (props) => {
 
   const [emailValue, setEmailValue] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [redirect, setRedirect] = useState(false);
 
   const [passValue, setPassValue] = useState("");
   const [passError, setPassError] = useState("");
@@ -44,6 +45,7 @@ const LoginPage = (props) => {
 
     // Limpiar los inputs.
     clearInputs();
+    setRedirect(true);
   };
 
   const handleChanges = (event) => {
@@ -138,7 +140,7 @@ const LoginPage = (props) => {
           </Button>
 
           {/* Redirección */}
-          {isAuth ? navigate(privateURL.cargando) : null}
+          {isAuth && redirect ? navigate(privateURL.cargando) : null}
         </div>
       </div>
     </section>

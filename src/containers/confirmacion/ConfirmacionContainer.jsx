@@ -10,7 +10,6 @@ const ConfirmacionContainer = (props) => {
   const {} = props;
   const carrito = useSelector((state) => state.producto.carrito);
   const metodo = useSelector((state) => state.venta.metodo);
-  console.log({ metodo });
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
