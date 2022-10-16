@@ -1,5 +1,5 @@
 // Dependencias.
-import { collection, doc, getDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { firebaseApp, firebaseAuth, firestore } from "../../firebase/index.js";
 import Collections from "../../firebase/config/collections.js";
 
@@ -19,16 +19,25 @@ const fetchVentas = async () => {
         const userSnapshot = await getDoc(userDoc);
         const userData = userSnapshot.data();
 
-        console.log({ userData });
-
         // Consultar las ventas de la tienda.
         const tiendaId = userData.tiendaId;
         const ventasPath = `${Collections.tiendas}/${tiendaId}/${Collections.ventas}`;
         const ventasRef = collection(firestore, ventasPath);
 
-        console.log({ tiendaId });
+        let ventas = [];
+        await getDocs(ventasRef)
+          .then((querySnapshot) => {
+            querySnapshot.forEach((document) => {
+              const venta = document.data();
+              ventas.push(venta);
+            });
+          })
+          .catch((error) => {
+            console.log("[] Error al conseguir los documentos de ventas.");
+            console.error(error);
+          });
 
-        resolve();
+        resolve(ventas);
       } else {
         reject();
       }
