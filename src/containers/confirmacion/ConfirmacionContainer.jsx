@@ -9,13 +9,14 @@ const ConfirmacionContainer = (props) => {
   // 1. Manejo del estado.
   const {} = props;
   const carrito = useSelector((state) => state.producto.carrito);
+  const metodo = useSelector((state) => state.venta.metodo);
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
   // 4. Render.
-  return <ConfirmacionPage carroProducts={carrito} />;
+  return <ConfirmacionPage carroProducts={carrito} metodo={metodo} />;
 };
 
 // PropTypes.

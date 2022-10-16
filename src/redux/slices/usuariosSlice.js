@@ -39,7 +39,6 @@ const usuariosSlice = createSlice({
 
       // Aplicación de los adapters.
       let userData = adapterData(payload);
-
       return { ...state, userData };
     },
 
