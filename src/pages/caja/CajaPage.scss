@@ -249,3 +249,25 @@
   background-color: Colors.$gray-color;
   text-align: center;
 }
+
+.cajaPage_menu_cierre {
+  width: 35vw;
+  height: 20vh;
+  border: 3px solid Colors.$primary_dark-color;
+  border-radius: 1.25rem;
+  background-color: Colors.$white-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position : fixed;
+  top : 40%;
+  z-index : 50;
+  div{
+    width: 100%;
+    // background-color: aqua;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}

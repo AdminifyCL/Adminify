@@ -6,6 +6,7 @@ import TabNavigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCajero } from "./components/CajaCajero.jsx";
+import { CajaCierre } from "./components/CajaCierre.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
 import { Fab } from "@mui/material";
@@ -21,6 +22,7 @@ const CajaPage = (props) => {
   const productos = useSelector((state) => state.producto.productos);
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
+  const [modalVisibility,setModalVisibility] = useState(false)
 
   // -- Ciclo de vida.
   useEffect(() => {}, []);
@@ -61,6 +63,10 @@ const CajaPage = (props) => {
     sendCarrito(carrito);
   };
 
+  const cerrarModal = () => {
+    setModalVisibility(!modalVisibility)
+  }
+
   // -- Renderizado.
   return (
     <section className="cajaPage_container">
@@ -72,6 +78,9 @@ const CajaPage = (props) => {
       {/* Vista de la caja. */}
       <section className="cajaPage_content">
         {/* Lista de productos. */}
+
+        <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre>
+
         <CajaProductos
           total={total}
           productos={productos}
@@ -89,10 +98,14 @@ const CajaPage = (props) => {
 
         {/* Botones. */}
         <CajaBotones limpia={limpiar} carrito={carrito} sendCarrito={enviarCarrito} />
+
         <Fab
           color="primary"
           aria-label="add"
           style={{ position: "absolute", top: "88%", left: "93%" }}
+          onClick={() => {
+            setModalVisibility(true)
+          }}
         >
           <VscGear />
         </Fab>
