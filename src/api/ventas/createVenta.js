@@ -1,11 +1,49 @@
 // Dependencias.
+import { firebaseApp, firebaseAuth, firestore } from "../../firebase/index.js";
+import { collection, doc, addDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import Collections from "../../firebase/config/collections.js";
 
 // Definición...
-const createVenta = async () => {
+const createVenta = async (tiendaId, ventaData) => {
   console.log("[] API HANDLER: createVenta");
   return new Promise(async (resolve, reject) => {
     try {
-      resolve({});
+      const user = firebaseAuth.currentUser;
+
+      if (user) {
+        // Creación del documento en la BD.
+        const ventasPath = `${Collections.tiendas}/${tiendaId}/${Collections.ventas}`;
+        const ventasRef = collection(firestore, ventasPath);
+
+        const ventaDoc = await addDoc(ventasRef, ventaData)
+          .then((docRef) => {
+            console.log("[ACTION] VENTA CREATED:", docRef);
+            return docRef;
+          })
+          .catch((error) => {
+            console.log("[] Error al crear la venta en la BD.");
+            console.error(error);
+            reject();
+          });
+
+        // Actualizar el documento de la BD.
+        ventaData.id = ventaDoc.id;
+        ventaData.fecha = serverTimestamp();
+
+        await setDoc(ventaDoc, ventaData)
+          .then(() => {
+            console.log("[] Se actualizo la venta.");
+          })
+          .catch((error) => {
+            console.log("[] Error al actualizar la venta en la BD.");
+            console.error(error);
+            reject();
+          });
+
+        resolve();
+      } else {
+        reject();
+      }
     } catch (error) {
       console.error(error);
       reject(error);

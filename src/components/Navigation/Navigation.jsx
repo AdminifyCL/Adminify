@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { FaSignOutAlt, FaConciergeBell } from "react-icons/fa";
+import { FaSignOutAlt, FaConciergeBell, FaDraftingCompass } from "react-icons/fa";
 import tabsInfo from "../../schemas/Tabs.js";
 
 // API Handler
@@ -74,7 +74,8 @@ const TabNavigation = (props) => {
     <section className="TabNavigation">
       {/* Icono para la navegación. */}
       <div className="TabNavigation-icon">
-        <FaConciergeBell />
+        <FaDraftingCompass size={40} />
+        <p className="TabNavigation-badge">Beta</p>
       </div>
 
       {/* Pestañas para la navegación. */}

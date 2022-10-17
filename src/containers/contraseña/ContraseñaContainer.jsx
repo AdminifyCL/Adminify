@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import ContraseñaPage from "../../pages/contraseña/ContraseñaPage.jsx";
 
 // Definición del contenedor: <ContraseñaContainer />.
 const ContraseñaContainer = (props) => {
@@ -12,7 +13,7 @@ const ContraseñaContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <ContraseñaPage />;
 };
 
 // PropTypes.

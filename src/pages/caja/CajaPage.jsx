@@ -1,8 +1,8 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
-import TabNavigation from "../../components/Navigation/Navigation.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCajero } from "./components/CajaCajero.jsx";
@@ -11,6 +11,11 @@ import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
 import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
+import { publicURL, privateURL } from "../../schemas/Navigation.js";
+
+// Actions.
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Importación de estilos.
 import "./CajaPage.scss";
@@ -18,14 +23,22 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { sendCarrito } = props;
-  const productos = useSelector((state) => state.producto.productos);
+  const { productos, sendCarrito } = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
-  const [modalVisibility,setModalVisibility] = useState(false)
+  const [canPay, setCanPay] = useState(false);
+  const [modalVisibility, setModalVisibility] = useState(false)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (carrito.length > 0) {
+      setCanPay(true);
+    } else {
+      setCanPay(false);
+    }
+  }, [carrito]);
 
   // -- Metodo.
   const cambiarTotal = (valor) => {
@@ -60,7 +73,26 @@ const CajaPage = (props) => {
 
   const enviarCarrito = () => {
     // Enviar los productos del carrito a REDUX.
-    sendCarrito(carrito);
+
+    let total = carrito.length;
+
+    if (total > 0) {
+      setCanPay(true);
+      sendCarrito(carrito);
+
+      // Redirigir al pago.
+      navigate(privateURL.pago);
+    } else {
+      setCanPay(false);
+
+      let newAlert = {
+        type: "error",
+        title: "Carrito vacío",
+        message: "El carrito está vacío, no se puede realizar la venta",
+      };
+
+      dispatch(displayAlert(newAlert));
+    }
   };
 
   const cerrarModal = () => {
@@ -72,7 +104,7 @@ const CajaPage = (props) => {
     <section className="cajaPage_container">
       {/* Navegación de la aplicación. */}
       <section className="cajaPage_navigation">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Vista de la caja. */}
@@ -97,8 +129,12 @@ const CajaPage = (props) => {
         <CajaTotal total={total} />
 
         {/* Botones. */}
-        <CajaBotones limpia={limpiar} carrito={carrito} sendCarrito={enviarCarrito} />
-
+        <CajaBotones
+          limpia={limpiar}
+          carrito={carrito}
+          sendCarrito={enviarCarrito}
+          canPay={canPay}
+        />
         <Fab
           color="primary"
           aria-label="add"

@@ -1,23 +1,17 @@
 // Dependencias.
 import React from "react";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { publicURL, privateURL } from "../../../schemas/Navigation.js";
 
 // Definición del componente: <CajaBotones />
 export function CajaBotones(props) {
   // -- Manejo del estado.
-  const { limpia, sendCarrito } = props;
-  const navigate = useNavigate();
+  const { limpia, sendCarrito, canPay } = props;
 
   // -- Ciclo de vida.
   // -- Metodo.
   const handleRedirect = () => {
     // Configurar los productos del carrito.
     sendCarrito();
-
-    // Redirigir al pago.
-    navigate(privateURL.pago);
   };
 
   // -- Renderizado.
@@ -33,6 +27,7 @@ export function CajaBotones(props) {
         Limpiar
       </Button>
       <Button
+        disabled={!canPay}
         variant="contained"
         style={{ height: "50px", width: "130px" }}
         onClick={() => handleRedirect()}

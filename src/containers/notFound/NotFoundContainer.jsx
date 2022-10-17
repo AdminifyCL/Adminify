@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import NotFoundPage from "../../pages/notFound/NotFoundPage";
 
 // Definición del contenedor: <NotFoundContainer />.
 const NotFoundContainer = (props) => {
@@ -12,7 +13,7 @@ const NotFoundContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return <NotFoundPage />;
 };
 
 // PropTypes.

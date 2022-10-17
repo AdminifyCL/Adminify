@@ -1,0 +1,34 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.CategoriasContainer_content {
+  width: 100%;
+  height: 100%;
+
+  margin-top: 1.25rem;
+  padding-bottom: 1.25rem;
+
+  border-bottom: 2px dashed rgba(Colors.$dark-color, $alpha: 0.3);
+}
+
+.CategoriasContainer_banner {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.CategoriasContainer_titulo {
+  h1 {
+    font-weight: bolder;
+    font-size: 2rem;
+    color: Colors.$primary-color;
+  }
+  p {
+    font-size: 1.25rem;
+    color: Colors.$dark-color;
+  }
+  strong {
+    font-weight: bolder;
+  }
+}

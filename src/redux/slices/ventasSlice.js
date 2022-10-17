@@ -11,9 +11,38 @@ const ventasSlice = createSlice({
   initialState: ventasState,
 
   // Reducers.
-  reducers: {},
+  reducers: {
+    //* -- Manejo de las ventas.
+    fetchVentas: (state, action) => {
+      const payload = action.payload;
+
+      return { ...state, ventas: payload };
+    },
+
+    appendVenta: (state, action) => {
+      const payload = action.payload;
+
+      return { ...state, ventas: [...state.ventas, payload] };
+    },
+
+    removeVenta: (state, action) => {
+      const payload = action.payload;
+
+      return {
+        ...state,
+        ventas: state.ventas.filter((venta) => venta.id !== payload.id),
+      };
+    },
+
+    //* -- Metodo de pago.
+    setMetodo: (state, action) => {
+      const payload = action.payload;
+
+      return { ...state, metodo: payload };
+    },
+  },
 });
 
 // Exportación.
-export const {} = ventasSlice.actions;
+export const { fetchVentas, appendVenta, removeVenta, setMetodo } = ventasSlice.actions;
 export default ventasSlice.reducer;

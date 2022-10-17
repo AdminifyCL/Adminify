@@ -12,6 +12,9 @@ const databaseCollections = {
   //? Colección de productos.
   productos: "PRODUCTOS",
 
+  //? Colección de ventas.
+  ventas: "VENTAS",
+
   //? Colección de cada producto.
   producto: "PRODUCTO",
 };

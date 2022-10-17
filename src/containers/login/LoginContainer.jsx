@@ -27,6 +27,8 @@ const LoginContainer = (props) => {
     if (userAuth?.isAuthenticated) {
       setAuth(true);
     }
+
+    return () => {};
   }, [userAuth]);
 
   // Metodos.
