@@ -21,7 +21,7 @@ export function CajaProductos(props) {
   const [entrada, setEntrada] = useState("");
   return (
     <div className="cajaPage_Productos">
-      <div className="cajaPage_Productos_cabecera">
+      <nav className="cajaPage_Productos_cabecera">
         <p>Lista de productos</p>
         <input
           type={"search"}
@@ -30,8 +30,8 @@ export function CajaProductos(props) {
             setEntrada(e.target.value);
           }}
         ></input>
-      </div>
-      <div className="cajaPage_Productos_lista">
+      </nav>
+      <section className="cajaPage_Productos_lista">
         {props.productos.map((producto) => {
           if (producto.nombre.startsWith(capitalize(entrada))) {
             return (
@@ -73,7 +73,7 @@ export function CajaProductos(props) {
             );
           }
         })}
-      </div>
+      </section>
     </div>
   );
 }

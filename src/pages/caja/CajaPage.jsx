@@ -62,7 +62,7 @@ const CajaPage = (props) => {
           item.cantidad = item.cantidad + 1;
           setTotal(total + valor);
         } else {
-          if (cantidad > 1) {
+          if (cantidad >= 0) {
             item.cantidad = item.cantidad - 1;
             setTotal(total - valor);
           }
@@ -99,6 +99,11 @@ const CajaPage = (props) => {
     setModalVisibility(!modalVisibility)
   }
 
+  const borrarDelCarro = () => {
+    const carro = [...carrito].filter((item)=>{item.cantidad==0})
+    setCarrito([...carro])
+  }
+
   // -- Renderizado.
   return (
     <section className="cajaPage_container">
@@ -123,7 +128,7 @@ const CajaPage = (props) => {
         />
 
         {/* Carrito de compra. */}
-        <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} />
+        <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} borrar = {borrarDelCarro}/>
 
         {/* <CajaCajero /> */}
         <CajaTotal total={total} />
