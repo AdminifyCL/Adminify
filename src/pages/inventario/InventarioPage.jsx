@@ -12,7 +12,7 @@ import "./InventarioPage.scss";
 // Definición de la pagina: <InventarioPage />
 const InventarioPage = (props) => {
   // -- Manejo del estado.
-  const { products } = props;
+  const { products, createProduct } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
 
   // -- Ciclo de vida.
@@ -36,7 +36,11 @@ const InventarioPage = (props) => {
       </section>
 
       {/* Modal */}
-      <ProductModal open={modalVisibility} onClose={() => handleVisibility()} />
+      <ProductModal
+        open={modalVisibility}
+        onClose={() => handleVisibility()}
+        createProduct={createProduct}
+      />
 
       {/* Vista de la caja. */}
       <section className="inventarioPage_content">
