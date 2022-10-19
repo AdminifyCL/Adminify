@@ -42,13 +42,12 @@ const Card = (props) => {
       {/* Información */}
       <div className="VentaCard-infoContainer">
         {/* Identificador */}
-        <div>
-          <p>{ventaInfo?.id}</p>
+        <div className="VentaCard-idContainer">
+          <p className="VentaCard-idContent">{ventaInfo?.id}</p>
         </div>
 
         {/* Empleado */}
         <div className="VentaCard-empleadoInfo">
-          <FaIdBadge />
           <p>{ventaInfo?.vendedor.nombre ?? ""}</p>
         </div>
 
@@ -57,14 +56,14 @@ const Card = (props) => {
           <p>{fecha}</p>
         </div>
 
-        {/* Totales */}
-        <div>
-          <p>Total: ${ventaInfo?.total}</p>
-        </div>
-
         {/* Metodo */}
         <div>
           <p>{ventaInfo?.metodo}</p>
+        </div>
+
+        {/* Totales */}
+        <div className="VentaCard-totalContainer">
+          <p className="VentaCard-totalContent">Total: ${ventaInfo?.total}</p>
         </div>
       </div>
 
