@@ -100,8 +100,9 @@ const CajaPage = (props) => {
   }
 
   const borrarDelCarro = () => {
-    const carro = [...carrito].filter((item)=>{item.cantidad==0})
-    setCarrito([...carro])
+    const carro = [...carrito]
+    const carroFiltrado = carro.filter(item => item.cantidad>0 )
+    setCarrito([...carroFiltrado])
   }
 
   // -- Renderizado.
