@@ -1,0 +1,84 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.VentaCard-container {
+  border: 3px solid Colors.$primary-color;
+  border-radius: 5px;
+
+  width: 16rem;
+  max-width: 16rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  height: 16rem;
+  max-height: 16rem;
+}
+
+.VentaCard-idContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.VentaCard-idContent {
+  background-color: Colors.$gray-color;
+
+  padding: 0.25rem 0.5rem;
+
+  border-radius: 15px;
+
+  font-size: 0.7rem;
+  font-weight: bold;
+
+  color: Colors.$dark-color;
+
+  margin-bottom: 1rem;
+}
+
+.VentaCard-empleadoInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
+.VentaCard-totalContainer {
+}
+
+.VentaCard-totalContent {
+  font-size: 1rem;
+  font-weight: bold;
+
+  color: Colors.$primary-color;
+}
+
+.VentaCard-infoContainer {
+  padding: 0.5rem 1rem;
+
+  border-radius: 5% 5% 0px 0px;
+
+  // background-color: Colors.$white-color;
+}
+
+.VentaCard-buttonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+
+  column-gap: 1rem;
+
+  background-color: Colors.$gray-color;
+
+  border-radius: 0 0 5% 5%;
+
+  padding: 1rem 1rem;
+}
+
+.VentaCard-chip {
+  justify-self: flex-end;
+  width: 100%;
+}

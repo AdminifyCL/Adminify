@@ -1,0 +1,58 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.ventasItem-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+
+  margin: 0.5rem;
+}
+
+.ventasItem-contentNombre {
+  background-color: Colors.$gray-color;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+
+  width: 14rem;
+  max-width: 14rem;
+
+  display: flex;
+  justify-content: flex-start;
+
+  border-radius: 15px;
+
+  font-size: 1rem;
+}
+
+.ventasItem-contentCantidad {
+  background-color: Colors.$gray-color;
+  padding: 0.5rem;
+
+  width: 1rem;
+  max-width: 1rem;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  color: Colors.$primary-color;
+  font-weight: bold;
+}
+
+.ventasItem-contentPrecio {
+  background-color: Colors.$gray-color;
+  padding: 0.5rem;
+
+  width: 10rem;
+  max-width: 10rem;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 15px;
+
+  color: Colors.$primary-color;
+  font-weight: bold;
+}
