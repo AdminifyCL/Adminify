@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 import Card from "./Card.jsx";
 import PropTypes from "prop-types";
 
@@ -17,7 +17,8 @@ const CardsContainer = (props) => {
   // 3. Metodos.
   const mappingVentasCards = () => {
     return storeVentas.map((venta) => {
-      return <Card ventaInfo={venta} />;
+      let id = useId();
+      return <Card ventaInfo={venta} key={id} />;
     });
   };
 

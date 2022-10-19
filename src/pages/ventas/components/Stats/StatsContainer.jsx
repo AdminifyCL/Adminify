@@ -26,7 +26,6 @@ const StatsContainer = (props) => {
     let numDebito = 0;
 
     storeVentas.forEach((venta) => {
-      console.log({ venta });
       ganancias = ganancias + venta.total;
 
       if (venta.metodo === "Efectivo") {

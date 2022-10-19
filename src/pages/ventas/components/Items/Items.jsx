@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 import { Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
 import Item from "./Item.jsx";
 
@@ -15,7 +15,8 @@ const Items = (props) => {
   // 3. Metodos.
   const mappingItems = () => {
     return productos.map((producto) => {
-      return <Item producto={producto} />;
+      let id = useId();
+      return <Item producto={producto} key={id} />;
     });
   };
 
