@@ -24,7 +24,7 @@ const Stats = (props) => {
   // 4. Render.
   return (
     <div className="Stats-container">
-      <FaBullhorn size={20} />
+      <FaBullhorn size={20} color={"#226f54"} />
       <h1>{titulo}:</h1>
       <p>{valor}</p>
     </div>

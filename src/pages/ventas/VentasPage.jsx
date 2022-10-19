@@ -31,7 +31,7 @@ const VentasPage = (props) => {
         <StatsContainer storeVentas={storeVentas} />
 
         {/* Ventas. */}
-        <CardsContainer />
+        <CardsContainer storeVentas={storeVentas} />
       </section>
     </section>
   );
