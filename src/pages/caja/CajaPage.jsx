@@ -105,54 +105,106 @@ const CajaPage = (props) => {
   }
 
   // -- Renderizado.
-  return (
-    <section className="cajaPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="cajaPage_navigation">
-        <Navigation />
+  if (!modalVisibility){
+    return (
+      <section className="cajaPage_container">
+        {/* Navegación de la aplicación. */}
+        <section className="cajaPage_navigation">
+          <Navigation />
+        </section>
+  
+        {/* Vista de la caja. */}
+        <section className="cajaPage_content">
+          {/* Lista de productos. */}
+  
+          <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre>
+  
+          <CajaProductos
+            total={total}
+            productos={productos}
+            carro={[...carrito]}
+            cambiaCarro={cambiarCarro}
+            cambiaTotal={cambiarTotal}
+            cambiaCantidad={cambiarCantidad}
+          />
+  
+          {/* Carrito de compra. */}
+          <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} borrar = {borrarDelCarro}/>
+  
+          {/* <CajaCajero /> */}
+          <CajaTotal total={total} />
+  
+          {/* Botones. */}
+          <CajaBotones
+            limpia={limpiar}
+            carrito={carrito}
+            sendCarrito={enviarCarrito}
+            canPay={canPay}
+          />
+          <Fab
+            color="primary"
+            aria-label="add"
+            style={{ position: "absolute", top: "88%", left: "93%" }}
+            onClick={() => {
+              setModalVisibility(true)
+            }}
+          >
+            <VscGear />
+          </Fab>
+        </section>
       </section>
-
-      {/* Vista de la caja. */}
-      <section className="cajaPage_content">
-        {/* Lista de productos. */}
-
+    );
+  }else{
+    return (
+      <section className="cajaPage_container">
+        {/* Navegación de la aplicación. */}
+        <section className="cajaPage_navigation">
+          <Navigation />
+        </section>
         <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre>
-
-        <CajaProductos
-          total={total}
-          productos={productos}
-          carro={[...carrito]}
-          cambiaCarro={cambiarCarro}
-          cambiaTotal={cambiarTotal}
-          cambiaCantidad={cambiarCantidad}
-        />
-
-        {/* Carrito de compra. */}
-        <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} borrar = {borrarDelCarro}/>
-
-        {/* <CajaCajero /> */}
-        <CajaTotal total={total} />
-
-        {/* Botones. */}
-        <CajaBotones
-          limpia={limpiar}
-          carrito={carrito}
-          sendCarrito={enviarCarrito}
-          canPay={canPay}
-        />
-        <Fab
-          color="primary"
-          aria-label="add"
-          style={{ position: "absolute", top: "88%", left: "93%" }}
-          onClick={() => {
-            setModalVisibility(true)
-          }}
-        >
-          <VscGear />
-        </Fab>
+        {/* Vista de la caja. */}
+        <section className="cajaPage_content_modal">
+          {/* Lista de productos. */}
+  
+          {/* <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre> */}
+  
+          <CajaProductos
+            total={total}
+            productos={productos}
+            carro={[...carrito]}
+            cambiaCarro={cambiarCarro}
+            cambiaTotal={cambiarTotal}
+            cambiaCantidad={cambiarCantidad}
+          />
+  
+          {/* Carrito de compra. */}
+          <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} borrar = {borrarDelCarro}/>
+  
+          {/* <CajaCajero /> */}
+          <CajaTotal total={total} />
+  
+          {/* Botones. */}
+          <CajaBotones
+            limpia={limpiar}
+            carrito={carrito}
+            sendCarrito={enviarCarrito}
+            canPay={canPay}
+          />
+          <Fab
+            color="primary"
+            aria-label="add"
+            style={{ position: "absolute", top: "88%", left: "93%" }}
+            onClick={() => {
+              setModalVisibility(true)
+            }}
+          >
+            <VscGear />
+          </Fab>
+        </section>
       </section>
-    </section>
-  );
+    );
+  }
+
 };
 
 // Exportación de la pagina: Index.
