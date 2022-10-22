@@ -27,7 +27,7 @@ export function CajaCierre(props) {
   if (visibilidad) {
     return (
       <div className="cajaPage_menu_cierre">
-        ¿ Esta seguro de realizar el cierre de caja ?
+        <p>¿ Esta seguro de realizar el cierre de caja ?</p>
         <div>
         <Button
             variant="contained"

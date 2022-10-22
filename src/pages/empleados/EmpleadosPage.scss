@@ -30,3 +30,60 @@
 .empleadosPage_navigation {
   width: 100%;
 }
+
+.empleadosPage_Cabecera{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: Colors.$gray-color;
+  border-radius: 1.75rem;
+  width: 90%;
+  height: 15%;
+  position: absolute;
+  top: 15%;
+  p{
+    color: Colors.$primary-color;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+}
+
+.empleadosPage_Tarjeta{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  // background-color: Colors.$gray-color;
+  border-radius: 1.75rem;
+  width: 23%;
+  height: 40%;
+  border: 3px solid Colors.$primary-color;
+  h2{
+    text-align: center;
+    color : Colors.$primary-color
+  }
+  h5{
+    text-align: center;
+  }
+  p{
+    text-align: center;
+    border: 1px solid Colors.$primary-color;
+    border-radius: 1rem;
+    color: aliceblue;
+    background-color: Colors.$primary-color;
+  }
+}
+
+.empleadosPage_icono{
+  background-color: Colors.$primary-color;
+  width: 90%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  position: relative;
+  top:0.1%;
+  color:aliceblue;
+}

@@ -267,7 +267,7 @@
 
 .cajaPage_menu_cierre {
   width: 35vw;
-  height: 20vh;
+  height: 25vh;
   border: 3px solid Colors.$primary_dark-color;
   border-radius: 1.25rem;
   background-color: Colors.$white-color;
@@ -285,13 +285,15 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin: 10px 10px 10px 10px;
   }
   p{
-    font-size: 2rem;
+    width: 100%;
+    font-size: 1rem;
     font-weight: bold;
-    position: absolute;
-    top: 15%;
-    left: 3%;
+    text-align: center;
+    color: Colors.$primary_dark-color;
+    // background-color:Colors.$gray-color;
   }
 
 }
