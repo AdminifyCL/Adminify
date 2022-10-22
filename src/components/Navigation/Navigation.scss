@@ -1,0 +1,63 @@
+// Dependencias.
+@use "../../styles/colors" as Colors;
+
+// Definición de estilos.
+.TabNavigation {
+  height: 4rem;
+
+  background-color: Colors.$white-color;
+  border-bottom: 4px solid Colors.$primary-color;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  width: 100%;
+}
+
+.TabNavigation-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 9rem;
+
+  color: Colors.$primary-color;
+}
+
+.TabNavigation-badge {
+  background-color: Colors.$primary-color;
+  color: Colors.$white-color;
+
+  padding: 0.125rem 0.5rem;
+  margin: 0.5rem;
+
+  font-size: 14px;
+
+  border-radius: 20px;
+}
+
+.TabNavigation-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  gap: 1.25rem;
+}
+
+.TabNavigation-tab {
+  width: 9rem;
+  height: 3rem;
+}
+
+.TabNavigation-btn {
+  margin-left: 20px;
+  margin-bottom: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}

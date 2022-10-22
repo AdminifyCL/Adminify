@@ -1,31 +1,26 @@
 // Dependencias.
-import React from "react";
+import React, { useState, useEffect } from "react";
+import ConfirmacionPage from "../../pages/confirmacion/ConfirmacionPage.jsx";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
-// Importación de componentes.
-import ConfirmacionPage from "../../pages/confirmacion/ConfirmacionPage";
+// Definición del contenedor: <ConfirmacionContainer />.
+const ConfirmacionContainer = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
+  const carrito = useSelector((state) => state.producto.carrito);
+  const metodo = useSelector((state) => state.venta.metodo);
 
-// Definición del componente: <ConfirmacionPage />
-const ConfirmacionContainer = ({}) => {
-  // -- Manejo del estado.
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
-  return <ConfirmacionPage />;
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  // 4. Render.
+  return <ConfirmacionPage carroProducts={carrito} metodo={metodo} />;
 };
 
 // PropTypes.
 ConfirmacionContainer.propTypes = {};
 
-// Redux
-const mapStateToProps = (state) => {
-  return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
 // Exportación.
-export default connect(mapStateToProps, mapDispatchToProps)(ConfirmacionContainer);
+export default ConfirmacionContainer;

@@ -1,17 +1,20 @@
 // Dependencias.
-import React from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-// Importación de estilos.
+// Estilos.
 import "./NotFoundPage.scss";
 
-// Definición de la pagina: <NotFoundPage />.
-const NotFoundPage = ({}) => {
-  // -- Manejo del estado.
+// Definición del componente: <NotFoundPage />
+const NotFoundPage = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
 
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  // 4. Render.
   return (
     <section className="">
       <div className="">
@@ -24,5 +27,5 @@ const NotFoundPage = ({}) => {
 // PropTypes.
 NotFoundPage.propTypes = {};
 
-// Exportación de la pagina: Index.
+// Exportación.
 export default NotFoundPage;

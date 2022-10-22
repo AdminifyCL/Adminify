@@ -1,6 +1,6 @@
 // Dependencias.
-import React from "react";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import React, { useState, useEffect } from "react";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -15,43 +15,77 @@ import {
   Step,
   StepLabel,
 } from "@mui/material";
+import PropTypes from "prop-types";
+
 // Estilos.
 import "./PagosPage.scss";
 
-// Definición del componente: <ConfirmacionPage />
-const PagosPage = ({}) => {
-  // -- Manejo del estado.
+// Definición del componente: <PagosPage />
+const PagosPage = (props) => {
+  // 1. Manejo del estado.
+  const { carroProducts, setMetodo, setVenta } = props;
   const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox cliente" } };
-  const [checked, setChecked] = React.useState(true);
-  const [pago, setpago] = React.useState("");
-  const [mostrarComponente, setMostrarComponente] = React.useState(true);
+  const [checked, setChecked] = useState(true);
+  const [pago, setPago] = useState("");
+  const [isActive, setIsActive] = useState(false);
+  const [mostrarComponente, setMostrarComponente] = useState(true);
   const steps = ["Selección de productos", "Proceso de pago", "Pago confimado"];
 
-  const handleChangePago = (event) => {
-    setpago(event.target.value);
-  };
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
 
-  {
-    /*const handleChange = () => {
-    setChecked(event.target.checked);
-    console.log("hola mundo");
-  };*/
-  }
-
-  // -- Ciclo de vida.
-  // -- Metodos.
-  const handleRedirect = () => {
+  // 3. Metodos.
+  const handleRedirect = async () => {
     // Redirigir a la confirmación del pago
-    navigate("/confirmacion");
+    if (isActive) {
+      // Configurando la venta.
+      await setVenta(pago);
+
+      navigate("/confirmacion");
+      setMetodo(pago);
+    }
   };
 
-  // -- Renderizado.
+  const handleChangePago = (event) => {
+    let nuevo_metodo = event.target.value;
+    if (nuevo_metodo === 1) {
+      setPago("Efectivo");
+    } else {
+      setPago("Debito");
+    }
+
+    setIsActive(true);
+  };
+
+  const mappingCarroProducts = () => {
+    return carroProducts.map((product, index) => {
+      return (
+        <div className="pagosPage_productContainer" key={`${index}-product`}>
+          <div className="pagosPage_Cantidad">{product.cantidad}</div>
+          <div className="pagosPage_Producto">{product.nombre}</div>
+          <div className="pagosPage_Valor">${product.precio}</div>
+        </div>
+      );
+    });
+  };
+
+  const mappingTotal = () => {
+    let total = 0;
+
+    carroProducts.map((product) => {
+      total = total + product.precio * product.cantidad;
+    });
+
+    return `$${total}`;
+  };
+
+  // 4. Render.
   return (
     <section>
       {/* Navegación */}
       <section className="">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Visual */}
@@ -78,17 +112,13 @@ const PagosPage = ({}) => {
                 <p>Resumen de productos</p>
               </div>
               {/* Contenedor de productos*/}
-              <div className="pagosPage_ProductosLista">
-                <div className="pagosPage_Cantidad">1</div>
-                <div className="pagosPage_Producto">Completo italiano</div>
-                <div className="pagosPage_Valor">$1900</div>
-              </div>
+              <div className="pagosPage_ProductosLista">{mappingCarroProducts()}</div>
             </section>
           </section>
           {/* Contenedor de valor total*/}
           <section className="pagosPage_ProductosTotal">
             <p>Total:</p>
-            <p className="pagosPage_totalValor">$1900</p>
+            <p className="pagosPage_totalValor">{mappingTotal()}</p>
           </section>
           {/* Sección agregar cliente*/}
           <section className="pagosPage_TituloCliente">
@@ -105,7 +135,6 @@ const PagosPage = ({}) => {
           <div className={!mostrarComponente ? "show-elementPagos" : null}>
             {!mostrarComponente && (
               <div>
-                {" "}
                 {/* Sección de formulario del cliente*/}
                 <section className="pagosPage_Clientecontenedor">
                   <section className="pagosPage_ClienteContenido">
@@ -146,7 +175,7 @@ const PagosPage = ({}) => {
                       </Button>
                     </div>
                   </section>
-                </section>{" "}
+                </section>
               </div>
             )}
           </div>
@@ -181,7 +210,7 @@ const PagosPage = ({}) => {
                   Cancelar compra
                 </Button>
               </div>
-              <Button onClick={() => handleRedirect()} variant="contained">
+              <Button onClick={() => handleRedirect()} variant="contained" disabled={!isActive}>
                 Confirmar pago
               </Button>
             </section>
@@ -191,6 +220,9 @@ const PagosPage = ({}) => {
     </section>
   );
 };
+
+// PropTypes.
+PagosPage.propTypes = {};
 
 // Exportación.
 export default PagosPage;

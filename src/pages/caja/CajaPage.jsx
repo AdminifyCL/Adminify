@@ -1,31 +1,44 @@
 // Dependencias.
-//Pa que se vayan los cambios
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCajero } from "./components/CajaCajero.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Menu } from "./components/Menu";
-import { Navigate } from "react-router-dom";
-import { PublicUrls, PrivateUrls } from "../../models/Navigation.js";
 import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
+import { publicURL, privateURL } from "../../schemas/Navigation.js";
+
+// Actions.
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Importación de estilos.
 import "./CajaPage.scss";
-import { useEffect } from "react";
 
-// const productos = [{index:0 , nombre:"Completo Italiano" , valor:1900, cantidad:1 }]
-
+// Definición del componente: <CajaPage />
 const CajaPage = (props) => {
-  const productos = [...props.productos];
+  // -- Manejo del estado.
+  const { productos, sendCarrito } = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
-  const [toPago, setToPago] = useState(false);
+  const [canPay, setCanPay] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  // -- Ciclo de vida.
+  useEffect(() => {
+    if (carrito.length > 0) {
+      setCanPay(true);
+    } else {
+      setCanPay(false);
+    }
+  }, [carrito]);
+
+  // -- Metodo.
   const cambiarTotal = (valor) => {
     setTotal(total + valor);
   };
@@ -42,31 +55,55 @@ const CajaPage = (props) => {
   const cambiarCantidad = (cantidad, valor, nombre, suma) => {
     const carro = [...carrito];
     carro.map((item) => {
-      if (suma) {
-        item.cantidad = item.cantidad + 1;
-        setTotal(total + valor);
-      } else {
-        if (cantidad > 1) {
-          item.cantidad = item.cantidad - 1;
-          setTotal(total - valor);
+      if (item.nombre == nombre) {
+        if (suma) {
+          item.cantidad = item.cantidad + 1;
+          setTotal(total + valor);
+        } else {
+          if (cantidad > 1) {
+            item.cantidad = item.cantidad - 1;
+            setTotal(total - valor);
+          }
         }
       }
     });
-    console.log(carro);
   };
 
-  const toPagar = () => {
-    setToPago(true);
+  const enviarCarrito = () => {
+    // Enviar los productos del carrito a REDUX.
+
+    let total = carrito.length;
+
+    if (total > 0) {
+      setCanPay(true);
+      sendCarrito(carrito);
+
+      // Redirigir al pago.
+      navigate(privateURL.pago);
+    } else {
+      setCanPay(false);
+
+      let newAlert = {
+        type: "error",
+        title: "Carrito vacío",
+        message: "El carrito está vacío, no se puede realizar la venta",
+      };
+
+      dispatch(displayAlert(newAlert));
+    }
   };
 
+  // -- Renderizado.
   return (
     <section className="cajaPage_container">
       {/* Navegación de la aplicación. */}
       <section className="cajaPage_navigation">
-        <TabNavigation />
+        <Navigation />
       </section>
+
       {/* Vista de la caja. */}
       <section className="cajaPage_content">
+        {/* Lista de productos. */}
         <CajaProductos
           total={total}
           productos={productos}
@@ -74,17 +111,29 @@ const CajaPage = (props) => {
           cambiaCarro={cambiarCarro}
           cambiaTotal={cambiarTotal}
           cambiaCantidad={cambiarCantidad}
-        ></CajaProductos>
+        />
 
-        <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad}></CajaCarro>
+        {/* Carrito de compra. */}
+        <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} />
 
-        <CajaCajero></CajaCajero>
+        {/* <CajaCajero /> */}
+        <CajaTotal total={total} />
 
-        <CajaTotal total={total}></CajaTotal>
-
-        <CajaBotones limpia={limpiar} toPagar={toPagar}></CajaBotones>
+        {/* Botones. */}
+        <CajaBotones
+          limpia={limpiar}
+          carrito={carrito}
+          sendCarrito={enviarCarrito}
+          canPay={canPay}
+        />
+        <Fab
+          color="primary"
+          aria-label="add"
+          style={{ position: "absolute", top: "88%", left: "93%" }}
+        >
+          <VscGear />
+        </Fab>
       </section>
-      {toPago ? <Navigate to={PrivateUrls.pago} /> : null}
     </section>
   );
 };

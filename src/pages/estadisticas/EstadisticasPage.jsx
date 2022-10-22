@@ -1,22 +1,26 @@
 // Dependencias.
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
-// Importación de estilos.
+// Estilos.
 import "./EstadisticasPage.scss";
 
-// Definición de la pagina: <EstadisticasPage />
-const EstadisticasPage = ({}) => {
-  // -- Manejo del estado.
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
+// Definición del componente: <EstadisticasPage />
+const EstadisticasPage = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
+
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  // 4. Render.
   return (
     <section className="estadisticasPage_container">
       {/* Navegación de la aplicación. */}
       <section className="estadisticasPage_navigation">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Vista de la caja. */}
@@ -30,5 +34,5 @@ const EstadisticasPage = ({}) => {
 // PropTypes.
 EstadisticasPage.propTypes = {};
 
-// Exportación de la pagina: Index.
+// Exportación.
 export default EstadisticasPage;

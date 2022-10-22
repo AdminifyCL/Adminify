@@ -1,43 +1,28 @@
 // Dependencias.
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
-// Importación de componentes.
-import Router from "../../routes/router.js";
+// Componentes.
+import Router from "../../router/router.jsx";
+
+// Estilos.
+import "./App.scss";
 
 // Definición del componente: <App />.
-class App extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+const App = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
 
-    this.state = {};
-  }
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
 
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-
-  // Renderizado.
-  render() {
-    return <Router />;
-  }
-}
+  // 3. Metodos.
+  // 4. Render.
+  return <Router />;
+};
 
 // PropTypes.
 App.propTypes = {};
 
-// Consulta al store.
-const mapStateToProps = (state) => {
-  return {};
-};
-
-// Exportación del componente: <App />.
-export default connect(mapStateToProps, null)(App);
+// Exportación.
+export default App;

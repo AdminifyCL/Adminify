@@ -1,22 +1,26 @@
 // Dependencias.
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
 
-// Importación de estilos.
+// Estilos.
 import "./VentasPage.scss";
 
-// Definición de la pagina: Index.
-const VentasPage = ({}) => {
-  // -- Manejo del estado.
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
+// Definición del componente: <VentasPage />
+const VentasPage = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
+
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  // 4. Render.
   return (
     <section className="ventasPage_container">
       {/* Navegación de la aplicación. */}
       <section className="ventasPage_navigation">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Vista de la caja. */}
@@ -30,5 +34,5 @@ const VentasPage = ({}) => {
 // PropTypes.
 VentasPage.propTypes = {};
 
-// Exportación de la pagina: Index.
+// Exportación.
 export default VentasPage;

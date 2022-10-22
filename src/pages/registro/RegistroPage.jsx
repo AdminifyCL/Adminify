@@ -1,19 +1,25 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
-import { FaAccessibleIcon, FaConciergeBell } from "react-icons/fa";
+import { FaConciergeBell } from "react-icons/fa";
+import { publicURL, privateURL } from "../../schemas/Navigation.js";
 import PropTypes from "prop-types";
 
-// Importación de estilos.
+// Estilos.
 import "./RegistroPage.scss";
 
-// Definición de la pagina: <RegistroPage />
-const RegistroPage = ({}) => {
-  // -- Manejo del estado.
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
+// Definición del componente: <RegistroPage />
+const RegistroPage = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
+  const navigate = useNavigate();
+
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  // 4. Render.
   return (
     <section className="registroPage_Contenedor">
       <section className="registroPage_Contenido">
@@ -54,11 +60,13 @@ const RegistroPage = ({}) => {
 
         {/* Botones de acción */}
         <section className="registroPage_ContenedorBotones">
-          <Link to="/login">
-            <Button className="registroPage_Volver" variant="outlined">
-              Volver
-            </Button>
-          </Link>
+          <Button
+            className="registroPage_Volver"
+            variant="outlined"
+            onClick={() => navigate(publicURL.login)}
+          >
+            Volver
+          </Button>
 
           <Button className="registroPage_CrearCuenta" variant="contained" onClick={() => {}}>
             Crea tu cuenta
@@ -72,5 +80,5 @@ const RegistroPage = ({}) => {
 // PropTypes.
 RegistroPage.propTypes = {};
 
-// Exportación de la pagina: Index.
+// Exportación.
 export default RegistroPage;

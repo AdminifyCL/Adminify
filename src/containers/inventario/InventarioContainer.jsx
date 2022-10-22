@@ -1,27 +1,17 @@
 // Dependencias.
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import InventarioPage from "../../pages/inventario/InventarioPage";
 
-// Hooks.
-import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
-
-// Actions.
-import { createProduct } from "../../actions/productos/createProduct.js";
-import { fetchProducts } from "../../actions/productos/fetchProducts.js";
-import { fetchUserData } from "../../actions/user/fetchUserData.js";
-
-// Importación de componentes.
-import InventarioPage from "../../pages/inventario/InventarioPage.jsx";
-
-// Definición del contenedor: <InventarioContainer />
+// Definición del contenedor: <InventarioContainer />.
 const InventarioContainer = (props) => {
-  // -- Manejo del estado.
-  const { allProducts, createProduct } = props;
-  const [inventario, setInventario] = useLocalStorage("inventario", []);
+  // 1. Manejo del estado.
+  const {} = props;
   const [productos, setProductos] = useState([]);
+  const allProducts = useSelector((state) => state.producto.productos);
 
-  // -- Ciclo de vida.
+  // 2. Ciclo de vida.
   useEffect(() => {
     if (allProducts.length === 0) {
       setProductos(inventario);
@@ -30,7 +20,7 @@ const InventarioContainer = (props) => {
     }
   }, [allProducts]);
 
-  // -- Metodos.
+  // 3. Metodos.
   const handleCreateProduct = async (productData) => {
     console.log("[] Product container: ", productData);
 
@@ -41,32 +31,21 @@ const InventarioContainer = (props) => {
       productosAction = allProducts;
     }
 
-    await createProduct(productData, productosAction)
-      .then(() => {
-        console.log("[✅] Se creo un producto!");
-      })
-      .catch((error) => {
-        console.log("[😞] No Se pudo crear un producto");
-      });
+    // await createProduct(productData, productosAction)
+    //   .then(() => {
+    //     console.log("[✅] Se creo un producto!");
+    //   })
+    //   .catch((error) => {
+    //     console.log("[😞] No Se pudo crear un producto");
+    //   });
   };
 
-  // -- Renderizado.
+  // 4. Render.
   return <InventarioPage products={productos} createProduct={handleCreateProduct} />;
 };
 
 // PropTypes.
 InventarioContainer.propTypes = {};
 
-// Redux
-const mapStateToProps = (state) => ({
-  allProducts: state.product.allProducts ?? [],
-});
-
-const mapDispatchToProps = {
-  createProduct,
-  fetchProducts,
-  fetchUserData,
-};
-
-// Exportación del contenedor.
-export default connect(mapStateToProps, mapDispatchToProps)(InventarioContainer);
+// Exportación.
+export default InventarioContainer;

@@ -1,24 +1,24 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { Button, Modal } from "@mui/material";
-import PropTypes from "prop-types";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import { Button } from "@mui/material";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import ListProducts from "./components/ListProducts/ListProducts.jsx";
 import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
+import PropTypes from "prop-types";
 
-// Importación de estilos.
+// Estilos.
 import "./InventarioPage.scss";
 
-// Definición de la pagina: <InventarioPage />
+// Definición del componente: <InventarioPage />
 const InventarioPage = (props) => {
-  // -- Manejo del estado.
+  // 1. Manejo del estado.
   const { products, createProduct } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
 
-  // -- Ciclo de vida.
+  // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
-  // -- Metodos.
+  // 3. Metodos.
   const handleCreateProduct = () => {
     setModalVisibility(true);
   };
@@ -27,12 +27,12 @@ const InventarioPage = (props) => {
     setModalVisibility(!modalVisibility);
   };
 
-  // -- Renderizado.
+  // 4. Render.
   return (
     <section className="inventarioPage_container">
       {/* Navegación de la aplicación. */}
       <section className="inventarioPage_navigation">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Modal */}
@@ -64,5 +64,5 @@ const InventarioPage = (props) => {
 // PropTypes.
 InventarioPage.propTypes = {};
 
-// Exportación de la pagina: Index.
+// Exportación.
 export default InventarioPage;

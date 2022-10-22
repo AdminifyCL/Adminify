@@ -1,45 +1,23 @@
 // Dependencias.
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import EmpleadosPage from "../../pages/empleados/EmpleadosPage";
 
-// Importación de componentes.
-import EmpleadosPage from "../../pages/empleados/EmpleadosPage.jsx";
+// Definición del contenedor: <EmpleadosContainer />.
+const EmpleadosContainer = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
 
-// Definición del contenedor.
-class EmpleadosContainer extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
 
-    this.state = {};
-  }
-
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate(prevProps, prevState) {}
-  componentWillUnmount() {}
-
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  // -- Métodos [MAPPING].
-  // -- Render
-  render() {
-    const { userInfo } = this.props;
-    return <EmpleadosPage userInfo={userInfo} />;
-  }
-}
+  // 3. Metodos.
+  // 4. Render.
+  return <EmpleadosPage />;
+};
 
 // PropTypes.
 EmpleadosContainer.propTypes = {};
 
-// Redux
-const mapStateToProps = (state) => ({
-  userInfo: state.user.userInfo,
-});
-
-const mapDispatchToProps = {};
-
-// Exportación del contenedor.
-export default connect(mapStateToProps, mapDispatchToProps)(EmpleadosContainer);
+// Exportación.
+export default EmpleadosContainer;

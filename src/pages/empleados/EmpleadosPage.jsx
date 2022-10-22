@@ -1,27 +1,123 @@
 // Dependencias.
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
+import { Button, TextField, Autocomplete } from "@mui/material";
+import { FaUserAlt, FaUserPlus } from "react-icons/fa";
 
-// Importación de estilos.
+import { makeStyles } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+// Estilos.
 import "./EmpleadosPage.scss";
 
-// Definición de la pagina: <EmpleadosPage />
-const EmpleadosPage = ({}) => {
-  // -- Manejo del estado.
-  // -- Ciclo de vida.
-  // -- Metodos.
-  // -- Renderizado.
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: "white",
+    boxShadow: 24,
+    padding: "80px 32px  40px",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
+}));
+
+// Definición del componente: <EmpleadosPage />
+const EmpleadosPage = (props) => {
+  // 1. Manejo del estado.
+  const {} = props;
+
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
+  const mostrarCuadro = () => {
+    setVisible(!visible);
+  };
+
+  const [modal, setModal] = useState(false);
+  const abrirCerrarModal = () => {
+    setModal(!modal);
+  };
+
+  const roles = () => ["empleado", "administrador", "dueño"];
+
+  const styles = useStyles();
+  const body = (
+    <div className="modalEmpleados">
+      <div className="modal_titulos">
+        <h2>Agregar un empleado</h2>
+        <h4>Complete los siguientes datos</h4>
+      </div>
+
+      <div className="modal_formulario">
+        <TextField id="outlined-basic" label="Nombre" variant="outlined" />
+        <TextField id="outlined-basic" label="Correo electrónico" variant="outlined" />
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={roles()}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Rol" />}
+        />
+      </div>
+      <div className="modal_botones">
+        <Button variant="contained">agregar empleado</Button>
+        <Button variant="outlined" onClick={() => abrirCerrarModal()}>
+          cerrar
+        </Button>
+      </div>
+    </div>
+  );
+
+  // 4. Render.
   return (
     <section className="empleadosPage_container">
       {/* Navegación de la aplicación. */}
-      <section className="empleadosPage_navigation">
-        <TabNavigation />
-      </section>
 
+      <section className="empleadosPage_navigation">
+        <Navigation />
+      </section>
+      <div className="empleadosPage_boton">
+        <h1>Administracion de empleados</h1>
+        <Button variant="contained" onClick={() => abrirCerrarModal()}>
+          agregar empleado <FaUserPlus size="3vh" position></FaUserPlus>
+        </Button>
+      </div>
+      <Modal open={modal} onClose={abrirCerrarModal}>
+        {body}
+      </Modal>
       {/* Vista del empleado. */}
       <section className="empleadosPage_content">
-        <h1>Empleados</h1>
+        <div className="empleadosPage_contenedorDatos">
+          <div className="empleadosPage_contenedorIcono">
+            <p>
+              <FaUserAlt size="8vh" position></FaUserAlt>
+            </p>
+          </div>
+          <h3>nombre</h3>
+          <h3>mail</h3>
+          <h3>rol</h3>
+        </div>
+        <section className="empleadosPage_contenedorDatosPrueba">
+          <h3>nombre</h3>
+          <h3>mail</h3>
+          <h3>rol</h3>
+        </section>
+        <section className="empleadosPage_contenedorDatosPrueba2">
+          <h3>nombre</h3>
+          <h3>mail</h3>
+          <h3>rol</h3>
+        </section>
+        <div className="empleadosPage_contenedorDatosPrueba3">
+          <h3>nombre</h3>
+          <h3>mail</h3>
+          <h3>rol</h3>
+        </div>
       </section>
     </section>
   );
@@ -30,5 +126,5 @@ const EmpleadosPage = ({}) => {
 // PropTypes.
 EmpleadosPage.propTypes = {};
 
-// Exportación de la pagina: Index.
+// Exportación.
 export default EmpleadosPage;

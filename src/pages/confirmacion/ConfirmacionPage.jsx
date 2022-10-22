@@ -1,31 +1,39 @@
 // Dependencias.
-import React from "react";
-import { Button } from "@mui/material";
-import TabNavigation from "../../components/TabNavigation/TabNavigation.jsx";
-import { Step, Stepper, StepLabel } from "@mui/material";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import fondo from "../../assets/images/bg-table.png";
-import boleta from "../../assets/images/boleta.png";
-import { FaReceipt, AiFillCheckCircle, FaCheckCircle } from "react-icons/fa";
+import Navigation from "../../components/Navigation/Navigation.jsx";
+import { Step, Stepper, StepLabel, Button } from "@mui/material";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import PropTypes from "prop-types";
+import PDFFile from "./components/PDFFile.jsx";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
 
 // Definición del componente: <ConfirmacionPage />
-const Estilos = {
-  backgroundImage: { fondo },
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "contain",
-  backgroundPosition: "center bottom",
-  //backgroundColor: "green",
-};
-const ConfirmacionPage = ({}) => {
-  // -- Manejo del estado.
+const ConfirmacionPage = (props) => {
+  // 1. Manejo del estado.
+  const { carroProducts, metodo } = props;
   const navigate = useNavigate();
-  // -- Ciclo de vida.
-  // -- Metodos.
   const steps = ["Selección de productos", "Proceso de pago", "Confirmación de pago"];
+
+  // 2. Ciclo de vida.
+  useEffect(() => {}, []);
+
+  // 3. Metodos.
   const handleImpresion = () => {
+    const ventana = window.open("", "PRINT", "height=720,width=1280");
+    ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
+
+    ventana.document.close();
+    ventana.focus();
+    ventana.onload = function () {
+      ventana.print();
+      ventana.close();
+    };
+  };
+
+  const mostratPDF = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
     ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
     ventana.document.close();
@@ -34,18 +42,43 @@ const ConfirmacionPage = ({}) => {
       ventana.print();
       ventana.close();
     };
-    const handleRedirect = () => {
-      // Redirigir a la confirmación del pago
-      navigate("/ventas");
-    };
   };
 
-  // -- Renderizado.
+  const handleMontoTotal = () => {
+    let total = 0;
+
+    carroProducts.forEach((item) => {
+      total = total + item.precio * item.cantidad;
+    });
+
+    return `$${total}`;
+  };
+
+  const handleTotalProductos = () => {
+    let total = 0;
+
+    carroProducts.forEach((item) => {
+      total = total + item.cantidad;
+    });
+
+    return total;
+  };
+
+  const handleActualDate = () => {
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
+  // 4. Render.
   return (
     <section className="">
       {/* Navegación */}
       <section className="">
-        <TabNavigation />
+        <Navigation />
       </section>
 
       {/* Visual */}
@@ -59,17 +92,7 @@ const ConfirmacionPage = ({}) => {
         </Stepper>
       </div>
 
-      <section
-        className="ConfirmaciónPage-container"
-        style={{
-          backgroundImage: "url(../../assets/images/bg-table.png)",
-          height: "685px",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "contain",
-          backgroundPosition: "bottom",
-          opacity: "95%",
-        }}
-      >
+      <section className="ConfirmaciónPage-container">
         <div className="confirmacionPage_titulo">
           <h1>¡Pago confirmado!</h1>
           <div className="confirmacionPage_subtitulo">
@@ -84,33 +107,30 @@ const ConfirmacionPage = ({}) => {
           <div className="confirmacionPage_contendorTitulo">
             <h1>Resumen de la venta</h1>
           </div>
-          <div
-            className="confirmacionPage_contendorDatosFinales"
-            style={{
-              backgroundImage: "url(../../assets/images/boleta.png)",
-              height: "72%",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-              backgroundPosition: "center bottom",
-              //backgroundColor: "red",
-              //alignItems: "end",
-              width: "95%",
-              marginTop: "1%",
-            }}
-          >
-            <h1>Empleado: Gonzalo Cañas Madariaga</h1>
-            <h1>Monto total: $1900</h1>
-            <h1>Metodo de pago: Efectivo</h1>
-            <h1>Cantidad de Productos: 1</h1>
-            <h1>Fecha de venta: 27/09/2022</h1>
+          <div className="confirmacionPage_contendorDatosFinales">
+            <h1>Empleado: Javier Almarza</h1>
+            <h1>Monto total: {handleMontoTotal()}</h1>
+            <h1>Metodo de pago: {metodo}</h1>
+            <h1>Cantidad de Productos: {handleTotalProductos()}</h1>
+            <h1>Fecha de venta: {handleActualDate()}</h1>
           </div>
         </div>
 
         <div className="confirmacionPage_contendorBotonesConfimacion">
           <Button onClick={() => handleImpresion()} variant="outlined">
-            Imprimir
+            Ver Recibo
           </Button>
 
+          <Button onClick={() => mostratPDF()} variant="outlined">
+            Ver PDF
+          </Button>
+
+          {/* <div className="confirmacionPage_PDF">
+            <PDFDownloadLink document={<PDFFile />} fileName="FORM">
+              <Button variant="outlined">Ver PDF final</Button>
+            </PDFDownloadLink>
+          </div>
+           */}
           <Button onClick={() => navigate("/caja")} variant="outlined">
             Volver a la caja
           </Button>
@@ -132,6 +152,9 @@ const ConfirmacionPage = ({}) => {
     </section>
   );
 };
+
+// PropTypes.
+ConfirmacionPage.propTypes = {};
 
 // Exportación.
 export default ConfirmacionPage;

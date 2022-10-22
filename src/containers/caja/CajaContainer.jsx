@@ -1,54 +1,41 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { fetchUserData } from "../../actions/user/fetchUserData.js";
-
-// Hooks.
-import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
-
-// Importación de componentes.
 import CajaPage from "../../pages/caja/CajaPage.jsx";
+import { useSelector, useDispatch } from "react-redux";
 
-// Definición del contenedor.
+// Action
+import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
+
+// Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
-  // -- Manejo del estado.
-  const { allProducts } = props;
-  const [inventario, setInventario] = useLocalStorage("inventario", []);
+  // 1. Manejo del estado.
+  const {} = props;
   const [productos, setProductos] = useState([]);
+  const allProductos = useSelector((state) => state.producto.productos);
+  const dispatch = useDispatch();
 
-  // -- Ciclo de vida.
+  // 2. Ciclo de vida.
   useEffect(() => {
-    if (allProducts.length === 0) {
-      setProductos(inventario);
-    } else {
-      setProductos(allProducts);
-    }
-  }, [allProducts]);
+    setProductos(allProductos);
+  }, [allProductos]);
 
-  // -- Metodos.
-  // -- Renderizado.
-  return <CajaPage productos={productos} />;
+  useEffect(() => {
+    dispatch(clearCarro());
+  }, []);
+
+  // 3. Metodos.
+  const handleCarritoProducts = async (productosCarro) => {
+    // Establecer los productos en el carro.
+    dispatch(setCarro(productosCarro));
+  };
+
+  // 4. Render.
+  return <CajaPage productos={productos} sendCarrito={handleCarritoProducts} />;
 };
 
 // PropTypes.
-CajaContainer.propTypes = {
-  userAuth: PropTypes.object,
-  userInfo: PropTypes.object,
-};
+CajaContainer.propTypes = {};
 
-// Redux
-const mapStateToProps = (state) => ({
-  userAuth: state.user.userAuth,
-  userInfo: state.user.userInfo,
-  allProducts: state.product.allProducts ?? [],
-});
-
-const mapDispatchToProps = {
-  fetchUserData,
-};
-
-// Exportación del contenedor.
-export default connect(mapStateToProps, mapDispatchToProps)(CajaContainer);
-
-//? mapStateToProps: Consulta el estado de redux y lo mapea a los props del componente.
+// Exportación.
+export default CajaContainer;

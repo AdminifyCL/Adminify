@@ -1,22 +1,48 @@
 // Dependencias.
-import { legacy_createStore as createStore, applyMiddleware } from "redux";
-import thunkMiddleware from "redux-thunk";
-import Reducers from "../reducers/index.js";
-import initialState from "../redux/initialState.js";
 import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 
-/**
- * TODO: Se debe ver como manejar la persistencia de datos de Redux.
- */
+// Reducers.
+import aplicacionReducer from "./slices/aplicacionSlice.js";
+import empleadosReducer from "./slices/empleadosSlice.js";
+import productosReducer from "./slices/productosSlice.js";
+import usuariosReducer from "./slices/usuariosSlice.js";
+import ventasReducer from "./slices/ventasSlice.js";
 
-// Creación del store.
-const payAdminStore = createStore(
-  Reducers,
-  initialState,
-  applyMiddleware(thunkMiddleware),
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const rootReducer = combineReducers({
+  // Aplicación.
+  app: aplicacionReducer,
 
-// Exportación de la store.
-export default payAdminStore;
+  // Empleados.
+  empleado: empleadosReducer,
+
+  // Productos.
+  producto: productosReducer,
+
+  // Usuarios.
+  user: usuariosReducer,
+
+  // Ventas.
+  venta: ventasReducer,
+});
+
+// Persistencia.
+const persistConfig = {
+  key: "root",
+  storage: storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// Store.
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
+});
+
+const persistor = persistStore(store);
+
+// Exportación.
+export { store, persistor };

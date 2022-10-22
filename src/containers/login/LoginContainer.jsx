@@ -1,75 +1,83 @@
 // Dependencias.
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import handleFirebaseError from "../../firebase/handlers/handleFirebaseError.js";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { loginUserWithEmail } from "../../actions/user/loginWithEmail.js";
 
-// Importación de componentes.
+// API Handler.
+import userLoginWithEmail from "../../api/usuarios/userLogin.js";
+import { userLogin } from "../../redux/slices/usuariosSlice.js";
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
+
+// Componentes.
 import LoginPage from "../../pages/login/LoginPage.jsx";
 
-// Definición del contenedor.
-class LoginContainer extends Component {
-  // -- Constructor.
-  constructor(props) {
-    super(props);
+// Definiciones del contenedor.
+const LoginContainer = (props) => {
+  // Manejo del estado.
+  const {} = props;
+  const [auth, setAuth] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const userAuth = useSelector((state) => state.user.userAuth);
 
-    this.state = {
-      isAuth: false,
-      loading: false,
-    };
-  }
+  // Ciclo de vida del componente.
+  useEffect(() => {
+    console.log("[>] userAuth::", userAuth);
+    if (userAuth?.isAuthenticated) {
+      setAuth(true);
+    }
 
-  // -- Ciclo de vida del componente.
-  componentDidMount() {}
-  componentDidUpdate = async (prevProps, prevState) => {};
+    return () => {};
+  }, [userAuth]);
 
-  componentWillUnmount() {}
+  // Metodos.
+  const handleUserLogin = async (formData) => {
+    setLoading(true);
 
-  // -- Métodos.
-  // -- Métodos [REDIRECT].
-  // -- Métodos [HANDLER].
-  handleUserSession = async (userData) => {
-    const { loginWithEmail } = this.props;
+    // API Handler
+    const userData = await userLoginWithEmail(formData)
+      .then((userData) => {
+        let data = {
+          error: false,
+          data: userData,
+        };
+        return data;
+      })
+      .catch((error) => {
+        console.log("[] Algo salio mal al iniciar la sesión");
+        let data = {
+          error: true,
+          data: error,
+        };
+        return data;
+      });
 
-    // Ejecución del action correspondiente.
-    this.setState({ loading: true });
-    await loginWithEmail(userData).then(() => {
-      this.setState({ loading: false });
-    });
+    // Redux Handler
+    if (!userData.error) {
+      dispatch(userLogin(userData));
+    } else {
+      // Handle Firebase Error.
+      let errorMessage = handleFirebaseError(userData.data);
+      let new_alert = {
+        type: "error",
+        title: "Error al iniciar sesión",
+        message: errorMessage,
+      };
+
+      // Dispatch.
+      dispatch(displayAlert(new_alert));
+    }
+
+    setLoading(false);
   };
 
-  // -- Métodos [MAPPING].
-  // -- Render
-  render() {
-    const { loading } = this.state;
-    const { userError, userAuth } = this.props;
-    return (
-      <LoginPage
-        userLogin={this.handleUserSession}
-        userAuth={userAuth}
-        userError={userError}
-        loading={loading}
-      />
-    );
-  }
-}
+  // Renderizado.
+  return <LoginPage loading={loading} login={handleUserLogin} isAuth={auth} />;
+};
 
 // PropTypes.
-LoginContainer.propTypes = {
-  loginWithEmail: PropTypes.func.isRequired,
-  userAuth: PropTypes.object.isRequired,
-  userError: PropTypes.object.isRequired,
-};
-
-// Redux
-const mapStateToProps = (state) => ({
-  userAuth: state.user.userAuth ?? {},
-  userError: state.user.userError ?? {},
-});
-
-const mapDispatchToProps = {
-  loginWithEmail: loginUserWithEmail,
-};
+LoginContainer.propTypes = {};
 
 // Exportación del contenedor.
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default LoginContainer;

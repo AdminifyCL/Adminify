@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useLocalStorage } from "../../../../hooks/useLocalStorage.jsx";
 import { Button } from "@mui/material";
 import ListaTags from "./ListaTags.jsx";
-import fakeCategorias from "../../../../models/fakeCategorias.js";
 
 // Estilos.
 import "./Categorias.scss";
