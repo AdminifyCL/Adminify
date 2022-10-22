@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { Step, Stepper, StepLabel, Button } from "@mui/material";
+import ReactPDF from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PropTypes from "prop-types";
 import PDFFile from "./components/PDFFile.jsx";
@@ -36,12 +37,19 @@ const ConfirmacionPage = (props) => {
   const mostratPDF = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
     ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
-    ventana.document.close();
+    //ventana.document.close();
     ventana.focus();
     ventana.onload = function () {
       ventana.print();
       ventana.close();
     };
+    return (
+      <div className="confirmacionPage_PDF">
+        <PDFDownloadLink document={<PDFFile />} fileName="FORM">
+          {({ loading }) => (loading ? <Button> cargando </Button> : <Button> descargar </Button>)}
+        </PDFDownloadLink>
+      </div>
+    );
   };
 
   const handleMontoTotal = () => {
@@ -125,12 +133,6 @@ const ConfirmacionPage = (props) => {
             Ver PDF
           </Button>
 
-          {/* <div className="confirmacionPage_PDF">
-            <PDFDownloadLink document={<PDFFile />} fileName="FORM">
-              <Button variant="outlined">Ver PDF final</Button>
-            </PDFDownloadLink>
-          </div>
-           */}
           <Button onClick={() => navigate("/caja")} variant="outlined">
             Volver a la caja
           </Button>
