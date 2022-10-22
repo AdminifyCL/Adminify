@@ -37,6 +37,11 @@ const fetchVentas = async () => {
             console.error(error);
           });
 
+        // Odenar las ventas.
+        ventas = ventas.sort((a, b) => {
+          return b.fecha.seconds - a.fecha.seconds;
+        });
+
         resolve(ventas);
       } else {
         reject();

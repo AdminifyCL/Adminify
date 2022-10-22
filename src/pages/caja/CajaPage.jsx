@@ -15,6 +15,8 @@ import { publicURL, privateURL } from "../../schemas/Navigation.js";
 
 // Actions.
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
+import { clearMetodo } from "../../redux/slices/ventasSlice.js";
+import { clearCarro } from "../../redux/slices/productosSlice.js";
 
 // Importación de estilos.
 import "./CajaPage.scss";
@@ -37,6 +39,11 @@ const CajaPage = (props) => {
       setCanPay(false);
     }
   }, [carrito]);
+
+  useEffect(() => {
+    dispatch(clearMetodo());
+    dispatch(clearCarro());
+  }, []);
 
   // -- Metodo.
   const cambiarTotal = (valor) => {
