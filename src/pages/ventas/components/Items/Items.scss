@@ -1,0 +1,9 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.ventasItem-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: Colors.$primary-color;
+}

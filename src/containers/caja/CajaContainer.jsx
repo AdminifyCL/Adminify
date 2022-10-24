@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 // Action
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
+import { clearMetodo } from "../../redux/slices/ventasSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -22,6 +23,7 @@ const CajaContainer = (props) => {
 
   useEffect(() => {
     dispatch(clearCarro());
+    dispatch(clearMetodo());
   }, []);
 
   // 3. Metodos.
