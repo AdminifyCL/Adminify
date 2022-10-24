@@ -40,9 +40,14 @@ const ventasSlice = createSlice({
 
       return { ...state, metodo: payload };
     },
+
+    clearMetodo: (state, action) => {
+      return { ...state, metodo: "" };
+    },
   },
 });
 
 // Exportación.
-export const { fetchVentas, appendVenta, removeVenta, setMetodo } = ventasSlice.actions;
+export const { fetchVentas, appendVenta, removeVenta, setMetodo, clearMetodo } =
+  ventasSlice.actions;
 export default ventasSlice.reducer;
