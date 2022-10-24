@@ -3,18 +3,23 @@ import React, { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
+import EmployeeModal from "../../components/Modals/Employees/EmployeeModal.jsx";
 import {BsPersonFill} from "react-icons/bs";
 
 // Estilos.
 import "./EmpleadosPage.scss";
 import { Button } from "@mui/material";
-import { green } from "@mui/material/colors";
 
 // Definición del componente: <EmpleadosPage />
 const EmpleadosPage = (props) => {
   // 1. Manejo del estado.
   const {} = props;
   const empleados = [{"nombre":"Javier Almarza","correo":"javier@gmail.com","cargo":"Empleado"}] 
+  const [modalVisibility,setModalVisibility] = useState(false)
+
+  const handleVisibility = () => {
+    setModalVisibility(!modalVisibility);
+  };
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
@@ -28,11 +33,17 @@ const EmpleadosPage = (props) => {
         <Navigation />
       </section>
 
+      <EmployeeModal
+        open={modalVisibility}
+        onClose={() => handleVisibility()}
+      />
+
       {/* Vista del empleado. */}
       <section className="empleadosPage_content">
         <div className="empleadosPage_Cabecera">
-        <p>Administracion de empleados</p><Button variant="contained">Agregar empleados</Button>
+        <p>Administracion de empleados</p><Button variant="contained" onClick={handleVisibility}>Agregar empleados</Button>
         </div>
+        <div className = "empleadosPage_Contenido">
         {empleados.map((employee)=>{
           return <div className="empleadosPage_Tarjeta"> 
           <div className="empleadosPage_icono">
@@ -45,6 +56,7 @@ const EmpleadosPage = (props) => {
             </div>
           </div>
         })}
+        </div>
       </section>
     </section>
   );

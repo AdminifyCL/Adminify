@@ -49,6 +49,17 @@
   }
 }
 
+.empleadosPage_Contenido{
+  width: 88%;
+  height: 70%;
+  position: absolute;
+  top: 35%;
+  border: 3px dotted Colors.$primary-color;;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .empleadosPage_Tarjeta{
   display: flex;
   flex-direction: column;
@@ -56,8 +67,8 @@
   align-items: center;
   // background-color: Colors.$gray-color;
   border-radius: 1.75rem;
-  width: 23%;
-  height: 40%;
+  width: 19%;
+  height: 50%;
   border: 3px solid Colors.$primary-color;
   h2{
     text-align: center;
