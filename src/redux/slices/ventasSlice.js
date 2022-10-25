@@ -21,8 +21,11 @@ const ventasSlice = createSlice({
 
     appendVenta: (state, action) => {
       const payload = action.payload;
+      const newList = [...state.ventas, payload].sort((a, b) => {
+        return b.fecha.seconds - a.fecha.seconds;
+      });
 
-      return { ...state, ventas: [...state.ventas, payload] };
+      return { ...state, ventas: newList };
     },
 
     removeVenta: (state, action) => {
