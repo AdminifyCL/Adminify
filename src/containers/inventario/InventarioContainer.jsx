@@ -30,14 +30,6 @@ const InventarioContainer = (props) => {
     } else {
       productosAction = allProducts;
     }
-
-    // await createProduct(productData, productosAction)
-    //   .then(() => {
-    //     console.log("[✅] Se creo un producto!");
-    //   })
-    //   .catch((error) => {
-    //     console.log("[😞] No Se pudo crear un producto");
-    //   });
   };
 
   // 4. Render.

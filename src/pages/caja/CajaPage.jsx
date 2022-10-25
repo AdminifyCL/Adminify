@@ -61,10 +61,10 @@ const CajaPage = (props) => {
     setCarrito([]);
   };
 
-  const cambiarCantidad = (cantidad, valor, nombre, suma) => {
+  const cambiarCantidad = (cantidad, valor, id, suma) => {
     const carro = [...carrito];
     carro.map((item) => {
-      if (item.nombre == nombre) {
+      if (item.id == id) {
         if (suma) {
           item.cantidad = item.cantidad + 1;
           setTotal(total + valor);

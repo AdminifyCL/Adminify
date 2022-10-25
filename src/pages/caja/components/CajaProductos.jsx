@@ -1,8 +1,8 @@
 // Dependencias.
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaHamburger } from "react-icons/fa";
 import { Button } from "@mui/material";
-import { useState } from "react";
+import ProductoCarro from "./Producto/ProductoCarro.jsx";
 
 // Estilos.
 import "../CajaPage.scss";
@@ -18,9 +18,46 @@ function capitalize(word) {
 }
 
 export function CajaProductos(props) {
+  // 1. Manejo del estado.
   const [entrada, setEntrada] = useState("");
+  const [showProducts, setShowProducts] = useState([]);
+  const { productos, carro, cambiaTotal, cambiaCarro, cambiaCantidad } = props;
+
+  // 2. Ciclo de vida.
+  useEffect(() => {
+    setShowProducts(productos);
+  }, [productos]);
+
+  useEffect(() => {
+    if (entrada.length > 0) {
+      let productosFiltrados = productos.filter((producto) => {
+        return producto.nombre.toLowerCase().includes(entrada.toLowerCase());
+      });
+
+      setShowProducts(productosFiltrados);
+    }
+  }, [entrada]);
+
+  // 3. Metodos.
+  const mappingProductos = () => {
+    return showProducts.map((producto) => {
+      return (
+        <ProductoCarro
+          info={producto}
+          key={producto.id}
+          carro={carro}
+          cambiaTotal={cambiaTotal}
+          cambiaCarro={cambiaCarro}
+          cambiaCantidad={cambiaCantidad}
+        />
+      );
+    });
+  };
+
+  // 4. Render.
   return (
     <div className="cajaPage_Productos">
+      {/* Buscador. */}
       <nav className="cajaPage_Productos_cabecera">
         <p>Lista de productos</p>
         <input
@@ -29,51 +66,11 @@ export function CajaProductos(props) {
           onChange={(e) => {
             setEntrada(e.target.value);
           }}
-        ></input>
+        />
       </nav>
-      <section className="cajaPage_Productos_lista">
-        {props.productos.map((producto) => {
-          if (producto.nombre.startsWith(capitalize(entrada))) {
-            return (
-              <div key={producto.nombre} className="cajaPage_Productos_producto">
-                <p>
-                  <FaHamburger></FaHamburger>
-                </p>
-                <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
-                  {producto.nombre}
-                </p>
-                <p className="cajaPage_producto_texto">${producto.valor}</p>
-                <Button
-                  variant="contained"
-                  onClick={() => {
-                    let vista_producto = props.carro.map((pcar) => {
-                      if (pcar.nombre == producto.nombre) {
-                        return true;
-                      } else {
-                        return false;
-                      }
-                    });
-                    if (!vista_producto.includes(true)) {
-                      props.cambiaTotal(producto.valor);
-                      props.cambiaCarro(props.carro.length, producto.nombre, producto.valor, 1);
-                    } else {
-                      props.cambiaCantidad(
-                        producto.cantidad,
-                        producto.valor,
-                        producto.nombre,
-                        true
-                      );
-                      props.cambiaTotal(producto.valor);
-                    }
-                  }}
-                >
-                  Añadir
-                </Button>
-              </div>
-            );
-          }
-        })}
-      </section>
+
+      {/* Lista de productos. */}
+      <section className="cajaPage_Productos_lista">{mappingProductos()}</section>
     </div>
   );
 }
