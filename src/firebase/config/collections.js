@@ -17,6 +17,12 @@ const databaseCollections = {
 
   //? Colección de cada producto.
   producto: "PRODUCTO",
+
+  //? Colección para los desarrolladores.
+  desarrolladores: "DESARROLLADORES",
+
+  //? Colección para los empleados.
+  empleados: "EMPLEADOS",
 };
 
 // Exportación.

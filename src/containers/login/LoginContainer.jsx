@@ -23,7 +23,6 @@ const LoginContainer = (props) => {
 
   // Ciclo de vida del componente.
   useEffect(() => {
-    console.log("[>] userAuth::", userAuth);
     if (userAuth?.isAuthenticated) {
       setAuth(true);
     }
@@ -56,6 +55,9 @@ const LoginContainer = (props) => {
     // Redux Handler
     if (!userData.error) {
       dispatch(userLogin(userData));
+      setLoading(false);
+
+      return { error: false };
     } else {
       // Handle Firebase Error.
       let errorMessage = handleFirebaseError(userData.data);
@@ -67,9 +69,10 @@ const LoginContainer = (props) => {
 
       // Dispatch.
       dispatch(displayAlert(new_alert));
-    }
+      setLoading(false);
 
-    setLoading(false);
+      return { error: true };
+    }
   };
 
   // Renderizado.
