@@ -11,9 +11,17 @@ const empleadosSlice = createSlice({
   initialState: empleadosState,
 
   // Reducers.
-  reducers: {},
+  reducers: {
+    //* -- Control de los empleados.
+    fetchEmpleados: (state, action) => {
+      const payload = action.payload;
+      let empleados = payload ?? [];
+
+      return { ...state, empleados: empleados };
+    },
+  },
 });
 
 // Exportación.
-export const {} = empleadosSlice.actions;
+export const { fetchEmpleados } = empleadosSlice.actions;
 export default empleadosSlice.reducer;
