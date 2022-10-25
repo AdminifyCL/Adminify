@@ -21,7 +21,7 @@ const fetchProducts = async () => {
         const tiendaId = userData.tiendaId;
         let listaProductos = [];
 
-        const productoPath = `${Collections.productos}/${tiendaId}/${Collections.producto}`;
+        const productoPath = `${Collections.tiendas}/${tiendaId}/${Collections.productos}`;
         const productoRef = collection(firestore, productoPath);
 
         const productoDocs = await getDocs(productoRef);
