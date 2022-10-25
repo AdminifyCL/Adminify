@@ -12,7 +12,6 @@ import Modal from "@mui/material/Modal";
 
 // Estilos.
 import "./EmpleadosPage.scss";
-import { Button } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
