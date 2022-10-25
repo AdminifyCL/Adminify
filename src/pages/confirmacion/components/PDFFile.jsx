@@ -1,4 +1,5 @@
 import React from "react";
+import ReactPDF from "@react-pdf/renderer";
 import { Page, Text, Document, Image, StyleSheet } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
@@ -42,7 +43,7 @@ const PDFFile = () => {
   return (
     <Document>
       <Page style={styles.body}>
-        <Text style={styles.header} fixed></Text>
+        <Text style={styles.header}></Text>
 
         <Text style={styles.text}>
           Oh right. I forgot about the battle. Wow, you got that off the Internet? In my day, the

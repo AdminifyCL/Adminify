@@ -21,7 +21,7 @@
   background-color: Colors.$white-color;
   position: absolute;
   border: dashed 3px;
-  border-color: rgb(119, 119, 119);
+  border-color: #ebebeb;
   bottom: 7%;
   left: 4%;
   border-radius: 6px;
@@ -59,38 +59,65 @@
   left: 1.5vh;
   border: solid 3px;
   border-color: #226f54;
+  border-radius: 1rem;
 }
 
-.empleadosPage_contenedorDatosPrueba {
-  background-color: BLUE;
-  width: 35vh;
-  height: 35vh;
-  position: absolute;
-  bottom: 1.5vh;
-  left: 1.5vh;
-}
-.empleadosPage_contenedorDatosPrueba2 {
-  background-color: green;
-  width: 35vh;
-  height: 35vh;
-  position: absolute;
-  bottom: 1.5vh;
-  left: 147.5vh;
-}
+// .empleadosPage_contenedorDatosPrueba {
+//   background-color: BLUE;
+//   width: 35vh;
+//   height: 35vh;
+//   position: absolute;
+//   bottom: 1.5vh;
+//   left: 1.5vh;
+// }
+// .empleadosPage_contenedorDatosPrueba2 {
+//   background-color: green;
+//   width: 35vh;
+//   height: 35vh;
+//   position: absolute;
+//   bottom: 1.5vh;
+//   left: 147.5vh;
+// }
 
-.empleadosPage_contenedorDatosPrueba3 {
-  background-color: yellow;
-  width: 35vh;
-  height: 35vh;
-  position: absolute;
-  bottom: 1.5vh;
-  left: 74.5vh;
-}
+// .empleadosPage_contenedorDatosPrueba3 {
+//   background-color: yellow;
+//   width: 35vh;
+//   height: 35vh;
+//   position: absolute;
+//   bottom: 1.5vh;
+//   left: 74.5vh;
+// }
 
 .empleadosPage_contenedorIcono {
-  background-color: red;
+  background-color: Colors.$primary-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 50%;
+  width: 99%;
+  position: absolute;
+  left: 1px;
+  border-radius: 1rem 1rem 0rem 0rem;
   p {
+    color: white;
+  }
+}
+
+.empleadosPage_contenedorString {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  width: 99%;
+  position: absolute;
+  bottom: 25px;
+  left: 1px;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.5rem;
+  h4 {
+    font-size: large;
+    font-weight: bold;
     color: Colors.$primary-color;
   }
 }
@@ -139,4 +166,37 @@
   position: absolute;
   right: 3rem;
   bottom: 2rem;
+}
+
+.empleadosPage_contadorEmpleados {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 2vh;
+
+  border: solid 3px;
+  border-color: #226f54;
+  border-radius: 1rem 1rem 1rem 1rem;
+  position: absolute;
+  right: 16%;
+  width: 20%;
+  height: 62%;
+
+  h4 {
+    font-size: 17px;
+    font-weight: bold;
+    color: Colors.$primary-color;
+  }
+}
+
+.empleadosPage_contenedorBotonesEmpleado {
+  background-color: #ebebeb;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  border-radius: 0rem 0rem 1rem 1rem;
+  left: 1px;
+  width: 99%;
 }

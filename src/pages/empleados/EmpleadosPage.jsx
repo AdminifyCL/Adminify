@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
-import { Button, TextField, Autocomplete } from "@mui/material";
-import { FaUserAlt, FaUserPlus } from "react-icons/fa";
+import { Button, TextField, Autocomplete, IconButton } from "@mui/material";
+import { FaUserAlt, FaUserPlus, FaUserFriends, FaUserCog, FaUserTimes } from "react-icons/fa";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@mui/material/Box";
@@ -84,6 +84,11 @@ const EmpleadosPage = (props) => {
       </section>
       <div className="empleadosPage_boton">
         <h1>Administracion de empleados</h1>
+        <div className="empleadosPage_contadorEmpleados">
+          <h4>
+            <FaUserFriends size="3vh"></FaUserFriends> Cantidad de empleados:{" "}
+          </h4>
+        </div>
         <Button variant="contained" onClick={() => abrirCerrarModal()}>
           agregar empleado <FaUserPlus size="3vh" position></FaUserPlus>
         </Button>
@@ -99,11 +104,21 @@ const EmpleadosPage = (props) => {
               <FaUserAlt size="8vh" position></FaUserAlt>
             </p>
           </div>
-          <h3>nombre</h3>
-          <h3>mail</h3>
-          <h3>rol</h3>
+          <div className="empleadosPage_contenedorString">
+            <h3>nombre</h3>
+            <h3>mail</h3>
+            <h4>rol</h4>
+          </div>
+          <div className="empleadosPage_contenedorBotonesEmpleado">
+            <IconButton aria-label="config" size="small">
+              <FaUserCog fontSize="inherit" />
+            </IconButton>
+            <IconButton aria-label="delete" size="small">
+              <FaUserTimes fontSize="inherit" />
+            </IconButton>
+          </div>
         </div>
-        <section className="empleadosPage_contenedorDatosPrueba">
+        {/* <section className="empleadosPage_contenedorDatosPrueba">
           <h3>nombre</h3>
           <h3>mail</h3>
           <h3>rol</h3>
@@ -117,7 +132,7 @@ const EmpleadosPage = (props) => {
           <h3>nombre</h3>
           <h3>mail</h3>
           <h3>rol</h3>
-        </div>
+        </div> */}
       </section>
     </section>
   );
