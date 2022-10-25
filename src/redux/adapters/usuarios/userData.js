@@ -11,6 +11,7 @@ const adapter = (data) => {
   const ultima = data.lastLoginAt ?? {};
   const licencia = data.licencia ?? "";
   const tiendaId = data.tiendaId ?? "";
+  const isDev = data.isDev ?? false;
 
   // // Modelo de datos.
   let userData = {
@@ -26,6 +27,7 @@ const adapter = (data) => {
     lastLoginAt: ultima,
     licencia: licencia,
     tiendaId: tiendaId,
+    isDev: isDev,
   };
 
   return userData;

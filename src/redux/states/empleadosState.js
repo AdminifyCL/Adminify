@@ -1,5 +1,7 @@
 // Definición del estado inicial: Empleados.
-const empleadosState = {};
+const empleadosState = {
+  empleados: [],
+};
 
 // Exportación
 export default empleadosState;

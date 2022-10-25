@@ -5,21 +5,30 @@
 .empleadosPage_container {
   width: 100%;
   height: 100vh;
+
+  background-color: white;
 }
 
 .empleadosPage_content {
-  margin-left: 7.5rem;
-  margin-right: 7.5rem;
-
-  background-color: Colors.$white-color;
-
-  height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
 
+.empleadosPage_botones {
+  width: 90%;
+
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.empleadosPage_headerTitle {
   h1 {
     font-size: 2rem;
     font-weight: bold;
@@ -27,6 +36,50 @@
   }
 }
 
-.empleadosPage_navigation {
-  width: 100%;
+.empleadosPage_headerInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  column-gap: 2rem;
+}
+
+.empleadosPage_statsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  column-gap: 2rem;
+
+  background-color: Colors.$white-color;
+
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  border: 3px solid Colors.$primary-color;
+  border-radius: 0.5rem;
+
+  h4 {
+    font-size: 1rem;
+    font-weight: bold;
+    color: Colors.$primary-color;
+  }
+}
+
+.empleadosPage_headerButton {
+}
+
+.empleadosPage_headerButtonStyle {
+  background-color: brown;
+}
+
+// Lista de empleados.
+.empleadosPage_listaEmpleados {
+  width: 90%;
+
+  border: 2px dashed Colors.$gray-color;
+  border-radius: 0.5rem;
 }
