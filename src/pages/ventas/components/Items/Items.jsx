@@ -24,7 +24,7 @@ const Items = (props) => {
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <DialogTitle>
-        <h1 className="ventasItem-title">Lista de productos</h1>
+        <p className="ventasItem-title">Lista de productos</p>
       </DialogTitle>
       <DialogContent>{mappingItems()}</DialogContent>
     </Dialog>

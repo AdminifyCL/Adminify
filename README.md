@@ -1,13 +1,13 @@
 <h1 align="center">
-  <span><img width="20" src="./.github/assets/payadminLogo.png"/></span>
-  PayAdmin
+  <span><img width="20" src="./public/adminify.svg"/></span>
+  Adminify
 </h1>
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
 
 ## Introducción
 
-PayAdmin, es un sistema de caja moderno con un fuerte comunicación entre la gestión de inventario y empleados.
+Adminify, es un sistema de caja moderno con un fuerte comunicación entre la gestión de inventario y empleados.
 
 La aplicación utiliza Rust internamente para montar la aplicación de escritorio, haciendo uso de el Framework Tauri. Mientras que, para el apartado visual se usan tecnologias como React y Redux.
 

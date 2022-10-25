@@ -1,9 +1,12 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { Step, Stepper, StepLabel, Button } from "@mui/material";
+import ReactPDF from "@react-pdf/renderer";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PropTypes from "prop-types";
+import PDFFile from "./components/PDFFile.jsx";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
@@ -22,12 +25,31 @@ const ConfirmacionPage = (props) => {
   const handleImpresion = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
     ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
+
     ventana.document.close();
     ventana.focus();
     ventana.onload = function () {
       ventana.print();
       ventana.close();
     };
+  };
+
+  const mostratPDF = () => {
+    const ventana = window.open("", "PRINT", "height=720,width=1280");
+    ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
+    //ventana.document.close();
+    ventana.focus();
+    ventana.onload = function () {
+      ventana.print();
+      ventana.close();
+    };
+    return (
+      <div className="confirmacionPage_PDF">
+        <PDFDownloadLink document={<PDFFile />} fileName="FORM">
+          {({ loading }) => (loading ? <Button> cargando </Button> : <Button> descargar </Button>)}
+        </PDFDownloadLink>
+      </div>
+    );
   };
 
   const handleMontoTotal = () => {
@@ -104,7 +126,11 @@ const ConfirmacionPage = (props) => {
 
         <div className="confirmacionPage_contendorBotonesConfimacion">
           <Button onClick={() => handleImpresion()} variant="outlined">
-            Imprimir
+            Ver Recibo
+          </Button>
+
+          <Button onClick={() => mostratPDF()} variant="outlined">
+            Ver PDF
           </Button>
 
           <Button onClick={() => navigate("/caja")} variant="outlined">
