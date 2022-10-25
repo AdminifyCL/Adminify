@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Product from "./Product";
+import ProductCard from "./Product.jsx";
 
 // Estilos.
 import "./ListProducts.scss";
@@ -25,18 +25,15 @@ const ListProducts = (props) => {
     }
 
     return productos.map((producto, index) => {
-      return <Product info={producto} key={index} />;
+      return <ProductCard info={producto} key={index} />;
     });
   };
 
   // -- Renderizado.
   return (
     <div className="ListProductsContainer">
-      {/* Listar las filas */}
-      <div className="ListProductsRow">
-        {/* Listar las columnas */}
-        {mappingRows()}
-      </div>
+      {/* Listar productos */}
+      {mappingRows()}
     </div>
   );
 };

@@ -75,7 +75,7 @@ const TabNavigation = (props) => {
       {/* Icono para la navegación. */}
       <div className="TabNavigation-icon">
         <FaDraftingCompass size={40} />
-        <p className="TabNavigation-badge">Beta</p>
+        <p className="TabNavigation-badge">Alpha</p>
       </div>
 
       {/* Pestañas para la navegación. */}

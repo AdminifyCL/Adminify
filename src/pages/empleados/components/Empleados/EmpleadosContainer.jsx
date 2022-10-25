@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useId } from "react";
 import Empleado from "./Empleado.jsx";
 import PropTypes from "prop-types";
 
@@ -17,8 +17,8 @@ const EmpleadosContainer = (props) => {
   // 3. Metodos.
   const mappingEmpleados = () => {
     return listaEmpleados.map((empleado) => {
-      console.log({ empleado });
-      return <Empleado info={empleado} />;
+      let id = useId();
+      return <Empleado info={empleado} key={id} />;
     });
   };
 

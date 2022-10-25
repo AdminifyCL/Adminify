@@ -32,6 +32,17 @@ const fetchProducts = async () => {
           }
         });
 
+        // Ordenar los productos mediante su categoria.
+        listaProductos.sort((a, b) => {
+          if (a.categoria > b.categoria) {
+            return 1;
+          }
+          if (a.categoria < b.categoria) {
+            return -1;
+          }
+          return 0;
+        });
+
         resolve(listaProductos);
       } else {
         reject();
