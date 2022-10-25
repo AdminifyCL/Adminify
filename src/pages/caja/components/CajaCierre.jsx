@@ -9,10 +9,10 @@ import { userLogout } from "../../../redux/slices/usuariosSlice.js";
 // Definición del componente: <CajaBotones />
 export function CajaCierre(props) {
   // -- Renderizado.
+  const { open } = props;
+  const visibilidad = open;
 
-  const visibilidad = props.open;
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleSignOut = async () => {
     await userSignOut()
@@ -29,16 +29,16 @@ export function CajaCierre(props) {
       <div className="cajaPage_menu_cierre">
         <p>¿ Esta seguro de realizar el cierre de caja ?</p>
         <div>
-        <Button
+          <Button
             variant="contained"
             onClick={() => {
               //CODIGO DE CIERRE DE CAJA
-              handleSignOut()
+              handleSignOut();
             }}
           >
             Aceptar
           </Button>
-        <Button
+          <Button
             variant="outlined"
             onClick={() => {
               props.cerrar();
@@ -46,7 +46,6 @@ export function CajaCierre(props) {
           >
             Salir
           </Button>
-          
         </div>
       </div>
     );
