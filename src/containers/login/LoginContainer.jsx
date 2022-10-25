@@ -23,7 +23,6 @@ const LoginContainer = (props) => {
 
   // Ciclo de vida del componente.
   useEffect(() => {
-    console.log("[>] userAuth::", userAuth);
     if (userAuth?.isAuthenticated) {
       setAuth(true);
     }
