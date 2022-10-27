@@ -1,0 +1,94 @@
+// Dependencias.
+@use "../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.TabNavigation-container {
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  border-bottom: 0.25rem solid Colors.$primary-color;
+
+  display: flex;
+  flex-direction: row;
+}
+
+//* -- HEADER
+.TabNavigation-containerHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  column-gap: 0.5rem;
+}
+
+.TabNavigation-containerIcon {
+}
+
+.TabNavigation-containerTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  column-gap: 0.5rem;
+
+  h1 {
+    color: Colors.$primary-color;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+//* -- ACTIONS
+.TabNavigation-containerActions {
+  display: flex;
+  flex-direction: row;
+
+  background-color: red;
+}
+
+// TABS
+.TabNavigation-containerTabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: crimson;
+}
+
+.TabNavigation-containerTab {
+  display: flex;
+  flex-direction: row;
+}
+
+.TabNavigation-containerUser {
+  display: flex;
+  flex-direction: row;
+}
+
+.TabNavigation-containerExit {
+  display: flex;
+  flex-direction: row;
+}
+
+// Media Queries
+// Extra small devices (phones, 600px and down)
+@media only screen and (max-width: 600px) {
+}
+
+// Small devices (portrait tablets and large phones, 600px and up)
+@media only screen and (min-width: 600px) {
+}
+
+// Medium devices (landscape tablets, 768px and up)
+@media only screen and (min-width: 768px) {
+}
+
+// Large devices (laptops/desktops, 992px and up)
+@media only screen and (min-width: 992px) {
+}
+
+// Extra large devices (large laptops and desktops, 1200px and up)
+@media only screen and (min-width: 1200px) {
+}
