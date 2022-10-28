@@ -1,5 +1,7 @@
 // Dependencias.
 
+import { color } from "@mui/system";
+
 // Definición...
 const createAlert = async (data) => {
   console.log("[] API HANDLER: createAlert");
@@ -7,6 +9,8 @@ const createAlert = async (data) => {
     try {
       // Definición de la alerta.
       resolve(data);
+
+      color.log("[] DATA:");
     } catch (error) {
       console.error(error);
       reject(error);
