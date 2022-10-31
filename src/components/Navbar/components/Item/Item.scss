@@ -1,0 +1,32 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.Item_container {
+  background-color: Colors.$white-color;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  column-gap: 0.5rem;
+
+  border-radius: 0.5rem;
+}
+
+.Item_iconContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.Item_textContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

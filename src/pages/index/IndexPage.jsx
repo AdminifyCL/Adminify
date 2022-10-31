@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import PropTypes from "prop-types";
+import { publicURL, privateURL } from "../../schemas/Navigation.js";
 import Logo from "../../assets/images/logo250x250.png";
-import "react-lazy-load-image-component/src/effects/blur.css";
+import PropTypes from "prop-types";
 
 // Estilos.
+import Styles from "./styles/Screen.jsx";
 import "./IndexPage.scss";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 // Definición de la pagina.
 const IndexPage = (props) => {
@@ -21,6 +23,10 @@ const IndexPage = (props) => {
   useEffect(() => {}, []);
 
   // 3. Metodos.
+  const handleRedirect = () => {
+    navigate(publicURL.login);
+  };
+
   // 4. Render.
   return (
     <section className="indexPage_contenedor">
@@ -28,17 +34,26 @@ const IndexPage = (props) => {
         {/* Header */}
         <div className="indexPage_header">
           <div className="indexPage_headerBanner">
-            <LazyLoadImage src={Logo} width={50} height={50} alt="Adminify" effect="blur" />
+            <LazyLoadImage
+              src={Logo}
+              width={50}
+              height={50}
+              alt="Adminify"
+              effect="blur"
+              style={Styles.icon}
+            />
             <h1>Adminify</h1>
           </div>
 
           {/* Boton */}
-          <Button variant="contained">Entrar</Button>
+          <Button variant="contained" onClick={() => handleRedirect()}>
+            Entrar
+          </Button>
         </div>
 
         {/* Noticias */}
         <div className="indexPage_newsContainer">
-          <h1>Container</h1>
+          <h1></h1>
         </div>
       </div>
     </section>
