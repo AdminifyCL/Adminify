@@ -3,17 +3,17 @@
 
 // Definición de estilos.
 .ItemList_container {
+  min-width: 12rem;
+
   padding: 1rem;
 
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
 
-  background-color: Colors.$white-color;
+  background-color: Colors.$gray-color;
   border-width: 0px 2px 2px 0px;
   border-bottom-right-radius: 0.5rem;
-  border-color: Colors.$primary_dark-color;
-  border-style: solid;
 
   margin-right: 1rem;
 

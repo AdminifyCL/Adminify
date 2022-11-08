@@ -2,12 +2,9 @@
 
 // Definición de los estilos.
 .ListProductsContainer {
-  width: 100%;
-  height: 100%;
+  width: 10;
 
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  row-gap: 0.5rem;
-  column-gap: 0.25rem;
 }

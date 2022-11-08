@@ -3,25 +3,18 @@
 
 // Definición de estilos.
 .inventarioPage_container {
-  width: 100%;
-}
-
-.inventarioPage_navigation {
-  width: 100%;
+  max-width: fit-content;
 }
 
 .inventarioPage_content {
-  margin-left: 7.5rem;
-  margin-right: 7.5rem;
-
   background-color: Colors.$white-color;
 
   height: 100%;
 
+  padding-left: 1rem;
+
   display: flex;
   flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
 
   h1 {
     font-size: 2rem;
@@ -36,9 +29,11 @@
   align-content: center;
   flex-wrap: wrap;
 
+  column-gap: 2rem;
+
   padding-top: 1.25rem;
 
-  width: 100%;
+  max-width: fit-content;
 
   h1 {
     color: Colors.$primary-color;
@@ -49,20 +44,17 @@
 }
 
 .inventarioPage_content_container {
-  width: 100%;
   height: 100%;
 
   margin-top: 1.25rem;
 
   border: 0.25rem dashed Colors.$gray-color;
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-
-  row-gap: 1.25rem;
 
   overflow-y: scroll;
 

@@ -5,6 +5,8 @@
 .Item_container {
   background-color: Colors.$primary-color;
 
+  min-width: 8.5rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;
