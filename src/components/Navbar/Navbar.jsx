@@ -4,6 +4,7 @@ import { FaBars } from "react-icons/fa";
 import { IconButton } from "@mui/material";
 import ItemList from "./components/ItemList/ItemList.jsx";
 import Logo from "../../assets/images/logo250x250.png";
+import { useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import PropTypes from "prop-types";
 
@@ -16,6 +17,7 @@ const Navbar = (props) => {
   // 1. Menejo del estado.
   const { children } = props;
   const [visible, setVisible] = useState(false);
+  const userData = useSelector((state) => state.user.userData);
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
@@ -54,7 +56,7 @@ const Navbar = (props) => {
       {/* Body */}
       <div className="Navbar_bodyContainer">
         {/* Lista de items */}
-        <ItemList visible={visible} />
+        <ItemList visible={visible} userData={userData} />
 
         {/* Vista. */}
         {children}

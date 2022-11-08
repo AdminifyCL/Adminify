@@ -3,18 +3,34 @@
 
 // Definición de estilos.
 .Item_container {
-  background-color: Colors.$white-color;
-
-  width: 100%;
+  background-color: Colors.$primary-color;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-
+  padding-left: 1rem;
   column-gap: 0.5rem;
 
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
+  border: none;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.Item_container:hover {
+  background-color: Colors.$primary_dark-color;
+  color: Colors.$white-color;
+
+  cursor: pointer;
+}
+
+.Item_container:active {
+  background-color: Colors.$primary-color;
+  color: Colors.$white-color;
+
+  border: 1px solid Colors.$white-color;
 }
 
 .Item_iconContainer {
@@ -24,9 +40,16 @@
   justify-content: center;
 }
 
+.Item_iconStyle {
+  color: Colors.$white-color;
+  font-size: 1rem;
+}
+
 .Item_textContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  color: Colors.$white-color;
 }
