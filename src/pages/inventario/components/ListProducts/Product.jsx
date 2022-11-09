@@ -1,14 +1,14 @@
 // Dependencias.
 import React, { useEffect, useState } from "react";
-import { FaHamburger } from "react-icons/fa";
+import { FaTrash, FaEdit, FaBreadSlice, FaHotdog } from "react-icons/fa";
 import PropTypes from "prop-types";
-import { Button } from "@mui/material";
+import { IconButton } from "@mui/material";
 
 // Estilos.
 import "./Product.scss";
 
-// Definición del componente: <ListProducts />
-const ListProducts = (props) => {
+// Definición del componente: <ProductCard />
+const ProductCard = (props) => {
   // -- Manejo del estado.
   const { info } = props;
 
@@ -17,7 +17,21 @@ const ListProducts = (props) => {
 
   // -- Metodos.
   const handlerIcon = (iconId) => {
-    return <FaHamburger size={20} />;
+    switch (iconId) {
+      // Icono de pan.
+      case "icono001":
+        return <FaBreadSlice size={30} color="white" />;
+        break;
+
+      // Icono de hotdog.
+      case "icono002":
+        return <FaHotdog size={30} color="white" />;
+        break;
+
+      default:
+        return <FaBreadSlice size={30} color="white" />;
+        break;
+    }
   };
 
   const handlerDisponibility = () => {
@@ -26,58 +40,65 @@ const ListProducts = (props) => {
 
   // -- Renderizado.
   return (
-    <div className="ProductContainer">
+    <div className="ProductCard-container">
       {/* Icono */}
-      <div className="ProductContainer-icon">
-        <p>{handlerIcon(info.icono)}</p>
-      </div>
-
-      {/* Categoria */}
-      <div className="ProductContainer-categoria">
-        <p>{info.categoria}</p>
-      </div>
-
-      {/* Nombre */}
-      <div className="ProductContainer-nombre">
-        <p>{info.nombre}</p>
-      </div>
-
-      {/* Valor */}
-      <div className="ProductContainer-valor">
-        <p>${info.valor}</p>
-      </div>
-
-      {/* Unidades */}
-      <div className="ProductContainer-unidades">
+      <div className="ProductCard-iconContainer">
+        {handlerIcon(info.iconoId)}
         <p>{info.unidades}</p>
       </div>
 
-      {/* Disponibilidad */}
-      <div className="ProductContainer-disponibility">
-        <p>{handlerDisponibility()}</p>
+      {/* Información */}
+      <div className="ProductCard-infoContainer">
+        <p className="ProductCard-infoContainer-categoria">{info.categoria}</p>
+        <p className="ProductCard-infoContainer-nombre">{info.nombre}</p>
+        <p className="ProductCard-infoContainer-valor">${info.valor}</p>
       </div>
 
-      <div className="ProductContainer-buttons">
-        <Button variant="outlined">Eliminar</Button>
-        <Button variant="contained">Editar</Button>
+      {/* Botones de acción */}
+      <div className="ProductCard-botonesContainer">
+        <IconButton>
+          <FaTrash size={15} />
+        </IconButton>
+        <IconButton>
+          <FaEdit size={15} />
+        </IconButton>
       </div>
     </div>
   );
 };
 
 /**
- * categoria: "vienesa"
- * icono: "ab002"
- * id: "XZAh2HLVgeYa63xExyk9"
- * nombre: "Completo italiano"
- * unidades: 21
- * valor: 2500
+ * categoria "Sandwich"
+ * iconoId "icono001"
+ * nombre "Completo con papas"
+ * unidades 32
+ * valor 6900
  */
 
 // Proptypes
-ListProducts.propTypes = {
+ProductCard.propTypes = {
   info: PropTypes.object.isRequired,
 };
 
 // Exportación.
-export default ListProducts;
+export default ProductCard;
+
+// Hojas: FaPagelines
+// Manzana: FaAppleAlt
+// Tocino: FaBacon
+// Cerveza: FaBeer
+// PAN: FaBreadSlice
+// Zanahoria: FaCarrot
+// Queso: FaCheese
+// Cafe: FaCoffee
+// Galleta: FaCookie
+// Pollo: FaDrumstickBite
+// Huevo: FaEgg
+// Pescado: FaFish
+// Vaso: FaGlassWhiskey
+// Hamburguesa: FaHamburger
+// Hotdog: FaHotdog
+// Helado: FaIceCream
+// Hoja: FaLeaf
+// Limon: FaLemon
+// Pizza: FaPizzaSlice

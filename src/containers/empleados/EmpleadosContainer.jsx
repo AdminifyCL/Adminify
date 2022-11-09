@@ -1,9 +1,8 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import EmpleadosPage from "../../pages/empleados/EmpleadosPage";
-import { useDispatch } from "react-redux";
 
 // Definición del contenedor: <EmpleadosContainer />.
 const EmpleadosContainer = (props) => {

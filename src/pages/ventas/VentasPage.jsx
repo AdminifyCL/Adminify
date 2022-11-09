@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
 import StatsContainer from "./components/Stats/StatsContainer.jsx";

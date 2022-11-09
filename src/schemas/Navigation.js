@@ -10,6 +10,7 @@ const publicURL = {
 
 const privateURL = {
   cargando: "/cargando",
+  desarrollador: "/desarrollador",
 
   caja: "/caja",
   pago: "/pago",

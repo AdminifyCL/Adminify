@@ -51,6 +51,7 @@ const InventarioPage = (props) => {
             Agregar producto
           </Button>
         </div>
+
         {/* Contenedor de elementos. */}
         <div className="inventarioPage_content_container">
           {/* Tabla de elementos. */}
