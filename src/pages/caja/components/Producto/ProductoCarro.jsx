@@ -50,11 +50,11 @@ const ProductoCarro = (props) => {
             }
           });
           if (!vista_producto.includes(true)) {
-            cambiaTotal(info.valor);
-            cambiaCarro(info.id, info.nombre, info.valor, 1);
+            cambiarTotal(info.valor);
+            cambiarCarrito(info.id, info.nombre, info.valor, 1);
           } else {
-            cambiaCantidad(info.id, info.cantidad, info.valor, info.nombre, true);
-            cambiaTotal(info.valor);
+            cambiarCantidad(info.id, info.cantidad, info.valor, info.nombre, true);
+            cambiarTotal(info.valor);
           }
         }}
       >
