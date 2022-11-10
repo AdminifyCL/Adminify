@@ -17,6 +17,10 @@ function capitalize(word) {
   }
 }
 
+function formatNumber(number) {
+  return new Intl.NumberFormat('de-DE').format(number)
+}
+
 export function CajaProductos(props) {
   const [entrada, setEntrada] = useState("");
   return (
@@ -35,35 +39,36 @@ export function CajaProductos(props) {
         {props.productos.map((producto) => {
           if (producto.nombre.startsWith(capitalize(entrada))) {
             return (
-              <div key={producto.nombre} className="cajaPage_Productos_producto">
+              <div key={producto.id} className="cajaPage_Productos_producto">
                 <p>
                   <FaHamburger></FaHamburger>
                 </p>
                 <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
                   {producto.nombre}
                 </p>
-                <p className="cajaPage_producto_texto">${producto.valor}</p>
+                <p className="cajaPage_producto_texto">${formatNumber(producto.valor)}</p>
                 <Button
                   variant="contained"
                   onClick={() => {
-                    let vista_producto = props.carro.map((pcar) => {
-                      if (pcar.nombre == producto.nombre) {
+                    let vista_producto = props.carrito.map((productoCarro) => {
+                      if (productoCarro.id == producto.id) {
                         return true;
                       } else {
                         return false;
                       }
                     });
                     if (!vista_producto.includes(true)) {
-                      props.cambiaTotal(producto.valor);
-                      props.cambiaCarro(props.carro.length, producto.nombre, producto.valor, 1);
+                      props.cambiarTotal(producto.valor);
+                      props.cambiarCarrito(producto.id, producto.nombre, producto.valor, 1);
                     } else {
-                      props.cambiaCantidad(
+                      props.cambiarCantidad(
+                        producto.id,
                         producto.cantidad,
                         producto.valor,
                         producto.nombre,
                         true
                       );
-                      props.cambiaTotal(producto.valor);
+                      props.cambiarTotal(producto.valor);
                     }
                   }}
                 >

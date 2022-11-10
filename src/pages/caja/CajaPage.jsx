@@ -13,8 +13,6 @@ import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
-import { useReactToPrint } from "react-to-print"
-import  CajaImpresion  from "./components/CajaImpresion.jsx"
 
 // Actions.
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
@@ -49,25 +47,25 @@ const CajaPage = (props) => {
     dispatch(clearCarro());
   }, []);
 
-  // -- Metodo.
+  // -- Metodos.
 
   const cambiarTotal = (valor) => {
     setTotal(total + valor);
   };
 
-  const cambiarCarro = (index, nombre, precio, cantidad) => {
-    setCarrito([...carrito, { index, nombre, precio, cantidad }]);
+  const cambiarCarrito = (id, nombre, precio, cantidad) => {
+    setCarrito([...carrito, { id, nombre, precio, cantidad }]);
   };
 
-  const limpiar = () => {
+  const limpiarCarrito = () => {
     setTotal(0);
     setCarrito([]);
   };
 
-  const cambiarCantidad = (cantidad, valor, nombre, suma) => {
+  const cambiarCantidad = (id,cantidad, valor, nombre, suma) => {
     const carro = [...carrito];
     carro.map((item) => {
-      if (item.nombre == nombre) {
+      if (item.id == id) {
         if (suma) {
           item.cantidad = item.cantidad + 1;
           setTotal(total + valor);
@@ -133,21 +131,21 @@ const CajaPage = (props) => {
           <CajaProductos
             total={total}
             productos={productos}
-            carro={[...carrito]}
-            cambiaCarro={cambiarCarro}
-            cambiaTotal={cambiarTotal}
-            cambiaCantidad={cambiarCantidad}
+            carrito={[...carrito]}
+            cambiarCarrito={cambiarCarrito}
+            cambiarTotal={cambiarTotal}
+            cambiarCantidad={cambiarCantidad}
           />
 
           {/* Carrito de compra. */}
-          <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} borrar={borrarDelCarro} />
+          <CajaCarro carrito={carrito} cambiarCantidad={cambiarCantidad} borrarDelCarrito={borrarDelCarro} />
 
           {/* <CajaCajero /> */}
           <CajaTotal total={total} />
 
           {/* Botones. */}
           <CajaBotones
-            limpia={limpiar}
+            limpia={limpiarCarrito}
             carrito={carrito}
             sendCarrito={enviarCarrito}
             canPay={canPay}
@@ -160,7 +158,7 @@ const CajaPage = (props) => {
               setModalVisibility(true);
             }}
           >
-            <VscGear />
+            <VscGear size={30}/>
           </Fab>
         </section>
       </section>
@@ -182,21 +180,21 @@ const CajaPage = (props) => {
           <CajaProductos
             total={total}
             productos={productos}
-            carro={[...carrito]}
-            cambiaCarro={cambiarCarro}
-            cambiaTotal={cambiarTotal}
-            cambiaCantidad={cambiarCantidad}
+            carrito={[...carrito]}
+            cambiaCarro={cambiarCarrito}
+            cambiarTotal={cambiarTotal}
+            cambiarCantidad={cambiarCantidad}
           />
 
           {/* Carrito de compra. */}
-          <CajaCarro carro={carrito} cambiaCantidad={cambiarCantidad} borrar={borrarDelCarro} />
+          <CajaCarro carrito={carrito} cambiaCantidad={cambiarCantidad} borrar={borrarDelCarro} />
 
           {/* <CajaCajero /> */}
           <CajaTotal total={total} />
 
           {/* Botones. */}
           <CajaBotones
-            limpia={limpiar}
+            limpiarCarrito={limpiarCarrito}
             carrito={carrito}
             sendCarrito={enviarCarrito}
             canPay={canPay}
@@ -209,7 +207,7 @@ const CajaPage = (props) => {
               setModalVisibility(true);
             }}
           >
-            <VscGear />
+            <VscGear size={40}/>
           </Fab>
         </section>
       </section>

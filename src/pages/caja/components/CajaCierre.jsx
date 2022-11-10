@@ -33,7 +33,6 @@ export function CajaCierre(props) {
             variant="contained"
             onClick={() => {
               //CODIGO DE CIERRE DE CAJA
-              handleSignOut();
             }}
           >
             Aceptar

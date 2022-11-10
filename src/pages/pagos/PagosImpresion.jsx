@@ -13,6 +13,7 @@ function PagosImpresion(props) {
     })
   return (
     <>
+    {/* Lo que va dentro de este div es lo que se imprimira */}
     <div ref={componentRef} className="PagoImpresion">
         Productos:
         {props.productos.map((producto)=>{
