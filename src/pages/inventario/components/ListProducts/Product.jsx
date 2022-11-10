@@ -67,14 +67,6 @@ const ProductCard = (props) => {
   );
 };
 
-/**
- * categoria "Sandwich"
- * iconoId "icono001"
- * nombre "Completo con papas"
- * unidades 32
- * valor 6900
- */
-
 // Proptypes
 ProductCard.propTypes = {
   info: PropTypes.object.isRequired,
@@ -82,23 +74,3 @@ ProductCard.propTypes = {
 
 // Exportación.
 export default ProductCard;
-
-// Hojas: FaPagelines
-// Manzana: FaAppleAlt
-// Tocino: FaBacon
-// Cerveza: FaBeer
-// PAN: FaBreadSlice
-// Zanahoria: FaCarrot
-// Queso: FaCheese
-// Cafe: FaCoffee
-// Galleta: FaCookie
-// Pollo: FaDrumstickBite
-// Huevo: FaEgg
-// Pescado: FaFish
-// Vaso: FaGlassWhiskey
-// Hamburguesa: FaHamburger
-// Hotdog: FaHotdog
-// Helado: FaIceCream
-// Hoja: FaLeaf
-// Limon: FaLemon
-// Pizza: FaPizzaSlice

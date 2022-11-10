@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import InventarioPage from "../../pages/inventario/InventarioPage";
 
 // Definición del contenedor: <InventarioContainer />.
@@ -33,7 +34,11 @@ const InventarioContainer = (props) => {
   };
 
   // 4. Render.
-  return <InventarioPage products={productos} createProduct={handleCreateProduct} />;
+  return (
+    <Navbar>
+      <InventarioPage products={productos} createProduct={handleCreateProduct} />
+    </Navbar>
+  );
 };
 
 // PropTypes.

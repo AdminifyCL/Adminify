@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import EstadisticasPage from "../../pages/estadisticas/EstadisticasPage";
+import Navbar from "../../components/navbar/Navbar.jsx";
 
 // Definición del contenedor: <EstadisticasContainer />.
 const EstadisticasContainer = (props) => {
@@ -13,7 +14,11 @@ const EstadisticasContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <EstadisticasPage />;
+  return (
+    <Navbar>
+      <EstadisticasPage />
+    </Navbar>
+  );
 };
 
 // PropTypes.

@@ -18,11 +18,6 @@ const EstadisticasPage = (props) => {
   // 4. Render.
   return (
     <section className="estadisticasPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="estadisticasPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Vista de la caja. */}
       <section className="estadisticasPage_content">
         <h1>Estadisticas</h1>

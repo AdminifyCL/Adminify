@@ -6,10 +6,10 @@ import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 
 // Estilos.
-import "./New.scss";
+import "./News.scss";
 
 // Definición de la pagina.
-const New = (props) => {
+const News = (props) => {
   // 1. Manejo de estados.
   const {} = props;
   const navigate = useNavigate();
@@ -21,13 +21,13 @@ const New = (props) => {
   // 4. Render.
   return (
     <section className="">
-      <h1>New</h1>
+      <h1>News</h1>
     </section>
   );
 };
 
 // PropTypes.
-New.propTypes = {};
+News.propTypes = {};
 
 // Exportación.
-export default New;
+export default News;
