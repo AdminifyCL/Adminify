@@ -21,7 +21,7 @@ export function CajaProductos(props) {
   // 1. Manejo del estado.
   const [entrada, setEntrada] = useState("");
   const [showProducts, setShowProducts] = useState([]);
-  const { productos, carro, cambiaTotal, cambiaCarro, cambiaCantidad } = props;
+  const { productos, carrito, cambiarTotal, cambiarCarrito, cambiarCantidad } = props;
 
   // 2. Ciclo de vida.
   useEffect(() => {
@@ -45,10 +45,10 @@ export function CajaProductos(props) {
         <ProductoCarro
           info={producto}
           key={producto.id}
-          carro={carro}
-          cambiaTotal={cambiaTotal}
-          cambiaCarro={cambiaCarro}
-          cambiaCantidad={cambiaCantidad}
+          carrito={carrito}
+          cambiarTotal={cambiarTotal}
+          cambiarCarrito={cambiarCarrito}
+          cambiarCantidad={cambiarCantidad}
         />
       );
     });

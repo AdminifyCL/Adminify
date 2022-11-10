@@ -16,7 +16,7 @@ import {
   StepLabel,
 } from "@mui/material";
 import PropTypes from "prop-types";
-import PagosImpresion from "./PagosImpresion.jsx"
+import PagosImpresion from "./PagosImpresion.jsx";
 
 // Estilos.
 import "./PagosPage.scss";
@@ -84,11 +84,6 @@ const PagosPage = (props) => {
   // 4. Render.
   return (
     <section>
-      {/* Navegación */}
-      <section className="">
-        <Navigation />
-      </section>
-
       {/* Visual */}
       <section className="pagosPage_Contenedor">
         <div className="pagosPage_Titulo">
@@ -214,7 +209,11 @@ const PagosPage = (props) => {
               <Button onClick={() => handleRedirect()} variant="contained" disabled={!isActive}>
                 Confirmar pago
               </Button>
-              <PagosImpresion productos={carroProducts} activo={!isActive} redirigir={handleRedirect}></PagosImpresion>
+              <PagosImpresion
+                productos={carroProducts}
+                activo={!isActive}
+                redirigir={handleRedirect}
+              ></PagosImpresion>
             </section>
           </section>
         </section>

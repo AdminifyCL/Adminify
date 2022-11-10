@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import PagosPage from "../../pages/pagos/PagosPage.jsx";
 
 // API
@@ -108,7 +109,13 @@ const PagoContainer = (props) => {
 
   // 4. Render.
   return (
-    <PagosPage carroProducts={carroProducts} setMetodo={handleMetodoPago} setVenta={handleVenta} />
+    <Navbar>
+      <PagosPage
+        carroProducts={carroProducts}
+        setMetodo={handleMetodoPago}
+        setVenta={handleVenta}
+      />
+    </Navbar>
   );
 };
 

@@ -10,14 +10,13 @@ import "./ProductoCarro.scss";
 // Definición del componente: <ProductoCarro />
 const ProductoCarro = (props) => {
   // 1. Manejo del estado.
-  const { info, carro, cambiaTotal, cambiaCarro, cambiaCantidad } = props;
+  const { info, carrito, cambiarTotal, cambiarCarrito, cambiarCantidad } = props;
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
   // 4. Render.
-  console.log({ info });
   return (
     <div className="cajaPage_Productos_producto">
       {/* Icono */}
@@ -40,7 +39,7 @@ const ProductoCarro = (props) => {
       <Button
         variant="contained"
         onClick={() => {
-          let vista_producto = carro.map((pcar) => {
+          let vista_producto = carrito.map((pcar) => {
             if (pcar.id == info.id) {
               return true;
             } else {
@@ -48,11 +47,11 @@ const ProductoCarro = (props) => {
             }
           });
           if (!vista_producto.includes(true)) {
-            cambiaTotal(info.valor);
-            cambiaCarro(carro.length, info.nombre, info.valor, 1);
+            cambiarTotal(info.valor);
+            cambiarCarrito(carrito.length, info.nombre, info.valor, 1);
           } else {
-            cambiaCantidad(info.cantidad, info.valor, info.nombre, true);
-            cambiaTotal(info.valor);
+            cambiarCantidad(info.cantidad, info.valor, info.nombre, true);
+            cambiarTotal(info.valor);
           }
         }}
       >
