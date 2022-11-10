@@ -17,8 +17,8 @@
 .PasswordPage_content {
   padding: 1rem;
 
-  width: 30%;
-  height: 30%;
+  width: 50%;
+  height: 50%;
 
   border-radius: 0.5rem;
 
@@ -40,6 +40,16 @@
   }
 }
 
+.PasswordPage_formContainer {
+  width: 100%;
+
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.PasswordPage_inputContainer {
+  padding-bottom: 1rem;
+}
 .PasswordPage_buttonContainer {
   display: flex;
   flex-direction: row;
