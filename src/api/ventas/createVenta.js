@@ -1,6 +1,6 @@
 // Dependencias.
 import { firebaseApp, firebaseAuth, firestore } from "../../firebase/index.js";
-import { collection, doc, addDoc, setDoc, serverTimestamp } from "firebase/firestore";
+import { collection, doc, addDoc, setDoc, serverTimestamp, getDoc } from "firebase/firestore";
 import Collections from "../../firebase/config/collections.js";
 
 // Definición...
@@ -40,7 +40,11 @@ const createVenta = async (tiendaId, ventaData) => {
             reject();
           });
 
-        resolve();
+        const newVentaDoc = await getDoc(ventaDoc).then((doc) => {
+          return doc.data();
+        });
+
+        resolve(newVentaDoc);
       } else {
         reject();
       }

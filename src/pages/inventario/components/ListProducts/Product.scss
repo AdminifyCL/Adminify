@@ -10,12 +10,13 @@
 
   background-color: Colors.$white-color;
 
-  width: 14rem;
-  max-width: 14rem;
+  width: 15rem;
+  max-width: 15rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .ProductCard-iconContainer {
@@ -62,8 +63,10 @@
   color: Colors.$primary-color;
 }
 .ProductCard-infoContainer-nombre {
-  font-size: 1.1rem;
+  font-size: 0.8rem;
+  text-align: center;
   font-weight: 400;
+  text-align: center;
 }
 .ProductCard-infoContainer-valor {
   font-size: 1.2rem;

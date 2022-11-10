@@ -1,0 +1,163 @@
+// Dependencias.
+@use "../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.TabNavigation-container {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0rem;
+
+  border-bottom: 0.25rem solid Colors.$primary-color;
+
+  display: flex;
+  flex-direction: row;
+
+  column-gap: 1rem;
+}
+
+//* -- HEADER
+.TabNavigation-containerHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  column-gap: 0.5rem;
+}
+
+.TabNavigation-containerIcon {
+}
+
+.TabNavigation-containerTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  column-gap: 0.5rem;
+
+  h1 {
+    color: Colors.$primary-color;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+//* -- ACTIONS
+.TabNavigation-containerActions {
+  display: flex;
+  flex-direction: row;
+
+  column-gap: 1rem;
+}
+
+// TABS
+.TabNavigation-containerTabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-grow: 3;
+
+  column-gap: 1rem;
+}
+
+.TabNavigation-containerTab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  background-color: Colors.$secondary-color;
+  padding: 0rem 1rem;
+
+  height: 100%;
+  max-width: 8rem;
+
+  h1 {
+    color: Colors.$primary-color;
+
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}
+
+.TabNavigation-containerTab:hover {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 0.5rem 0.5rem 0 0;
+
+  background-color: Colors.$dark-color;
+  padding: 0rem 1rem;
+
+  height: 100%;
+  max-width: 8rem;
+
+  h1 {
+    color: Colors.$white-color;
+
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}
+
+//* -- Info & Exit
+.TabNavigation-containerInfoExit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  flex-grow: 1;
+  column-gap: 0.5rem;
+
+  height: 100%;
+}
+
+.TabNavigation-containerUser {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+
+  column-gap: 0.3rem;
+
+  padding: 0rem 2rem;
+  border-radius: 0.5rem;
+  border: 2px solid Colors.$primary-color;
+
+  h1 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: Colors.$primary-color;
+  }
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: Colors.$primary-color;
+  }
+}
+
+.TabNavigation-containerExit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+// Extra large devices (large laptops and desktops, 1200px and up)
+@media only screen and (max-width: 1500px) {
+  .TabNavigation-containerTabs {
+    display: none;
+  }
+
+  .TabNavigation-containerInfoExit {
+    display: none;
+  }
+}

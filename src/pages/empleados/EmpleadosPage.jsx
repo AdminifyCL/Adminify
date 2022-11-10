@@ -29,11 +29,6 @@ const EmpleadosPage = (props) => {
   // 4. Render.
   return (
     <section className="empleadosPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="empleadosPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Contenido de la página. */}
       <section className="empleadosPage_content">
         {/* Botones superiores */}

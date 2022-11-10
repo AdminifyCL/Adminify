@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import CuentaPage from "../../pages/cuenta/CuentaPage.jsx";
 
 // Definición del contenedor: <CuentaContainer />.
@@ -15,7 +16,11 @@ const CuentaContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <CuentaPage userInfo={userData} />;
+  return (
+    <Navbar>
+      <CuentaPage userInfo={userData} />
+    </Navbar>
+  );
 };
 
 // PropTypes.
