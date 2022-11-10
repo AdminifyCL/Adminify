@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
 import { FaConciergeBell } from "react-icons/fa";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Formulario from "./components/Formulario/Formulario";
 import PropTypes from "prop-types";
 
 // Estilos.
@@ -19,60 +21,36 @@ const RegistroPage = (props) => {
   useEffect(() => {}, []);
 
   // 3. Metodos.
+  const handleRedirect = () => {
+    navigate(publicURL.login);
+  };
+
   // 4. Render.
   return (
-    <section className="registroPage_Contenedor">
-      <section className="registroPage_Contenido">
-        <div className="registroPage_icon">
-          <FaConciergeBell />
-        </div>
-        <section className="registroPage_Titulo">
-          <h1>Registro</h1>
-        </section>
-        <section className="registroPage_Formulario">
-          <TextField id="inputNombre" fullWidth label="Nombre" variant="outlined" margin="dense" />
-          <TextField
-            id="inputApellido"
-            fullWidth
-            label="Apellido"
-            variant="outlined"
-            margin="dense"
-          />
-          <TextField
-            id="inputEmail"
-            type={"email"}
-            fullWidth
-            label="Email"
-            variant="outlined"
-            margin="dense"
-          />
-          <TextField
-            id="inputPassword"
-            type={"password"}
-            fullWidth
-            label="Contraseña"
-            variant="outlined"
-            margin="dense"
-          />
-
-          <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />
-        </section>
-
-        {/* Botones de acción */}
-        <section className="registroPage_ContenedorBotones">
-          <Button
-            className="registroPage_Volver"
-            variant="outlined"
-            onClick={() => navigate(publicURL.login)}
-          >
+    <section className="RegistroPage_container">
+      {/* Formulario */}
+      <div className="RegistroPage_formContainer">
+        {/* Buttons */}
+        <div className="RegistroPage_buttonContainer">
+          <Button variant="outlined" color="secondary" onClick={() => handleRedirect()}>
             Volver
           </Button>
+        </div>
 
-          <Button className="registroPage_CrearCuenta" variant="contained" onClick={() => {}}>
-            Crea tu cuenta
-          </Button>
-        </section>
-      </section>
+        {/* Banner */}
+        <div className="RegistroPage_bannerContainer">
+          <h1>Adminify</h1>
+          <p>Formulario de registro. Favor de llenar el formulario para acceder a la aplicación.</p>
+        </div>
+
+        {/* Formulario */}
+        <div className="RegistroPage_inputContainer">
+          <Formulario />
+        </div>
+      </div>
+
+      {/* Splash art */}
+      <div className="RegistroPage_splashContainer">Splash art</div>
     </section>
   );
 };
