@@ -16,6 +16,9 @@ const ProductoCarro = (props) => {
   useEffect(() => {}, []);
 
   // 3. Metodos.
+  function formatNumber(number) {
+    return new Intl.NumberFormat("de-DE").format(number);
+  }
   // 4. Render.
   return (
     <div className="cajaPage_Productos_producto">
@@ -33,7 +36,7 @@ const ProductoCarro = (props) => {
       <p>{info.categoria}</p>
 
       {/* Valor */}
-      <p className="cajaPage_producto_texto">${info.valor}</p>
+      <p className="cajaPage_producto_texto">${formatNumber(info.valor)}</p>
 
       {/* Boton de acción */}
       <Button
@@ -47,11 +50,11 @@ const ProductoCarro = (props) => {
             }
           });
           if (!vista_producto.includes(true)) {
-            cambiarTotal(info.valor);
-            cambiarCarrito(carrito.length, info.nombre, info.valor, 1);
+            cambiaTotal(info.valor);
+            cambiaCarro(info.id, info.nombre, info.valor, 1);
           } else {
-            cambiarCantidad(info.cantidad, info.valor, info.nombre, true);
-            cambiarTotal(info.valor);
+            cambiaCantidad(info.id, info.cantidad, info.valor, info.nombre, true);
+            cambiaTotal(info.valor);
           }
         }}
       >

@@ -45,10 +45,10 @@ export function CajaProductos(props) {
         <ProductoCarro
           info={producto}
           key={producto.id}
-          carrito={carrito}
-          cambiarTotal={cambiarTotal}
-          cambiarCarrito={cambiarCarrito}
-          cambiarCantidad={cambiarCantidad}
+          carro={carrito}
+          cambiaTotal={cambiarTotal}
+          cambiaCarro={cambiarCarrito}
+          cambiaCantidad={cambiarCantidad}
         />
       );
     });
