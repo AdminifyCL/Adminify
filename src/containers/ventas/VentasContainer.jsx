@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import VentasPage from "../../pages/ventas/VentasPage.jsx";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 
 // Definición del contenedor: <VentasContainer />.
 const VentasContainer = (props) => {
@@ -16,7 +17,11 @@ const VentasContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <VentasPage storeVentas={storeVentas} />;
+  return (
+    <Navbar>
+      <VentasPage storeVentas={storeVentas} />
+    </Navbar>
+  );
 };
 
 // PropTypes.

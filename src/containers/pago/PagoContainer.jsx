@@ -8,7 +8,7 @@ import PagosPage from "../../pages/pagos/PagosPage.jsx";
 import createVenta from "../../api/ventas/createVenta.js";
 
 // Actions
-import { setMetodo } from "../../redux/slices/ventasSlice.js";
+import { setMetodo, appendVenta } from "../../redux/slices/ventasSlice.js";
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Definición del contenedor: <PagoContainer />.
@@ -76,7 +76,7 @@ const PagoContainer = (props) => {
 
     // Creación de la venta.
     await createVenta(tiendaId, new_venta)
-      .then(() => {
+      .then((ventaData) => {
         console.log("[] Se creo una nueva venta.");
 
         let newAlert = {
@@ -85,7 +85,10 @@ const PagoContainer = (props) => {
           message: "La venta se registro en la base de datos.",
         };
 
+        console.log("[] ventaData: ", ventaData);
+
         dispatch(displayAlert(newAlert));
+        dispatch(appendVenta(ventaData));
       })
       .catch((error) => {
         console.error(error);

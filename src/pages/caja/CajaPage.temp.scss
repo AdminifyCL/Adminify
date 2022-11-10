@@ -4,6 +4,7 @@
 // Definición de estilos.
 .cajaPage_container {
   width: 100%;
+  // height: 100vh;
 }
 
 .cajaPage_content {
@@ -33,34 +34,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  div {
-    opacity: 1;
-    transition-property: opacity;
-    transition-delay: 2s;
-  }
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    position: absolute;
-    top: 15%;
-    left: 3%;
-  }
-}
-
-.cajaPage_content_block {
-  margin-left: 7.5rem;
-  margin-right: 7.5rem;
-  background-color: Colors.$white-color;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  div {
-    div {
-      opacity: 40%;
-    }
-  }
+  opacity: 40%;
   h1 {
     font-size: 2rem;
     font-weight: bold;
@@ -80,7 +54,7 @@
 
   border-radius: 1rem;
   width: 45%;
-  height: 76%;
+  height: 75%;
   position: absolute;
   left: 9%;
   top: 15%;
@@ -225,7 +199,7 @@
 
 .cajaPage_Botones {
   position: absolute;
-  top: 81%;
+  top: 82%;
   left: 59%;
   width: 32%;
   height: 15%;
@@ -322,11 +296,10 @@
   }
   p {
     width: 100%;
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     color: Colors.$primary_dark-color;
-    margin-top: 5px;
     // background-color:Colors.$gray-color;
   }
 }

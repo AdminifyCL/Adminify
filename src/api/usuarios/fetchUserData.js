@@ -34,6 +34,8 @@ const fetchUserData = async () => {
         const dataSnapshot = await getDoc(dataDoc);
         const responseData = dataSnapshot.data();
 
+        responseData["tiendaId"] = tiendaId;
+
         responseData ? resolve(responseData) : reject({});
       } else {
         reject();
