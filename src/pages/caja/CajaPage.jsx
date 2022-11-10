@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
-import { CajaCajero } from "./components/CajaCajero.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
@@ -30,6 +29,8 @@ const CajaPage = (props) => {
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [pageVisibility, setPageVisibility] = useState("cajaPage_content");
+  const [block, setBlock] = useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,7 +41,7 @@ const CajaPage = (props) => {
     } else {
       setCanPay(false);
     }
-  }, [carrito]);
+  }, [carrito,pageVisibility]);
 
   useEffect(() => {
     dispatch(clearMetodo());
@@ -104,7 +105,7 @@ const CajaPage = (props) => {
   };
 
   const cerrarModal = () => {
-    setModalVisibility(!modalVisibility);
+    setModalVisibility(!modalVisibility);    
   };
 
   const borrarDelCarro = () => {
@@ -113,9 +114,15 @@ const CajaPage = (props) => {
     setCarrito([...carroFiltrado]);
   };
 
+  const bloquearCaja = (state) => {
+    setCarrito([])
+    setTotal(0)
+    setPageVisibility(state)
+    setBlock(!block)
+  }
+
   // -- Renderizado.
-  if (!modalVisibility) {
-    return (
+  return (
       <section className="cajaPage_container">
         {/* Navegación de la aplicación. */}
         <section className="cajaPage_navigation">
@@ -123,10 +130,10 @@ const CajaPage = (props) => {
         </section>
 
         {/* Vista de la caja. */}
-        <section className="cajaPage_content">
+        <section className={pageVisibility}>
           {/* Lista de productos. */}
 
-          <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre>
+          <CajaCierre block={block} open={modalVisibility} cerrar={cerrarModal} bloquearCaja = {bloquearCaja}></CajaCierre>
 
           <CajaProductos
             total={total}
@@ -135,13 +142,14 @@ const CajaPage = (props) => {
             cambiarCarrito={cambiarCarrito}
             cambiarTotal={cambiarTotal}
             cambiarCantidad={cambiarCantidad}
+            block={block}
           />
 
           {/* Carrito de compra. */}
-          <CajaCarro carrito={carrito} cambiarCantidad={cambiarCantidad} borrarDelCarrito={borrarDelCarro} />
+          <CajaCarro carrito={carrito} cambiarCantidad={cambiarCantidad} borrarDelCarrito={borrarDelCarro} block={block}/>
 
           {/* <CajaCajero /> */}
-          <CajaTotal total={total} />
+          <CajaTotal total={total} block={block} />
 
           {/* Botones. */}
           <CajaBotones
@@ -149,12 +157,16 @@ const CajaPage = (props) => {
             carrito={carrito}
             sendCarrito={enviarCarrito}
             canPay={canPay}
+            block={block}
           />
           <Fab
             color="primary"
             aria-label="add"
             style={{ position: "absolute", top: "88%", left: "93%" }}
             onClick={() => {
+              if (!block){
+                setPageVisibility("cajaPage_content_modal")
+              }
               setModalVisibility(true);
             }}
           >
@@ -163,56 +175,6 @@ const CajaPage = (props) => {
         </section>
       </section>
     );
-  } else {
-    return (
-      <section className="cajaPage_container">
-        {/* Navegación de la aplicación. */}
-        <section className="cajaPage_navigation">
-          <Navigation />
-        </section>
-        <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre>
-        {/* Vista de la caja. */}
-        <section className="cajaPage_content_modal">
-          {/* Lista de productos. */}
-
-          {/* <CajaCierre open={modalVisibility} cerrar={cerrarModal}></CajaCierre> */}
-
-          <CajaProductos
-            total={total}
-            productos={productos}
-            carrito={[...carrito]}
-            cambiaCarro={cambiarCarrito}
-            cambiarTotal={cambiarTotal}
-            cambiarCantidad={cambiarCantidad}
-          />
-
-          {/* Carrito de compra. */}
-          <CajaCarro carrito={carrito} cambiaCantidad={cambiarCantidad} borrar={borrarDelCarro} />
-
-          {/* <CajaCajero /> */}
-          <CajaTotal total={total} />
-
-          {/* Botones. */}
-          <CajaBotones
-            limpiarCarrito={limpiarCarrito}
-            carrito={carrito}
-            sendCarrito={enviarCarrito}
-            canPay={canPay}
-          />
-          <Fab
-            color="primary"
-            aria-label="add"
-            style={{ position: "absolute", top: "88%", left: "93%" }}
-            onClick={() => {
-              setModalVisibility(true);
-            }}
-          >
-            <VscGear size={40}/>
-          </Fab>
-        </section>
-      </section>
-    );
-  }
 };
 
 // Exportación de la pagina: Index.

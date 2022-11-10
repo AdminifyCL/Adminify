@@ -27,7 +27,7 @@ export function CajaProductos(props) {
     <div className="cajaPage_Productos">
       <nav className="cajaPage_Productos_cabecera">
         <p>Lista de productos</p>
-        <input
+        <input disabled={props.block}
           type={"search"}
           className="cajaPage_Buscador"
           onChange={(e) => {
@@ -48,6 +48,7 @@ export function CajaProductos(props) {
                 </p>
                 <p className="cajaPage_producto_texto">${formatNumber(producto.valor)}</p>
                 <Button
+                disabled={props.block}
                   variant="contained"
                   onClick={() => {
                     let vista_producto = props.carrito.map((productoCarro) => {

@@ -24,15 +24,21 @@ export function CajaCierre(props) {
       });
   };
 
-  if (visibilidad) {
+  if (visibilidad&&props.block) {
     return (
-      <div className="cajaPage_menu_cierre">
-        <p>¿ Esta seguro de realizar el cierre de caja ?</p>
+      <section className="cajaPage_menu_cierre">
+        <p>¿ Desea reaperturar la caja ?</p>
         <div>
           <Button
             variant="contained"
             onClick={() => {
-              //CODIGO DE CIERRE DE CAJA
+              if (props.block){
+                props.bloquearCaja("cajaPage_content")
+                props.cerrar()
+              }else{
+                props.bloquearCaja("cajaPage_content_block")
+              props.cerrar();
+              }
             }}
           >
             Aceptar
@@ -46,7 +52,38 @@ export function CajaCierre(props) {
             Salir
           </Button>
         </div>
-      </div>
+      </section>
+    );
+  }
+  if (visibilidad&&!(props.block)) {
+    return (
+      <section className="cajaPage_menu_cierre">
+        <p>¿ Desea realizar el cierre de caja ?</p>
+        <div>
+          <Button
+            variant="contained"
+            onClick={() => {
+              if (props.block){
+                props.bloquearCaja("cajaPage_content")
+                props.cerrar()
+              }else{
+                props.bloquearCaja("cajaPage_content_block")
+              props.cerrar();
+              }
+            }}
+          >
+            Aceptar
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              props.cerrar();
+            }}
+          >
+            Salir
+          </Button>
+        </div>
+      </section>
     );
   }
 }

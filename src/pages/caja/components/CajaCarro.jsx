@@ -33,7 +33,7 @@ export function CajaCarro(props) {
                     }
                   }}
                 >
-                  <BsFillTrashFill size={20}></BsFillTrashFill>
+                  <BsFillTrashFill size={20} color="#1b5943"></BsFillTrashFill>
                 </button>
   
                 <p style={{ margin: "1px 5px 1px 5px", width: "20%" }}>
@@ -46,7 +46,7 @@ export function CajaCarro(props) {
                     props.cambiarCantidad(producto.id,producto.cantidad, producto.precio, producto.nombre, true);
                   }}
                 >
-                  <BsPlusCircleFill size={20}></BsPlusCircleFill>
+                  <BsPlusCircleFill size={20} color="#1b5943"></BsPlusCircleFill>
                 </button>
               </div>
               <p className="cajaPage_producto_texto">
