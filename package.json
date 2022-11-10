@@ -17,7 +17,8 @@
   "scripts": {
     "serve": "vite serve",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "tauri": "tauri"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
