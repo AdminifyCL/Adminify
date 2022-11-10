@@ -20,11 +20,6 @@ const VentasPage = (props) => {
   // 4. Render.
   return (
     <section className="ventasPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="ventasPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Vista de la caja. */}
       <section className="ventasPage_content">
         {/* Estadisticas parciales. */}
