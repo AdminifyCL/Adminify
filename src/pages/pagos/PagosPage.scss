@@ -212,11 +212,37 @@
   padding: 15px;
 }
 
-.PagoImpresion {
-  visibility: hidden;
-  z-index: 2;
-  position: fixed;
+.pagosPage_boleta {
+  visibility: inherit;
+  width: 30%;
+  height: 60%;
+  position: absolute;
+  left: 10%;
+  top: 18%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  padding: 10px;
+  border: 1px solid black;
+  h1{
+    position: absolute;
+    top: 5%;
+  }
 }
+
+.pagosPage_impresion {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+
+// .PagoImpresionVisible {
+//   position: absolute;
+//   left: 0%;
+//   top: 0%;
+// }
 
 .show-elementPagos {
   animation-duration: 2s;

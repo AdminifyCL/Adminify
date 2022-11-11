@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
 import {
@@ -23,12 +23,15 @@ import "./PagosPage.scss";
 
 // Definición del componente: <PagosPage />
 const PagosPage = (props) => {
+
+  const referenciaBoleta = useRef()
   // 1. Manejo del estado.
   const { carroProducts, setMetodo, setVenta } = props;
   const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox cliente" } };
   const [checked, setChecked] = useState(true);
   const [pago, setPago] = useState("");
+  const [print ,setPrint] = useState(false)
   const [isActive, setIsActive] = useState(false);
   const [mostrarComponente, setMostrarComponente] = useState(true);
   const steps = ["Selección de productos", "Proceso de pago", "Pago confimado"];
@@ -37,6 +40,10 @@ const PagosPage = (props) => {
   useEffect(() => {}, []);
 
   // 3. Metodos.
+  const visibilizar = () => {
+    setPrint(!print)
+  }
+
   const handleRedirect = async () => {
     // Redirigir a la confirmación del pago
     if (isActive) {
@@ -59,13 +66,17 @@ const PagosPage = (props) => {
     setIsActive(true);
   };
 
+  function formatNumber(number) {
+    return new Intl.NumberFormat('de-DE').format(number)
+  }
+
   const mappingCarroProducts = () => {
     return carroProducts.map((product, index) => {
       return (
         <div className="pagosPage_productContainer" key={`${index}-product`}>
           <div className="pagosPage_Cantidad">{product.cantidad}</div>
           <div className="pagosPage_Producto">{product.nombre}</div>
-          <div className="pagosPage_Valor">${product.precio}</div>
+          <div className="pagosPage_Valor">${formatNumber(product.precio)}</div>
         </div>
       );
     });
@@ -78,7 +89,7 @@ const PagosPage = (props) => {
       total = total + product.precio * product.cantidad;
     });
 
-    return `$${total}`;
+    return `$${formatNumber(total)}`;
   };
 
   // 4. Render.
@@ -93,6 +104,14 @@ const PagosPage = (props) => {
       <section className="pagosPage_Contenedor">
         <div className="pagosPage_Titulo">
           <h1>Pago</h1>
+        </div>
+        <div ref = { referenciaBoleta } className="pagosPage_boleta">
+          <h1>Productos</h1>
+          <div>
+          {carroProducts.map((producto)=>{
+            return <p>- {producto.cantidad} {producto.nombre}</p>
+          })}
+          </div>
         </div>
         <section className="pagosPage_Contenido">
           {/* Stepper de la pagosPage */}
@@ -211,10 +230,7 @@ const PagosPage = (props) => {
                   Cancelar compra
                 </Button>
               </div>
-              <Button onClick={() => handleRedirect()} variant="contained" disabled={!isActive}>
-                Confirmar pago
-              </Button>
-              <PagosImpresion productos={carroProducts} activo={!isActive} redirigir={handleRedirect}></PagosImpresion>
+              <PagosImpresion referencia={referenciaBoleta} productos={carroProducts} activo={!isActive} redirigir={handleRedirect}></PagosImpresion>
             </section>
           </section>
         </section>

@@ -1,6 +1,5 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
@@ -124,10 +123,6 @@ const CajaPage = (props) => {
   // -- Renderizado.
   return (
     <section className="cajaPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="cajaPage_navigation">
-        <Navigation />
-      </section>
 
       {/* Vista de la caja. */}
       <section className={pageVisibility}>

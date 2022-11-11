@@ -41,6 +41,7 @@ const ProductoCarro = (props) => {
 
       {/* Boton de acción */}
       <Button
+      disabled={props.block}
         variant="contained"
         onClick={() => {
           let vista_producto = carro.map((pcar) => {
