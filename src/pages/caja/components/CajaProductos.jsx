@@ -46,10 +46,10 @@ export function CajaProductos(props) {
         block = {block}
           info={producto}
           key={producto.id}
-          carro={carrito}
-          cambiaTotal={cambiarTotal}
-          cambiaCarro={cambiarCarrito}
-          cambiaCantidad={cambiarCantidad}
+          carrito={carrito}
+          cambiarTotal={cambiarTotal}
+          cambiarCarrito={cambiarCarrito}
+          cambiarCantidad={cambiarCantidad}
         />
       );
     });

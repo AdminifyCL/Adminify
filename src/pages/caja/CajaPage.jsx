@@ -123,7 +123,6 @@ const CajaPage = (props) => {
   // -- Renderizado.
   return (
     <section className="cajaPage_container">
-
       {/* Vista de la caja. */}
       <section className={pageVisibility}>
         {/* Lista de productos. */}

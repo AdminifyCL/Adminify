@@ -16,7 +16,7 @@ import {
   StepLabel,
 } from "@mui/material";
 import PropTypes from "prop-types";
-import PagosImpresion from "./PagosImpresion.jsx"
+import PagosImpresion from "./PagosImpresion.jsx";
 
 // Estilos.
 import "./PagosPage.scss";
@@ -95,11 +95,6 @@ const PagosPage = (props) => {
   // 4. Render.
   return (
     <section>
-      {/* Navegación */}
-      <section className="">
-        <Navigation />
-      </section>
-
       {/* Visual */}
       <section className="pagosPage_Contenedor">
         <div className="pagosPage_Titulo">

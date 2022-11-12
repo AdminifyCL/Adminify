@@ -10,17 +10,16 @@ import "./ProductoCarro.scss";
 // Definición del componente: <ProductoCarro />
 const ProductoCarro = (props) => {
   // 1. Manejo del estado.
-  const { info, carro, cambiaTotal, cambiaCarro, cambiaCantidad } = props;
+  const { info, carrito, cambiarTotal, cambiarCarrito, cambiarCantidad } = props;
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
   function formatNumber(number) {
-    return new Intl.NumberFormat('de-DE').format(number)
+    return new Intl.NumberFormat("de-DE").format(number);
   }
   // 4. Render.
-  console.log({ info });
   return (
     <div className="cajaPage_Productos_producto">
       {/* Icono */}
@@ -44,7 +43,7 @@ const ProductoCarro = (props) => {
       disabled={props.block}
         variant="contained"
         onClick={() => {
-          let vista_producto = carro.map((pcar) => {
+          let vista_producto = carrito.map((pcar) => {
             if (pcar.id == info.id) {
               return true;
             } else {
@@ -52,11 +51,11 @@ const ProductoCarro = (props) => {
             }
           });
           if (!vista_producto.includes(true)) {
-            cambiaTotal(info.valor);
-            cambiaCarro(info.id, info.nombre, info.valor, 1);
+            cambiarTotal(info.valor);
+            cambiarCarrito(info.id, info.nombre, info.valor, 1);
           } else {
-            cambiaCantidad(info.id,info.cantidad, info.valor, info.nombre, true);
-            cambiaTotal(info.valor);
+            cambiarCantidad(info.id, info.cantidad, info.valor, info.nombre, true);
+            cambiarTotal(info.valor);
           }
         }}
       >
