@@ -8,7 +8,7 @@ import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Fab } from "@mui/material";
+import { Fab, Button } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
@@ -24,7 +24,7 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { productos, sendCarrito } = props;
+  const { productos, sendCarrito, statusCaja, setStatus } = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
@@ -127,6 +127,21 @@ const CajaPage = (props) => {
       {/* Vista de la caja. */}
       <section className={pageVisibility}>
         {/* Lista de productos. */}
+
+        <Button
+          variant="contained"
+          style={{ position: "absolute", right: 200, zIndex: 1 }}
+          onClick={() => setStatus("open")}
+        >
+          TEST CAJA: OPEN
+        </Button>
+        <Button
+          variant="contained"
+          style={{ position: "absolute", right: 0, zIndex: 1 }}
+          onClick={() => setStatus("close")}
+        >
+          TEST CAJA: CLOSE
+        </Button>
 
         <CajaCierre
           block={block}

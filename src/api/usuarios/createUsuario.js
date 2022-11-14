@@ -39,7 +39,7 @@ const createUsuario = async (data) => {
       const USUARIO_ID = userData.uid;
       const userDoc = doc(usuariosRef, USUARIO_ID);
 
-      const docRef = await setDoc(userDoc, newData)
+      await setDoc(userDoc, newData)
         .then(() => {
           console.log("[] Se creo el documento de usuario!");
         })
@@ -65,7 +65,7 @@ const createUsuario = async (data) => {
       const tiendasRef = collection(firestore, empleadosPath);
       const empleadoDoc = doc(tiendasRef, USUARIO_ID);
 
-      const empleadoRef = await setDoc(empleadoDoc, empleadoData)
+      await setDoc(empleadoDoc, empleadoData)
         .then(() => {
           console.log("[] Se creo el documento de empleado!");
         })

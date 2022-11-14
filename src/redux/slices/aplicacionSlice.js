@@ -31,9 +31,22 @@ const aplicacionSlice = createSlice({
 
       return { ...state, alertData, alertVisible };
     },
+
+    //* -- Manejo de la caja.
+    openCaja: (state, action) => {
+      console.log("[] REDUCER OPEN CAJA");
+
+      return { ...state, statusCaja: true };
+    },
+
+    closeCaja: (state, action) => {
+      console.log("[] REDUCER CLOSE CAJA");
+
+      return { ...state, statusCaja: false };
+    },
   },
 });
 
 // Exportación.
-export const { displayAlert, deleteAlert } = aplicacionSlice.actions;
+export const { displayAlert, deleteAlert, openCaja, closeCaja } = aplicacionSlice.actions;
 export default aplicacionSlice.reducer;
