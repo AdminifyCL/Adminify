@@ -12,15 +12,16 @@ import { displayAlert, deleteAlert } from "../../redux/slices/aplicacionSlice.js
 const RegistroContainer = (props) => {
   // 1. Manejo del estado.
   const {} = props;
+  const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
-  const handleRegistro = async () => {
-    await createUsuario()
-      .then(() => {
-        useDispatch(
+  const handleRegistro = async (data) => {
+    await createUsuario(data)
+      .then((response) => {
+        dispatch(
           displayAlert({
             type: "success",
             title: "Usuario creado",
@@ -29,11 +30,11 @@ const RegistroContainer = (props) => {
         );
       })
       .catch((error) => {
-        useDispatch(
+        dispatch(
           displayAlert({
             type: "error",
-            title: "Usuario creado",
-            message: "Se creo el usuario correctamente.",
+            title: "Error",
+            message: "No se pudo crear el usuario",
           })
         );
       });

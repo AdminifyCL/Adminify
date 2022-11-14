@@ -102,10 +102,6 @@ const Formulario = (props) => {
     const resultVoid = handleVoidInputs();
     const resultMatch = handlePasswordMatch();
 
-    console.log("[] DATA: ", data);
-    console.log("[] RESULT VOID: ", resultVoid);
-    console.log("[] RESULT MATCH: ", resultMatch);
-
     if (!resultMatch) {
       handlePasswordError();
     }
