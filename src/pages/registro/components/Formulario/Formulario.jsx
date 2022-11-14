@@ -5,17 +5,20 @@ import Proptypes from "prop-types";
 
 // Estilos.
 import "./Formulario.scss";
-// import Styles from "./Formulario.styles.jsx";
+import Styles from "./Formulario.styles.jsx";
 
 // Definición del componente: <Formulario />.
 const Formulario = (props) => {
   // 1. Manejo del estado.
-  const {} = props;
+  const { createUser } = props;
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+
+  const [passError, setPassError] = useState(false);
+  const [passLabel, setPassLabel] = useState("");
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
@@ -49,6 +52,10 @@ const Formulario = (props) => {
       default:
         break;
     }
+
+    // Limpiar labels.
+    setPassError(false);
+    setPassLabel("");
   };
 
   const handleClearInputs = () => {
@@ -59,7 +66,29 @@ const Formulario = (props) => {
     setPassword2("");
   };
 
-  const handleSubmit = (event) => {
+  const handleVoidInputs = () => {
+    let inputs = [nombre, apellido, email, password, password2];
+    let voidInputs = [];
+
+    inputs.map((input) => {
+      if (input === "") {
+        voidInputs.push(input);
+      }
+    });
+
+    return voidInputs.length > 0;
+  };
+
+  const handlePasswordMatch = () => {
+    return password === password2;
+  };
+
+  const handlePasswordError = () => {
+    setPassError(!handlePasswordMatch());
+    setPassLabel("Las contraseñas no coinciden.");
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     let data = {
@@ -70,9 +99,23 @@ const Formulario = (props) => {
       password2,
     };
 
-    console.log("[] DATA: ", data);
+    const resultVoid = handleVoidInputs();
+    const resultMatch = handlePasswordMatch();
 
-    handleClearInputs();
+    console.log("[] DATA: ", data);
+    console.log("[] RESULT VOID: ", resultVoid);
+    console.log("[] RESULT MATCH: ", resultMatch);
+
+    if (!resultMatch) {
+      handlePasswordError();
+    }
+
+    if (!resultVoid && resultMatch) {
+      // Registrar usuario.
+      await createUser(data);
+
+      handleClearInputs();
+    }
   };
 
   // 4. Render.
@@ -88,6 +131,7 @@ const Formulario = (props) => {
           placeholder="Nombre"
           fullWidth
           id="nombre"
+          type="text"
           required
         />
 
@@ -99,6 +143,7 @@ const Formulario = (props) => {
           placeholder="Apellido"
           fullWidth
           id="apellido"
+          type="text"
           required
         />
 
@@ -110,6 +155,7 @@ const Formulario = (props) => {
           placeholder="Email"
           fullWidth
           id="email"
+          type="email"
           required
         />
 
@@ -121,7 +167,13 @@ const Formulario = (props) => {
           placeholder="Contraseña"
           fullWidth
           id="password"
+          type="password"
           required
+          error={passError}
+          helperText={passLabel}
+          FormHelperTextProps={{
+            style: Styles.helperText,
+          }}
         />
 
         <TextField
@@ -132,6 +184,7 @@ const Formulario = (props) => {
           placeholder="Repetir Contraseña"
           fullWidth
           id="password2"
+          type="password"
           required
         />
 

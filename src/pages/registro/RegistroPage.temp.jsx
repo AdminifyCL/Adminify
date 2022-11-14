@@ -52,7 +52,6 @@ const RegistroPage = (props) => {
             fullWidth
             label="Contraseña"
             variant="outlined"
-            margin="dense"
           />
 
           <TextField fullWidth label="Licencia" variant="outlined" margin="dense" />

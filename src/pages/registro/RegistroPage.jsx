@@ -14,7 +14,7 @@ import "./RegistroPage.scss";
 // Definición del componente: <RegistroPage />
 const RegistroPage = (props) => {
   // 1. Manejo del estado.
-  const {} = props;
+  const { createUser } = props;
   const navigate = useNavigate();
 
   // 2. Ciclo de vida.
@@ -45,12 +45,12 @@ const RegistroPage = (props) => {
 
         {/* Formulario */}
         <div className="RegistroPage_inputContainer">
-          <Formulario />
+          <Formulario createUser={createUser} />
         </div>
       </div>
 
       {/* Splash art */}
-      <div className="RegistroPage_splashContainer">Splash art</div>
+      <div className="RegistroPage_splashContainer"></div>
     </section>
   );
 };
