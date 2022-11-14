@@ -1,33 +1,136 @@
-.indexPage_contenedor {
-  height: 100%;
+// Dependencias.
+@use "../../styles/colors" as Colors;
+
+//MODAL
+
+.modalIndex {
+  position: absolute;
+  width: 45%;
+  height: 40%;
+  background-color: white;
+  box-shadow: 24;
+  padding: 80px 32px 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 40;
+  border-radius: 1rem;
+}
+
+.modalIndex_contenido{
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  row-gap: 2rem;
+
+
+}
+
+.modalIndex_titulos{
+  display: flex;
+  justify-content: center;
+//background-color: blue;
+
+border-radius: 1rem;
+
+
+  h2{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+  }
+}
+
+.modal_info{
+  border-radius: 1rem;
+  border: solid 3px;
+  border-color: #226f54;
+  h1{
+    font-size: 1.3rem;
+  }
+}
+
+.modal_botonesIndex{
+  //background-color: wheat;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ // align-items: center;
   width: 100%;
+
+}
+
+//contenido principal
+
+
+.indexPage_contenedor {
+  height: 100vh;
+  width: 100vw;
+background-color: white;
+ //background-color: Colors.$primary-color;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .indexPage_contenido {
   margin: 2rem;
-
+  height: 70%;
+  width: 55%;
+  background-color: white;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  column-gap: 2rem;
 
   gap: 2rem;
+  border-radius: 1rem;
+  border: solid 3px;
+  border-color: #226f54;
 }
 
 .indexPage_titlecontent {
   display: flex;
   flex-direction: row;
   column-gap: 1rem;
-
   align-items: center;
+  justify-content: center;
+  //background-color: blue;
+  width: 100%;
+
+h1{
+  color: #226f54;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 3.5rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+  h2 {
+    color: Colors.$primary-color;
+  }
 }
 
 .indexPage_titlecontent-icon {
   font-size: 1.5rem;
 }
 
-.indexPage_titlecontent-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: "Poppins", sans-serif;
+
+
+.indexPage_contenedorBotones{
+  //background-color: blue;
+  width: 50%;
+  display: flex;
+  column-gap: 1rem;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
