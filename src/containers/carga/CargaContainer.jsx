@@ -11,6 +11,7 @@ import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
 // API Handlers.
 import fetchUserData from "../../api/usuarios/fetchUserData.js";
 import fetchUserProducts from "../../api/productos/fetchProducts.js";
+import fetchUserEmpleados from "../../api/empleados/fetchEmpleados.js";
 import fetchUserVentas from "../../api/ventas/fetchVentas.js";
 
 // Actions.
@@ -18,6 +19,7 @@ import { getUserData } from "../../redux/slices/usuariosSlice.js";
 import { fetchProducts } from "../../redux/slices/productosSlice.js";
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 import { fetchVentas } from "../../redux/slices/ventasSlice.js";
+import { fetchEmpleados } from "../../redux/slices/empleadosSlice.js";
 
 // Definición del contenedor: <CargaContainer />.
 const CargaContainer = (props) => {
@@ -101,14 +103,41 @@ const CargaContainer = (props) => {
         });
     };
 
+    const fetchStoreEmpleados = async () => {
+      await fetchUserEmpleados()
+        .then((listaEmpleados) => {
+          console.log("[] Se encontraron los empleados");
+
+          dispatch(fetchEmpleados(listaEmpleados));
+        })
+        .catch((error) => {
+          console.log("[] Error al consultar los empleados");
+          console.log(error);
+
+          // Mostrar alerta de error.
+          const newAlert = {
+            type: "error",
+            title: "Información de las empleados",
+            message: "No se pudo cargar la información de los empleados.",
+          };
+
+          dispatch(displayAlert(newAlert));
+        });
+    };
+
     // Consultas.
     fetchStoreUser();
     fetchStoreProducts();
     fetchStoreVentas();
+    fetchStoreEmpleados();
 
     setTimeout(() => {
-      setLoadPercent(30);
+      setLoadPercent(20);
     }, 2000);
+
+    setTimeout(() => {
+      setLoadPercent(40);
+    }, 4000);
 
     setTimeout(() => {
       setLoadPercent(60);

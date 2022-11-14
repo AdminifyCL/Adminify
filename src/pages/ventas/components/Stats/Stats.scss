@@ -1,0 +1,31 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definiendo estilos.
+.Stats-container {
+  background-color: Colors.$white-color;
+
+  width: 20rem;
+  max-width: 22rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  column-gap: 1rem;
+
+  padding: 1rem 1rem;
+
+  border-radius: 0.5rem;
+  border: 0.25rem solid Colors.$primary-color;
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: Colors.$primary-color;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}

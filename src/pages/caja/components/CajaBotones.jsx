@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 // Definición del componente: <CajaBotones />
 export function CajaBotones(props) {
   // -- Manejo del estado.
-  const { limpia, sendCarrito, canPay } = props;
+  const { limpia, sendCarrito, canPay, block } = props;
 
   // -- Ciclo de vida.
   // -- Metodo.
@@ -18,6 +18,7 @@ export function CajaBotones(props) {
   return (
     <div className="cajaPage_Botones">
       <Button
+      disabled={block}
         variant="outlined"
         style={{ height: "50px", width: "130px" }}
         onClick={() => {
@@ -27,7 +28,7 @@ export function CajaBotones(props) {
         Limpiar
       </Button>
       <Button
-        disabled={!canPay}
+        disabled={(!canPay||block)}
         variant="contained"
         style={{ height: "50px", width: "130px" }}
         onClick={() => handleRedirect()}

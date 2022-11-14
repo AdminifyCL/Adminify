@@ -1,11 +1,13 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import CajaPage from "../../pages/caja/CajaPage.jsx";
 import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 // Action
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
+import { clearMetodo } from "../../redux/slices/ventasSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -22,6 +24,7 @@ const CajaContainer = (props) => {
 
   useEffect(() => {
     dispatch(clearCarro());
+    dispatch(clearMetodo());
   }, []);
 
   // 3. Metodos.
@@ -31,7 +34,11 @@ const CajaContainer = (props) => {
   };
 
   // 4. Render.
-  return <CajaPage productos={productos} sendCarrito={handleCarritoProducts} />;
+  return (
+    <Navbar>
+      <CajaPage productos={productos} sendCarrito={handleCarritoProducts} />
+    </Navbar>
+  );
 };
 
 // PropTypes.

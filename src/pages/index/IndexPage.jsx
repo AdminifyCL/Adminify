@@ -1,6 +1,5 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
@@ -8,7 +7,9 @@ import {FaSignInAlt, FaInfoCircle, FaBoxOpen, FaGithub} from "react-icons/fa"
 import Modal from "@mui/material/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 // Estilos.
+import Styles from "./styles/Screen.jsx";
 import "./IndexPage.scss";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const useStyles = makeStyles((theme) => ({
   modal: {

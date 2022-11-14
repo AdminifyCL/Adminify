@@ -1,0 +1,110 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definción de estilos.
+.EmpleadoCard_container {
+  background-color: brown;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 18rem;
+  max-width: 18rem;
+
+  border-radius: 1rem;
+}
+
+.EmpleadoCard_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  border-radius: 1rem;
+  border: 3px solid Colors.$primary-color;
+}
+
+.EmpleadoCard_iconContainer {
+  background-color: Colors.$primary-color;
+
+  width: 100%;
+
+  border-radius: 1rem 1rem 0 0;
+  border: 2px solid Colors.$primary-color;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.EmpleadoCard_datosContainer {
+  width: 100%;
+
+  background-color: Colors.$gray-color;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1rem 0;
+}
+
+.EmpleadoCard_datosName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: Colors.$primary-color;
+}
+
+.EmpleadoCard_datosEmail {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: Colors.$dark-color;
+  opacity: 0.5;
+}
+
+.EmpleadoCard_datosCargo {
+  margin-top: 0.5rem;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  background-color: Colors.$primary-color;
+  color: Colors.$white-color;
+  padding: 0.125rem 0.5rem;
+  border-radius: 15px;
+}
+
+.EmpleadoCard_datosUid {
+  margin-top: 1rem;
+
+  font-size: 0.6rem;
+  font-weight: 400;
+
+  background-color: Colors.$dark-color;
+  color: Colors.$white-color;
+  padding: 0.125rem 0.5rem;
+  border-radius: 15px;
+
+  opacity: 0.5;
+}
+
+.EmpleadoCard_botonesContainer {
+  width: 100%;
+
+  background-color: Colors.$gray-color;
+  border-radius: 0 0 1rem 1rem;
+  border-top: 2px solid Colors.$dark-color;
+
+  padding-top: 0.125rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

@@ -212,6 +212,12 @@
   padding: 15px;
 }
 
+.PagoImpresion {
+  visibility: hidden;
+  z-index: 2;
+  position: fixed;
+}
+
 .show-elementPagos {
   animation-duration: 2s;
   animation-fill-mode: both;

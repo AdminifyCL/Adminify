@@ -1,96 +1,96 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
+import { IconButton, Button } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { FaDraftingCompass, FaBars } from "react-icons/fa";
 import PropTypes from "prop-types";
-import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { FaSignOutAlt, FaConciergeBell, FaDraftingCompass } from "react-icons/fa";
-import tabsInfo from "../../schemas/Tabs.js";
 
 // API Handler
-import userSignOut from "../../api/usuarios/userLogout.js";
-import { userLogout } from "../../redux/slices/usuariosSlice.js";
 
 // Estilos.
-import { tabStyle, exitButton } from "./TabStyle.jsx";
-import "./Navigation.scss";
+import Styles from "./styles/Style.jsx";
+import "./styles/Navigation.scss";
 
 // Definición del componente.
 const TabNavigation = (props) => {
   // 1. Menejo del estado.
-  const [tabActive, setTabActive] = useState("");
-  const dispatch = useDispatch();
+  const {} = props;
+  const userData = useSelector((state) => state.user.userData);
 
   // 2. Ciclo de vida.
-  useEffect(() => {
-    const hashURL = window.location.hash;
-    const url = hashURL.split("/")[1];
-    handleActiveTab(url);
-  }, []);
+  useEffect(() => {}, []);
 
   // 3. Metodos.
-  const handleActiveTab = (newUrl) => {
-    tabsInfo.forEach((tab) => {
-      if (tab.id === newUrl) {
-        tab.active = true;
-        setTabActive(tab.id);
-      } else {
-        tab.active = false;
-      }
-    });
-  };
-
-  const handleSignOut = async () => {
-    await userSignOut()
-      .then(() => {
-        dispatch(userLogout({}));
-      })
-      .catch((error) => {
-        console.error("[] ERROR:", error);
-      });
-  };
-
-  const mappingTabs = () => {
-    return tabsInfo.map((tabInfo, index) => {
-      return (
-        <Link to={tabInfo.url} key={index}>
-          <Button
-            disabled={tabInfo.active}
-            className="TabNavigation-tab"
-            variant="contained"
-            style={tabInfo.active ? tabStyle.active.container : tabStyle.inactive.container}
-          >
-            <p style={tabInfo.active ? tabStyle.active.text : tabStyle.inactive.text}>
-              {tabInfo.name}
-            </p>
-          </Button>
-        </Link>
-      );
-    });
-  };
-
   // 4. Render.
   return (
-    <section className="TabNavigation">
-      {/* Icono para la navegación. */}
-      <div className="TabNavigation-icon">
-        <FaDraftingCompass size={40} />
-        <p className="TabNavigation-badge">Beta</p>
+    <section className="TabNavigation-container">
+      {/* Header */}
+      <div className="TabNavigation-containerHeader">
+        {/* Icono */}
+        <div className="TabNavigation-containerIcon">
+          <FaDraftingCompass size={30} style={Styles.headerIcon} />
+        </div>
+
+        {/* Version */}
+        <div className="TabNavigation-containerTitle">
+          <h1>Adminify</h1>
+          <p>vAlpha</p>
+        </div>
       </div>
 
-      {/* Pestañas para la navegación. */}
-      <div className="TabNavigation-tabs">{mappingTabs()}</div>
+      {/* Actions */}
+      <div className="TabNavigation-containerActions">
+        {/* Tabs */}
+        <div className="TabNavigation-containerTabs">
+          {/* Mapeo de las tabs */}
+          <div className="TabNavigation-containerTab">
+            <h1>CAJA</h1>
+          </div>
 
-      {/* Botón de salida para la navegación. */}
-      <div className="TabNavigation-btn">
-        <Link to="/">
-          <Button variant="contained" style={exitButton.container} onClick={() => handleSignOut()}>
-            <p style={exitButton.text}>
-              <FaSignOutAlt />
+          <div className="TabNavigation-containerTab">
+            <h1>INVENTARIO</h1>
+          </div>
+
+          <div className="TabNavigation-containerTab">
+            <h1>EMPLEADOS</h1>
+          </div>
+
+          <div className="TabNavigation-containerTab">
+            <h1>VENTAS</h1>
+          </div>
+
+          <div className="TabNavigation-containerTab">
+            <h1>CLIENTES</h1>
+          </div>
+
+          <div className="TabNavigation-containerTab">
+            <h1>LUGARES</h1>
+          </div>
+
+          <div className="TabNavigation-containerTab">
+            <h1>ESTADISTICAS</h1>
+          </div>
+        </div>
+
+        {/* Info & EXIT */}
+        <div className="TabNavigation-containerInfoExit">
+          {/* Usuario */}
+          <div className="TabNavigation-containerUser">
+            <h1>Bienvenido</h1>
+            <h2>{userData.nombre}!</h2>
+          </div>
+
+          {/* Exit */}
+          <div className="TabNavigation-containerExit">
+            <Button
+              variant="contained"
+              color="primary"
+              style={{ height: "1.5rem", width: "8rem", fontSize: "0.8rem" }}
+            >
               Salir
-            </p>
-          </Button>
-        </Link>
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   );

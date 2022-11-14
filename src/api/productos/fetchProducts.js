@@ -21,7 +21,7 @@ const fetchProducts = async () => {
         const tiendaId = userData.tiendaId;
         let listaProductos = [];
 
-        const productoPath = `${Collections.productos}/${tiendaId}/${Collections.producto}`;
+        const productoPath = `${Collections.tiendas}/${tiendaId}/${Collections.productos}`;
         const productoRef = collection(firestore, productoPath);
 
         const productoDocs = await getDocs(productoRef);
@@ -30,6 +30,17 @@ const fetchProducts = async () => {
             const producto = documento.data();
             listaProductos.push(producto);
           }
+        });
+
+        // Ordenar los productos mediante su categoria.
+        listaProductos.sort((a, b) => {
+          if (a.categoria > b.categoria) {
+            return 1;
+          }
+          if (a.categoria < b.categoria) {
+            return -1;
+          }
+          return 0;
         });
 
         resolve(listaProductos);

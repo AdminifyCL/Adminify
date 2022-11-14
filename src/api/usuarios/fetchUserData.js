@@ -18,7 +18,25 @@ const fetchUserData = async () => {
         const userSnapshot = await getDoc(userDoc);
         const userData = userSnapshot.data();
 
-        userData ? resolve(userData) : reject({});
+        const { isDev, tiendaId } = userData;
+
+        let rutaQuery = "";
+        if (isDev) {
+          // Caso 1: Es desarrollador.
+          rutaQuery = Collections.desarrolladores;
+        } else {
+          // Caso 2: No es desarrollador.
+          rutaQuery = `${Collections.tiendas}/${tiendaId}/${Collections.empleados}`;
+        }
+
+        // Consultando la información del usuario.
+        const dataDoc = doc(firestore, rutaQuery, userId);
+        const dataSnapshot = await getDoc(dataDoc);
+        const responseData = dataSnapshot.data();
+
+        responseData["tiendaId"] = tiendaId;
+
+        responseData ? resolve(responseData) : reject({});
       } else {
         reject();
       }

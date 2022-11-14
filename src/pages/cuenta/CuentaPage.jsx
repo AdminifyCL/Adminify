@@ -31,11 +31,6 @@ const CuentaPage = (props) => {
   // 4. Render.
   return (
     <section className="cuentaPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="cuentaPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Vista de la caja. */}
       <section className="cuentaPage_content">
         {/* Mi cuenta. */}
@@ -71,7 +66,7 @@ const CuentaPage = (props) => {
             {/* Fecha de creación. */}
             <div className="cuentaPage_miCuenta_content_creacion">
               <h1>Creación</h1>
-              <p>{handleFecha(userInfo.createdAt)}</p>
+              <p>{handleFecha(userInfo.createdAt?.seconds * 1000)}</p>
             </div>
 
             {/* Fecha de conexión. */}
