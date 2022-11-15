@@ -1,14 +1,18 @@
 //Dependencias
 import React from "react";
-import "../CajaPage.scss";
 import { BsFillTrashFill, BsPlusCircleFill } from "react-icons/bs";
 
-function formatNumber(number) {
-  return new Intl.NumberFormat("de-DE").format(number);
-}
+//Estilos
+import "../CajaPage.scss";
 
 //Definicion de componente <CajaCarro/>
 export function CajaCarro(props) {
+
+  //Metodos
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat("de-DE").format(number);
+  }
+
   return (
     <div className="cajaPage_Carro">
       <div className="cajaPage_Carro_cabecera">

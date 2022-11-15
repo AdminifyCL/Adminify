@@ -1,9 +1,12 @@
+//Dependencias
 import React from "react";
 
+//Metodos
 function formatNumber(number) {
     return new Intl.NumberFormat('de-DE').format(number)
   }
 
+//Definicion del componente <CajaTotal>
 export function CajaTotal(props){
 
     return(

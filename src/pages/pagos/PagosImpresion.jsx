@@ -13,17 +13,6 @@ function PagosImpresion(props) {
   });
   return (
     <>
-      {/* Lo que va dentro de este div es lo que se imprimira */}
-      {/* <div ref={componentRef} className="pagosPage_boleta">
-        Pedido:
-        {props.productos.map((producto) => {
-          return (
-            <p key={producto.nombre}>
-              {producto.cantidad} {producto.nombre}
-            </p>
-          );
-        })}
-      </div> */}
       <Button
         onClick={() => {
           props.redirigir();
@@ -32,7 +21,7 @@ function PagosImpresion(props) {
         variant="contained"
         disabled={props.activo}
       >
-        Imprimir
+        Realizar pago
       </Button>
     </>
   );

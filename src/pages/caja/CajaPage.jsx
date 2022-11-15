@@ -1,7 +1,6 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
@@ -10,7 +9,7 @@ import { CajaBotones } from "./components/CajaBotones.jsx";
 import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
-import { publicURL, privateURL } from "../../schemas/Navigation.js";
+import { privateURL } from "../../schemas/Navigation.js";
 
 // Actions.
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
@@ -24,6 +23,8 @@ import "./CajaPage.scss";
 const CajaPage = (props) => {
   // -- Manejo del estado.
   const { productos, sendCarrito } = props;
+  const [fecha, setFecha] = useState("")
+  const [hora, setHora] = useState("")
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
@@ -43,6 +44,7 @@ const CajaPage = (props) => {
   }, [carrito, pageVisibility]);
 
   useEffect(() => {
+    handleFecha()
     dispatch(clearMetodo());
     dispatch(clearCarro());
   }, []);
@@ -120,13 +122,21 @@ const CajaPage = (props) => {
     setBlock(!block);
   };
 
+  const handleFecha = () => {
+    const fecha = new Date();
+    const fechaString = fecha.toLocaleString();
+    const fechaArray = fechaString.split(", ");
+    setFecha(fechaArray[0]);
+    setHora(fechaArray[1]);
+  };
+
   // -- Renderizado.
   return (
     <section className="cajaPage_container">
       {/* Vista de la caja. */}
-      <section className={pageVisibility}>
-        {/* Lista de productos. */}
 
+      <section className={pageVisibility}>
+        {/* Menu de cierre de caja */}
         <CajaCierre
           block={block}
           open={modalVisibility}
@@ -134,6 +144,7 @@ const CajaPage = (props) => {
           bloquearCaja={bloquearCaja}
         />
 
+        {/* Lista de los productos */}
         <CajaProductos
           total={total}
           productos={productos}
@@ -163,6 +174,8 @@ const CajaPage = (props) => {
           canPay={canPay}
           block={block}
         />
+
+        {/* Boton de cierre de caja */}
         <Fab
           color="primary"
           aria-label="add"

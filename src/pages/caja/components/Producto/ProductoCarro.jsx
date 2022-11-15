@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect, useId } from "react";
 import { Button } from "@mui/material";
-import { FaHamburger } from "react-icons/fa";
+import { FaTrash, FaEdit, FaBreadSlice, FaHotdog } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 // Estilos.
@@ -19,21 +19,37 @@ const ProductoCarro = (props) => {
   function formatNumber(number) {
     return new Intl.NumberFormat("de-DE").format(number);
   }
+
+  const handlerIcon = (iconId) => {
+    switch (iconId) {
+      // Icono de pan.
+      case "icono001":
+        return <FaBreadSlice size={30} color="#1b5943" />;
+        break;
+
+      // Icono de hotdog.
+      case "icono002":
+        return <FaHotdog size={30} color="#1b5943" />;
+        break;
+
+      default:
+        return <FaBreadSlice size={30} color="#1b5943" />;
+        break;
+    }
+  };
+
   // 4. Render.
   return (
     <div className="cajaPage_Productos_producto">
       {/* Icono */}
       <p>
-        <FaHamburger />
+        {handlerIcon(info.iconoId)}
       </p>
 
       {/* Nombre */}
       <p className="cajaPage_producto_texto" style={{ width: "40%" }}>
         {info.nombre}
       </p>
-
-      {/* Categoria */}
-      <p>{info.categoria}</p>
 
       {/* Valor */}
       <p className="cajaPage_producto_texto">${formatNumber(info.valor)}</p>

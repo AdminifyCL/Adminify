@@ -1,21 +1,9 @@
 // Dependencias.
 import React, { useEffect, useState } from "react";
-import { FaHamburger } from "react-icons/fa";
-import { Button } from "@mui/material";
 import ProductoCarro from "./Producto/ProductoCarro.jsx";
 
 // Estilos.
 import "../CajaPage.scss";
-
-function capitalize(word) {
-  if (word.length > 1) {
-    return word[0].toUpperCase() + word.slice(1);
-  } else if (word.length == 1) {
-    return word.toUpperCase();
-  } else {
-    return word;
-  }
-}
 
 export function CajaProductos(props) {
   // 1. Manejo del estado.

@@ -1,10 +1,12 @@
+//Dependencias
 import React from "react";
-import "../CajaPage.scss";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-
 import userSignOut from "../../../api/usuarios/userLogout.js";
 import { userLogout } from "../../../redux/slices/usuariosSlice.js";
+
+//Estilos
+import "../CajaPage.scss";
 
 // Definición del componente: <CajaBotones />
 export function CajaCierre(props) {
