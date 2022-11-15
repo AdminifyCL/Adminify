@@ -31,7 +31,7 @@ export function CajaProductos(props) {
     return showProducts.map((producto) => {
       return (
         <ProductoCarro
-        block = {block}
+          block = {block}
           info={producto}
           key={producto.id}
           carrito={carrito}
@@ -50,7 +50,7 @@ export function CajaProductos(props) {
       <nav className="cajaPage_Productos_cabecera">
         <p>Lista de productos</p>
         <input
-          disabled={block}
+          disabled={!block}
           type={"search"}
           className="cajaPage_Buscador"
           onChange={(e) => {
@@ -60,7 +60,7 @@ export function CajaProductos(props) {
       </nav>
 
       {/* Lista de productos. */}
-      <section className="cajaPage_Productos_lista">{mappingProductos()}</section>
+      <section className="cajaPage_Productos_lista" disabled={!block}>{mappingProductos()}</section>
     </div>
   );
 }

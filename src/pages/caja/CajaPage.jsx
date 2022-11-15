@@ -6,7 +6,7 @@ import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Fab } from "@mui/material";
+import { Fab, Button } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { privateURL } from "../../schemas/Navigation.js";
@@ -22,14 +22,14 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { productos, sendCarrito } = props;
+  const { productos, sendCarrito, statusCaja, setStatus} = props;
   const [fecha, setFecha] = useState("")
   const [hora, setHora] = useState("")
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
   const [modalVisibility, setModalVisibility] = useState(false);
-  const [pageVisibility, setPageVisibility] = useState("cajaPage_content");
+  const [pageVisibility, setPageVisibility] = useState("cajaPage_content_block");
   const [block, setBlock] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,6 +45,7 @@ const CajaPage = (props) => {
 
   useEffect(() => {
     handleFecha()
+    setStatus("close")
     dispatch(clearMetodo());
     dispatch(clearCarro());
   }, []);
@@ -119,7 +120,11 @@ const CajaPage = (props) => {
     setCarrito([]);
     setTotal(0);
     setPageVisibility(state);
-    setBlock(!block);
+    if (statusCaja){
+      setStatus("close");
+    }else{
+      setStatus("open");
+    }
   };
 
   const handleFecha = () => {
@@ -136,9 +141,10 @@ const CajaPage = (props) => {
       {/* Vista de la caja. */}
 
       <section className={pageVisibility}>
-        {/* Menu de cierre de caja */}
+        {/* Lista de productos. */}
+
         <CajaCierre
-          block={block}
+          block={statusCaja}
           open={modalVisibility}
           cerrar={cerrarModal}
           bloquearCaja={bloquearCaja}
@@ -152,7 +158,7 @@ const CajaPage = (props) => {
           cambiarCarrito={cambiarCarrito}
           cambiarTotal={cambiarTotal}
           cambiarCantidad={cambiarCantidad}
-          block={block}
+          block={statusCaja}
         />
 
         {/* Carrito de compra. */}
@@ -160,7 +166,7 @@ const CajaPage = (props) => {
           carrito={carrito}
           cambiarCantidad={cambiarCantidad}
           borrarDelCarrito={borrarDelCarro}
-          block={block}
+          block={statusCaja}
         />
 
         {/* <CajaCajero /> */}
@@ -172,7 +178,7 @@ const CajaPage = (props) => {
           carrito={carrito}
           sendCarrito={enviarCarrito}
           canPay={canPay}
-          block={block}
+          block={statusCaja}
         />
 
         {/* Boton de cierre de caja */}
@@ -181,7 +187,7 @@ const CajaPage = (props) => {
           aria-label="add"
           style={{ position: "absolute", top: "88%", left: "93%" }}
           onClick={() => {
-            if (!block) {
+            if (modalVisibility) {
               setPageVisibility("cajaPage_content_modal");
             }
             setModalVisibility(true);

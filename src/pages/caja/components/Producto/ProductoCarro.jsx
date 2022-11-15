@@ -40,7 +40,7 @@ const ProductoCarro = (props) => {
 
   // 4. Render.
   return (
-    <div className="cajaPage_Productos_producto">
+    <div className="cajaPage_Productos_producto" >
       {/* Icono */}
       <p>
         {handlerIcon(info.iconoId)}
@@ -56,7 +56,7 @@ const ProductoCarro = (props) => {
 
       {/* Boton de acción */}
       <Button
-      disabled={props.block}
+      disabled={!props.block}
         variant="contained"
         onClick={() => {
           let vista_producto = carrito.map((pcar) => {

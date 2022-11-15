@@ -12,7 +12,6 @@ import "../CajaPage.scss";
 export function CajaCierre(props) {
   // -- Renderizado.
   const { open } = props;
-  const visibilidad = open;
 
   const dispatch = useDispatch();
 
@@ -26,15 +25,15 @@ export function CajaCierre(props) {
       });
   };
 
-  if (visibilidad&&props.block) {
+  if (open&&!props.block) {
     return (
       <section className="cajaPage_menu_cierre">
-        <p>¿ Desea reaperturar la caja ?</p>
+        <p>¿ Desea realizar la apertura de caja ?</p>
         <div>
           <Button
             variant="contained"
             onClick={() => {
-              if (props.block){
+              if (!props.block){
                 props.bloquearCaja("cajaPage_content")
                 props.cerrar()
               }else{
@@ -57,7 +56,7 @@ export function CajaCierre(props) {
       </section>
     );
   }
-  if (visibilidad&&!(props.block)) {
+  if (open&&(props.block)) {
     return (
       <section className="cajaPage_menu_cierre">
         <p>¿ Desea realizar el cierre de caja ?</p>
@@ -65,7 +64,7 @@ export function CajaCierre(props) {
           <Button
             variant="contained"
             onClick={() => {
-              if (props.block){
+              if (!props.block){
                 props.bloquearCaja("cajaPage_content")
                 props.cerrar()
               }else{

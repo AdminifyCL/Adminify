@@ -133,19 +133,19 @@ const CargaContainer = (props) => {
 
     setTimeout(() => {
       setLoadPercent(20);
-    }, 2000);
+    }, 1000);
 
     setTimeout(() => {
       setLoadPercent(40);
-    }, 4000);
+    }, 1000);
 
     setTimeout(() => {
       setLoadPercent(60);
-    }, 4000);
+    }, 1000);
 
     setTimeout(() => {
       setLoadPercent(100);
-    }, 5000);
+    }, 1000);
 
     // Limpieza de las consultas.
     return () => {
