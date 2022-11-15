@@ -6,7 +6,7 @@ import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Fab, Button } from "@mui/material";
+import { Fab } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { privateURL } from "../../schemas/Navigation.js";
@@ -22,15 +22,14 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { productos, sendCarrito, statusCaja, setStatus} = props;
-  const [fecha, setFecha] = useState("")
-  const [hora, setHora] = useState("")
+  const { productos, sendCarrito, statusCaja, setStatus, horaApertura} = props;
+  const [apertura, setApertura] = useState("")
+  const [cierre, setCierre] = useState("")
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
   const [modalVisibility, setModalVisibility] = useState(false);
   const [pageVisibility, setPageVisibility] = useState("cajaPage_content_block");
-  const [block, setBlock] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -41,11 +40,17 @@ const CajaPage = (props) => {
     } else {
       setCanPay(false);
     }
-  }, [carrito, pageVisibility]);
+  }, [carrito]);
+
+  useEffect(()=>{
+    if (statusCaja){
+      console.log("Hora de apertura:", apertura)
+    }else{
+      console.log("Hora de cierre:", cierre)
+    }
+  },[statusCaja])
 
   useEffect(() => {
-    handleFecha()
-    setStatus("close")
     dispatch(clearMetodo());
     dispatch(clearCarro());
   }, []);
@@ -119,20 +124,24 @@ const CajaPage = (props) => {
   const bloquearCaja = (state) => {
     setCarrito([]);
     setTotal(0);
-    setPageVisibility(state);
     if (statusCaja){
+      handleFecha(false)
       setStatus("close");
     }else{
+      handleFecha(true)
       setStatus("open");
     }
   };
 
-  const handleFecha = () => {
+  const handleFecha = (mode) => {
     const fecha = new Date();
     const fechaString = fecha.toLocaleString();
     const fechaArray = fechaString.split(", ");
-    setFecha(fechaArray[0]);
-    setHora(fechaArray[1]);
+    if(mode){
+      setApertura(fechaArray[1]);
+    }else{
+      setCierre(fechaArray[1])
+    }
   };
 
   // -- Renderizado.
@@ -140,7 +149,7 @@ const CajaPage = (props) => {
     <section className="cajaPage_container">
       {/* Vista de la caja. */}
 
-      <section className={pageVisibility}>
+      <section className="cajaPage_content">
         {/* Lista de productos. */}
 
         <CajaCierre
@@ -170,7 +179,7 @@ const CajaPage = (props) => {
         />
 
         {/* <CajaCajero /> */}
-        <CajaTotal total={total} block={block} />
+        <CajaTotal total={total} block={statusCaja} />
 
         {/* Botones. */}
         <CajaBotones
@@ -187,9 +196,7 @@ const CajaPage = (props) => {
           aria-label="add"
           style={{ position: "absolute", top: "88%", left: "93%" }}
           onClick={() => {
-            if (modalVisibility) {
-              setPageVisibility("cajaPage_content_modal");
-            }
+            console.log(horaApertura)
             setModalVisibility(true);
           }}
         >

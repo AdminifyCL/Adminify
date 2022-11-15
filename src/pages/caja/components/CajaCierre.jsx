@@ -1,9 +1,6 @@
 //Dependencias
 import React from "react";
 import { Button } from "@mui/material";
-import { useDispatch } from "react-redux";
-import userSignOut from "../../../api/usuarios/userLogout.js";
-import { userLogout } from "../../../redux/slices/usuariosSlice.js";
 
 //Estilos
 import "../CajaPage.scss";
@@ -12,20 +9,7 @@ import "../CajaPage.scss";
 export function CajaCierre(props) {
   // -- Renderizado.
   const { open } = props;
-
-  const dispatch = useDispatch();
-
-  const handleSignOut = async () => {
-    await userSignOut()
-      .then(() => {
-        dispatch(userLogout({}));
-      })
-      .catch((error) => {
-        console.error("[] ERROR:", error);
-      });
-  };
-
-  if (open&&!props.block) {
+  if (open && !props.block) {
     return (
       <section className="cajaPage_menu_cierre">
         <p>¿ Desea realizar la apertura de caja ?</p>
@@ -33,12 +17,9 @@ export function CajaCierre(props) {
           <Button
             variant="contained"
             onClick={() => {
-              if (!props.block){
-                props.bloquearCaja("cajaPage_content")
-                props.cerrar()
-              }else{
-                props.bloquearCaja("cajaPage_content_block")
-              props.cerrar();
+              if (!props.block) {
+                props.bloquearCaja("cajaPage_content");
+                props.cerrar();
               }
             }}
           >
@@ -56,7 +37,7 @@ export function CajaCierre(props) {
       </section>
     );
   }
-  if (open&&(props.block)) {
+  if (open && props.block) {
     return (
       <section className="cajaPage_menu_cierre">
         <p>¿ Desea realizar el cierre de caja ?</p>
@@ -64,12 +45,9 @@ export function CajaCierre(props) {
           <Button
             variant="contained"
             onClick={() => {
-              if (!props.block){
-                props.bloquearCaja("cajaPage_content")
-                props.cerrar()
-              }else{
-                props.bloquearCaja("cajaPage_content_block")
-              props.cerrar();
+              if (props.block) {
+                props.bloquearCaja("cajaPage_content_block");
+                props.cerrar();
               }
             }}
           >

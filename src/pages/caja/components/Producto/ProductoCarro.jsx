@@ -20,20 +20,20 @@ const ProductoCarro = (props) => {
     return new Intl.NumberFormat("de-DE").format(number);
   }
 
-  const handlerIcon = (iconId) => {
+  const handlerIcon = (iconId,color) => {
     switch (iconId) {
       // Icono de pan.
       case "icono001":
-        return <FaBreadSlice size={30} color="#1b5943" />;
+        return <FaBreadSlice size={30} color={color} />;
         break;
 
       // Icono de hotdog.
       case "icono002":
-        return <FaHotdog size={30} color="#1b5943" />;
+        return <FaHotdog size={30} color={color}  />;
         break;
 
       default:
-        return <FaBreadSlice size={30} color="#1b5943" />;
+        return <FaBreadSlice size={30} color={color} />;
         break;
     }
   };
@@ -43,7 +43,7 @@ const ProductoCarro = (props) => {
     <div className="cajaPage_Productos_producto" >
       {/* Icono */}
       <p>
-        {handlerIcon(info.iconoId)}
+        { props.block ? handlerIcon(info.iconoId,"#1b5943") : handlerIcon(info.iconoId,"white") }
       </p>
 
       {/* Nombre */}

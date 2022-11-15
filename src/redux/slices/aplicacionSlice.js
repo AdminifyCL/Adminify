@@ -34,14 +34,12 @@ const aplicacionSlice = createSlice({
 
     //* -- Manejo de la caja.
     openCaja: (state, action) => {
-
       return { ...state, statusCaja: true };
     },
 
     closeCaja: (state, action) => {
-
       return { ...state, statusCaja: false };
-    },
+    }
   },
 });
 

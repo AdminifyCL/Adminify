@@ -17,6 +17,7 @@ const CajaContainer = (props) => {
   const [productos, setProductos] = useState([]);
   const allProductos = useSelector((state) => state.producto.productos);
   const statusCaja = useSelector((state) => state.app.statusCaja);
+  const horaApertura = useSelector( (state) => state.app.horaApertura);
   const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
@@ -59,6 +60,7 @@ const CajaContainer = (props) => {
         sendCarrito={handleCarritoProducts}
         statusCaja={statusCaja}
         setStatus={handleStatusCaja}
+        horaApertura={horaApertura}
       />
     </Navbar>
   );
