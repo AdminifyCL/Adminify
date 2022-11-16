@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
 import {FaSignInAlt, FaInfoCircle, FaBoxOpen, FaGithub, FaFigma} from "react-icons/fa"
+import {SiNotion} from "react-icons/si"
 import Modal from "@mui/material/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -71,6 +72,9 @@ const IndexPage = (props) => {
           </IconButton>
           <IconButton aria-label="GitHub" size="large" >
                 <FaFigma fontSize="inherit" />
+          </IconButton>
+          <IconButton aria-label="GitHub" size="large" >
+                <SiNotion fontSize="inherit" />
           </IconButton>
           </div>
           <Button variant="outlined" onClick={() => abrirCerrarModal()}>
