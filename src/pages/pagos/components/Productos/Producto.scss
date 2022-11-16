@@ -1,0 +1,83 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.Producto_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  column-gap: 1rem;
+
+  max-height: 10rem;
+  min-height: 5rem;
+
+  padding-left: 0.5rem;
+}
+
+.Producto_cantidad {
+  flex-grow: 1;
+  flex-basis: 0.125rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 3rem;
+  min-width: 1rem;
+  max-width: 2rem;
+
+  text-align: center;
+
+  background-color: Colors.$primary-color;
+  border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+
+  p {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 1rem;
+
+    color: Colors.$white-color;
+  }
+}
+
+.Producto_nombre {
+  flex-grow: 5;
+  flex-basis: 1rem;
+
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  text-align: center;
+
+  background-color: Colors.$primary-color;
+  border-radius: 0.5rem;
+
+  p {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 1rem;
+
+    color: Colors.$white-color;
+  }
+}
+
+.Producto_valor {
+  flex-grow: 1;
+
+  border-radius: 0.5rem;
+  color: Colors.$primary_dark-color;
+
+  p {
+    font-family: "Poppins";
+    font-weight: 600;
+    font-size: 1rem;
+
+    color: Colors.$primary_dark-color;
+  }
+}

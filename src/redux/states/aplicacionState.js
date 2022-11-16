@@ -6,6 +6,8 @@ const aplicacionState = {
     message: "",
   },
   alertVisible: false,
+
+  statusCaja: true,
 };
 
 // Exportación

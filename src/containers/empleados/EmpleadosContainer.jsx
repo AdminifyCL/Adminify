@@ -1,7 +1,8 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import EmpleadosPage from "../../pages/empleados/EmpleadosPage";
 
 // Definición del contenedor: <EmpleadosContainer />.
@@ -15,7 +16,11 @@ const EmpleadosContainer = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <EmpleadosPage empleados={listaEmpleados} />;
+  return (
+    <Navbar>
+      <EmpleadosPage empleados={listaEmpleados} />
+    </Navbar>
+  );
 };
 
 // PropTypes.

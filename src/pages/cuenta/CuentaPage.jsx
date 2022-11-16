@@ -31,11 +31,6 @@ const CuentaPage = (props) => {
   // 4. Render.
   return (
     <section className="cuentaPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="cuentaPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Vista de la caja. */}
       <section className="cuentaPage_content">
         {/* Mi cuenta. */}

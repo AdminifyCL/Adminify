@@ -2,154 +2,90 @@
 @use "../../../../styles/colors" as Colors;
 
 // Definición de estilos.
-.ProductContainer {
+.ProductCard-container {
+  margin: 0.5rem;
+
+  border: 0.25rem solid Colors.$primary-color;
+  border-radius: 0.5rem;
+
+  background-color: Colors.$white-color;
+
+  width: 15rem;
+  max-width: 15rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ProductCard-iconContainer {
+  background-color: Colors.$primary-color;
+  width: 100%;
+
+  padding: 1rem 0;
+
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
 
   column-gap: 1rem;
 
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
-  margin-bottom: 0.5rem;
-
-  width: 95%;
-
-  border: 3px solid Colors.$primary-color;
-  border-radius: 0.25rem;
-
-  cursor: default;
-}
-
-.ProductContainer-icon {
-  background-color: Colors.$gray-color;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-
-  max-width: 2rem;
-  min-width: 2rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    color: Colors.$primary-color;
-  }
-}
-
-.ProductContainer-categoria {
-  background-color: Colors.$gray-color;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-
-  max-width: 10rem;
-  min-width: 10rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
   p {
     font-size: 1rem;
     font-weight: bold;
-    color: Colors.$primary-color;
+    color: Colors.$white-color;
   }
 }
 
-.ProductContainer-nombre {
+.ProductCard-infoContainer {
+  width: 100%;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ProductCard-infoContainer-categoria {
   background-color: Colors.$gray-color;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  opacity: 0.8;
 
-  max-width: 14rem;
-  min-width: 14rem;
+  padding: 0 0.5rem;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  border-radius: 1rem;
 
-  p {
-    font-size: 1rem;
-    font-weight: bold;
-    color: Colors.$primary-color;
-  }
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: Colors.$primary-color;
+}
+.ProductCard-infoContainer-nombre {
+  font-size: 0.8rem;
+  text-align: center;
+  font-weight: 400;
+  text-align: center;
+}
+.ProductCard-infoContainer-valor {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: Colors.$primary-color;
 }
 
-.ProductContainer-valor {
+.ProductCard-botonesContainer {
+  width: 100%;
+
   background-color: Colors.$gray-color;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 
-  max-width: 5rem;
-  min-width: 5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    font-size: 1rem;
-    font-weight: bold;
-    color: Colors.$primary-color;
-  }
-}
-
-.ProductContainer-unidades {
-  background-color: Colors.$gray-color;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-
-  max-width: 4rem;
-  min-width: 4rem;
+  border-top: 2px solid Colors.$dark-color;
 
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    font-size: 1rem;
-    font-weight: bold;
-    color: Colors.$primary-color;
-  }
-}
-
-.ProductContainer-disponibility {
-  background-color: Colors.$gray-color;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-
-  max-width: 10rem;
-  min-width: 10rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    font-size: 1rem;
-    font-weight: bold;
-    color: Colors.$primary-color;
-  }
-}
-
-.ProductContainer-buttons {
-  align-self: flex-end;
-  justify-self: flex-end;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-
-  column-gap: 0.5rem;
+  justify-content: space-evenly;
 }

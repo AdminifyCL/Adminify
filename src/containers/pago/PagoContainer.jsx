@@ -2,13 +2,14 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import PagosPage from "../../pages/pagos/PagosPage.jsx";
 
 // API
 import createVenta from "../../api/ventas/createVenta.js";
 
 // Actions
-import { setMetodo } from "../../redux/slices/ventasSlice.js";
+import { setMetodo, appendVenta } from "../../redux/slices/ventasSlice.js";
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Definición del contenedor: <PagoContainer />.
@@ -17,6 +18,7 @@ const PagoContainer = (props) => {
   const {} = props;
   const carroProducts = useSelector((state) => state.producto.carrito);
   const userData = useSelector((state) => state.user.userData);
+  const [cargando, setCargando] = useState(false);
   const [total, setTotal] = useState(0);
   const [cantidad, setCantidad] = useState(0);
   const dispatch = useDispatch();
@@ -45,6 +47,8 @@ const PagoContainer = (props) => {
   };
 
   const handleVenta = async (metodo) => {
+    setCargando(true);
+
     const new_venta = {
       // Información de la venta.
       id: "",
@@ -76,7 +80,7 @@ const PagoContainer = (props) => {
 
     // Creación de la venta.
     await createVenta(tiendaId, new_venta)
-      .then(() => {
+      .then((ventaData) => {
         console.log("[] Se creo una nueva venta.");
 
         let newAlert = {
@@ -85,7 +89,10 @@ const PagoContainer = (props) => {
           message: "La venta se registro en la base de datos.",
         };
 
+        console.log("[] ventaData: ", ventaData);
+
         dispatch(displayAlert(newAlert));
+        dispatch(appendVenta(ventaData));
       })
       .catch((error) => {
         console.error(error);
@@ -101,11 +108,20 @@ const PagoContainer = (props) => {
 
     // Actualización de los productos en el inventario.
     // TODO: Para hacer en un futuro.
+
+    setCargando(false);
   };
 
   // 4. Render.
   return (
-    <PagosPage carroProducts={carroProducts} setMetodo={handleMetodoPago} setVenta={handleVenta} />
+    <Navbar>
+      <PagosPage
+        carroProducts={carroProducts}
+        setMetodo={handleMetodoPago}
+        setVenta={handleVenta}
+        cargando={cargando}
+      />
+    </Navbar>
   );
 };
 

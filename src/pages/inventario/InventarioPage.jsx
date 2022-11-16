@@ -30,11 +30,6 @@ const InventarioPage = (props) => {
   // 4. Render.
   return (
     <section className="inventarioPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="inventarioPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Modal */}
       <ProductModal
         open={modalVisibility}
@@ -51,6 +46,7 @@ const InventarioPage = (props) => {
             Agregar producto
           </Button>
         </div>
+
         {/* Contenedor de elementos. */}
         <div className="inventarioPage_content_container">
           {/* Tabla de elementos. */}

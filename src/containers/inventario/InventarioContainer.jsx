@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import InventarioPage from "../../pages/inventario/InventarioPage";
 
 // Definición del contenedor: <InventarioContainer />.
@@ -30,18 +31,14 @@ const InventarioContainer = (props) => {
     } else {
       productosAction = allProducts;
     }
-
-    // await createProduct(productData, productosAction)
-    //   .then(() => {
-    //     console.log("[✅] Se creo un producto!");
-    //   })
-    //   .catch((error) => {
-    //     console.log("[😞] No Se pudo crear un producto");
-    //   });
   };
 
   // 4. Render.
-  return <InventarioPage products={productos} createProduct={handleCreateProduct} />;
+  return (
+    <Navbar>
+      <InventarioPage products={productos} createProduct={handleCreateProduct} />
+    </Navbar>
+  );
 };
 
 // PropTypes.

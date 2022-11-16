@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
 import StatsContainer from "./components/Stats/StatsContainer.jsx";
@@ -20,11 +20,6 @@ const VentasPage = (props) => {
   // 4. Render.
   return (
     <section className="ventasPage_container">
-      {/* Navegación de la aplicación. */}
-      <section className="ventasPage_navigation">
-        <Navigation />
-      </section>
-
       {/* Vista de la caja. */}
       <section className="ventasPage_content">
         {/* Estadisticas parciales. */}

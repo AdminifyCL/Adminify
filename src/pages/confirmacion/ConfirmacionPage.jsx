@@ -84,11 +84,6 @@ const ConfirmacionPage = (props) => {
   // 4. Render.
   return (
     <section className="">
-      {/* Navegación */}
-      <section className="">
-        <Navigation />
-      </section>
-
       {/* Visual */}
       <div className="confirmacionPage_stepper">
         <Stepper activeStep={3} alternativeLabel>

@@ -1,12 +1,15 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
+import Navbar from "../../components/Navbar/Navbar.jsx";
 import CajaPage from "../../pages/caja/CajaPage.jsx";
 import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 
 // Action
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
+import { openCaja, closeCaja } from "../../redux/slices/aplicacionSlice.js";
 import { clearMetodo } from "../../redux/slices/ventasSlice.js";
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -14,6 +17,7 @@ const CajaContainer = (props) => {
   const {} = props;
   const [productos, setProductos] = useState([]);
   const allProductos = useSelector((state) => state.producto.productos);
+  const statusCaja = useSelector((state) => state.app.statusCaja);
   const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
@@ -27,13 +31,42 @@ const CajaContainer = (props) => {
   }, []);
 
   // 3. Metodos.
+  const handleStatusCaja = (type) => {
+    switch (type) {
+      case "open":
+        dispatch(openCaja());
+        break;
+
+      case "close":
+        dispatch(closeCaja());
+        break;
+
+      default:
+        return;
+    }
+  };
+
   const handleCarritoProducts = async (productosCarro) => {
     // Establecer los productos en el carro.
     dispatch(setCarro(productosCarro));
   };
 
+  const triggerAlert = (alert) => {
+    dispatch(displayAlert(alert));
+  };
+
   // 4. Render.
-  return <CajaPage productos={productos} sendCarrito={handleCarritoProducts} />;
+  return (
+    <Navbar>
+      <CajaPage
+        productos={productos}
+        sendCarrito={handleCarritoProducts}
+        statusCaja={statusCaja}
+        setStatus={handleStatusCaja}
+        triggerAlert={triggerAlert}
+      />
+    </Navbar>
+  );
 };
 
 // PropTypes.
