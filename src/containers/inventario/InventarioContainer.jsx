@@ -14,6 +14,7 @@ const InventarioContainer = (props) => {
   const {} = props;
   const dispatch = useDispatch();
   const [productos, setProductos] = useState([]);
+  const [cargando, setCargando] = useState(false);
   const allProducts = useSelector((state) => state.producto.productos);
 
   // 2. Ciclo de vida.
@@ -27,25 +28,34 @@ const InventarioContainer = (props) => {
   const handleCreateProduct = async (productData) => {
     console.log("[CONTAINER] CREATE NEW PRODUCT");
     console.log("[CONTAINER] Product: ", productData);
+    setCargando(true);
 
+    // Crear el producto en Redux.
     dispatch(createProduct(productData));
+    setCargando(false);
   };
 
   const handleEditProduct = async (productData) => {
     console.log("[CONTAINER] EDIT PRODUCT");
     console.log("[CONTAINER] Product: ", productData);
+    setCargando(true);
 
+    // Editar el producto en Redux.
     dispatch(editProduct(productData));
+    setCargando(false);
   };
 
   const handleDeleteProduct = async (productData) => {
     console.log("[CONTAINER] DELETE PRODUCT");
     console.log("[CONTAINER] Product: ", productData);
+    setCargando(true);
 
     // Comunicación con la API de la base de datos.
     // ...
 
+    // Eliminar el producto en Redux.
     dispatch(deleteProduct(productData));
+    setCargando(false);
   };
 
   // 4. Render.
