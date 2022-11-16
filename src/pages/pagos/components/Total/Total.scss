@@ -3,24 +3,30 @@
 
 // Definición de estilos.
 .Total_contenedor {
-  background-color: Colors.$white-color;
-
-  margin: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
-
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+
+  max-width: 30rem;
 }
 
 .Total_totalText {
+  flex-grow: 1;
+
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 600;
   color: Colors.$primary_dark-color;
 }
 
 .Total_totalValor {
+  flex-grow: 3;
+
   background-color: Colors.$gray-color;
+  padding: 1rem;
+  border-radius: 5px;
   text-align: center;
+
+  font-size: 1rem;
+  font-weight: 700;
+  color: Colors.$primary-color;
 }

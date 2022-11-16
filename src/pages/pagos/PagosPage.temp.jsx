@@ -119,23 +119,6 @@ const PagosPage = (props) => {
             <p className="pagosPage_totalValor">{mappingTotal()}</p>
           </section>
 
-          {/* Sección agregar cliente*/}
-          {/* Checkbox para decidir si agregar o no cliente*/}
-          {/* <section className="pagosPage_TituloCliente">
-            <p>
-              ¿Desea agregar un cliente? 
-              <Checkbox
-                onChange={() => setMostrarComponente(!mostrarComponente)}
-                inputProps={{ "aria-label": "controlled" }}
-              />
-            </p>
-          </section> */}
-
-          {/* Si el checkbox es activado lanza el formulario*/}
-          {/* <div className={!mostrarComponente ? "show-elementPagos" : null}>
-            {!mostrarComponente && <FormCliente />}
-          </div> */}
-
           {/*Sección de información de compra (Método de pago)*/}
           <section className="pagosPage_InfoCompraContenedor">
             <div className="pagosPage_InfoCompraTitulo">

@@ -1,6 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
+import PagosImpresion from "../PagosImpresion/PagosImpresion.jsx";
 import PropTypes from "prop-types";
 
 // Estilos.
@@ -10,14 +11,33 @@ import "./Buttons.scss";
 // Definición del componente: <Buttons />
 const Buttons = (props) => {
   // 1. Manejo del estado.
-  const {} = props;
+  const { toCaja, toConfirmacion, productos, metodo } = props;
+  const [active, setActive] = useState(false);
 
   // 2. Ciclo de vida.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (metodo !== "") {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }, [metodo]);
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return (
+    <div className="Buttons_container">
+      <Button onClick={() => toCaja()} variant="outlined" type="button">
+        Cancelar compra
+      </Button>
+
+      <Button onClick={() => toConfirmacion()} variant="contained" type="submit" disabled={!active}>
+        Confirmar pago
+      </Button>
+
+      {/* <PagosImpresion productos={productos} /> */}
+    </div>
+  );
 };
 
 // PropTypes.

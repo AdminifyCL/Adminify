@@ -1,0 +1,9 @@
+.Buttons_container {
+  max-width: 30rem;
+  min-width: 30rem;
+
+  display: flex;
+
+  flex-direction: row;
+  justify-content: space-between;
+}
