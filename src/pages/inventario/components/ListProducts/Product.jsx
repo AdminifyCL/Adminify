@@ -1,8 +1,8 @@
 // Dependencias.
 import React, { useEffect, useState } from "react";
 import { FaTrash, FaEdit, FaBreadSlice, FaHotdog } from "react-icons/fa";
-import PropTypes from "prop-types";
 import { IconButton } from "@mui/material";
+import PropTypes from "prop-types";
 
 // Estilos.
 import "./Product.scss";
@@ -10,12 +10,20 @@ import "./Product.scss";
 // Definición del componente: <ProductCard />
 const ProductCard = (props) => {
   // -- Manejo del estado.
-  const { info } = props;
+  const { info, editProduct, deleteProduct } = props;
 
   // -- Ciclo de vida.
   useEffect(() => {}, []);
 
   // -- Metodos.
+  const handleEditProduct = async () => {
+    await editProduct(info);
+  };
+
+  const handleDeleteProduct = async () => {
+    await deleteProduct(info);
+  };
+
   const handlerIcon = (iconId) => {
     switch (iconId) {
       // Icono de pan.
@@ -32,10 +40,6 @@ const ProductCard = (props) => {
         return <FaBreadSlice size={30} color="white" />;
         break;
     }
-  };
-
-  const handlerDisponibility = () => {
-    return info.unidades > 0 ? "Disponible" : "No disponible";
   };
 
   // -- Renderizado.
@@ -56,10 +60,11 @@ const ProductCard = (props) => {
 
       {/* Botones de acción */}
       <div className="ProductCard-botonesContainer">
-        <IconButton>
+        <IconButton onClick={() => handleDeleteProduct()}>
           <FaTrash size={15} />
         </IconButton>
-        <IconButton>
+
+        <IconButton onClick={() => handleEditProduct()}>
           <FaEdit size={15} />
         </IconButton>
       </div>

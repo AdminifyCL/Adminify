@@ -1,14 +1,18 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import PropTypes from "prop-types";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import InventarioPage from "../../pages/inventario/InventarioPage";
+import PropTypes from "prop-types";
+
+// Actions.
+import { createProduct, editProduct, deleteProduct } from "../../redux/slices/productosSlice.js";
 
 // Definición del contenedor: <InventarioContainer />.
 const InventarioContainer = (props) => {
   // 1. Manejo del estado.
   const {} = props;
+  const dispatch = useDispatch();
   const [productos, setProductos] = useState([]);
   const allProducts = useSelector((state) => state.producto.productos);
 
@@ -23,20 +27,35 @@ const InventarioContainer = (props) => {
 
   // 3. Metodos.
   const handleCreateProduct = async (productData) => {
-    console.log("[] Product container: ", productData);
+    console.log("[CONTAINER] CREATE NEW PRODUCT");
+    console.log("[CONTAINER] Product: ", productData);
 
-    let productosAction = [];
-    if (allProducts.length === 0) {
-      productosAction = inventario;
-    } else {
-      productosAction = allProducts;
-    }
+    dispatch(createProduct(productData));
+  };
+
+  const handleEditProduct = async (productData) => {
+    console.log("[CONTAINER] EDIT PRODUCT");
+    console.log("[CONTAINER] Product: ", productData);
+
+    dispatch(editProduct(productData));
+  };
+
+  const handleDeleteProduct = async (productData) => {
+    console.log("[CONTAINER] DELETE PRODUCT");
+    console.log("[CONTAINER] Product: ", productData);
+
+    dispatch(deleteProduct(productData));
   };
 
   // 4. Render.
   return (
     <Navbar>
-      <InventarioPage products={productos} createProduct={handleCreateProduct} />
+      <InventarioPage
+        products={productos}
+        createProduct={handleCreateProduct}
+        editProduct={handleEditProduct}
+        deleteProduct={handleDeleteProduct}
+      />
     </Navbar>
   );
 };

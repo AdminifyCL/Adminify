@@ -11,7 +11,7 @@ import "./InventarioPage.scss";
 // Definición del componente: <InventarioPage />
 const InventarioPage = (props) => {
   // 1. Manejo del estado.
-  const { products, createProduct } = props;
+  const { products, createProduct, editProduct, deleteProduct } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
 
   // 2. Ciclo de vida.
@@ -41,6 +41,7 @@ const InventarioPage = (props) => {
         {/* Titulo y boton de acción */}
         <div className="inventarioPage_content_header">
           <h1>Administración de inventario</h1>
+
           <Button variant="contained" onClick={() => handleCreateProduct()}>
             Agregar producto
           </Button>
@@ -49,7 +50,11 @@ const InventarioPage = (props) => {
         {/* Contenedor de elementos. */}
         <div className="inventarioPage_content_container">
           {/* Tabla de elementos. */}
-          <ListProducts productos={products} />
+          <ListProducts
+            productos={products}
+            editProduct={editProduct}
+            deleteProduct={deleteProduct}
+          />
         </div>
       </section>
     </section>
