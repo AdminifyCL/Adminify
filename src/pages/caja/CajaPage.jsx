@@ -120,21 +120,6 @@ const CajaPage = (props) => {
       <section className={pageVisibility}>
         {/* Lista de productos. */}
 
-        <Button
-          variant="contained"
-          style={{ position: "absolute", right: 200, zIndex: 1 }}
-          onClick={() => setStatus("open")}
-        >
-          TEST CAJA: OPEN
-        </Button>
-        <Button
-          variant="contained"
-          style={{ position: "absolute", right: 0, zIndex: 1 }}
-          onClick={() => setStatus("close")}
-        >
-          TEST CAJA: CLOSE
-        </Button>
-
         <CajaCierre
           block={block}
           open={modalVisibility}

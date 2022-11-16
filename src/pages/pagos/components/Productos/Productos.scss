@@ -1,0 +1,42 @@
+// Dependencias,
+@use "../../../../styles/colors" as Colors;
+
+// Definicin de estilos.
+.Productos_container {
+  max-width: 50rem;
+  min-width: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  row-gap: 0.5rem;
+}
+
+.Productos_bannerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  background-color: Colors.$primary-color;
+
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+
+  h1 {
+    font-size: 1rem;
+    font-family: "Poppins";
+    font-weight: 600;
+
+    color: Colors.$white-color;
+  }
+}
+
+.Productos_productosContainer {
+  padding-top: 0.125rem;
+  padding-bottom: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}

@@ -16,7 +16,9 @@ import {
   StepLabel,
 } from "@mui/material";
 import PropTypes from "prop-types";
-import PagosImpresion from "./PagosImpresion.jsx";
+import FormCliente from "./components/FormCliente/FormCliente.jsx";
+import PagosImpresion from "./components/PagosImpresion/PagosImpresion.jsx";
+import Productos from "./components/Productos/Productos.jsx";
 
 // Estilos.
 import "./PagosPage.scss";
@@ -83,141 +85,39 @@ const PagosPage = (props) => {
 
   // 4. Render.
   return (
-    <section>
-      {/* Visual */}
-      <section className="pagosPage_Contenedor">
+    <section className="pagosPage_Contenedor">
+      <div className="pagosPage_contenido">
+        {/* Banner */}
         <div className="pagosPage_Titulo">
-          <h1>Pago</h1>
+          <h1>Información del pago</h1>
         </div>
-        <section className="pagosPage_Contenido">
-          {/* Stepper de la pagosPage */}
-          <div className="pagosPage_stepper">
-            <Stepper activeStep={1} alternativeLabel>
-              {steps.map((label) => (
-                <Step key={label}>
-                  <StepLabel>{label}</StepLabel>
-                </Step>
-              ))}
-            </Stepper>
+
+        {/* Contenido */}
+        <div className="pagosPage_contenidoContainer">
+          {/* Lista de los productos. */}
+          <div className="pagosPage_productosContainer">
+            <Productos productos={carroProducts} />
           </div>
 
-          {/* Seccion de resumen de productos*/}
-          <section className="pagosPage_ProductosContenedor">
-            <section className="pagosPage_ProductosContenido">
-              <div className="pagosPage_ProductosCabecera">
-                <p>Resumen de productos</p>
-              </div>
-              {/* Contenedor de productos*/}
-              <div className="pagosPage_ProductosLista">{mappingCarroProducts()}</div>
-            </section>
-          </section>
-          {/* Contenedor de valor total*/}
-          <section className="pagosPage_ProductosTotal">
-            <p>Total:</p>
-            <p className="pagosPage_totalValor">{mappingTotal()}</p>
-          </section>
-          {/* Sección agregar cliente*/}
-          <section className="pagosPage_TituloCliente">
-            <p>
-              ¿Desea agregar un cliente? {/* Checkbox para decidir si agregar o no cliente*/}
-              <Checkbox
-                onChange={() => setMostrarComponente(!mostrarComponente)}
-                inputProps={{ "aria-label": "controlled" }}
-              />
-            </p>
-          </section>
+          {/* Información de la venta */}
+          <div className="pagosPage_infoContainer">
+            {/* Total de la venta. */}
+            <div>Total</div>
 
-          {/* Si el checkbox es activado lanza el formulario*/}
-          <div className={!mostrarComponente ? "show-elementPagos" : null}>
-            {!mostrarComponente && (
-              <div>
-                {/* Sección de formulario del cliente*/}
-                <section className="pagosPage_Clientecontenedor">
-                  <section className="pagosPage_ClienteContenido">
-                    <div className="pagosPage_ClienteCabecera">
-                      <p> Nuevo cliente </p>
-                    </div>
-                    <div className="pagosPage_ClienteFormulario">
-                      <TextField
-                        id="inputNombreCliente"
-                        fullWidth
-                        label="Nombre"
-                        variant="filled"
-                        margin="dense"
-                      />
-                      <TextField
-                        id="inputCorreoCliente"
-                        fullWidth
-                        label="Correo"
-                        variant="filled"
-                        margin="dense"
-                      />
-                      <TextField
-                        id="inputNumeroCliente"
-                        fullWidth
-                        label="Número telefónico"
-                        variant="filled"
-                        margin="dense"
-                      />
-                    </div>
-                    <div className="pagosPage_ClienteBoton">
-                      <Button
-                        onClick={() => {
-                          alert("Cliente guardado con éxito");
-                        }}
-                        variant="contained"
-                      >
-                        Guardar
-                      </Button>
-                    </div>
-                  </section>
-                </section>
-              </div>
-            )}
+            {/* Metodo de pago */}
+            <div>Metodo</div>
+
+            {/* Botones */}
+            <div>Botones</div>
           </div>
+        </div>
 
-          {/*Sección de información de compra (Método de pago)*/}
-          <section className="pagosPage_InfoCompraContenedor">
-            <div className="pagosPage_InfoCompraTitulo">
-              <p>Información de la compra</p>
-            </div>
-            {/*Combobox de método de pago*/}
-            <div className="pagosPage_ComboBox">
-              <Box sx={{ minWidth: 500 }}>
-                <FormControl variant="filled" fullWidth>
-                  <InputLabel id="simple-select-labelPago">Método de Pago</InputLabel>
-                  <Select
-                    labelId="simple-select-labelPago"
-                    id="simple-selectPago"
-                    value={pago}
-                    label="pago"
-                    onChange={handleChangePago}
-                  >
-                    <MenuItem value={1}>Efectivo</MenuItem>
-                    <MenuItem value={2}>Débito</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
-            </div>
-            {/*Botones de información de compra*/}
-            <section className="pagosPage_InfoCompraContenido">
-              <div className="pagosPage_CancelarBoton">
-                <Button onClick={() => navigate("/caja")} variant="outlined">
-                  Cancelar compra
-                </Button>
-              </div>
-              <Button onClick={() => handleRedirect()} variant="contained" disabled={!isActive}>
-                Confirmar pago
-              </Button>
-              <PagosImpresion
-                productos={carroProducts}
-                activo={!isActive}
-                redirigir={handleRedirect}
-              ></PagosImpresion>
-            </section>
-          </section>
-        </section>
-      </section>
+        {/* Resultados */}
+        <div className="pagosPage_resultadosContainer">
+          {/* Stepper */}
+          <div>Master Blaster</div>
+        </div>
+      </div>
     </section>
   );
 };
