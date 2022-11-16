@@ -3,9 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
-import {FaSignInAlt, FaInfoCircle, FaBoxOpen, FaGithub} from "react-icons/fa"
+import {FaSignInAlt, FaInfoCircle, FaBoxOpen, FaGithub, FaFigma} from "react-icons/fa"
 import Modal from "@mui/material/Modal";
 import { makeStyles } from "@material-ui/core/styles";
+
 // Estilos.
 import Styles from "./styles/Screen.jsx";
 import "./IndexPage.scss";
@@ -24,6 +25,15 @@ const useStyles = makeStyles((theme) => ({
     transform: "translate(-50%, -50%)",
   },
 }));
+
+//estilo de botones
+const buttonStyle = {
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "center",
+  columnGap: "10px",
+};
 
 // Definición de la pagina.
 const IndexPage = (props) => {
@@ -47,16 +57,22 @@ const IndexPage = (props) => {
     <div className="modalIndex">
       <div className="modalIndex_contenido">
         <div className="modalIndex_titulos">
-          <h2>¿Quienes somos?</h2>
+          <h2>¿Quiénes somos?</h2>
         </div>
 
         <div className="modal_info">
-          <h1>Adminify® es una empresa que permite satisfacer las necesidades de gestion de inventario de tu negocio, permitiendo la creación, actualización y eliminación de productos del inventario, junto con un uso de contexto en relación al stock del inventario con el sistema de caja. Adicional a todo, Adminify ofrece una interfaz moderna capaz de ser intuitiva, rápida y adaptada para ser usada por todas las edades.</h1>
+          <h1>Adminify® es una empresa que permite satisfacer las necesidades de gestión de inventario de tu negocio, permitiendo la creación, actualización y eliminación de productos del inventario, junto con un uso de contexto en relación al stock del inventario con el sistema de caja. Adicional a todo, Adminify ofrece una interfaz moderna capaz de ser intuitiva, rápida y adaptada para ser usada por todas las edades.</h1>
         </div>
         <div className="modal_botonesIndex">
-          <IconButton aria-label="GitHub" size="small">
+          <div className="modal_IconButtons">
+          Más sobre nosotros:
+          <IconButton aria-label="GitHub" size="large" >
                 <FaGithub fontSize="inherit" />
           </IconButton>
+          <IconButton aria-label="GitHub" size="large" >
+                <FaFigma fontSize="inherit" />
+          </IconButton>
+          </div>
           <Button variant="outlined" onClick={() => abrirCerrarModal()}>
             cerrar
           </Button>
@@ -64,6 +80,8 @@ const IndexPage = (props) => {
       </div>
     </div>
   );
+
+
 
   // 4. Render.
   return (
@@ -74,10 +92,10 @@ const IndexPage = (props) => {
           <h2><FaBoxOpen size="35vh" ></FaBoxOpen></h2>
         </div>
         <div className="indexPage_contenedorBotones">
-          <Button variant="contained" onClick={() => navigate("/login")}>
+          <Button variant="contained" onClick={() => navigate("/login")} style={buttonStyle}>
           Entrar <FaSignInAlt size="3vh" position></FaSignInAlt>
         </Button>
-        <Button variant="contained" onClick={() => abrirCerrarModal()}>
+        <Button variant="contained" onClick={() => abrirCerrarModal()} style={buttonStyle}>
         <FaInfoCircle size="3vh" position></FaInfoCircle> Sobre nosotros
         </Button>
         </div>
