@@ -47,31 +47,6 @@
   }
 }
 
-.cajaPage_content_block {
-  margin-left: 7.5rem;
-  margin-right: 7.5rem;
-  background-color: Colors.$white-color;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  div {
-    div {
-      opacity: 40%;
-    }
-  }
-  h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    position: absolute;
-    top: 15%;
-    left: 3%;
-  }
-}
 
-.cajaPage_navigation {
-  width: 100%;
-}
 
 

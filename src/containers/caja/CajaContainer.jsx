@@ -19,6 +19,7 @@ const CajaContainer = (props) => {
   const statusCaja = useSelector((state) => state.app.statusCaja);
   const horaApertura = useSelector( (state) => state.app.horaApertura);
   const horaCierre = useSelector( (state) => state.app.horaCierre);
+  const ventas = useSelector( (state) => state.venta.ventas );
   const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
@@ -55,16 +56,12 @@ const CajaContainer = (props) => {
 
   const handleApertura = () =>{
     const fecha = new Date()
-    const fechaString = fecha.toLocaleString();
-    const fechaArray = fechaString.split(", ");
-    dispatch(aperturarCaja(fechaArray[1]))
+    dispatch(aperturarCaja(fecha))
   }
 
   const handleCierre = () =>{
     const fecha = new Date()
-    const fechaString = fecha.toLocaleString();
-    const fechaArray = fechaString.split(", ");
-    dispatch(cierreCaja(fechaArray[1]))
+    dispatch(cierreCaja(fecha))
   }
 
   const handleDisplayAlert = () => {
@@ -89,6 +86,7 @@ const CajaContainer = (props) => {
         handleApertura={handleApertura}
         handleCierre={handleCierre}
         handleDisplayAlert={handleDisplayAlert}
+        ventas = {ventas}
       />
     </Navbar>
   );

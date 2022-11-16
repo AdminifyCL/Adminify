@@ -7,9 +7,10 @@ import "./CajaCierre.scss";
 
 // Definición del componente: <CajaBotones />
 export function CajaCierre(props) {
-  // -- Renderizado.
-  const { open } = props;
-  if (open && !props.block) {
+
+  const { block , open , cerrarModal, bloquearCaja, handleConfirmacion} = props
+
+  if (open && !block) {
     return (
       <section className="cajaPage_menu_cierre">
         <p>¿ Desea realizar la apertura de caja ?</p>
@@ -17,10 +18,9 @@ export function CajaCierre(props) {
           <Button
             variant="contained"
             onClick={() => {
-              if (!props.block) {
-                props.bloquearCaja("cajaPage_content");
-                props.abrirCaja()
-                props.cerrar();
+              if (!block) {
+                bloquearCaja();
+                cerrarModal();
               }
             }}
           >
@@ -29,7 +29,7 @@ export function CajaCierre(props) {
           <Button
             variant="outlined"
             onClick={() => {
-              props.cerrar();
+              cerrarModal();
             }}
           >
             Salir
@@ -38,7 +38,7 @@ export function CajaCierre(props) {
       </section>
     );
   }
-  if (open && props.block) {
+  if (open && block) {
     return (
       <section className="cajaPage_menu_cierre">
         <p>¿ Desea realizar el cierre de caja ?</p>
@@ -46,10 +46,10 @@ export function CajaCierre(props) {
           <Button
             variant="contained"
             onClick={() => {
-              if (props.block) {
-                props.bloquearCaja("cajaPage_content_block");
-                props.cerrarCaja()
-                props.cerrar();
+              if (block) {
+                bloquearCaja();
+                cerrarModal();
+                handleConfirmacion()
               }
             }}
           >
@@ -58,7 +58,7 @@ export function CajaCierre(props) {
           <Button
             variant="outlined"
             onClick={() => {
-              props.cerrar();
+              cerrarModal();
             }}
           >
             Salir
