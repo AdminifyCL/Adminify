@@ -1,9 +1,7 @@
 // Dependencias.
-import React, { useState, useEffect, useId } from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
 import { FaTrash, FaEdit, FaBreadSlice, FaHotdog } from "react-icons/fa";
-import PropTypes from "prop-types";
-
 // Estilos.
 import "./ProductoCarro.scss";
 

@@ -1,13 +1,12 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { CajaProductos } from "./components/CajaProductos.jsx";
-import { CajaCarro } from "./components/CajaCarro.jsx";
-import { CajaCierre } from "./components/CajaCierre.jsx";
-import { CajaTotal } from "./components/CajaTotal.jsx";
-import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Fab } from "@mui/material";
-import { VscGear } from "react-icons/vsc";
+import { CajaProductos } from "./components/Producto/CajaProductos.jsx";
+import { CajaCarro } from "./components/Carro/CajaCarro.jsx";
+import { CajaCierre } from "./components/Cierre/CajaCierre.jsx";
+import { CajaTotal } from "./components/Total/CajaTotal.jsx";
+import { CajaBotones } from "./components/Botones/CajaBotones.jsx";
+import { CajaModal } from "./components/Modal/CajaModal.jsx"
 import { useNavigate } from "react-router-dom";
 import { privateURL } from "../../schemas/Navigation.js";
 
@@ -22,14 +21,11 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { productos, sendCarrito, statusCaja, setStatus, horaApertura} = props;
-  const [apertura, setApertura] = useState("")
-  const [cierre, setCierre] = useState("")
+  const { productos, sendCarrito, statusCaja, setStatus, horaApertura,horaCierre,handleCierre,handleApertura,handleDisplayAlert} = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
   const [modalVisibility, setModalVisibility] = useState(false);
-  const [pageVisibility, setPageVisibility] = useState("cajaPage_content_block");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -41,14 +37,6 @@ const CajaPage = (props) => {
       setCanPay(false);
     }
   }, [carrito]);
-
-  useEffect(()=>{
-    if (statusCaja){
-      console.log("Hora de apertura:", apertura)
-    }else{
-      console.log("Hora de cierre:", cierre)
-    }
-  },[statusCaja])
 
   useEffect(() => {
     dispatch(clearMetodo());
@@ -125,22 +113,9 @@ const CajaPage = (props) => {
     setCarrito([]);
     setTotal(0);
     if (statusCaja){
-      handleFecha(false)
       setStatus("close");
     }else{
-      handleFecha(true)
       setStatus("open");
-    }
-  };
-
-  const handleFecha = (mode) => {
-    const fecha = new Date();
-    const fechaString = fecha.toLocaleString();
-    const fechaArray = fechaString.split(", ");
-    if(mode){
-      setApertura(fechaArray[1]);
-    }else{
-      setCierre(fechaArray[1])
     }
   };
 
@@ -157,6 +132,8 @@ const CajaPage = (props) => {
           open={modalVisibility}
           cerrar={cerrarModal}
           bloquearCaja={bloquearCaja}
+          abrirCaja = {handleApertura}
+          cerrarCaja = {handleCierre}
         />
 
         {/* Lista de los productos */}
@@ -191,17 +168,7 @@ const CajaPage = (props) => {
         />
 
         {/* Boton de cierre de caja */}
-        <Fab
-          color="primary"
-          aria-label="add"
-          style={{ position: "absolute", top: "88%", left: "93%" }}
-          onClick={() => {
-            console.log(horaApertura)
-            setModalVisibility(true);
-          }}
-        >
-          <VscGear size={30} />
-        </Fab>
+        <CajaModal verModal = {setModalVisibility}></CajaModal>
       </section>
     </section>
   );

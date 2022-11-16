@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@mui/material";
 
 //Estilos
-import "../CajaPage.scss";
+import "./CajaCierre.scss";
 
 // Definición del componente: <CajaBotones />
 export function CajaCierre(props) {
@@ -19,6 +19,7 @@ export function CajaCierre(props) {
             onClick={() => {
               if (!props.block) {
                 props.bloquearCaja("cajaPage_content");
+                props.abrirCaja()
                 props.cerrar();
               }
             }}
@@ -47,6 +48,7 @@ export function CajaCierre(props) {
             onClick={() => {
               if (props.block) {
                 props.bloquearCaja("cajaPage_content_block");
+                props.cerrarCaja()
                 props.cerrar();
               }
             }}

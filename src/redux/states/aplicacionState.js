@@ -7,7 +7,8 @@ const aplicacionState = {
   },
   alertVisible: false,
   statusCaja: false,
-  horaApertura: "9:15",
+  horaApertura: "",
+  horaCierre:"",
 };
 
 // Exportación

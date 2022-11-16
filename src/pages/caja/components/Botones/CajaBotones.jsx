@@ -2,6 +2,9 @@
 import React from "react";
 import { Button } from "@mui/material";
 
+//Estilos
+import "./CajaBotones.scss"
+
 // Definición del componente: <CajaBotones />
 export function CajaBotones(props) {
   // -- Manejo del estado.

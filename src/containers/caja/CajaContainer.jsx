@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 
 // Action
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
-import { openCaja, closeCaja } from "../../redux/slices/aplicacionSlice.js";
+import { openCaja, closeCaja, aperturarCaja,cierreCaja, displayAlert } from "../../redux/slices/aplicacionSlice.js";
 import { clearMetodo } from "../../redux/slices/ventasSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
@@ -18,6 +18,7 @@ const CajaContainer = (props) => {
   const allProductos = useSelector((state) => state.producto.productos);
   const statusCaja = useSelector((state) => state.app.statusCaja);
   const horaApertura = useSelector( (state) => state.app.horaApertura);
+  const horaCierre = useSelector( (state) => state.app.horaCierre);
   const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
@@ -52,6 +53,29 @@ const CajaContainer = (props) => {
     dispatch(setCarro(productosCarro));
   };
 
+  const handleApertura = () =>{
+    const fecha = new Date()
+    const fechaString = fecha.toLocaleString();
+    const fechaArray = fechaString.split(", ");
+    dispatch(aperturarCaja(fechaArray[1]))
+  }
+
+  const handleCierre = () =>{
+    const fecha = new Date()
+    const fechaString = fecha.toLocaleString();
+    const fechaArray = fechaString.split(", ");
+    dispatch(cierreCaja(fechaArray[1]))
+  }
+
+  const handleDisplayAlert = () => {
+    const newAlert = {
+      type:"success",
+      title: "Caja",
+      message: "Se ha abierto la caja"
+    }
+    dispatch(displayAlert(newAlert))
+  }
+
   // 4. Render.
   return (
     <Navbar>
@@ -61,6 +85,10 @@ const CajaContainer = (props) => {
         statusCaja={statusCaja}
         setStatus={handleStatusCaja}
         horaApertura={horaApertura}
+        horaCierre={horaCierre}
+        handleApertura={handleApertura}
+        handleCierre={handleCierre}
+        handleDisplayAlert={handleDisplayAlert}
       />
     </Navbar>
   );

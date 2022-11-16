@@ -1,9 +1,9 @@
 // Dependencias.
 import React, { useEffect, useState } from "react";
-import ProductoCarro from "./Producto/ProductoCarro.jsx";
+import ProductoCarro from "./ProductoCarro.jsx";
 
 // Estilos.
-import "../CajaPage.scss";
+import "./CajaProductos.scss";
 
 export function CajaProductos(props) {
   // 1. Manejo del estado.

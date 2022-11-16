@@ -3,7 +3,7 @@ import React from "react";
 import { BsFillTrashFill, BsPlusCircleFill } from "react-icons/bs";
 
 //Estilos
-import "../CajaPage.scss";
+import "./CajaCarro.scss";
 
 //Definicion de componente <CajaCarro/>
 export function CajaCarro(props) {
