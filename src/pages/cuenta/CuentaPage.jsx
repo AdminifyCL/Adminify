@@ -1,7 +1,6 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import Categorias from "./components/Categorias/Categorias.jsx";
 import handleDateMonth from "../../handlers/utiles/handleDateMonth.js";
 import LicenciasContainer from "./components/Licencias/Licencias.jsx";

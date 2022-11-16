@@ -1,7 +1,6 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import ListProducts from "./components/ListProducts/ListProducts.jsx";
 import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
 import PropTypes from "prop-types";

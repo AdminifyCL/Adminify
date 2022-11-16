@@ -1,7 +1,5 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
@@ -11,6 +9,7 @@ import { Fab, Button } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
+import PropTypes from "prop-types";
 
 // Actions.
 import { displayAlert } from "../../redux/slices/aplicacionSlice.js";

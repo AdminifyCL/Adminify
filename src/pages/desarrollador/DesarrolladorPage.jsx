@@ -1,6 +1,5 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import PropTypes from "prop-types";
 
 // Estilos.
