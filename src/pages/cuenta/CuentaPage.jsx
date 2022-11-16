@@ -92,7 +92,7 @@ const CuentaPage = (props) => {
         <Categorias />
 
         {/* Licencia. */}
-        <LicenciasContainer />
+        {/* <LicenciasContainer /> */}
 
         {/* Interfaz. */}
         {/* <div>Interfaz</div> */}
