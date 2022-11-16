@@ -101,66 +101,6 @@ const PagosPage = (props) => {
               ))}
             </Stepper>
           </div>
-
-          {/* Seccion de resumen de productos*/}
-          <section className="pagosPage_ProductosContenedor">
-            <section className="pagosPage_ProductosContenido">
-              <div className="pagosPage_ProductosCabecera">
-                <p>Resumen de productos</p>
-              </div>
-              {/* Contenedor de productos*/}
-              <div className="pagosPage_ProductosLista">{mappingCarroProducts()}</div>
-            </section>
-          </section>
-
-          {/* Contenedor de valor total*/}
-          <section className="pagosPage_ProductosTotal">
-            <p>Total:</p>
-            <p className="pagosPage_totalValor">{mappingTotal()}</p>
-          </section>
-
-          {/*Sección de información de compra (Método de pago)*/}
-          <section className="pagosPage_InfoCompraContenedor">
-            <div className="pagosPage_InfoCompraTitulo">
-              <p>Información de la compra</p>
-            </div>
-
-            {/*Combobox de método de pago*/}
-            <div className="pagosPage_ComboBox">
-              <Box sx={{ minWidth: 500 }}>
-                <FormControl variant="filled" fullWidth>
-                  <InputLabel id="simple-select-labelPago">Método de Pago</InputLabel>
-                  <Select
-                    labelId="simple-select-labelPago"
-                    id="simple-selectPago"
-                    value={pago}
-                    label="pago"
-                    onChange={handleChangePago}
-                  >
-                    <MenuItem value={1}>Efectivo</MenuItem>
-                    <MenuItem value={2}>Débito</MenuItem>
-                  </Select>
-                </FormControl>
-              </Box>
-            </div>
-
-            {/*Botones de información de compra*/}
-            <section className="pagosPage_InfoCompraContenido">
-              <div className="pagosPage_CancelarBoton">
-                <Button onClick={() => navigate("/caja")} variant="outlined">
-                  Cancelar compra
-                </Button>
-              </div>
-              <Button onClick={() => handleRedirect()} variant="contained" disabled={!isActive}>
-                Confirmar pago
-              </Button>
-              <PagosImpresion
-                productos={carroProducts}
-                activo={!isActive}
-                redirigir={handleRedirect}
-              ></PagosImpresion>
-            </section>
-          </section>
         </section>
       </section>
     </section>

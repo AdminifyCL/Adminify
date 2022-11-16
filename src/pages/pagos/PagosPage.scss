@@ -18,6 +18,7 @@
   flex-wrap: wrap;
 
   row-gap: 1rem;
+  column-gap: 1rem;
 }
 
 .pagosPage_Titulo {
@@ -65,6 +66,11 @@
 }
 
 .pagosPage_resultadosContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  padding-top: 3rem;
 }
 
 @keyframes fadeInPagos {

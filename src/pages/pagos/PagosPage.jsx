@@ -7,6 +7,7 @@ import Productos from "./components/Productos/Productos.jsx";
 import Total from "./components/Total/Total.jsx";
 import MetodoPago from "./components/MetodoPago/MetodoPago.jsx";
 import Buttons from "./components/Buttons/Buttons.jsx";
+import PagoStepper from "./components/PagoStepper/PagoStepper.jsx";
 import PropTypes from "prop-types";
 
 // Estilos.
@@ -74,7 +75,7 @@ const PagosPage = (props) => {
         {/* Resultados */}
         <div className="pagosPage_resultadosContainer">
           {/* Stepper */}
-          <div>Master Blaster</div>
+          <PagoStepper />
         </div>
       </div>
     </section>
