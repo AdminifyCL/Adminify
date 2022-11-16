@@ -73,7 +73,7 @@ const IndexPage = (props) => {
           <IconButton aria-label="Figma" size="large" >
                 <FaFigma fontSize="inherit" />
           </IconButton>
-          <IconButton aria-label="Notion" size="large" >
+          <IconButton aria-label="Notion" size="large" onClick={() => navigate()}>
                 <SiNotion fontSize="inherit" />
           </IconButton>
           </div>

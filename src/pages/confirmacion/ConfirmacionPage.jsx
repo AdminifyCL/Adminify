@@ -7,6 +7,7 @@ import ReactPDF from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PropTypes from "prop-types";
 import PDFFile from "./components/PDFFile.jsx";
+import PagosImpresion from "./PagosImpresion.jsx";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
@@ -17,11 +18,23 @@ const ConfirmacionPage = (props) => {
   const { carroProducts, metodo } = props;
   const navigate = useNavigate();
   const steps = ["Selección de productos", "Proceso de pago", "Confirmación de pago"];
-
+  const [isActive, setIsActive] = useState(false);
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
+
+  const handleRedirect = async () => {
+    // Redirigir a la confirmación del pago
+    if (isActive) {
+      // Configurando la venta.
+      await setVenta(pago);
+
+      navigate("/confirmacion");
+      setMetodo(pago);
+    }
+  };
+
   const handleImpresion = () => {
     const ventana = window.open("", "PRINT", "height=720,width=1280");
     ventana.document.write("Desea Imprimir la boleta, seleccione la impresora");
@@ -72,6 +85,17 @@ const ConfirmacionPage = (props) => {
     return total;
   };
 
+  const handleChangePago = (event) => {
+    let nuevo_metodo = event.target.value;
+    if (nuevo_metodo === 1) {
+      setPago("Efectivo");
+    } else {
+      setPago("Debito");
+    }
+
+    setIsActive(true);
+  };
+
   const handleActualDate = () => {
     const date = new Date();
     const day = date.getDate();
@@ -120,6 +144,12 @@ const ConfirmacionPage = (props) => {
         </div>
 
         <div className="confirmacionPage_contendorBotonesConfimacion">
+
+        <PagosImpresion
+                productos={carroProducts}
+                activo={!isActive}
+                redirigir={handleRedirect}
+              ></PagosImpresion>
 
           <Button onClick={() => navigate("/caja")} variant="outlined">
             Volver a la caja
