@@ -70,10 +70,10 @@ const IndexPage = (props) => {
           <IconButton aria-label="GitHub" size="large" >
                 <FaGithub fontSize="inherit" />
           </IconButton>
-          <IconButton aria-label="GitHub" size="large" >
+          <IconButton aria-label="Figma" size="large" >
                 <FaFigma fontSize="inherit" />
           </IconButton>
-          <IconButton aria-label="GitHub" size="large" >
+          <IconButton aria-label="Notion" size="large" >
                 <SiNotion fontSize="inherit" />
           </IconButton>
           </div>
@@ -96,11 +96,11 @@ const IndexPage = (props) => {
           <h2><FaBoxOpen size="35vh" ></FaBoxOpen></h2>
         </div>
         <div className="indexPage_contenedorBotones">
+        <Button variant="outlined" onClick={() => abrirCerrarModal()} style={buttonStyle}>
+        <FaInfoCircle size="3vh" position></FaInfoCircle> Sobre nosotros
+        </Button>
           <Button variant="contained" onClick={() => navigate("/login")} style={buttonStyle}>
           Entrar <FaSignInAlt size="3vh" position></FaSignInAlt>
-        </Button>
-        <Button variant="contained" onClick={() => abrirCerrarModal()} style={buttonStyle}>
-        <FaInfoCircle size="3vh" position></FaInfoCircle> Sobre nosotros
         </Button>
         </div>
         <Modal open={modal} onClose={abrirCerrarModal}>
