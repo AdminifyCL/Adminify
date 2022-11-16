@@ -47,11 +47,13 @@
   flex-grow: 1;
 
   max-width: 50rem;
+  max-height: 25rem;
   min-width: 20rem;
 
   border: 2px solid Colors.$primary-color;
 
   border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+  overflow: auto;
 }
 
 .pagosPage_infoContainer {

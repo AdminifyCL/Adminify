@@ -1,0 +1,26 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.Total_contenedor {
+  background-color: Colors.$white-color;
+
+  margin: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Total_totalText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: Colors.$primary_dark-color;
+}
+
+.Total_totalValor {
+  background-color: Colors.$gray-color;
+  text-align: center;
+}

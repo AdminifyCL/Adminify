@@ -17,7 +17,12 @@ const Total = (props) => {
 
   // 3. Metodos.
   // 4. Render.
-  return <></>;
+  return (
+    <section className="Total_contenedor">
+      <p className="Total_totalText">Total:</p>
+      <p className="Total_totalValor">${}</p>
+    </section>
+  );
 };
 
 // PropTypes.

@@ -1,6 +1,5 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -15,10 +14,11 @@ import {
   Step,
   StepLabel,
 } from "@mui/material";
-import PropTypes from "prop-types";
 import FormCliente from "./components/FormCliente/FormCliente.jsx";
 import PagosImpresion from "./components/PagosImpresion/PagosImpresion.jsx";
 import Productos from "./components/Productos/Productos.jsx";
+import Total from "./components/Total/Total.jsx";
+import PropTypes from "prop-types";
 
 // Estilos.
 import "./PagosPage.scss";
@@ -102,7 +102,9 @@ const PagosPage = (props) => {
           {/* Información de la venta */}
           <div className="pagosPage_infoContainer">
             {/* Total de la venta. */}
-            <div>Total</div>
+            <div>
+              <Total />
+            </div>
 
             {/* Metodo de pago */}
             <div>Metodo</div>
