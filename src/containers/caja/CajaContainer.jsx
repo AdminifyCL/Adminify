@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
 import { openCaja, closeCaja } from "../../redux/slices/aplicacionSlice.js";
 import { clearMetodo } from "../../redux/slices/ventasSlice.js";
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -31,8 +32,6 @@ const CajaContainer = (props) => {
 
   // 3. Metodos.
   const handleStatusCaja = (type) => {
-    console.log("[] ACTION / diparador ");
-
     switch (type) {
       case "open":
         dispatch(openCaja());
@@ -52,6 +51,10 @@ const CajaContainer = (props) => {
     dispatch(setCarro(productosCarro));
   };
 
+  const triggerAlert = (alert) => {
+    dispatch(displayAlert(alert));
+  };
+
   // 4. Render.
   return (
     <Navbar>
@@ -60,6 +63,7 @@ const CajaContainer = (props) => {
         sendCarrito={handleCarritoProducts}
         statusCaja={statusCaja}
         setStatus={handleStatusCaja}
+        triggerAlert={triggerAlert}
       />
     </Navbar>
   );
