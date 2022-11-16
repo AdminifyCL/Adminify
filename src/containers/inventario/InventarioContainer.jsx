@@ -42,6 +42,9 @@ const InventarioContainer = (props) => {
     console.log("[CONTAINER] DELETE PRODUCT");
     console.log("[CONTAINER] Product: ", productData);
 
+    // Comunicación con la API de la base de datos.
+    // ...
+
     dispatch(deleteProduct(productData));
   };
 

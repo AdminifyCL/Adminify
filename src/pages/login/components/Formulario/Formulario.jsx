@@ -10,7 +10,7 @@ import Styles from "./Formulario.styles.jsx";
 // Definición del componente: <Formulario />
 const Formulario = (props) => {
   // 1. Manejo del estado.
-  const { toRegister, toForgot, login, toCarga } = props;
+  const { toRegister, toForgot, login, toCarga, loading } = props;
 
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -152,8 +152,9 @@ const Formulario = (props) => {
           type="submit"
           onClick={() => {}}
           style={{ minWidth: "50%", flexGrow: 2 }}
+          disabled={loading}
         >
-          Entrar
+          {loading ? "Cargando..." : "Iniciar sesión"}
         </Button>
       </div>
     </form>

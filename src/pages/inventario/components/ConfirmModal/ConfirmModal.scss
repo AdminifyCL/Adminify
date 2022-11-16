@@ -2,3 +2,25 @@
 @use "../../../../styles/colors" as Colors;
 
 // Definiciones de estilos.
+.ConfirmModal_titleContainer {
+  h1 {
+    color: Colors.$primary_color;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.ConfirmModal_contentContainer {
+  p {
+    color: Colors.$primary_dark_color;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+.ConfirmModal_buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  column-gap: 1rem;
+}

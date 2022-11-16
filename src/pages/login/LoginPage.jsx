@@ -53,6 +53,7 @@ const LoginPage = (props) => {
             toForgot={redirectToForgot}
             toCarga={redirectToCarga}
             login={login}
+            loading={loading}
           />
         </div>
       </div>

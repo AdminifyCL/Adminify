@@ -10,18 +10,20 @@ import "./Product.scss";
 // Definición del componente: <ProductCard />
 const ProductCard = (props) => {
   // -- Manejo del estado.
-  const { info, editProduct, deleteProduct } = props;
+  const { info, editModal, deleteModal, setProducto } = props;
 
   // -- Ciclo de vida.
   useEffect(() => {}, []);
 
   // -- Metodos.
   const handleEditProduct = async () => {
-    await editProduct(info);
+    setProducto(info);
+    editModal(true);
   };
 
   const handleDeleteProduct = async () => {
-    await deleteProduct(info);
+    setProducto(info);
+    deleteModal(true);
   };
 
   const handlerIcon = (iconId) => {

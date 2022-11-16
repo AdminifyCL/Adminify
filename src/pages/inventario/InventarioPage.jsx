@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import ListProducts from "./components/ListProducts/ListProducts.jsx";
 import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
+import EditModal from "./components/EditModal/EditModal.jsx";
+import ConfirmModal from "./components/ConfirmModal/ConfirmModal.jsx";
 import PropTypes from "prop-types";
 
 // Estilos.
@@ -13,6 +15,9 @@ const InventarioPage = (props) => {
   // 1. Manejo del estado.
   const { products, createProduct, editProduct, deleteProduct } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
+  const [producto, setProducto] = useState(null);
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
@@ -36,6 +41,22 @@ const InventarioPage = (props) => {
         createProduct={createProduct}
       />
 
+      {/* Edit product */}
+      <EditModal
+        visible={editModal}
+        setVisible={setEditModal}
+        editProduct={editProduct}
+        producto={producto}
+      />
+
+      {/* Delete product */}
+      <ConfirmModal
+        visible={deleteModal}
+        setVisible={setDeleteModal}
+        deleteProduct={deleteProduct}
+        producto={producto}
+      />
+
       {/* Vista de la caja. */}
       <section className="inventarioPage_content">
         {/* Titulo y boton de acción */}
@@ -52,8 +73,9 @@ const InventarioPage = (props) => {
           {/* Tabla de elementos. */}
           <ListProducts
             productos={products}
-            editProduct={editProduct}
-            deleteProduct={deleteProduct}
+            editModal={setEditModal}
+            deleteModal={setDeleteModal}
+            setProducto={setProducto}
           />
         </div>
       </section>
