@@ -11,7 +11,7 @@ import "./Buttons.scss";
 // Definición del componente: <Buttons />
 const Buttons = (props) => {
   // 1. Manejo del estado.
-  const { toCaja, toConfirmacion, productos, metodo } = props;
+  const { toCaja, toConfirmacion, productos, metodo, cargando } = props;
   const [active, setActive] = useState(false);
 
   // 2. Ciclo de vida.
@@ -31,8 +31,13 @@ const Buttons = (props) => {
         Cancelar compra
       </Button>
 
-      <Button onClick={() => toConfirmacion()} variant="contained" type="submit" disabled={!active}>
-        Confirmar pago
+      <Button
+        onClick={() => toConfirmacion()}
+        variant="contained"
+        type="submit"
+        disabled={!active || cargando}
+      >
+        {cargando ? "Confirmando venta..." : "Confirmar venta"}
       </Button>
 
       {/* <PagosImpresion productos={productos} /> */}

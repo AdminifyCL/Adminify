@@ -16,7 +16,7 @@ import "./PagosPage.scss";
 // Definición del componente: <PagosPage />
 const PagosPage = (props) => {
   // 1. Manejo del estado.
-  const { carroProducts, setMetodo, setVenta } = props;
+  const { carroProducts, setMetodo, setVenta, cargando } = props;
   const navigate = useNavigate();
   const [metodoPago, setMetodoPago] = useState("");
   const [active, setActive] = useState(false);
@@ -71,6 +71,7 @@ const PagosPage = (props) => {
               toCaja={toCaja}
               toConfirmacion={toConfirmacion}
               metodo={metodoPago}
+              cargando={cargando}
             />
           </div>
         </div>
