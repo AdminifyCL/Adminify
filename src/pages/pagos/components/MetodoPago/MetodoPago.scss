@@ -1,0 +1,25 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos para el componente MetodoPago
+.MetodoPago_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  row-gap: 0.5rem;
+  max-width: 30rem;
+}
+
+.MetodoPago_bannerContainer {
+  p {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: Colors.$primary_dark-color;
+  }
+}
+.MetodoPago_metodoContainer {
+  width: 100%;
+}

@@ -120,13 +120,6 @@ const ConfirmacionPage = (props) => {
         </div>
 
         <div className="confirmacionPage_contendorBotonesConfimacion">
-          <Button onClick={() => handleImpresion()} variant="outlined">
-            Ver Recibo
-          </Button>
-
-          <Button onClick={() => mostratPDF()} variant="outlined">
-            Ver PDF
-          </Button>
 
           <Button onClick={() => navigate("/caja")} variant="outlined">
             Volver a la caja
@@ -136,15 +129,7 @@ const ConfirmacionPage = (props) => {
             Ver ventas
           </Button>
         </div>
-        <div className="confirmacionPage_stepper">
-          <Stepper activeStep={3} alternativeLabel>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-        </div>
+
       </section>
     </section>
   );

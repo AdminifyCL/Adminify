@@ -1,0 +1,32 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+.Total_contenedor {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  max-width: 30rem;
+}
+
+.Total_totalText {
+  flex-grow: 1;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: Colors.$primary_dark-color;
+}
+
+.Total_totalValor {
+  flex-grow: 3;
+
+  background-color: Colors.$gray-color;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+
+  font-size: 1rem;
+  font-weight: 700;
+  color: Colors.$primary-color;
+}

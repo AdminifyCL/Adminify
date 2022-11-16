@@ -31,7 +31,6 @@ const CajaPage = (props) => {
   const [ confirmacion, setConfirmacion ] = useState(false)
   const [ datosBoleta, setDatos ] = useState([ "",0,0,0,0 ])
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
   useEffect(() => {
@@ -40,7 +39,7 @@ const CajaPage = (props) => {
     } else {
       setCanPay(false);
     }
-  }, [carrito]);
+  }, [carrito, pageVisibility]);
 
   useEffect(() => {
     dispatch(clearMetodo());
@@ -48,7 +47,6 @@ const CajaPage = (props) => {
   }, []);
 
   // -- Metodos.
-
   const cambiarTotal = (valor) => {
     setTotal(total + valor);
   };
@@ -99,7 +97,7 @@ const CajaPage = (props) => {
         message: "El carrito está vacío, no se puede realizar la venta",
       };
 
-      dispatch(displayAlert(newAlert));
+      triggerAlert(newAlert);
     }
   };
 
@@ -164,11 +162,21 @@ const CajaPage = (props) => {
 
       <section className="cajaPage_content">
 
-        {/* <Button variant="contained" onClick={()=>{
-          generarBoleta()
-        }}>TESTING</Button> */}
+        <Button
+          variant="contained"
+          style={{ position: "absolute", right: 200, zIndex: 1 }}
+          onClick={() => setStatus("open")}
+        >
+          TEST CAJA: OPEN
+        </Button>
+        <Button
+          variant="contained"
+          style={{ position: "absolute", right: 0, zIndex: 1 }}
+          onClick={() => setStatus("close")}
+        >
+          TEST CAJA: CLOSE
+        </Button>
 
-        {/* Menu de cierre */}
         <CajaCierre
           block={statusCaja}
           open={modalVisibility}

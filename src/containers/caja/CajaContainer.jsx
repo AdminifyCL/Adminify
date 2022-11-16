@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
 import { openCaja, closeCaja, aperturarCaja,cierreCaja, displayAlert } from "../../redux/slices/aplicacionSlice.js";
 import { clearMetodo } from "../../redux/slices/ventasSlice.js";
+import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
