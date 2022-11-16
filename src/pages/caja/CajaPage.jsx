@@ -1,14 +1,13 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
 import Navigation from "../../components/Navigation/Navigation.jsx";
 import { CajaProductos } from "./components/CajaProductos.jsx";
 import { CajaCarro } from "./components/CajaCarro.jsx";
 import { CajaCierre } from "./components/CajaCierre.jsx";
 import { CajaTotal } from "./components/CajaTotal.jsx";
 import { CajaBotones } from "./components/CajaBotones.jsx";
-import { Fab } from "@mui/material";
+import { Fab, Button } from "@mui/material";
 import { VscGear } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
@@ -24,7 +23,7 @@ import "./CajaPage.scss";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { productos, sendCarrito } = props;
+  const { productos, sendCarrito, statusCaja, setStatus, triggerAlert } = props;
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState([]);
   const [canPay, setCanPay] = useState(false);
@@ -32,7 +31,6 @@ const CajaPage = (props) => {
   const [pageVisibility, setPageVisibility] = useState("cajaPage_content");
   const [block, setBlock] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
   useEffect(() => {
@@ -43,13 +41,7 @@ const CajaPage = (props) => {
     }
   }, [carrito, pageVisibility]);
 
-  useEffect(() => {
-    dispatch(clearMetodo());
-    dispatch(clearCarro());
-  }, []);
-
   // -- Metodos.
-
   const cambiarTotal = (valor) => {
     setTotal(total + valor);
   };
@@ -100,7 +92,7 @@ const CajaPage = (props) => {
         message: "El carrito está vacío, no se puede realizar la venta",
       };
 
-      dispatch(displayAlert(newAlert));
+      triggerAlert(newAlert);
     }
   };
 

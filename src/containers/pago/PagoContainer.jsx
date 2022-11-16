@@ -18,6 +18,7 @@ const PagoContainer = (props) => {
   const {} = props;
   const carroProducts = useSelector((state) => state.producto.carrito);
   const userData = useSelector((state) => state.user.userData);
+  const [cargando, setCargando] = useState(false);
   const [total, setTotal] = useState(0);
   const [cantidad, setCantidad] = useState(0);
   const dispatch = useDispatch();
@@ -46,6 +47,8 @@ const PagoContainer = (props) => {
   };
 
   const handleVenta = async (metodo) => {
+    setCargando(true);
+
     const new_venta = {
       // Información de la venta.
       id: "",
@@ -105,6 +108,8 @@ const PagoContainer = (props) => {
 
     // Actualización de los productos en el inventario.
     // TODO: Para hacer en un futuro.
+
+    setCargando(false);
   };
 
   // 4. Render.
@@ -114,6 +119,7 @@ const PagoContainer = (props) => {
         carroProducts={carroProducts}
         setMetodo={handleMetodoPago}
         setVenta={handleVenta}
+        cargando={cargando}
       />
     </Navbar>
   );
