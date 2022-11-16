@@ -19,23 +19,26 @@ const PagosPage = (props) => {
   const { carroProducts, setMetodo, setVenta } = props;
   const navigate = useNavigate();
   const [metodoPago, setMetodoPago] = useState("");
+  const [active, setActive] = useState(false);
 
   // 2. Ciclo de vida.
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (metodoPago !== "") {
+      setActive(true);
+    }
+    setActive(false);
+  }, [metodoPago]);
 
   // 3. Metodos.
-  const toConfirmacion = () => {
-    // navigate(privateURL.confirmacion);
+  const toConfirmacion = async () => {
+    await setMetodo(metodoPago);
+    await setVenta(metodoPago);
 
-    handleMetodoPago();
+    navigate(privateURL.confirmacion);
   };
 
   const toCaja = () => {
     navigate(privateURL.caja);
-  };
-
-  const handleMetodoPago = () => {
-    setMetodo(metodoPago);
   };
 
   // 4. Render.
