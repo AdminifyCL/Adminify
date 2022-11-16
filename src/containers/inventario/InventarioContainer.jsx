@@ -17,12 +17,10 @@ const InventarioContainer = (props) => {
   const allProducts = useSelector((state) => state.producto.productos);
 
   // 2. Ciclo de vida.
+
   useEffect(() => {
-    if (allProducts.length === 0) {
-      setProductos(inventario);
-    } else {
-      setProductos(allProducts);
-    }
+    console.log("[UPDATE] All Products: ");
+    setProductos(allProducts);
   }, [allProducts]);
 
   // 3. Metodos.
