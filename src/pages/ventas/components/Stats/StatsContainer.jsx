@@ -8,7 +8,7 @@ import "./StatsContainer.scss";
 // Definición del componente: <StatsContainer />
 const StatsContainer = (props) => {
   // 1. Manejo del estado.
-  const { storeVentas } = props;
+  const { ventas } = props;
   const [numVentas, setNumVentas] = useState(0);
   const [totalVentas, setTotalVentas] = useState(0);
   const [ventasEfectivo, setVentasEfectivo] = useState(0);
@@ -17,7 +17,7 @@ const StatsContainer = (props) => {
   // 2. Ciclo de vida.
   useEffect(() => {
     handleStats();
-  }, [storeVentas]);
+  }, [ventas]);
 
   // 3. Metodos.
   const handleStats = () => {
@@ -25,7 +25,7 @@ const StatsContainer = (props) => {
     let numEfectivo = 0;
     let numDebito = 0;
 
-    storeVentas.forEach((venta) => {
+    ventas.forEach((venta) => {
       ganancias = ganancias + venta.total;
 
       if (venta.metodo === "Efectivo") {
@@ -35,7 +35,7 @@ const StatsContainer = (props) => {
       }
     });
 
-    setNumVentas(storeVentas.length);
+    setNumVentas(ventas.length);
     setTotalVentas(ganancias);
     setVentasEfectivo(numEfectivo);
     setVentasDebito(numDebito);

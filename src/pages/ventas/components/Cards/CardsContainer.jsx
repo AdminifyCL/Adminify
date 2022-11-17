@@ -9,16 +9,16 @@ import "./CardsContainer.scss";
 // Definición del componente: <CardsContainer />
 const CardsContainer = (props) => {
   // 1. Manejo del estado.
-  const { storeVentas } = props;
+  const { ventas, removeVenta, cargando } = props;
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
 
   // 3. Metodos.
   const mappingVentasCards = () => {
-    return storeVentas.map((venta) => {
+    return ventas.map((venta) => {
       let id = useId();
-      return <Card ventaInfo={venta} key={id} />;
+      return <Card ventaInfo={venta} key={id} removeVenta={removeVenta} cargando={cargando} />;
     });
   };
 

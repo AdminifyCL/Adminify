@@ -29,12 +29,9 @@ const ventasSlice = createSlice({
     },
 
     removeVenta: (state, action) => {
-      const payload = action.payload;
+      const venta = action.payload;
 
-      return {
-        ...state,
-        ventas: state.ventas.filter((venta) => venta.id !== payload.id),
-      };
+      return { ...state, ventas: state.ventas.filter((v) => v.id !== venta.id) };
     },
 
     //* -- Metodo de pago.
