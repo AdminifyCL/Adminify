@@ -1,7 +1,7 @@
 // Dependencias.
 
 // Definición...
-const editProduct = async () => {
+const editProduct = async (productData, tiendaId) => {
   console.log("[] API HANDLER: editProduct");
   return new Promise(async (resolve, reject) => {
     try {

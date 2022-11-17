@@ -4,10 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import CargaPage from "../../pages/carga/CargaPage.jsx";
 import PropTypes from "prop-types";
 
-// API Handler.
-// Hooks.
-import { useLocalStorage } from "../../hooks/useLocalStorage.jsx";
-
 // API Handlers.
 import fetchUserData from "../../api/usuarios/fetchUserData.js";
 import fetchUserProducts from "../../api/productos/fetchProducts.js";
@@ -28,7 +24,6 @@ const CargaContainer = (props) => {
   const dispatch = useDispatch();
   const [loadMessage, setLoadMessage] = useState("");
   const [loadPercent, setLoadPercent] = useState(0);
-  const [inventario, setInventario] = useState([]);
 
   // 2. Ciclo de vida.
   useEffect(() => {
@@ -126,26 +121,18 @@ const CargaContainer = (props) => {
     };
 
     // Consultas.
-    fetchStoreUser();
-    fetchStoreProducts();
-    fetchStoreVentas();
-    fetchStoreEmpleados();
-
-    setTimeout(() => {
+    fetchStoreUser().then(() => {
       setLoadPercent(20);
-    }, 1000);
-
-    setTimeout(() => {
+    });
+    fetchStoreProducts().then(() => {
       setLoadPercent(40);
-    }, 1000);
-
-    setTimeout(() => {
+    });
+    fetchStoreVentas().then(() => {
       setLoadPercent(60);
-    }, 1000);
-
-    setTimeout(() => {
+    });
+    fetchStoreEmpleados().then(() => {
       setLoadPercent(100);
-    }, 1000);
+    });
 
     // Limpieza de las consultas.
     return () => {
