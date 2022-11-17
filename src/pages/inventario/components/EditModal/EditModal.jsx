@@ -231,6 +231,24 @@ const EditModal = (props) => {
             >
               <FaCookie />
             </IconButton>
+
+            <IconButton
+              aria-label="icono006"
+              onClick={() => handleIcon("icono006")}
+              value={"icono006"}
+              style={icono === "icono006" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaPizzaSlice />
+            </IconButton>
+
+            <IconButton
+              aria-label="icono007"
+              onClick={() => handleIcon("icono007")}
+              value={"icono007"}
+              style={icono === "icono007" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaIceCream />
+            </IconButton>
           </div>
 
           {/* Button */}
