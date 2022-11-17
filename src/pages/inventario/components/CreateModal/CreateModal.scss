@@ -1,0 +1,45 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definiciones de estilos.
+.CreateModal_titleContainer {
+  h1 {
+    color: Colors.$primary_color;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+.CreateModal_formContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  width: 100%;
+}
+
+.CreateModal_inputContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  width: 100%;
+}
+
+.CreateModal_iconsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.CreateModal_buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  column-gap: 1rem;
+
+  width: 100%;
+}

@@ -25,24 +25,43 @@ const InventarioContainer = (props) => {
 
   // 2. Ciclo de vida.
   useEffect(() => {
-    console.log("[UPDATE] All Products: ");
     setProductos(allProducts);
   }, [allProducts]);
 
   // 3. Metodos.
   const handleCreateProduct = async (productData) => {
-    console.log("[CONTAINER] CREATE NEW PRODUCT");
-    console.log("[CONTAINER] Product: ", productData);
     setCargando(true);
 
     // Comunicación con la API.
     let tiendaId = userData.tiendaId;
-    await APIcreateProduct(productData, tiendaId)
-      .then((response) => {})
-      .catch((error) => {});
+    const response = await APIcreateProduct(productData, tiendaId)
+      .then((response) => {
+        let new_alert = {
+          title: "Producto",
+          message: "Producto creado correctamente",
+          type: "success",
+        };
+
+        dispatch(displayAlert(new_alert));
+
+        return response;
+      })
+      .catch((error) => {
+        let new_alert = {
+          title: "Producto",
+          message: "Error al editar el producto",
+          type: "error",
+        };
+
+        dispatch(displayAlert(new_alert));
+      });
 
     // Crear el producto en Redux.
-    dispatch(createProduct(productData));
+    let new_data = {
+      ...productData,
+      id: response.id,
+    };
+    dispatch(createProduct(new_data));
     setCargando(false);
   };
 
@@ -109,6 +128,7 @@ const InventarioContainer = (props) => {
   };
 
   // 4. Render.
+  console.log("[] CARGANDO: ", cargando);
   return (
     <Navbar>
       <InventarioPage

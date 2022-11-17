@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import ListProducts from "./components/ListProducts/ListProducts.jsx";
 import ProductModal from "../../components/Modals/Products/ProductModal.jsx";
+import CreateModal from "./components/CreateModal/CreateModal.jsx";
 import EditModal from "./components/EditModal/EditModal.jsx";
 import ConfirmModal from "./components/ConfirmModal/ConfirmModal.jsx";
 import PropTypes from "prop-types";
@@ -15,6 +16,7 @@ const InventarioPage = (props) => {
   // 1. Manejo del estado.
   const { products, createProduct, editProduct, deleteProduct, cargando } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
+  const [createModal, setCreateModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [producto, setProducto] = useState(null);
@@ -24,21 +26,18 @@ const InventarioPage = (props) => {
 
   // 3. Metodos.
   const handleCreateProduct = () => {
-    setModalVisibility(true);
-  };
-
-  const handleVisibility = () => {
-    setModalVisibility(!modalVisibility);
+    setCreateModal(true);
   };
 
   // 4. Render.
   return (
     <section className="inventarioPage_container">
-      {/* Modal */}
-      <ProductModal
-        open={modalVisibility}
-        onClose={() => handleVisibility()}
+      {/* Create product */}
+      <CreateModal
+        visible={createModal}
+        setVisible={setCreateModal}
         createProduct={createProduct}
+        producto={producto}
         cargando={cargando}
       />
 
