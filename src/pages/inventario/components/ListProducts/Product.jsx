@@ -1,9 +1,5 @@
 // Dependencias.
 import React, { useEffect, useState } from "react";
-<<<<<<< HEAD
-import { FaTrash, FaEdit,FaHamburger, FaBreadSlice, FaHotdog, FaDrumstickBite } from "react-icons/fa";
-import PropTypes from "prop-types";
-=======
 import {
   FaTrash,
   FaEdit,
@@ -16,7 +12,6 @@ import {
   FaPizzaSlice,
   FaIceCream,
 } from "react-icons/fa";
->>>>>>> main
 import { IconButton } from "@mui/material";
 import PropTypes from "prop-types";
 
@@ -54,17 +49,6 @@ const ProductCard = (props) => {
         return <FaHotdog size={30} color="white" />;
         break;
 
-<<<<<<< HEAD
-      // Icono de hamburguesa
-      case "icono003":
-        return <FaHamburger size={30} color="white" />;
-        break;
-      
-      //Icono de pollo
-      case "icono004":
-        return <FaDrumstickBite size={30} color="white" />;
-        break;
-=======
       case "icono003":
         return <FaHamburger size={30} color="white" />;
 
@@ -79,7 +63,6 @@ const ProductCard = (props) => {
 
       case "icono007":
         return <FaIceCream size={30} color="white" />;
->>>>>>> main
 
       default:
         return <FaRegFrown size={30} color="white" />;
