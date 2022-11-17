@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useEffect } from "react";
 import { Button } from "@mui/material";
-import { FaTrash, FaEdit, FaBreadSlice, FaHotdog } from "react-icons/fa";
+import { FaTrash, FaHamburger ,FaDrumstickBite, FaBreadSlice, FaHotdog } from "react-icons/fa";
 // Estilos.
 import "./ProductoCarro.scss";
 
@@ -18,7 +18,7 @@ const ProductoCarro = (props) => {
     return new Intl.NumberFormat("de-DE").format(number);
   }
 
-  const handlerIcon = (iconId,color) => {
+  const handlerIcon = (iconId, color) => {
     switch (iconId) {
       // Icono de pan.
       case "icono001":
@@ -27,7 +27,17 @@ const ProductoCarro = (props) => {
 
       // Icono de hotdog.
       case "icono002":
-        return <FaHotdog size={30} color={color}  />;
+        return <FaHotdog size={30} color={color} />;
+        break;
+
+      //Icono de hamburguesa
+      case "icono003":
+        return <FaHamburger size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono004":
+        return <FaDrumstickBite size={30} color={color} />;
         break;
 
       default:
