@@ -56,6 +56,9 @@ const CajaPage = (props) => {
   useEffect(() => {
     dispatch(clearMetodo());
     dispatch(clearCarro());
+    if(typeof(horaApertura)=="string"){
+      console.log("Aqui tira error")
+    }
   }, []);
 
   // -- Metodos.
