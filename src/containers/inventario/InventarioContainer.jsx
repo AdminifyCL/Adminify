@@ -71,10 +71,22 @@ const InventarioContainer = (props) => {
     let tiendaId = userData.tiendaId;
     await APIdeleteProduct(productData, tiendaId)
       .then((response) => {
-        return response;
+        let new_alert = {
+          title: "Producto",
+          message: "Producto eliminado correctamente.",
+          type: "success",
+        };
+
+        dispatch(displayAlert(new_alert));
       })
       .catch((error) => {
-        return error;
+        let new_alert = {
+          title: "Producto",
+          message: "Error al eliminar el producto.",
+          type: "error",
+        };
+
+        dispatch(displayAlert(new_alert));
       });
 
     // Eliminar el producto en Redux.

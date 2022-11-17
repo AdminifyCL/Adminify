@@ -21,14 +21,12 @@ const deleteProduct = async (productData, tiendaId) => {
       // Mostrar datos.
       const docSnap = await getDoc(productRef);
       if (!docSnap.exists()) {
-        console.log("[ERROR] No se encontro el producto en la BD.");
         reject({ error: true });
       }
 
       // Eliminar el producto.
       await deleteDoc(productRef)
         .then(() => {
-          console.log("[] Producto eliminado correctamente.");
           resolve({ error: false });
         })
         .catch((error) => {
