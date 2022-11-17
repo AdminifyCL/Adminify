@@ -157,7 +157,7 @@ const CajaPage = (props) => {
       if (venta.metodo == "efectivo") {
         efectivo = efectivo + venta.total;
       }
-      if (venta.metodo == "eebito") {
+      if (venta.metodo == "debito") {
         debito = debito + venta.total;
       }
       if (venta.metodo == "credito") {
