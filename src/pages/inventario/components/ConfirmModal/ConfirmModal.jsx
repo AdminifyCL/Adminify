@@ -9,7 +9,7 @@ import "./ConfirmModal.scss";
 // Definición del componente: ConfirmModal.
 const ConfirmModal = (props) => {
   // 1. Manejo del estado.
-  const { visible, setVisible, deleteProduct, producto } = props;
+  const { visible, setVisible, deleteProduct, producto, cargando } = props;
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
@@ -44,7 +44,12 @@ const ConfirmModal = (props) => {
           <Button variant="outlined" color="primary" onClick={() => handleClose()}>
             Cancelar
           </Button>
-          <Button variant="contained" color="error" onClick={() => handleEditProduct()}>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={() => handleEditProduct()}
+            disabled={cargando}
+          >
             Confirmar
           </Button>
         </div>

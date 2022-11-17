@@ -13,7 +13,7 @@ import "./InventarioPage.scss";
 // Definición del componente: <InventarioPage />
 const InventarioPage = (props) => {
   // 1. Manejo del estado.
-  const { products, createProduct, editProduct, deleteProduct } = props;
+  const { products, createProduct, editProduct, deleteProduct, cargando } = props;
   const [modalVisibility, setModalVisibility] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
@@ -39,6 +39,7 @@ const InventarioPage = (props) => {
         open={modalVisibility}
         onClose={() => handleVisibility()}
         createProduct={createProduct}
+        cargando={cargando}
       />
 
       {/* Edit product */}
@@ -47,6 +48,7 @@ const InventarioPage = (props) => {
         setVisible={setEditModal}
         editProduct={editProduct}
         producto={producto}
+        cargando={cargando}
       />
 
       {/* Delete product */}
@@ -55,6 +57,7 @@ const InventarioPage = (props) => {
         setVisible={setDeleteModal}
         deleteProduct={deleteProduct}
         producto={producto}
+        cargando={cargando}
       />
 
       {/* Vista de la caja. */}

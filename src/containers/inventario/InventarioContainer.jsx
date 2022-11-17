@@ -90,6 +90,7 @@ const InventarioContainer = (props) => {
         createProduct={handleCreateProduct}
         editProduct={handleEditProduct}
         deleteProduct={handleDeleteProduct}
+        cargando={cargando}
       />
     </Navbar>
   );
