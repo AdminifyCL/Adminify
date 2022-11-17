@@ -31,6 +31,7 @@ const CajaPage = (props) => {
   const [ confirmacion, setConfirmacion ] = useState(false)
   const [ datosBoleta, setDatos ] = useState([ "",0,0,0,0 ])
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   // -- Ciclo de vida.
   useEffect(() => {
@@ -39,7 +40,7 @@ const CajaPage = (props) => {
     } else {
       setCanPay(false);
     }
-  }, [carrito, pageVisibility]);
+  }, [carrito]);
 
   useEffect(() => {
     dispatch(clearMetodo());
@@ -130,6 +131,7 @@ const CajaPage = (props) => {
   };
 
   const generarBoleta = () => {
+    console.log("Cambiando boleta")
     const apertura = horaApertura.getTime()/1000
     const cierre = horaCierre.getTime()/1000
     const ventasDelUsuario = ventas.filter(venta => (venta.fecha.seconds > apertura && venta.fecha.seconds < cierre))
@@ -140,13 +142,13 @@ const CajaPage = (props) => {
     let total = 0
     ventasDelUsuario.forEach( venta => {
       cajero = venta.vendedor.nombre
-      if (venta.metodo == "Efectivo"){
+      if (venta.metodo == "efectivo"){
         efectivo = efectivo + venta.total
       }
-      if (venta.metodo == "Debito"){
+      if (venta.metodo == "eebito"){
         debito = debito + venta.total
       }
-      if (venta.metodo == "Credito"){
+      if (venta.metodo == "credito"){
         credito = credito + venta.total
       }
       total = total+ venta.total
@@ -161,21 +163,6 @@ const CajaPage = (props) => {
       {/* Vista de la caja. */}
 
       <section className="cajaPage_content">
-
-        <Button
-          variant="contained"
-          style={{ position: "absolute", right: 200, zIndex: 1 }}
-          onClick={() => setStatus("open")}
-        >
-          TEST CAJA: OPEN
-        </Button>
-        <Button
-          variant="contained"
-          style={{ position: "absolute", right: 0, zIndex: 1 }}
-          onClick={() => setStatus("close")}
-        >
-          TEST CAJA: CLOSE
-        </Button>
 
         <CajaCierre
           block={statusCaja}

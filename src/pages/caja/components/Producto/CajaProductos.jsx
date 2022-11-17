@@ -21,8 +21,9 @@ export function CajaProductos(props) {
       let productosFiltrados = productos.filter((producto) => {
         return producto.nombre.toLowerCase().includes(entrada.toLowerCase());
       });
-
       setShowProducts(productosFiltrados);
+    } else if ( entrada.length==0){
+      setShowProducts(productos)
     }
   }, [entrada]);
 

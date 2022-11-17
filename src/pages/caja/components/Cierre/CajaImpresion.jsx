@@ -12,9 +12,12 @@ export function CajaImpresion(props) {
     <>
       <Button
         onClick={() => {
-          props.generarBoleta();
           props.handleConfirmacion();
-          handlePrint();
+          props.generarBoleta();
+          setTimeout(() => {
+            handlePrint();
+          }, 5000);
+          
         }}
         variant="contained"
       >

@@ -73,60 +73,6 @@
   padding-top: 3rem;
 }
 
-<<<<<<< HEAD
-.pagosPage_boleta {
-  visibility: inherit;
-  width: 30%;
-  height: 60%;
-  position: absolute;
-  left: 10%;
-  top: 18%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-  padding: 10px;
-  border: 1px solid black;
-  h1{
-    position: absolute;
-    top: 5%;
-  }
-}
-
-.pagosPage_impresion {
-  position: absolute;
-  left: 0%;
-  top: 0%;
-}
-
-// .PagoImpresionVisible {
-//   position: absolute;
-//   left: 0%;
-//   top: 0%;
-// }
-
-.show-elementPagos {
-  animation-duration: 2s;
-  animation-fill-mode: both;
-  animation-name: fadeInPagos;
-  background-color: rgb(225, 225, 255);
-}
-
-.hide-elementPagos {
-  animation-duration: 2s;
-  animation-fill-mode: both;
-  animation-name: fadeOutPagos;
-  animation-name: rotate;
-}
-.pagosPage_stepper {
-  width: 100%;
-  height: 4%;
-  position: absolute;
-  bottom: 5%;
-}
-=======
->>>>>>> main
 @keyframes fadeInPagos {
   0% {
     opacity: 0;
