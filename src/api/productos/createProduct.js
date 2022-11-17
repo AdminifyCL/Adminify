@@ -18,6 +18,10 @@ const createProduct = async (productData, tiendaId) => {
         id: productRef.id,
       };
 
+      // Formatear los datos.
+      new_data.valor = parseFloat(new_data.valor);
+      new_data.unidades = parseInt(new_data.unidades);
+
       await setDoc(productRef, new_data)
         .then(() => {
           return resolve({ id: productRef.id });

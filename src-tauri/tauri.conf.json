@@ -1,14 +1,14 @@
 {
   "$schema": "..\\node_modules/@tauri-apps/cli\\schema.json",
   "build": {
-    "beforeBuildCommand": "yarn run build:dev",
-    "beforeDevCommand": "yarn run serve:dev",
+    "beforeBuildCommand": "yarn run build",
+    "beforeDevCommand": "yarn run serve",
     "devPath": "http://localhost:5173/",
     "distDir": "../dist"
   },
   "package": {
-    "productName": "PayAdmin",
-    "version": "0.1.0"
+    "productName": "Adminify",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "payadmin.pre.alpha",
+      "identifier": "adminify.pre.alpha",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "center": true,
         "resizable": true,
-        "title": "PayAdmin pre-alpha",
+        "title": "Adminify v1.0",
         "width": 1280,
         "height": 720
       }

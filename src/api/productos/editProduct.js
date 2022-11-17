@@ -19,8 +19,16 @@ const editProduct = async (productData, tiendaId) => {
         reject({ error: true });
       }
 
+      // Formatear los datos.
+      let new_data = {
+        ...productData,
+      };
+
+      new_data.valor = parseFloat(new_data.valor);
+      new_data.unidades = parseInt(new_data.unidades);
+
       // Actalizar datos.
-      await updateDoc(productRef, productData)
+      await updateDoc(productRef, new_data)
         .then(() => {
           return resolve();
         })

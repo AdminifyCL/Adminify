@@ -61,6 +61,11 @@ const InventarioContainer = (props) => {
       ...productData,
       id: response.id,
     };
+
+    // Formatear los datos.
+    new_data.valor = parseFloat(new_data.valor);
+    new_data.unidades = parseInt(new_data.unidades);
+
     dispatch(createProduct(new_data));
     setCargando(false);
   };
@@ -89,6 +94,10 @@ const InventarioContainer = (props) => {
 
         dispatch(displayAlert(new_alert));
       });
+
+    // Formatear los datos.
+    new_data.valor = parseFloat(new_data.valor);
+    new_data.unidades = parseInt(new_data.unidades);
 
     // Editar el producto en Redux.
     dispatch(editProduct(productData));
