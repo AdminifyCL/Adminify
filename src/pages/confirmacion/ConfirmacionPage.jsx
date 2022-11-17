@@ -1,12 +1,11 @@
 // Dependencias.
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import { Step, Stepper, StepLabel, Button } from "@mui/material";
 import ReactPDF from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-import PropTypes from "prop-types";
 import PDFFile from "./components/PDFFile.jsx";
+import PropTypes from "prop-types";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
@@ -120,14 +119,6 @@ const ConfirmacionPage = (props) => {
         </div>
 
         <div className="confirmacionPage_contendorBotonesConfimacion">
-          <Button onClick={() => handleImpresion()} variant="outlined">
-            Ver Recibo
-          </Button>
-
-          <Button onClick={() => mostratPDF()} variant="outlined">
-            Ver PDF
-          </Button>
-
           <Button onClick={() => navigate("/caja")} variant="outlined">
             Volver a la caja
           </Button>
@@ -135,15 +126,6 @@ const ConfirmacionPage = (props) => {
           <Button onClick={() => navigate("/ventas")} variant="contained">
             Ver ventas
           </Button>
-        </div>
-        <div className="confirmacionPage_stepper">
-          <Stepper activeStep={3} alternativeLabel>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
         </div>
       </section>
     </section>

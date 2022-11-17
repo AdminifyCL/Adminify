@@ -34,19 +34,26 @@ const aplicacionSlice = createSlice({
 
     //* -- Manejo de la caja.
     openCaja: (state, action) => {
-      console.log("[] REDUCER OPEN CAJA");
-
       return { ...state, statusCaja: true };
     },
 
     closeCaja: (state, action) => {
-      console.log("[] REDUCER CLOSE CAJA");
-
       return { ...state, statusCaja: false };
+    },
+
+    aperturarCaja: (state, action) => {
+      let hora = action.payload;
+      return { ...state, horaApertura: hora };
+    },
+
+    cierreCaja: (state, action) => {
+      let hora = action.payload;
+      return { ...state, horaCierre: hora };
     },
   },
 });
 
 // Exportación.
-export const { displayAlert, deleteAlert, openCaja, closeCaja } = aplicacionSlice.actions;
+export const { displayAlert, deleteAlert, openCaja, closeCaja, aperturarCaja, cierreCaja } =
+  aplicacionSlice.actions;
 export default aplicacionSlice.reducer;

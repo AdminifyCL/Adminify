@@ -2,6 +2,9 @@
 import React from "react";
 import { Button } from "@mui/material";
 
+//Estilos
+import "./CajaBotones.scss"
+
 // Definición del componente: <CajaBotones />
 export function CajaBotones(props) {
   // -- Manejo del estado.
@@ -18,7 +21,7 @@ export function CajaBotones(props) {
   return (
     <div className="cajaPage_Botones">
       <Button
-      disabled={block}
+      disabled={!block}
         variant="outlined"
         style={{ height: "50px", width: "130px" }}
         onClick={() => {
@@ -28,7 +31,7 @@ export function CajaBotones(props) {
         Limpiar
       </Button>
       <Button
-        disabled={(!canPay||block)}
+        disabled={(!canPay||!block)}
         variant="contained"
         style={{ height: "50px", width: "130px" }}
         onClick={() => handleRedirect()}

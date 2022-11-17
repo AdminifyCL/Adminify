@@ -21,6 +21,25 @@
   padding-bottom: 0.5rem;
 }
 
+.Item_disabled {
+  background-color: Colors.$dark-color;
+
+  min-width: 8.5rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 1rem;
+  column-gap: 0.5rem;
+
+  border-radius: 0.3rem;
+  border: none;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .Item_container:hover {
   background-color: Colors.$primary_dark-color;
   color: Colors.$white-color;

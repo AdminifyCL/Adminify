@@ -1,5 +1,5 @@
 // Dependencias.
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { publicURL, privateURL } from "../../schemas/Navigation.js";
 import FormCliente from "./components/FormCliente/FormCliente.jsx";
@@ -15,7 +15,11 @@ import "./PagosPage.scss";
 
 // Definición del componente: <PagosPage />
 const PagosPage = (props) => {
+
+  const referenciaBoleta = useRef()
   // 1. Manejo del estado.
+ 
+ 
   const { carroProducts, setMetodo, setVenta, cargando } = props;
   const navigate = useNavigate();
   const [metodoPago, setMetodoPago] = useState("");

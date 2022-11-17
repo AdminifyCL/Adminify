@@ -1,6 +1,5 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import { Button, TextField, Autocomplete, IconButton } from "@mui/material";
 import { FaUserAlt, FaUserPlus, FaUserFriends, FaUserCog, FaUserTimes } from "react-icons/fa";
 import { makeStyles } from "@material-ui/core/styles";

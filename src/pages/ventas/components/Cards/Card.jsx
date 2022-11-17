@@ -13,7 +13,7 @@ import Style from "../../styles/Card/Style.jsx";
 // Definición del componente: <Card />
 const Card = (props) => {
   // 1. Manejo del estado.
-  const { ventaInfo } = props;
+  const { ventaInfo, removeVenta, cargando } = props;
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [open, setOpen] = useState(false);
@@ -26,11 +26,15 @@ const Card = (props) => {
 
   // 3. Metodos.
   const handleFecha = () => {
-    const fecha = new Date(ventaInfo.fecha.seconds * 1000);
+    const fecha = new Date(ventaInfo.fecha.seconds * 1000 + 1000 * 60 * 60 * 1);
     const fechaString = fecha.toLocaleString();
     const fechaArray = fechaString.split(", ");
     setFecha(fechaArray[0]);
     setHora(fechaArray[1]);
+  };
+
+  const handleRemove = async () => {
+    await removeVenta(ventaInfo);
   };
 
   // 4. Render.
@@ -73,9 +77,9 @@ const Card = (props) => {
           <Chip label={`${hora}`} variant="filled" />
         </div>
 
-        <IconButton style={Style.iconButtonDisabled} size="medium" disabled>
+        {/* <IconButton style={Style.iconButton} size="medium" onClick={() => handleRemove()}>
           <FaTrash size={18} />
-        </IconButton>
+        </IconButton> */}
 
         <Badge badgeContent={ventaInfo?.cantidad ?? 0} color="primary">
           <IconButton style={Style.iconButton} size="medium" onClick={() => setOpen(true)}>

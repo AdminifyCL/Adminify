@@ -11,7 +11,7 @@ import "./Item.scss";
 // Definición del componente: <Item />
 const Item = (props) => {
   // 1. Menejo del estado.
-  const { iconId, name } = props;
+  const { iconId, name, disabled } = props;
   const navigate = useNavigate();
 
   // 2. Ciclo de vida.
@@ -69,6 +69,10 @@ const Item = (props) => {
   };
 
   // 4. Render.
+  if (disabled) {
+    return null;
+  }
+
   return (
     <button className="Item_container" onClick={() => redirectTo()}>
       {/* Icon */}

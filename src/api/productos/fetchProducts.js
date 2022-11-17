@@ -5,7 +5,6 @@ import Collections from "../../firebase/config/collections.js";
 
 // Definición...
 const fetchProducts = async () => {
-  console.log("[] API HANDLER: fetchProducts");
   return new Promise(async (resolve, reject) => {
     try {
       const user = firebaseAuth.currentUser;
@@ -48,7 +47,6 @@ const fetchProducts = async () => {
         reject();
       }
     } catch (error) {
-      console.error(error);
       reject(error);
     }
   });

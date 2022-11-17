@@ -1,0 +1,37 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+
+.cajaPage_menu_cierre {
+    width: 35vw;
+    height: 25vh;
+    border: 3px solid Colors.$primary_dark-color;
+    border-radius: 1.25rem;
+    background-color: Colors.$white-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 40%;
+    left: 33%;
+    z-index: 50;
+    div {
+      width: 100%;
+      // background-color: aqua;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 10px 10px 10px 10px;
+    }
+    p {
+      width: 100%;
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-align: center;
+      color: Colors.$primary_dark-color;
+      margin-top: 5px;
+      // background-color:Colors.$gray-color;
+    }
+  }

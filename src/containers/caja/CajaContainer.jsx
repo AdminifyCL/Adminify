@@ -7,9 +7,14 @@ import PropTypes from "prop-types";
 
 // Action
 import { setCarro, clearCarro } from "../../redux/slices/productosSlice.js";
-import { openCaja, closeCaja } from "../../redux/slices/aplicacionSlice.js";
+import {
+  openCaja,
+  closeCaja,
+  aperturarCaja,
+  cierreCaja,
+  displayAlert,
+} from "../../redux/slices/aplicacionSlice.js";
 import { clearMetodo } from "../../redux/slices/ventasSlice.js";
-import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
 
 // Definición del contenedor: <CajaContainer />.
 const CajaContainer = (props) => {
@@ -18,6 +23,9 @@ const CajaContainer = (props) => {
   const [productos, setProductos] = useState([]);
   const allProductos = useSelector((state) => state.producto.productos);
   const statusCaja = useSelector((state) => state.app.statusCaja);
+  const horaApertura = useSelector((state) => state.app.horaApertura);
+  const horaCierre = useSelector((state) => state.app.horaCierre);
+  const ventas = useSelector((state) => state.venta.ventas);
   const dispatch = useDispatch();
 
   // 2. Ciclo de vida.
@@ -51,8 +59,23 @@ const CajaContainer = (props) => {
     dispatch(setCarro(productosCarro));
   };
 
-  const triggerAlert = (alert) => {
-    dispatch(displayAlert(alert));
+  const handleApertura = () => {
+    const fecha = new Date();
+    dispatch(aperturarCaja(fecha));
+  };
+
+  const handleCierre = () => {
+    const fecha = new Date();
+    dispatch(cierreCaja(fecha));
+  };
+
+  const handleDisplayAlert = () => {
+    const newAlert = {
+      type: "success",
+      title: "Caja",
+      message: "Se ha abierto la caja",
+    };
+    dispatch(displayAlert(newAlert));
   };
 
   // 4. Render.
@@ -63,7 +86,12 @@ const CajaContainer = (props) => {
         sendCarrito={handleCarritoProducts}
         statusCaja={statusCaja}
         setStatus={handleStatusCaja}
-        triggerAlert={triggerAlert}
+        horaApertura={horaApertura}
+        horaCierre={horaCierre}
+        handleApertura={handleApertura}
+        handleCierre={handleCierre}
+        handleDisplayAlert={handleDisplayAlert}
+        ventas={ventas}
       />
     </Navbar>
   );
