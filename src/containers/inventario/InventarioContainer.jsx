@@ -93,6 +93,7 @@ const InventarioContainer = (props) => {
   };
 
   // 4. Render.
+  console.log("[] CARGANDO: ", cargando);
   return (
     <Navbar>
       <InventarioPage
