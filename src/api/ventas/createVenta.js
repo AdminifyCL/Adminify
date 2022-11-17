@@ -30,7 +30,7 @@ const createVenta = async (tiendaId, ventaData) => {
         ventaData.id = ventaDoc.id;
 
         // Sumarle una hora a la fecha de creación.
-        ventaData.fecha = serverTimestamp() + 3600000;
+        ventaData.fecha = serverTimestamp();
 
         await setDoc(ventaDoc, ventaData)
           .then(() => {

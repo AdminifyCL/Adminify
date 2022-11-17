@@ -26,7 +26,7 @@ const Card = (props) => {
 
   // 3. Metodos.
   const handleFecha = () => {
-    const fecha = new Date(ventaInfo.fecha.seconds * 1000);
+    const fecha = new Date(ventaInfo.fecha.seconds * 1000 + 1000 * 60 * 60 * 1);
     const fechaString = fecha.toLocaleString();
     const fechaArray = fechaString.split(", ");
     setFecha(fechaArray[0]);
