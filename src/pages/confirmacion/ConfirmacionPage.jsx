@@ -56,6 +56,8 @@ const ConfirmacionPage = (props) => {
       ventana.print();
       ventana.close();
     };
+
+
     return (
       <div className="confirmacionPage_PDF">
         <PDFDownloadLink document={<PDFFile />} fileName="FORM">
@@ -64,6 +66,9 @@ const ConfirmacionPage = (props) => {
       </div>
     );
   };
+
+
+  
 
   const handleMontoTotal = () => {
     let total = 0;
@@ -85,16 +90,7 @@ const ConfirmacionPage = (props) => {
     return total;
   };
 
-  const handleChangePago = (event) => {
-    let nuevo_metodo = event.target.value;
-    if (nuevo_metodo === 1) {
-      setPago("Efectivo");
-    } else {
-      setPago("Debito");
-    }
 
-    setIsActive(true);
-  };
 
   const handleActualDate = () => {
     const date = new Date();

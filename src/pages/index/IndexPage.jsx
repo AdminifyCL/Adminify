@@ -67,15 +67,20 @@ const IndexPage = (props) => {
         <div className="modal_botonesIndex">
           <div className="modal_IconButtons">
           Más sobre nosotros:
-          <IconButton aria-label="GitHub" size="large" >
+          <a href="https://github.com/AdminifyCL"><IconButton aria-label="GitHub" size="large" >
                 <FaGithub fontSize="inherit" />
           </IconButton>
+          </a>
+          <a href="https://www.figma.com/file/FmWQgkSRtg0J5dimAAS6FU/Dise%C3%B1o-UI-UX?node-id=273%3A2&t=agTWbhR81PeZufmD-0">
           <IconButton aria-label="Figma" size="large" >
                 <FaFigma fontSize="inherit" />
           </IconButton>
+          </a>
+          <a href="https://www.notion.so/jajoscript/Adminify-94bb1c47953b4c2caefde8ad01474959">
           <IconButton aria-label="Notion" size="large" onClick={() => navigate()}>
                 <SiNotion fontSize="inherit" />
           </IconButton>
+          </a>
           </div>
           <Button variant="outlined" onClick={() => abrirCerrarModal()}>
             cerrar
