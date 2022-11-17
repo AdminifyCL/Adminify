@@ -54,8 +54,24 @@ const InventarioContainer = (props) => {
     // Comunicación con la API.
     let tiendaId = userData.tiendaId;
     await APIeditProduct(productData, tiendaId)
-      .then((response) => {})
-      .catch((error) => {});
+      .then((response) => {
+        let new_alert = {
+          title: "Producto",
+          message: "Producto editado correctamente",
+          type: "success",
+        };
+
+        dispatch(displayAlert(new_alert));
+      })
+      .catch((error) => {
+        let new_alert = {
+          title: "Producto",
+          message: "Error al editar el producto",
+          type: "error",
+        };
+
+        dispatch(displayAlert(new_alert));
+      });
 
     // Editar el producto en Redux.
     dispatch(editProduct(productData));
@@ -71,7 +87,7 @@ const InventarioContainer = (props) => {
       .then((response) => {
         let new_alert = {
           title: "Producto",
-          message: "Producto eliminado correctamente.",
+          message: "Producto eliminado correctamente",
           type: "success",
         };
 
@@ -80,7 +96,7 @@ const InventarioContainer = (props) => {
       .catch((error) => {
         let new_alert = {
           title: "Producto",
-          message: "Error al eliminar el producto.",
+          message: "Error al eliminar el producto",
           type: "error",
         };
 
@@ -93,7 +109,6 @@ const InventarioContainer = (props) => {
   };
 
   // 4. Render.
-  console.log("[] CARGANDO: ", cargando);
   return (
     <Navbar>
       <InventarioPage

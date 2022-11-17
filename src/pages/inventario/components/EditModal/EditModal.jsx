@@ -6,11 +6,29 @@ import {
   DialogContent,
   Button,
   TextField,
-  FormControl,
-  Select,
   MenuItem,
+  IconButton,
 } from "@mui/material";
+import {
+  FaIceCream,
+  FaBreadSlice,
+  FaHotdog,
+  FaHamburger,
+  FaCoffee,
+  FaCookie,
+  FaPizzaSlice,
+} from "react-icons/fa";
 import PropTypes from "prop-types";
+
+/*
+  icono001: FaBreadSlice
+  icono002: FaHotdog
+  icono003: FaHamburger
+  icono004: FaCoffee
+  icono005: FaCookie
+  icono006: FaPizzaSlice
+  icono007: FaIceCream
+*/
 
 // Estilos.
 import "./EditModal.scss";
@@ -29,6 +47,7 @@ const EditModal = (props) => {
   const [valor, setValor] = useState("");
   const [categoria, setCategoria] = useState("");
   const [unidades, setUnidades] = useState("");
+  const [icono, setIcono] = useState("");
 
   // 2. Ciclo de vida.
   useEffect(() => {}, []);
@@ -40,6 +59,7 @@ const EditModal = (props) => {
       setValor(producto.valor);
       setCategoria(producto.categoria);
       setUnidades(producto.unidades);
+      setIcono(producto.iconoId);
     }
   }, [producto]);
 
@@ -51,9 +71,6 @@ const EditModal = (props) => {
   const handleChanges = (event) => {
     let value = event.target.value;
     let id = event.target.id ?? event.target.name;
-
-    console.log("Value: ", value);
-    console.log("Id: ", id);
 
     switch (id) {
       case "nombre":
@@ -89,17 +106,19 @@ const EditModal = (props) => {
       nombre: nombre,
       valor: valor,
       categoria: categoria,
-      iconId: producto.iconId,
+      iconoId: icono,
       unidades: unidades,
     };
-
-    console.log("producto", producto);
 
     // Comunicarse con la API.
     await editProduct(productData);
 
     // Ocultar modal.
     setVisible(false);
+  };
+
+  const handleIcon = (value) => {
+    setIcono(value);
   };
 
   // 4. Render.
@@ -167,7 +186,52 @@ const EditModal = (props) => {
           </div>
 
           {/* Iconos */}
-          <div className="EditModal_iconsContainer"></div>
+          <div className="EditModal_iconsContainer">
+            <IconButton
+              aria-label="icono001"
+              onClick={() => handleIcon("icono001")}
+              value={"icono001"}
+              style={icono === "icono001" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaBreadSlice />
+            </IconButton>
+
+            <IconButton
+              aria-label="icono002"
+              onClick={() => handleIcon("icono002")}
+              value={"icono002"}
+              style={icono === "icono002" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaHotdog />
+            </IconButton>
+
+            <IconButton
+              aria-label="icono003"
+              onClick={() => handleIcon("icono003")}
+              value={"icono003"}
+              style={icono === "icono003" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaHamburger />
+            </IconButton>
+
+            <IconButton
+              aria-label="icono004"
+              onClick={() => handleIcon("icono004")}
+              value={"icono004"}
+              style={icono === "icono004" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaCoffee />
+            </IconButton>
+
+            <IconButton
+              aria-label="icono005"
+              onClick={() => handleIcon("icono005")}
+              value={"icono005"}
+              style={icono === "icono005" ? Styles.iconButtonActive : Styles.iconbutton}
+            >
+              <FaCookie />
+            </IconButton>
+          </div>
 
           {/* Button */}
           <div className="EditModal_buttonsContainer">

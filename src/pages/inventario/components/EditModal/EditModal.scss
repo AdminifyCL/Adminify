@@ -27,6 +27,10 @@
 }
 
 .EditModal_iconsContainer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .EditModal_buttonsContainer {

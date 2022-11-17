@@ -27,11 +27,9 @@ const editProduct = async (productData, tiendaId) => {
       // Actalizar datos.
       await updateDoc(productRef, productData)
         .then(() => {
-          console.log("[] Se actulizo el producto.");
           return resolve();
         })
         .catch((error) => {
-          console.log("[] Error al actulizar el producto.");
           return reject();
         });
     } catch (error) {
