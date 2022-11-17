@@ -81,15 +81,11 @@ const PagoContainer = (props) => {
     // Creación de la venta.
     await createVenta(tiendaId, new_venta)
       .then((ventaData) => {
-        console.log("[] Se creo una nueva venta.");
-
         let newAlert = {
           type: "success",
           title: "Venta confirmada",
           message: "La venta se registro en la base de datos.",
         };
-
-        console.log("[] ventaData: ", ventaData);
 
         dispatch(displayAlert(newAlert));
         dispatch(appendVenta(ventaData));

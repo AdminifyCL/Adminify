@@ -66,8 +66,6 @@ const InventarioContainer = (props) => {
   };
 
   const handleEditProduct = async (productData) => {
-    console.log("[CONTAINER] EDIT PRODUCT");
-    console.log("[CONTAINER] Product: ", productData);
     setCargando(true);
 
     // Comunicación con la API.
@@ -128,7 +126,6 @@ const InventarioContainer = (props) => {
   };
 
   // 4. Render.
-  console.log("[] CARGANDO: ", cargando);
   return (
     <Navbar>
       <InventarioPage

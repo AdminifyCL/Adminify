@@ -28,7 +28,9 @@ const createVenta = async (tiendaId, ventaData) => {
 
         // Actualizar el documento de la BD.
         ventaData.id = ventaDoc.id;
-        ventaData.fecha = serverTimestamp();
+
+        // Sumarle una hora a la fecha de creación.
+        ventaData.fecha = serverTimestamp() + 3600000;
 
         await setDoc(ventaDoc, ventaData)
           .then(() => {

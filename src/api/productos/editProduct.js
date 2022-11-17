@@ -5,13 +5,8 @@ import Collections from "../../firebase/config/collections.js";
 
 // Definición...
 const editProduct = async (productData, tiendaId) => {
-  console.log("[] API HANDLER: editProduct");
   return new Promise(async (resolve, reject) => {
     try {
-      // Información.
-      console.log("[] Producto:", productData);
-      console.log("[] Tienda:", tiendaId);
-
       // Documento en firebase.
       const PRODUCT_ID = productData.id.trim();
       const productPath = `${Collections.tiendas}/${tiendaId}/${Collections.productos}/`;
@@ -33,7 +28,6 @@ const editProduct = async (productData, tiendaId) => {
           return reject();
         });
     } catch (error) {
-      console.error(error);
       reject(error);
     }
   });
