@@ -1,0 +1,28 @@
+// Dependencias.
+@use "../../../../styles/colors" as Colors;
+
+// Definición de estilos.
+
+.cajaPage_Total {
+    background-color: Colors.$white-color;
+    width: 30%;
+    height: 8%;
+    position: absolute;
+    left: 58%;
+    top: 74%;
+    margin: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: Colors.$primary_dark-color;
+  }
+
+  .cajaPage_Total_valor {
+    width: 70%;
+    background-color: Colors.$gray-color;
+    text-align: center;
+  }

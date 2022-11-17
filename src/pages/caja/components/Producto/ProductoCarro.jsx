@@ -1,9 +1,7 @@
 // Dependencias.
-import React, { useState, useEffect, useId } from "react";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
-import { FaHamburger } from "react-icons/fa";
-import PropTypes from "prop-types";
-
+import { FaHamburger , FaBreadSlice, FaHotdog , FaCoffee,FaCookie, FaPizzaSlice,FaIceCream } from "react-icons/fa";
 // Estilos.
 import "./ProductoCarro.scss";
 
@@ -20,12 +18,55 @@ const ProductoCarro = (props) => {
     return new Intl.NumberFormat("de-DE").format(number);
   }
 
+  const handlerIcon = (iconId, color) => {
+    switch (iconId) {
+      // Icono de pan.
+      case "icono001":
+        return <FaBreadSlice size={30} color={color} />;
+        break;
+
+      // Icono de hotdog.
+      case "icono002":
+        return <FaHotdog size={30} color={color} />;
+        break;
+
+      //Icono de hamburguesa
+      case "icono003":
+        return <FaHamburger size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono004":
+        return <FaCoffee size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono005":
+        return <FaCookie size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono006":
+        return <FaPizzaSlice size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono007":
+        return <FaIceCream size={30} color={color} />;
+        break;
+
+      default:
+        return <FaBreadSlice size={30} color={color} />;
+        break;
+    }
+  };
+
   // 4. Render.
   return (
-    <div className="cajaPage_Productos_producto">
+    <div className="cajaPage_Productos_producto" >
       {/* Icono */}
       <p>
-        <FaHamburger />
+        { props.block ? handlerIcon(info.iconoId,"#1b5943") : handlerIcon(info.iconoId,"white") }
       </p>
 
       {/* Nombre */}
@@ -33,14 +74,12 @@ const ProductoCarro = (props) => {
         {info.nombre}
       </p>
 
-      {/* Categoria */}
-      <p>{info.categoria}</p>
-
       {/* Valor */}
       <p className="cajaPage_producto_texto">${formatNumber(info.valor)}</p>
 
       {/* Boton de acción */}
       <Button
+      disabled={!props.block}
         variant="contained"
         onClick={() => {
           let vista_producto = carrito.map((pcar) => {
