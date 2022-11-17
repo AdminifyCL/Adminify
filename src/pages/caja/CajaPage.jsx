@@ -7,7 +7,7 @@ import { CajaCierre } from "./components/Cierre/CajaCierre.jsx";
 import { CajaBoleta } from "./components/Cierre/CajaBoleta.jsx";
 import { CajaTotal } from "./components/Total/CajaTotal.jsx";
 import { CajaBotones } from "./components/Botones/CajaBotones.jsx";
-import { CajaModal } from "./components/Modal/CajaModal.jsx"
+import { CajaModal } from "./components/Modal/CajaModal.jsx";
 import { useNavigate } from "react-router-dom";
 import { privateURL } from "../../schemas/Navigation.js";
 
@@ -23,15 +23,26 @@ import { Button } from "@mui/material";
 // Definición del componente: <CajaPage />
 const CajaPage = (props) => {
   // -- Manejo del estado.
-  const { productos, sendCarrito, statusCaja, setStatus, horaApertura,horaCierre,handleCierre,handleApertura,handleDisplayAlert,ventas} = props;
-  const [ total, setTotal ] = useState(0);
-  const [ carrito, setCarrito ] = useState([]);
-  const [ canPay, setCanPay ] = useState(false);
-  const [ modalVisibility, setModalVisibility ] = useState(false);
-  const [ confirmacion, setConfirmacion ] = useState(false)
-  const [ datosBoleta, setDatos ] = useState([ "",0,0,0,0 ])
+  const {
+    productos,
+    sendCarrito,
+    statusCaja,
+    setStatus,
+    horaApertura,
+    horaCierre,
+    handleCierre,
+    handleApertura,
+    handleDisplayAlert,
+    ventas,
+  } = props;
+  const [total, setTotal] = useState(0);
+  const [carrito, setCarrito] = useState([]);
+  const [canPay, setCanPay] = useState(false);
+  const [modalVisibility, setModalVisibility] = useState(false);
+  const [confirmacion, setConfirmacion] = useState(false);
+  const [datosBoleta, setDatos] = useState(["", 0, 0, 0, 0]);
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   // -- Ciclo de vida.
   useEffect(() => {
@@ -106,9 +117,9 @@ const CajaPage = (props) => {
     setModalVisibility(!modalVisibility);
   };
 
-  const handleConfirmacion =()=>{
-    setConfirmacion(!confirmacion)
-  }
+  const handleConfirmacion = () => {
+    setConfirmacion(!confirmacion);
+  };
 
   const borrarDelCarro = () => {
     const carro = [...carrito];
@@ -119,73 +130,70 @@ const CajaPage = (props) => {
   const bloquearCaja = () => {
     setCarrito([]);
     setTotal(0);
-    if (statusCaja){
+    if (statusCaja) {
       setStatus("close");
-      handleCierre()
-      handleConfirmacion()
-    }else{
+      handleCierre();
+      handleConfirmacion();
+    } else {
       setStatus("open");
-      handleApertura()
-      handleDisplayAlert()
+      handleApertura();
+      handleDisplayAlert();
     }
   };
 
   const generarBoleta = () => {
-    console.log("Cambiando boleta")
-    const apertura = horaApertura.getTime()/1000
-    const cierre = horaCierre.getTime()/1000
-    const ventasDelUsuario = ventas.filter(venta => (venta.fecha.seconds > apertura && venta.fecha.seconds < cierre))
-    let cajero = ""
-    let efectivo= 0
-    let debito= 0
-    let credito= 0
-    let total = 0
-    ventasDelUsuario.forEach( venta => {
-      cajero = venta.vendedor.nombre
-      if (venta.metodo == "efectivo"){
-        efectivo = efectivo + venta.total
+    const apertura = horaApertura.getTime() / 1000;
+    const cierre = horaCierre.getTime() / 1000;
+    const ventasDelUsuario = ventas.filter(
+      (venta) => venta.fecha.seconds > apertura && venta.fecha.seconds < cierre
+    );
+    let cajero = "";
+    let efectivo = 0;
+    let debito = 0;
+    let credito = 0;
+    let total = 0;
+    ventasDelUsuario.forEach((venta) => {
+      cajero = venta.vendedor.nombre;
+      if (venta.metodo == "efectivo") {
+        efectivo = efectivo + venta.total;
       }
-      if (venta.metodo == "eebito"){
-        debito = debito + venta.total
+      if (venta.metodo == "eebito") {
+        debito = debito + venta.total;
       }
-      if (venta.metodo == "credito"){
-        credito = credito + venta.total
+      if (venta.metodo == "credito") {
+        credito = credito + venta.total;
       }
-      total = total+ venta.total
+      total = total + venta.total;
     });
-    setDatos([cajero,efectivo,debito,credito,total])
-
-  }
+    setDatos([cajero, efectivo, debito, credito, total]);
+  };
 
   // -- Renderizado.
   return (
     <section className="cajaPage_container">
       {/* Vista de la caja. */}
-
       <section className="cajaPage_content">
-
         <CajaCierre
           block={statusCaja}
           open={modalVisibility}
           cerrarModal={cerrarModal}
           bloquearCaja={bloquearCaja}
-          abrirCaja = {handleApertura}
-          cerrarCaja = {handleCierre}
-          generarBoleta = {generarBoleta}
+          abrirCaja={handleApertura}
+          cerrarCaja={handleCierre}
+          generarBoleta={generarBoleta}
           handleConfirmacion={handleConfirmacion}
         />
 
         {/* Boleta de fin de turno */}
-        <CajaBoleta 
-        fecha={horaCierre} 
-        datos={[...datosBoleta]}
-        apertura={horaApertura}
-        cierre={horaCierre}
-        generarBoleta={generarBoleta}
-        handleConfirmacion={handleConfirmacion}
-        confirmacion={confirmacion}
-        >
-        </CajaBoleta>
+        <CajaBoleta
+          fecha={horaCierre}
+          datos={[...datosBoleta]}
+          apertura={horaApertura}
+          cierre={horaCierre}
+          generarBoleta={generarBoleta}
+          handleConfirmacion={handleConfirmacion}
+          confirmacion={confirmacion}
+        ></CajaBoleta>
 
         {/* Lista de los productos */}
         <CajaProductos
@@ -219,7 +227,7 @@ const CajaPage = (props) => {
         />
 
         {/* Boton de cierre de caja */}
-        <CajaModal verModal = {setModalVisibility}></CajaModal>
+        <CajaModal verModal={setModalVisibility}></CajaModal>
       </section>
     </section>
   );

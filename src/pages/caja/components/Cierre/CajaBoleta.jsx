@@ -22,8 +22,8 @@ export function CajaBoleta(props) {
         <section className="cajaPage_boleta_container" ref={referenciaBoleta}>
           <div className="cajaPage_boleta_datos">
             <h3>Cierre de turno</h3>
-            <p>Fecha: </p>
-            <p>Hora: </p>
+            <p>Fecha: 17-11-2022</p>
+            <p>Hora: {getHora(apertura)}</p>
             <p>Cajero: {datos[0]} </p>
           </div>
           <div className="cajaPage_boleta_horas">
@@ -60,8 +60,8 @@ export function CajaBoleta(props) {
       <section className="cajaPage_boleta_container" ref={referenciaBoleta}>
         <div className="cajaPage_boleta_datos">
           <h3>Cierre de turno</h3>
-          <p>Fecha: </p>
-          <p>Hora: </p>
+          <p>Fecha: 17-11-2022</p>
+          <p>Hora: {getHora(apertura)}</p>
           <p>Cajero: {datos[0]} </p>
         </div>
         <div className="cajaPage_boleta_horas">

@@ -16,7 +16,7 @@ export function CajaImpresion(props) {
           props.generarBoleta();
           setTimeout(() => {
             handlePrint();
-          }, 5000);
+          }, 2000);
           
         }}
         variant="contained"
