@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useEffect } from "react";
 import { Button } from "@mui/material";
-import { FaTrash, FaHamburger ,FaDrumstickBite, FaBreadSlice, FaHotdog } from "react-icons/fa";
+import { FaHamburger , FaBreadSlice, FaHotdog , FaCoffee,FaCookie, FaPizzaSlice,FaIceCream } from "react-icons/fa";
 // Estilos.
 import "./ProductoCarro.scss";
 
@@ -37,7 +37,22 @@ const ProductoCarro = (props) => {
 
       //Icono de pollo
       case "icono004":
-        return <FaDrumstickBite size={30} color={color} />;
+        return <FaCoffee size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono005":
+        return <FaCookie size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono006":
+        return <FaPizzaSlice size={30} color={color} />;
+        break;
+
+      //Icono de pollo
+      case "icono007":
+        return <FaIceCream size={30} color={color} />;
         break;
 
       default:
