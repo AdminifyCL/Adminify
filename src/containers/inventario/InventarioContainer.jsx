@@ -63,8 +63,6 @@ const InventarioContainer = (props) => {
   };
 
   const handleDeleteProduct = async (productData) => {
-    console.log("[CONTAINER] DELETE PRODUCT");
-    console.log("[CONTAINER] Product: ", productData);
     setCargando(true);
 
     // Comunicación con la API de la base de datos.
