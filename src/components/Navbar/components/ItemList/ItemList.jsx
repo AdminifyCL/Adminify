@@ -19,6 +19,9 @@ const ItemList = (props) => {
   // 3. Metodos.
   const mappingItems = () => {
     return TabsInfo.map((item) => {
+      if (item.id === "estadisticas") {
+        return <Item key={item.id} iconId={item.id} name={item.name} disabled={true} />;
+      }
       return <Item key={item.id} iconId={item.id} name={item.name} />;
     });
   };

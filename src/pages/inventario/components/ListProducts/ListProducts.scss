@@ -1,6 +1,7 @@
 // Dependencias.
+@use "../../../../styles/colors" as Colors;
 
-// Definición de los estilos.
+// Definiciones de estilos.
 .ListProductsContainer {
   display: flex;
   flex-direction: row;

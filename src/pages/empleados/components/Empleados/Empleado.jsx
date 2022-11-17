@@ -34,7 +34,7 @@ const Empleado = (props) => {
         </div>
 
         {/* Botones */}
-        <div className="EmpleadoCard_botonesContainer">
+        {/* <div className="EmpleadoCard_botonesContainer">
           <IconButton aria-label="config" size="small">
             <FaUserCog size={25} />
           </IconButton>
@@ -42,7 +42,7 @@ const Empleado = (props) => {
           <IconButton aria-label="delete" size="small">
             <FaUserTimes size={25} />
           </IconButton>
-        </div>
+        </div> */}
       </div>
     </div>
   );

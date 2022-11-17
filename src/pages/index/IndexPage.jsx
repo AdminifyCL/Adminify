@@ -3,8 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
-import {FaSignInAlt, FaInfoCircle, FaBoxOpen, FaGithub, FaFigma} from "react-icons/fa"
-import {SiNotion} from "react-icons/si"
+import { FaSignInAlt, FaInfoCircle, FaBoxOpen, FaGithub, FaFigma } from "react-icons/fa";
+import { SiNotion } from "react-icons/si";
 import Modal from "@mui/material/Modal";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -52,7 +52,6 @@ const IndexPage = (props) => {
     setModal(!modal);
   };
 
-
   const styles = useStyles();
   const body = (
     <div className="modalIndex">
@@ -62,20 +61,26 @@ const IndexPage = (props) => {
         </div>
 
         <div className="modal_info">
-          <h1>Adminify® es una empresa que permite satisfacer las necesidades de gestión de inventario de tu negocio, permitiendo la creación, actualización y eliminación de productos del inventario, junto con un uso de contexto en relación al stock del inventario con el sistema de caja. Adicional a todo, Adminify ofrece una interfaz moderna capaz de ser intuitiva, rápida y adaptada para ser usada por todas las edades.</h1>
+          <h1>
+            Adminify® es una empresa que permite satisfacer las necesidades de gestión de inventario
+            de tu negocio, permitiendo la creación, actualización y eliminación de productos del
+            inventario, junto con un uso de contexto en relación al stock del inventario con el
+            sistema de caja. Adicional a todo, Adminify ofrece una interfaz moderna capaz de ser
+            intuitiva, rápida y adaptada para ser usada por todas las edades.
+          </h1>
         </div>
         <div className="modal_botonesIndex">
           <div className="modal_IconButtons">
-          Más sobre nosotros:
-          <IconButton aria-label="GitHub" size="large" >
-                <FaGithub fontSize="inherit" />
-          </IconButton>
-          <IconButton aria-label="Figma" size="large" >
-                <FaFigma fontSize="inherit" />
-          </IconButton>
-          <IconButton aria-label="Notion" size="large" >
-                <SiNotion fontSize="inherit" />
-          </IconButton>
+            Más sobre nosotros:
+            <IconButton aria-label="GitHub" size="large">
+              <FaGithub fontSize="inherit" />
+            </IconButton>
+            <IconButton aria-label="Figma" size="large">
+              <FaFigma fontSize="inherit" />
+            </IconButton>
+            <IconButton aria-label="Notion" size="large">
+              <SiNotion fontSize="inherit" />
+            </IconButton>
           </div>
           <Button variant="outlined" onClick={() => abrirCerrarModal()}>
             cerrar
@@ -85,27 +90,27 @@ const IndexPage = (props) => {
     </div>
   );
 
-
-
   // 4. Render.
   return (
     <section className="indexPage_contenedor">
       <div className="indexPage_contenido">
         <div className="indexPage_titlecontent">
-        <h1>Adminify®</h1>
-          <h2><FaBoxOpen size="35vh" ></FaBoxOpen></h2>
+          <h1>Adminify®</h1>
+          <h2>
+            <FaBoxOpen size="35vh"></FaBoxOpen>
+          </h2>
         </div>
         <div className="indexPage_contenedorBotones">
-        <Button variant="outlined" onClick={() => abrirCerrarModal()} style={buttonStyle}>
-        <FaInfoCircle size="3vh" position></FaInfoCircle> Sobre nosotros
-        </Button>
+          <Button variant="outlined" onClick={() => abrirCerrarModal()} style={buttonStyle}>
+            <FaInfoCircle size="3vh"></FaInfoCircle> Sobre nosotros
+          </Button>
           <Button variant="contained" onClick={() => navigate("/login")} style={buttonStyle}>
-          Entrar <FaSignInAlt size="3vh" position></FaSignInAlt>
-        </Button>
+            Entrar <FaSignInAlt size="3vh"></FaSignInAlt>
+          </Button>
         </div>
         <Modal open={modal} onClose={abrirCerrarModal}>
-        {body}
-      </Modal>
+          {body}
+        </Modal>
       </div>
     </section>
   );

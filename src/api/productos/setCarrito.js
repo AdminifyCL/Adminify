@@ -2,7 +2,6 @@
 
 // Definición...
 const setCarrito = async (data) => {
-  console.log("[] API HANDLER: setCarrito");
   return new Promise(async (resolve, reject) => {
     try {
       const productosCarro = data ?? [];
@@ -13,7 +12,6 @@ const setCarrito = async (data) => {
 
       reject({ error: true, productosCarro: [] });
     } catch (error) {
-      console.error(error);
       reject(error);
     }
   });

@@ -9,7 +9,7 @@ import "./ListProducts.scss";
 // Definición del componente: <ListProducts />
 const ListProducts = (props) => {
   // -- Manejo del estado.
-  const { productos } = props;
+  const { productos, editModal, deleteModal, setProducto } = props;
   // -- Ciclo de vida.
   useEffect(() => {}, []);
 
@@ -17,15 +17,19 @@ const ListProducts = (props) => {
   const mappingRows = () => {
     let numProducts = productos.length;
     if (numProducts === 0) {
-      return (
-        <div>
-          <h1>Aún no agregas productos</h1>
-        </div>
-      );
+      return null;
     }
 
     return productos.map((producto, index) => {
-      return <ProductCard info={producto} key={index} />;
+      return (
+        <ProductCard
+          info={producto}
+          key={index}
+          editModal={editModal}
+          deleteModal={deleteModal}
+          setProducto={setProducto}
+        />
+      );
     });
   };
 

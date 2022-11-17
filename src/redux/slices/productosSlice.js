@@ -20,11 +20,50 @@ const productosSlice = createSlice({
       return { ...state, productos: productos };
     },
 
-    createProduct: (state, action) => {},
+    createProduct: (state, action) => {
+      const new_producto = action.payload;
+      let productos = state.productos;
 
-    editProduct: (state, action) => {},
+      // Agregar el producto.
+      let new_products = [...productos, new_producto];
 
-    deleteProduct: (state, action) => {},
+      // Ordenar según categoria.
+      new_products.sort((a, b) => {
+        return a.categoria > b.categoria;
+      });
+
+      return { ...state, productos: new_products };
+    },
+
+    editProduct: (state, action) => {
+      const new_producto = action.payload;
+      let productos = state.productos;
+
+      // Editar el producto.
+      let new_products = productos.map((producto) => {
+        if (producto.id === new_producto.id) {
+          return new_producto;
+        } else {
+          return producto;
+        }
+      });
+
+      // Ordenar según categoria.
+      new_products.sort((a, b) => {
+        return a.categoria > b.categoria;
+      });
+
+      return { ...state, productos: new_products };
+    },
+
+    deleteProduct: (state, action) => {
+      const producto = action.payload;
+      let productos = state.productos;
+
+      let new_productos = productos.filter((p) => p.id !== producto.id);
+
+      return { ...state, productos: new_productos };
+    },
 
     // * -- Control del carro de compra.
     setCarro: (state, action) => {

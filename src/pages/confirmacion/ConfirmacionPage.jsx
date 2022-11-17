@@ -1,12 +1,11 @@
 // Dependencias.
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Navigation from "../../components/Navigation/Navigation.jsx";
 import { Step, Stepper, StepLabel, Button } from "@mui/material";
 import ReactPDF from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-import PropTypes from "prop-types";
 import PDFFile from "./components/PDFFile.jsx";
+import PropTypes from "prop-types";
 
 // Estilos.
 import "./ConfirmacionPage.scss";
@@ -120,7 +119,6 @@ const ConfirmacionPage = (props) => {
         </div>
 
         <div className="confirmacionPage_contendorBotonesConfimacion">
-
           <Button onClick={() => navigate("/caja")} variant="outlined">
             Volver a la caja
           </Button>
@@ -129,7 +127,6 @@ const ConfirmacionPage = (props) => {
             Ver ventas
           </Button>
         </div>
-
       </section>
     </section>
   );

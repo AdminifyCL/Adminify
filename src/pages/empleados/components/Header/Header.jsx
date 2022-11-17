@@ -34,11 +34,11 @@ const Header = (props) => {
         </div>
 
         {/* Botón */}
-        <div className="empleadosPage_headerButton">
+        {/* <div className="empleadosPage_headerButton">
           <Button variant="contained" onClick={() => {}} style={buttonStyle}>
             <FaUserPlus size={20} /> agregar empleado
           </Button>
-        </div>
+        </div> */}
       </div>
     </>
   );

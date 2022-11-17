@@ -18,6 +18,8 @@ const LoginContainer = (props) => {
   const {} = props;
   const [auth, setAuth] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [cargando, setCargando] = useState(false);
+
   const dispatch = useDispatch();
   const userAuth = useSelector((state) => state.user.userAuth);
 
