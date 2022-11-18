@@ -24,7 +24,7 @@ export function CajaBoleta(props) {
             <h3>Cierre de turno</h3>
             <p>Fecha: 17-11-2022</p>
             <p>Hora: {getHora(apertura)}</p>
-            <p>Cajero: {datos[0]} </p>
+            <p>Cajero: {datos.cajero} </p>
           </div>
           <div className="cajaPage_boleta_horas">
             <p>Apertura: {getHora(apertura)}</p>
@@ -32,25 +32,19 @@ export function CajaBoleta(props) {
           </div>
           <div className="cajaPage_boleta_recaudo">
             <h3>Recaudacion</h3>
-            <p>Efectivo: ${datos[1]}</p>
-            <p>Debito: ${datos[2]}</p>
-            <p>Credito: ${datos[3]}</p>
-            <p>Total: ${datos[4]}</p>
+            <p>Efectivo: ${datos.efectivo}</p>
+            <p>Debito: ${datos.debito}</p>
+            <p>Credito: ${datos.credito}</p>
+            <p>Total: ${datos.total}</p>
           </div>
         </section>
         <section className="cajaPage_boleta_modal">
           <p>Se realizara la impresion de la boleta</p>
           <div>
-            {/* <Button
-              variant="contained"
-              onClick={() => {
-                generarBoleta();
-                handleConfirmacion();
-              }}
-            >
-              Aceptar
-            </Button> */}
-            <CajaImpresion referencia = {referenciaBoleta} generarBoleta={generarBoleta} handleConfirmacion={handleConfirmacion}></CajaImpresion>
+            <CajaImpresion 
+            referencia = {referenciaBoleta} 
+            generarBoleta={generarBoleta} 
+            handleConfirmacion={handleConfirmacion}></CajaImpresion>
           </div>
         </section>
       </>
@@ -62,7 +56,7 @@ export function CajaBoleta(props) {
           <h3>Cierre de turno</h3>
           <p>Fecha: 17-11-2022</p>
           <p>Hora: {getHora(apertura)}</p>
-          <p>Cajero: {datos[0]} </p>
+          <p>Cajero: {datos.cajero} </p>
         </div>
         <div className="cajaPage_boleta_horas">
           <p>Apertura: {getHora(apertura)}</p>
@@ -70,10 +64,10 @@ export function CajaBoleta(props) {
         </div>
         <div className="cajaPage_boleta_recaudo">
           <h3>Recaudacion</h3>
-          <p>Efectivo: ${datos[1]}</p>
-          <p>Debito: ${datos[2]}</p>
-          <p>Credito: ${datos[3]}</p>
-          <p>Total: ${datos[4]}</p>
+          <p>Efectivo: ${datos.efectivo}</p>
+          <p>Debito: ${datos.debito}</p>
+          <p>Credito: ${datos.credito}</p>
+          <p>Total: ${datos.total}</p>
         </div>
       </section>
     );
