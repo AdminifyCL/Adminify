@@ -23,8 +23,8 @@ const CajaContainer = (props) => {
   const [productos, setProductos] = useState([]);
   const allProductos = useSelector((state) => state.producto.productos);
   const statusCaja = useSelector((state) => state.app.statusCaja);
-  const horaApertura = useSelector((state) => state.app.horaApertura);
-  const horaCierre = useSelector((state) => state.app.horaCierre);
+  const horaApertura = useSelector((state) => state.app.horaApertura) ?? {};
+  const horaCierre = useSelector((state) => state.app.horaCierre) ?? {};
   const ventas = useSelector((state) => state.venta.ventas);
   const dispatch = useDispatch();
 

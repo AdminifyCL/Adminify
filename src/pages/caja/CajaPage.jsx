@@ -41,12 +41,12 @@ const CajaPage = (props) => {
   const [modalVisibility, setModalVisibility] = useState(false);
   const [confirmacion, setConfirmacion] = useState(false);
   const [datosBoleta, setDatos] = useState({
-    cajero:"",
-    efectivo:0,
-    debito:0,
-    credito:0,
-    total:0
-});
+    cajero: "",
+    efectivo: 0,
+    debito: 0,
+    credito: 0,
+    total: 0,
+  });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -148,49 +148,25 @@ const CajaPage = (props) => {
   };
 
   const generarBoleta = () => {
-    const apertura = horaApertura.getTime() / 1000;
+    const apertura = horaApertura.getTime() / 1000 - 3600; // QUITARLE UNA HORA A LA APERTURA
     const cierre = horaCierre.getTime() / 1000;
-    const ventasDelUsuario = ventas.filter( venta => venta.fecha.seconds > apertura)
-    const datosBoleta = {cajero:"",efectivo:0,debito:0,credito:0,total:0}
-    ventasDelUsuario.forEach( venta => {
-      if (venta.metodo == "efectivo"){
-        datosBoleta.efectivo = datosBoleta.efectivo+venta.total
-      }
-      if (venta.metodo == "debito"){
-        datosBoleta.debito = datosBoleta.debito+venta.total
-      }
-      if (venta.metodo == "credito"){
-        datosBoleta.credito = datosBoleta.credito+venta.total
-      }
-      datosBoleta.total = datosBoleta.total + venta.total
-      datosBoleta.cajero = venta.vendedor.nombre
-    });
-    setDatos(datosBoleta)
-    // console.log(ventasDelUsuario.[0].fecha.seconds)
+    const ventasDelUsuario = ventas.filter((venta) => venta.fecha.seconds > apertura);
 
-    // const cierre = horaCierre.getTime() / 1000;
-    // const ventasDelUsuario = ventas.filter(
-    //   (venta) => venta.fecha.seconds > apertura && venta.fecha.seconds < cierre
-    // );
-    // let cajero = "";
-    // let efectivo = 0;
-    // let debito = 0;
-    // let credito = 0;
-    // let total = 0;
-    // ventasDelUsuario.forEach((venta) => {
-    //   cajero = venta.vendedor.nombre;
-    //   if (venta.metodo == "efectivo") {
-    //     efectivo = efectivo + venta.total;
-    //   }
-    //   if (venta.metodo == "debito") {
-    //     debito = debito + venta.total;
-    //   }
-    //   if (venta.metodo == "credito") {
-    //     credito = credito + venta.total;
-    //   }
-    //   total = total + venta.total;
-    // });
-    // setDatos([cajero, efectivo, debito, credito, total]);
+    const datosBoleta = { cajero: "", efectivo: 0, debito: 0, credito: 0, total: 0 };
+    ventasDelUsuario.forEach((venta) => {
+      if (venta.metodo == "efectivo") {
+        datosBoleta.efectivo = datosBoleta.efectivo + venta.total;
+      }
+      if (venta.metodo == "debito") {
+        datosBoleta.debito = datosBoleta.debito + venta.total;
+      }
+      if (venta.metodo == "credito") {
+        datosBoleta.credito = datosBoleta.credito + venta.total;
+      }
+      datosBoleta.total = datosBoleta.total + venta.total;
+      datosBoleta.cajero = venta.vendedor.nombre;
+    });
+    setDatos(datosBoleta);
   };
 
   // -- Renderizado.
@@ -198,7 +174,6 @@ const CajaPage = (props) => {
     <section className="cajaPage_container">
       {/* Vista de la caja. */}
       <section className="cajaPage_content">
-
         {/* <Button variant="contained" onClick={()=>{
           generarBoleta()
         }}>TESTING</Button> */}
