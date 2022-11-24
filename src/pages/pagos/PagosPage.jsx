@@ -15,11 +15,9 @@ import "./PagosPage.scss";
 
 // Definición del componente: <PagosPage />
 const PagosPage = (props) => {
-
-  const referenciaBoleta = useRef()
+  const referenciaBoleta = useRef();
   // 1. Manejo del estado.
- 
- 
+
   const { carroProducts, setMetodo, setVenta, cargando } = props;
   const navigate = useNavigate();
   const [metodoPago, setMetodoPago] = useState("");
@@ -76,7 +74,24 @@ const PagosPage = (props) => {
               toConfirmacion={toConfirmacion}
               metodo={metodoPago}
               cargando={cargando}
+              referencia={referenciaBoleta}
             />
+
+            {/* Boleta */}
+            <div ref={referenciaBoleta} className="pagosPage_boleta">
+              <p>******* BOLETA DE COMPRA *******</p>
+              <p>Metodo de pago : {metodoPago}</p>
+              <p>Fecha : 24/11/2022 </p>
+              <p>Cajero : Nicolas Cruz </p>
+              {carroProducts.map((product) => {
+                return (
+                  <p>
+                    {" "}
+                    - {product.cantidad} {product.nombre} : ${product.precio}
+                  </p>
+                );
+              })}
+            </div>
           </div>
         </div>
 
