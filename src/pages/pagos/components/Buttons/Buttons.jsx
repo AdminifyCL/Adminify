@@ -1,7 +1,7 @@
 // Dependencias.
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import PagosImpresion from "../PagosImpresion/PagosImpresion.jsx";
+import {useReactToPrint} from "react-to-print"
 import PropTypes from "prop-types";
 
 // Estilos.
@@ -11,7 +11,7 @@ import "./Buttons.scss";
 // Definición del componente: <Buttons />
 const Buttons = (props) => {
   // 1. Manejo del estado.
-  const { toCaja, toConfirmacion, productos, metodo, cargando } = props;
+  const { toCaja, toConfirmacion, metodo, cargando, referencia } = props;
   const [active, setActive] = useState(false);
 
   // 2. Ciclo de vida.
@@ -24,6 +24,11 @@ const Buttons = (props) => {
   }, [metodo]);
 
   // 3. Metodos.
+  
+  const handlePrint = useReactToPrint({
+    content: () => referencia.current,
+  });
+  
   // 4. Render.
   return (
     <div className="Buttons_container">
@@ -32,7 +37,10 @@ const Buttons = (props) => {
       </Button>
 
       <Button
-        onClick={() => toConfirmacion()}
+        onClick={() => {
+          toConfirmacion()
+          handlePrint()
+        }}
         variant="contained"
         type="submit"
         disabled={!active || cargando}
