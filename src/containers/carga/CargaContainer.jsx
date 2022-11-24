@@ -13,7 +13,12 @@ import fetchUserVentas from "../../api/ventas/fetchVentas.js";
 // Actions.
 import { getUserData } from "../../redux/slices/usuariosSlice.js";
 import { fetchProducts } from "../../redux/slices/productosSlice.js";
-import { displayAlert } from "../../redux/slices/aplicacionSlice.js";
+import {
+  displayAlert,
+  aperturarCaja,
+  cierreCaja,
+  closeCaja,
+} from "../../redux/slices/aplicacionSlice.js";
 import { fetchVentas } from "../../redux/slices/ventasSlice.js";
 import { fetchEmpleados } from "../../redux/slices/empleadosSlice.js";
 
@@ -120,6 +125,12 @@ const CargaContainer = (props) => {
         });
     };
 
+    const fetchStatusCaja = async () => {
+      // Reinicio de la caja.
+      dispatch(cierreCaja());
+      dispatch(closeCaja());
+    };
+
     // Consultas.
     fetchStoreUser().then(() => {
       setLoadPercent(20);
@@ -130,6 +141,7 @@ const CargaContainer = (props) => {
     fetchStoreVentas().then(() => {
       setLoadPercent(60);
     });
+    fetchStatusCaja();
     fetchStoreEmpleados().then(() => {
       setLoadPercent(100);
     });

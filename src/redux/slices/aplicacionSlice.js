@@ -42,7 +42,14 @@ const aplicacionSlice = createSlice({
     },
 
     aperturarCaja: (state, action) => {
+      const payload = action.payload;
+      console.log({ payload });
+
       let hora = action.payload;
+
+      console.log("[] HORA: ", hora);
+      console.log("[] TYPE:", typeof hora);
+
       return { ...state, horaApertura: hora };
     },
 

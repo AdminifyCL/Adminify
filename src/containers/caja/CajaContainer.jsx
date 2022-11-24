@@ -59,8 +59,11 @@ const CajaContainer = (props) => {
     dispatch(setCarro(productosCarro));
   };
 
-  const handleApertura = () => {
+  const handleApertura = async () => {
     const fecha = new Date();
+    console.log("[] FECHA: ", fecha);
+    console.log("[] TYPE:", typeof fecha);
+
     dispatch(aperturarCaja(fecha));
   };
 
