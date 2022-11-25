@@ -8,7 +8,7 @@ import { Button } from "@mui/material";
 
 export function CajaBoleta(props) {
   const { datos, apertura, cierre, generarBoleta, handleConfirmacion, confirmacion } = props;
-  const referenciaBoleta = useRef()
+  const referenciaBoleta = useRef();
 
   function getHora(fecha) {
     const fechaString = fecha.toLocaleString();
@@ -38,13 +38,15 @@ export function CajaBoleta(props) {
             <p>Total: ${datos.total}</p>
           </div>
         </section>
+
         <section className="cajaPage_boleta_modal">
           <p>Se realizara la impresion de la boleta</p>
           <div>
-            <CajaImpresion 
-            referencia = {referenciaBoleta} 
-            generarBoleta={generarBoleta} 
-            handleConfirmacion={handleConfirmacion}></CajaImpresion>
+            <CajaImpresion
+              referencia={referenciaBoleta}
+              generarBoleta={generarBoleta}
+              handleConfirmacion={handleConfirmacion}
+            ></CajaImpresion>
           </div>
         </section>
       </>

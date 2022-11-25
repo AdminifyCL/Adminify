@@ -62,8 +62,8 @@ const CajaPage = (props) => {
   useEffect(() => {
     dispatch(clearMetodo());
     dispatch(clearCarro());
-    if(typeof(horaApertura)=="string"){
-      console.log("Aqui tira error")
+    if (typeof horaApertura == "string") {
+      console.log("Aqui tira error");
     }
   }, []);
 
@@ -177,10 +177,6 @@ const CajaPage = (props) => {
     <section className="cajaPage_container">
       {/* Vista de la caja. */}
       <section className="cajaPage_content">
-        {/* <Button variant="contained" onClick={()=>{
-          generarBoleta()
-        }}>TESTING</Button> */}
-
         <CajaCierre
           block={statusCaja}
           open={modalVisibility}

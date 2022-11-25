@@ -4,10 +4,13 @@ import { useReactToPrint } from "react-to-print";
 import { Button } from "@mui/material";
 
 export function CajaImpresion(props) {
-  const componentRef = props.referencia;
+  const { referencia } = props;
+  const componentRef = referencia;
+
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
   return (
     <>
       <Button
@@ -17,7 +20,6 @@ export function CajaImpresion(props) {
           setTimeout(() => {
             handlePrint();
           }, 2000);
-          
         }}
         variant="contained"
       >
