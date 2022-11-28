@@ -10,4 +10,8 @@
   row-gap: 0.5rem;
 
   flex-wrap: wrap;
+  aside{
+    z-index: -10;
+  }
 }
+

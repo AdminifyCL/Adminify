@@ -1,6 +1,6 @@
 // Dependencias.
-import React, { useState, useEffect, useId } from "react";
-import { FaBox, FaClipboardList, FaCube, FaDollyFlatbed } from "react-icons/fa";
+import React, { useState, useEffect, useId , useRef} from "react";
+import { FaBox, FaClipboardList, FaCube, FaDollyFlatbed, FaPrint } from "react-icons/fa";
 import { FaMinus, FaPlus, FaTrash, FaReceipt, FaIdBadge } from "react-icons/fa";
 import { Badge, IconButton, Chip } from "@mui/material";
 import Items from "../Items/Items.jsx";
@@ -8,7 +8,10 @@ import PropTypes from "prop-types";
 
 // Estilos
 import "./Card.scss";
+import "./CardsContainer.scss"
+import "../../VentasPage.scss"
 import Style from "../../styles/Card/Style.jsx";
+import CardBoleta from "./CardBoleta.jsx";
 
 // Definición del componente: <Card />
 const Card = (props) => {
@@ -18,6 +21,7 @@ const Card = (props) => {
   const [hora, setHora] = useState("");
   const [open, setOpen] = useState(false);
   const id = useId();
+  const referencia = useRef()
 
   // 2. Ciclo de vida.
   useEffect(() => {
@@ -35,12 +39,14 @@ const Card = (props) => {
 
   // 4. Render.
   return (
+    <>
     <div className="VentaCard-container">
       {/* Dialog */}
       <Items open={open} setOpen={setOpen} key={id} productos={ventaInfo.productos} />
 
       {/* Información */}
       <div className="VentaCard-infoContainer">
+        
         {/* Identificador */}
         <div className="VentaCard-idContainer">
           <p className="VentaCard-idContent">{ventaInfo?.id}</p>
@@ -73,17 +79,30 @@ const Card = (props) => {
           <Chip label={`${hora}`} variant="filled" />
         </div>
 
+        {/*Eliminar*/}
         <IconButton style={Style.iconButtonDisabled} size="medium" disabled>
           <FaTrash size={18} />
         </IconButton>
 
+        {/*Ver*/}
         <Badge badgeContent={ventaInfo?.cantidad ?? 0} color="primary">
           <IconButton style={Style.iconButton} size="medium" onClick={() => setOpen(true)}>
             <FaReceipt size={18} />
           </IconButton>
         </Badge>
+
+        {/*Imprimir*/}
+        <CardBoleta 
+        vendedor={ventaInfo.vendedor.nombre}
+        fecha={fecha}
+        metodo={ventaInfo.metodo}
+        total={ventaInfo.total}
+        >
+        </CardBoleta>
+
       </div>
     </div>
+    </>
   );
 };
 
