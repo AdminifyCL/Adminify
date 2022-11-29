@@ -10,16 +10,6 @@ export default function (props) {
     content: () => referencia.current,
   });
 
-  const boleta = (
-    <div ref={referencia} className="Card_boleta"  style={{"visibility":"hidden"}}>
-      <p>****Boleta****</p>
-      <p>{vendedor}</p>
-      <p>{fecha}</p>
-      <p>{metodo}</p>
-      <p>{total}</p>
-    </div>
-  );
-
   return (
     <>
       <IconButton

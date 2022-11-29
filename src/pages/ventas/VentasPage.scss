@@ -4,6 +4,16 @@
 // Definición de estilos.
 .ventasPage_container {
   width: 100%;
+  background-color: white;
+  aside{
+    position: absolute;
+    z-index: -1;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .ventasPage_content {
@@ -11,7 +21,17 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 1rem;
-  aside{
-    z-index: -10;
-  }
 }
+
+.boleta{
+  position: absolute;
+    z-index: -1;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: larger;
+}
+
+

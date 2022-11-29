@@ -1,5 +1,6 @@
 // Dependencias.
 import React, { useState, useEffect, useId , useRef} from "react";
+import { useReactToPrint } from "react-to-print";
 import { FaBox, FaClipboardList, FaCube, FaDollyFlatbed, FaPrint } from "react-icons/fa";
 import { FaMinus, FaPlus, FaTrash, FaReceipt, FaIdBadge } from "react-icons/fa";
 import { Badge, IconButton, Chip } from "@mui/material";
@@ -16,12 +17,11 @@ import CardBoleta from "./CardBoleta.jsx";
 // Definición del componente: <Card />
 const Card = (props) => {
   // 1. Manejo del estado.
-  const { ventaInfo } = props;
+  const { ventaInfo, definirDatos, referencia } = props;
   const [fecha, setFecha] = useState("");
   const [hora, setHora] = useState("");
   const [open, setOpen] = useState(false);
   const id = useId();
-  const referencia = useRef()
 
   // 2. Ciclo de vida.
   useEffect(() => {
@@ -36,6 +36,10 @@ const Card = (props) => {
     setFecha(fechaArray[0]);
     setHora(fechaArray[1]);
   };
+
+  const handlePrint = useReactToPrint({
+    content: () => referencia.current,
+  });
 
   // 4. Render.
   return (
@@ -92,13 +96,18 @@ const Card = (props) => {
         </Badge>
 
         {/*Imprimir*/}
-        <CardBoleta 
-        vendedor={ventaInfo.vendedor.nombre}
-        fecha={fecha}
-        metodo={ventaInfo.metodo}
-        total={ventaInfo.total}
-        >
-        </CardBoleta>
+        <IconButton onClick={()=>{
+          definirDatos({
+            cajero:ventaInfo.vendedor.nombre,
+            fecha: fecha,
+            metodo: ventaInfo.metodo,
+            total: ventaInfo.total,
+            productos: [...ventaInfo.productos]
+          })
+          setTimeout(handlePrint,1500)
+        }}>
+          <FaPrint></FaPrint>
+        </IconButton>
 
       </div>
     </div>
