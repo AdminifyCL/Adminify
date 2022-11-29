@@ -43,7 +43,7 @@ const VentasPage = (props) => {
         { datosBoleta.productos.map((producto)=>{
           return <p>- ({producto.cantidad}) {producto.nombre} ${producto.precio}</p>
         })}
-        <p>Totta de venta : ${datosBoleta.total}</p>
+        <p>Total de venta : ${datosBoleta.total}</p>
       </aside>
 
       {/* Vista de la caja. */}

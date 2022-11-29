@@ -80,9 +80,11 @@ const PagosPage = (props) => {
             {/* Boleta */}
             <div ref={referenciaBoleta} className="pagosPage_boleta">
               <p>******* BOLETA DE COMPRA *******</p>
-              <p>Metodo de pago : {metodoPago}</p>
-              <p>Fecha : 24/11/2022 </p>
-              <p>Cajero : Nicolas Cruz </p>
+              <div className="pagosPage_boleta_datos">
+                <p>Metodo de pago : {metodoPago}</p>
+                <p>Fecha : 24/11/2022 </p>
+                <p>Cajero : Nicolas Cruz </p>
+              </div>
               {carroProducts.map((product) => {
                 return (
                   <p>

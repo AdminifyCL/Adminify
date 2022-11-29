@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Step, Stepper, StepLabel, Button } from "@mui/material";
-import ReactPDF from "@react-pdf/renderer";
 import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
 import PDFFile from "./components/PDFFile.jsx";
 import PropTypes from "prop-types";
